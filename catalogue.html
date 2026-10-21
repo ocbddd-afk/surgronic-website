@@ -3,102 +3,145 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Catalogue — Surgronic</title>
-<meta name="description" content="Browse 8,658 precision surgical instruments from Aesculap and Sklar.">
-<link rel="stylesheet" href="./styles.css">
+<title data-i18n-title="meta.catTitle">Instrument Catalog — Surgronic</title>
+<meta name="description" content="Search 8,658 surgical instruments by specialty, name, or manufacturer reference.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=align001">
 </head>
 <body>
-<header class="site-header">
-<a class="logo" href="./">SURGRONIC<span>.</span></a>
-<button class="hamburger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')">☰</button>
-<nav>
-<a href="./">Home</a>
-<a href="./catalogue.html" class="active">Catalogue</a>
-<a href="./brands.html">Brands</a>
-<a href="./quote.html">Get a Quote</a>
-<a href="./about.html">About</a>
-<a href="./contact.html">Contact</a>
-</nav>
-<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
-</header>
-<div class="drawer-overlay" id="overlay" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
-<div class="drawer" id="drawer">
-<button class="close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')">✕</button>
-<nav>
-<a href="./">Home</a>
-<a href="./catalogue.html">Catalogue</a>
-<a href="./brands.html">Brands</a>
-<a href="./quote.html">Get a Quote</a>
-<a href="./about.html">About</a>
-<a href="./contact.html">Contact</a>
-</nav>
-<div class="contact">yusuf@surgronic.com<br>+90 552 608 1432</div>
+<script src="app.js?v=promise001"></script>
+
+<div class="catalog-hero">
+  <div class="container">
+    <h1 data-i18n="cat.title">Instrument catalogue.</h1>
+    <p data-i18n="cat.sub">Guided search across 8,658 catalogued instruments. Filter by specialty, family, and manufacturer.</p>
+    <div class="search-bar">
+      <input id="q" type="search" data-i18n-ph="cat.searchPh" placeholder="Search by name, SKU, or manufacturer reference…" data-i18n-aria="cat.search" aria-label="Search instruments">
+      <button class="btn btn-primary" id="searchBtn" data-i18n="cat.search">Search</button>
+    </div>
+  </div>
 </div>
 
-<div class="toolbar">
-<div class="inner">
-<input type="text" id="search" placeholder="Search by name or article number...">
-<select id="brand"><option value="">All Brands</option><option value="aesculap">Aesculap</option><option value="sklar">Sklar</option></select>
-<select id="sort"><option value="name">Sort: Name</option><option value="sku">Sort: Article No.</option><option value="brand">Sort: Brand</option></select>
-</div>
-</div>
+<section style="padding-top:36px">
+  <div class="container">
+    <div class="filters">
+      <select id="fBrand" data-i18n-aria="cat.allMfr" aria-label="Manufacturer">
+        <option value="" data-i18n="cat.allMfr">All manufacturers</option>
+        <option>Aesculap</option>
+        <option>Sklar</option>
+      </select>
+      <select id="fFamily" data-i18n-aria="cat.allFam" aria-label="Instrument family">
+        <option value="" data-i18n="cat.allFam">All families</option>
+        <option>Forceps</option>
+        <option>Scissors</option>
+        <option>Retractor</option>
+        <option>Clamp</option>
+        <option>Needle Holder</option>
+        <option>Speculum</option>
+        <option>Elevator</option>
+      </select>
+      <select id="fSort" aria-label="Sort">
+        <option value="name" data-i18n="cat.sortName">Sort: Name</option>
+        <option value="sku" data-i18n="cat.sortSku">Sort: Reference</option>
+        <option value="brand" data-i18n="cat.sortBrand">Sort: Brand</option>
+      </select>
+    </div>
+    <div class="catalog-meta">
+      <span id="metaCount" data-i18n="cat.loading">Loading catalogue…</span>
+      <span id="metaPage"></span>
+    </div>
+    <div class="catalog-grid" id="grid"></div>
+    <div class="pagination" id="pager"></div>
+    <div class="cant-find rv in" style="margin:56px 0 24px;text-align:center;background:var(--navy-950);border-radius:var(--radius-lg);padding:48px 32px;color:#fff">
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:10px" data-i18n="cat.photoT">Can&rsquo;t find it?</h2>
+      <p style="color:rgba(255,255,255,.75);margin-bottom:24px;max-width:52ch;margin-inline:auto" data-i18n="cat.photoD">Send us a photograph of the instrument — our team identifies it manually and quotes you within one business day.</p>
+      <a class="btn btn-primary" href="quote.html#photo"><span data-i18n="cat.photoB">Send a photo</span> &rarr;</a>
+    </div>
+  </div>
+</section>
 
-<div class="container">
-<div class="breadcrumb"><a href="./">Home</a> / Catalogue</div>
-<div id="stats" style="padding: 1rem 0; color: var(--muted);"></div>
-<div class="product-grid" id="grid"></div>
-<div class="loading" id="loading">Loading 8,658 instruments...</div>
-</div>
-
-<footer class="site-footer">
-<div class="inner">
-<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
-<div><h3>Policies</h3><p><a href="./payment.html">Payment & Deposit</a><br><a href="./returns.html">Returns & Claims</a><br><a href="./shipping.html">Shipping & Documentation</a><br><a href="./privacy.html">Privacy</a><br><a href="./terms.html">Terms of Sale</a></p></div>
-<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
-</div>
-<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
-</footer>
-
-<script src="./app.js"></script>
 <script>
-let all = [];
-async function init() {
-  try {
-    all = await loadProducts();
-    document.getElementById('loading').style.display = 'none';
-    // Pre-fill from URL
-    const b = getQueryParam('brand'); if (b) document.getElementById('brand').value = b;
-    const s = getQueryParam('search'); if (s) document.getElementById('search').value = s;
-    render();
-  } catch(e) {
-    document.getElementById('loading').innerHTML = '<div class="error">Unable to load catalogue. Please refresh.</div>';
+(function(){
+  var PER = 48, page = 1, total = 0;
+  var grid = document.getElementById("grid"),
+      metaCount = document.getElementById("metaCount"),
+      metaPage = document.getElementById("metaPage"),
+      pager = document.getElementById("pager");
+
+  function params(){
+    var p = new URLSearchParams(location.search);
+    return {
+      q: document.getElementById("q").value.trim() || p.get("q") || p.get("search") || "",
+      brand: document.getElementById("fBrand").value,
+      family: document.getElementById("fFamily").value,
+      sort: document.getElementById("fSort").value
+    };
   }
-}
-function render() {
-  const q = document.getElementById('search').value.toLowerCase();
-  const b = document.getElementById('brand').value.toLowerCase();
-  const sort = document.getElementById('sort').value;
-  let f = all.filter(p => {
-    if (q && !(p.name||'').toLowerCase().includes(q) && !(p.sku||'').toLowerCase().includes(q)) return false;
-    if (b && (p.brand||'').toLowerCase() !== b) return false;
-    return true;
+  (function(){
+    var p = new URLSearchParams(location.search);
+    if(p.get("brand")) document.getElementById("fBrand").value = p.get("brand");
+    if(p.get("q") || p.get("search")) document.getElementById("q").value = p.get("q") || p.get("search");
+  })();
+
+  function load(){
+    var f = params();
+    var search = f.q;
+    if(f.family) search = (search ? search+" " : "") + f.family;
+    grid.innerHTML = '<div class="loading">'+SG.t("cat.loading")+'</div>';
+    metaCount.textContent = SG.t("cat.loading");
+    SG.api("listProducts",{
+      limit: PER, offset:(page-1)*PER,
+      search: search || undefined,
+      manufacturer: f.brand || undefined,
+      sort: f.sort, storefront:true
+    }).then(function(d){
+      total = d.total||0;
+      var list = d.products||[];
+      metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>8,658</b> "+SG.t("cat.catalogued");
+      var pages = Math.max(1, Math.ceil(total/PER));
+      metaPage.textContent = SG.t("cat.page")+" "+page+" "+SG.t("cat.of")+" "+pages;
+      if(!list.length){
+        grid.innerHTML = '<div class="error-box" style="grid-column:1/-1;text-align:center;padding:48px 32px">'+
+          '<h3 style="font-size:20px;margin-bottom:10px">'+SG.t("cat.empty.t")+'</h3>'+
+          '<p style="color:var(--muted);margin-bottom:20px">'+SG.t("cat.empty.d")+'</p>'+
+          '<a class="btn btn-primary" href="quote.html">'+SG.t("cat.empty.b")+'</a></div>';
+      } else {
+        grid.innerHTML = list.map(SG.cardHTML).join("");
+        SG.bindAddButtons(grid);
+      }
+      renderPager(pages);
+      window.scrollTo({top:0,behavior:"smooth"});
+    }).catch(function(){
+      grid.innerHTML = '<div class="error-box" style="grid-column:1/-1">'+SG.t("cat.unavailable")+'</div>';
+      metaCount.textContent = SG.t("cat.unavailableShort");
+    });
+  }
+  function renderPager(pages){
+    var h = '<button id="pgPrev" '+(page<=1?"disabled":"")+'>'+SG.t("cat.prev")+'</button>'+
+            '<span class="pg-info">'+SG.t("cat.page")+' '+page+' '+SG.t("cat.of")+' '+pages+'</span>'+
+            '<button id="pgNext" '+(page>=pages?"disabled":"")+'>'+SG.t("cat.next")+'</button>';
+    pager.innerHTML = h;
+    document.getElementById("pgPrev").addEventListener("click",function(){ if(page>1){page--;load();} });
+    document.getElementById("pgNext").addEventListener("click",function(){ if(page<pages){page++;load();} });
+  }
+  var deb=null;
+  document.getElementById("q").addEventListener("input",function(){
+    clearTimeout(deb); deb=setTimeout(function(){page=1;load();},450);
   });
-  f.sort((a,b2) => {
-    if (sort === 'sku') return (a.sku||'').localeCompare(b2.sku||'');
-    if (sort === 'brand') return (a.brand||'').localeCompare(b2.brand||'');
-    return (a.name||'').localeCompare(b2.name||'');
+  document.getElementById("searchBtn").addEventListener("click",function(){page=1;load();});
+  ["fBrand","fFamily","fSort"].forEach(function(id){
+    document.getElementById(id).addEventListener("change",function(){page=1;load();});
   });
-  document.getElementById('stats').textContent = f.length.toLocaleString() + ' instruments';
-  const grid = document.getElementById('grid');
-  const show = f.slice(0, 300);
-  grid.innerHTML = show.map(productCard).join('') +
-    (f.length > 300 ? '<div style="grid-column:1/-1; text-align:center; color: var(--muted); padding: 2rem;">Showing 300 of ' + f.length.toLocaleString() + ' — refine your search to see more</div>' : '') +
-    (f.length === 0 ? '<div style="grid-column:1/-1; text-align:center; color: var(--muted); padding: 3rem;">No instruments match your search.</div>' : '');
-}
-document.getElementById('search').addEventListener('input', render);
-document.getElementById('brand').addEventListener('change', render);
-document.getElementById('sort').addEventListener('change', render);
-init();
+  load();
+  document.addEventListener("surgronic:lang", function(){
+    SG.applyI18n();
+    load();
+  });
+})();
 </script>
+<script>SG.mountChrome("catalog");SG.applyI18n();</script>
 </body>
 </html>

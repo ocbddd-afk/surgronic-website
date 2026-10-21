@@ -1,192 +1,403 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#0b2239" />
-    <!-- Empty inline icon: stops the browser fetching /favicon.ico, which
-         lives outside the space's routes and fails auth. -->
-    <link rel="icon" href="data:," />
-    <title>Surgronic — Precision Surgical Instruments, Sourced to Your Specification</title>
-    <meta name="description" content="Surgronic is an international supplier of surgical instruments — selected instruments held in stock, the rest sourced to your exact specification: flagship rhinoplasty range, sets and kits, and specialty lines for hospitals, clinics and distributors across MENA. Inspected before shipment. Prices on request or indicative sales prices confirmed by quotation." />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
-    <meta name="author" content="Surgronic" />
-    <meta name="geo.region" content="TR-34" />
-    <meta name="geo.placename" content="Istanbul" />
-    <!-- Canonical + language alternates for the storefront's stable
-         per-language URLs (#/en, #/fr, #/ar). The app keeps the
-         canonical, hreflang alternates and the localized
-         title/description in sync at runtime per view. -->
-    <link rel="canonical" href="https://surgronic.pages.dev/#/en" />
-    <link rel="alternate" hreflang="en" href="https://surgronic.pages.dev/#/en" />
-    <link rel="alternate" hreflang="fr" href="https://surgronic.pages.dev/#/fr" />
-    <link rel="alternate" hreflang="ar" href="https://surgronic.pages.dev/#/ar" />
-    <link rel="alternate" hreflang="x-default" href="https://surgronic.pages.dev/#/en" />
-    <!-- Open Graph / Twitter — per-view values are refreshed at runtime
-         by the storefront (product pages carry the product's own
-         title, description and photograph). -->
-    <meta property="og:site_name" content="Surgronic" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Surgronic — Precision Surgical Instruments, Sourced to Your Specification" />
-    <meta property="og:description" content="Surgical instruments — selected lines held in stock, the rest sourced to your exact specification — for hospitals, clinics and distributors across MENA. Inspected before shipment." />
-    <meta property="og:url" content="https://surgronic.pages.dev/#/en" />
-    <meta property="og:locale" content="en_GB" />
-    <meta property="og:locale:alternate" content="fr_FR" />
-    <meta property="og:locale:alternate" content="ar_EG" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Surgronic — Precision Surgical Instruments, Sourced to Your Specification" />
-    <meta name="twitter:description" content="Surgical instruments — selected lines held in stock, the rest sourced to your exact specification — for hospitals, clinics and distributors across MENA. Inspected before shipment." />
-    <!-- Structured data: the organization and website. Product,
-         ItemList and BreadcrumbList graphs are added per view at
-         runtime by the storefront from the live catalogue records. -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "name": "Surgronic",
-          "legalName": "Surgronic",
-          "description": "International supplier of surgical instruments. Selected instruments are held in stock, ready to dispatch; anything else is sourced to the buyer's exact specification — product, size, material, finish and quantity — through manufacturing partners, one located next to the manufacturer for close, fast access. Every instrument is inspected before shipment, with pre-shipment photos or video approved by the buyer.",
-          "url": "https://surgronic.pages.dev/",
-          "email": "yusuf@surgronic.com",
-          "telephone": "+90 552 608 1432",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Sisly",
-            "addressLocality": "Istanbul",
-            "addressCountry": "TR"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "sales",
-            "email": "yusuf@surgronic.com",
-            "telephone": "+90 552 608 1432",
-            "availableLanguage": ["en", "fr", "ar"]
-          }
-        },
-        {
-          "@type": "WebSite",
-          "name": "Surgronic",
-          "url": "https://surgronic.pages.dev/",
-          "inLanguage": ["en", "fr", "ar"],
-          "publisher": { "@type": "Organization", "name": "Surgronic" }
-        }
-      ]
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n-title="meta.homeTitle">Surgronic &mdash; Precision Surgical Instruments</title>
+<meta name="description" content="Name the instrument. We'll find it. 8,658 surgical instruments from stock or sourced to specification. Response within one business day.">
+<meta property="og:title" content="Surgronic &mdash; Precision Surgical Instruments">
+<meta property="og:description" content="Name the instrument. We'll find it. From stock or sourced to specification.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=align001">
+</head>
+<body>
+<script src="app.js?v=promise001"></script>
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-kicker" data-i18n="hero.kicker">Precision surgical instruments</span>
+      <h1 data-i18n="hero.title">Name the instrument. We&rsquo;ll find it.</h1>
+      <p class="hero-sub" data-i18n="hero.lead">Surgical instruments available from stock or sourced to your requirements. Search by instrument name, manufacturer reference, or specialty&mdash;or send us a photograph.</p>
+      <div class="finder rv" role="region" aria-label="Instrument finder">
+        <div class="finder-tabs" role="tablist" aria-label="Finder">
+          <button class="finder-tab" role="tab" id="ftab-name" aria-selected="true" aria-controls="fpanel-name" data-tab="name"><span data-i18n="finder.tabBy1">By name</span></button>
+          <button class="finder-tab" role="tab" id="ftab-ref" aria-selected="false" aria-controls="fpanel-ref" data-tab="ref" tabindex="-1"><span data-i18n="finder.tabBy2">By reference</span></button>
+          <button class="finder-tab" role="tab" id="ftab-photo" aria-selected="false" aria-controls="fpanel-photo" data-tab="photo" tabindex="-1"><span data-i18n="finder.tabBy3">By photograph</span></button>
+        </div>
+        <div class="finder-panel" role="tabpanel" id="fpanel-name" aria-labelledby="ftab-name">
+          <div class="finder-row">
+            <input type="text" id="finderName" data-i18n-ph="finder.namePh" placeholder="Search by instrument name&hellip;" aria-label="Instrument name">
+            <button class="btn btn-primary" id="finderGoName"><span data-i18n="finder.goName">Find Instruments</span></button>
+          </div>
+          <p class="finder-help" data-i18n="finder.nameHelp">Type any part of the instrument name.</p>
+          <div class="finder-chips">
+            <button class="chip" data-chip="Forceps" data-i18n="chip.1">Forceps</button>
+            <button class="chip" data-chip="Scissors" data-i18n="chip.2">Scissors</button>
+            <button class="chip" data-chip="Retractor" data-i18n="chip.3">Retractor</button>
+            <button class="chip" data-chip="Speculum" data-i18n="chip.4">Speculum</button>
+            <button class="chip" data-chip="Needle Holder" data-i18n="chip.5">Needle Holder</button>
+          </div>
+        </div>
+        <div class="finder-panel" role="tabpanel" id="fpanel-ref" aria-labelledby="ftab-ref" hidden>
+          <div class="finder-row">
+            <input type="text" id="finderRef" data-i18n-ph="finder.refPh" placeholder="Enter manufacturer reference or SKU&hellip;" aria-label="Reference">
+            <button class="btn btn-primary" id="finderGoRef"><span data-i18n="finder.goRef">Source by Reference</span></button>
+          </div>
+          <p class="finder-help" data-i18n="finder.refHelp">Paste the manufacturer article number or SKU.</p>
+        </div>
+        <div class="finder-panel" role="tabpanel" id="fpanel-photo" aria-labelledby="ftab-photo" hidden>
+          <div class="finder-row">
+            <label class="drop" id="finderDrop" for="finderPhoto">
+              <span data-i18n="finder.drop">Drag &amp; drop your photo here</span><br>
+              <small data-i18n="finder.browse">or browse files</small>
+            </label>
+            <input type="file" id="finderPhoto" accept="image/*" hidden>
+          </div>
+          <div class="drop-preview" id="finderPreview" hidden>
+            <img id="finderPreviewImg" alt="">
+            <span><b data-i18n="finder.photoReady">Photo ready</b> &mdash; <span id="finderFileName"></span><br>
+            <a href="#" id="finderChange" data-i18n="finder.photoChange">Change photo</a></span>
+          </div>
+          <div class="finder-row" style="margin-top:12px">
+            <button class="btn btn-primary" id="finderGoPhoto" style="width:100%"><span data-i18n="finder.goPhoto">Send Photograph</span></button>
+          </div>
+          <p class="finder-help" data-i18n="finder.photoHelp">Our team identifies it manually &mdash; never automated guesswork.</p>
+        </div>
+      </div>
+      <div class="trust-strip" aria-label="Timelines">
+        <span><b data-i18n="strip.1b" dir="ltr">1 business day</b>&nbsp;<span data-i18n="strip.1d">response</span></span>
+        <span><b data-i18n="strip.2b" dir="ltr">1&ndash;3 days</b>&nbsp;<span data-i18n="strip.2d">sourcing</span></span>
+        <span><b data-i18n="strip.3b" dir="ltr">2&ndash;5 days</b>&nbsp;<span data-i18n="strip.3d">shipping</span></span>
+      </div>
+    </div>
+    <a class="hero-visual rv hero-visual-link" href="product.html?sku=SUR-SKL-01146" data-i18n-aria="hero.viewProduct" aria-label="View Adlerkreutz Tissue Forceps">
+      <img src="assets/sur-skl-01146.jpg" alt="Adlerkreutz Tissue Forceps — precision surgical instrument">
+      <div class="hero-tag">
+        <div><b>Adlerkreutz Tissue Forceps</b><span>SUR-SKL-01146 &middot; <span data-i18n="hero.tagFrom">From our catalogued range</span></span></div>
+        <span class="pill" data-i18n="hero.tagCat">8,658 instruments</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ SUPPLY CHANNELS ============ -->
+<section id="channels">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="channels.eyebrow">Supply channels</span>
+    <h2 class="sec-title rv" data-i18n="channels.title">Two channels. One standard of precision.</h2>
+    <p class="sec-sub rv" data-i18n="channels.sub">Catalogued products and stocked products are not the same thing. We are transparent about both.</p>
+    <div class="channels-grid">
+      <div class="channel-card rv">
+        <span class="channel-badge" data-i18n="ch.badge1">From stock</span>
+        <h3 data-i18n="channel1.t">Available from Stock</h3>
+        <p data-i18n="channel1.d">In-stock instruments ship from our inventory.</p>
+        <div class="channel-time" data-i18n="ch.time1">Ships from inventory</div>
+        <a class="btn btn-outline" href="catalogue.html"><span data-i18n="ch.cta1">Browse stock</span></a>
+      </div>
+      <div class="channel-card rv">
+        <span class="channel-badge blue" data-i18n="ch.badge2">Sourced to specification</span>
+        <h3 data-i18n="channel2.t">Sourced to Specification</h3>
+        <p data-i18n="channel2.d">When the required instrument is unavailable, we source it to your exact requirements.</p>
+        <div class="channel-time" data-i18n="ch.time2">Typically 1&ndash;3 days sourcing</div>
+        <a class="btn btn-primary" href="quote.html"><span data-i18n="ch.cta2">Start sourcing</span></a>
+      </div>
+    </div>
+    <p class="channel-rule rv" data-i18n="ch.rule">Stocked items show a stock badge; everything else is sourced, with written specification confirmation.</p>
+  </div>
+</section>
+
+<!-- ============ SPECIALTIES ============ -->
+<section class="specialties" id="specialties">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="spec.eyebrow">Specialties</span>
+    <h2 class="sec-title rv" data-i18n="spec.title">Explore surgical specialties.</h2>
+    <p class="sec-sub rv" data-i18n="spec.sub">Eleven disciplines. One catalogue. Each specialty is a navigable destination.</p>
+    <div class="spec-grid" id="specGrid"></div>
+  </div>
+</section>
+
+<!-- ============ FEATURED ============ -->
+<section id="featured">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="feat.eyebrow">Featured</span>
+    <h2 class="sec-title rv" data-i18n="feat.title">Instruments buyers ask for.</h2>
+    <p class="sec-sub rv" data-i18n="feat.sub">A curated selection from the live catalogue &mdash; diverse specialties, verified imagery.</p>
+    <div class="feat-grid" id="featGrid" aria-live="polite"></div>
+    <div style="text-align:center;margin-top:44px">
+      <a class="btn btn-outline" href="catalogue.html"><span data-i18n="feat.browse">Browse all 8,658 instruments</span> &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="how.eyebrow">How Surgronic works</span>
+    <h2 class="sec-title rv" data-i18n="how.title">From requirement to delivery.</h2>
+    <div class="steps">
+      <div class="step rv"><small data-i18n="step1.n">Step 01</small><h3 data-i18n="step1.t">Tell us what you need</h3><p data-i18n="step1.d">Search by name, send a reference, or upload a photograph.</p></div>
+      <div class="step rv"><small data-i18n="step2.n">Step 02</small><h3 data-i18n="step2.t">We confirm the specification</h3><p data-i18n="step2.d">Written specification confirmation before anything is committed.</p></div>
+      <div class="step rv"><small data-i18n="step3.n">Step 03</small><h3 data-i18n="step3.t">Receive a quotation</h3><p data-i18n="step3.d">Clear pricing within one business day. Final price confirmed in writing.</p></div>
+      <div class="step rv"><small data-i18n="step4.n">Step 04</small><h3 data-i18n="step4.t">Confirm and receive</h3><p data-i18n="step4.d">Nothing ships until you have seen it and approved it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY SURGRONIC (dark) ============ -->
+<section class="why" id="why">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="trust.eyebrow">Why Surgronic</span>
+    <h2 class="sec-title rv" data-i18n="trust.title">Built for procurement teams.</h2>
+    <p class="sec-sub rv" data-i18n="trust.sub2">One catalogue, two supply channels, and a specification-first workflow.</p>
+    <div class="stats">
+      <div class="stat rv"><b><span data-count="8658">8,658</span></b><p data-i18n="trust.1d">Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.</p></div>
+      <div class="stat rv"><b><span data-i18n="trust.2n">2 channels</span></b><p data-i18n="trust.2d">Available from stock or sourced to specification &mdash; one quotation workflow.</p></div>
+      <div class="stat rv"><b><span data-i18n="why.stat3n">1 day</span></b><p data-i18n="why.stat3d">Maximum response time. Every enquiry answered within one business day.</p></div>
+    </div>
+    <div class="promise rv">
+      <blockquote><span class="q">&ldquo;</span><span data-i18n="trust.quote">Nothing ships until you&rsquo;ve seen it and approved it.</span><span class="q">&rdquo;</span></blockquote>
+      <p><b data-i18n="why.specT">Written specification confirmation</b> &mdash; <span data-i18n="why.specD">No commitment until the specification is confirmed in writing. Deposit only after your approval.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section id="trust">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="trust.eyebrow2">Credentials</span>
+    <h2 class="sec-title rv" data-i18n="trust.title2">Procurement, engineered.</h2>
+    <p class="sec-sub rv" data-i18n="trust.sub">The credentials that matter to professional buyers &mdash; published as they are confirmed.</p>
+    <div class="trust-grid">
+      <div class="trust-card rv">
+        <span class="tbd" data-i18n="trust.certsD">To be provided</span>
+        <h3 data-i18n="trust.certsT">Certifications &amp; standards</h3>
+        <p data-i18n="trust.certsN">Supplier and quality certifications will be listed here once confirmed.</p>
+      </div>
+      <div class="trust-card rv">
+        <span class="tbd" data-i18n="trust.matD">To be provided</span>
+        <h3 data-i18n="trust.matT">Materials &amp; craftsmanship</h3>
+        <p data-i18n="trust.matN">Steel grades, finishes and manufacturing standards will be documented here.</p>
+      </div>
+      <div class="trust-card rv">
+        <span class="tbd" data-i18n="trust.custD">To be provided</span>
+        <h3 data-i18n="trust.custT">Trusted by</h3>
+        <p data-i18n="trust.custN">Customer references will appear here with their permission.</p>
+      </div>
+    </div>
+    <div class="trust-contact rv">
+      <span><b data-i18n="trust.addrLabel">Head office</b>: <span data-i18n="trust.addr">Sisli, Istanbul, Turkey</span></span>
+      <a href="mailto:yusuf@surgronic.com"><b>yusuf@surgronic.com</b></a>
+      <a href="tel:+905526081432"><bdi><b>+90 552 608 1432</b></bdi></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section style="padding-top:0">
+  <div class="final rv">
+    <div class="wrap" style="padding-top:88px;padding-bottom:88px">
+      <h2 data-i18n="final.title">Have an instrument in mind?<br>Let&rsquo;s find the right specification.</h2>
+      <p data-i18n="final.sub">Send a reference, a name, or a photograph. We respond within one business day.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="quote.html"><span data-i18n="final.cta1">Request a Quote</span> &rarr;</a>
+        <a class="btn btn-ghost-w" href="catalogue.html"><span data-i18n="final.cta2">Explore Instruments</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+(function(){
+  "use strict";
+  /* ---------- Unified finder: 3 tabs, ARIA-correct ---------- */
+  (function initFinder(){
+    var tabs = document.querySelectorAll(".finder-tab");
+    var panels = {
+      name: document.getElementById("fpanel-name"),
+      ref: document.getElementById("fpanel-ref"),
+      photo: document.getElementById("fpanel-photo")
+    };
+    function selectTab(name, focus){
+      tabs.forEach(function(x){
+        var on = x.getAttribute("data-tab") === name;
+        x.classList.toggle("on", on);
+        x.setAttribute("aria-selected", on ? "true" : "false");
+        x.tabIndex = on ? 0 : -1;
+        if (on && focus) x.focus();
+      });
+      Object.keys(panels).forEach(function(k){ if (panels[k]) panels[k].hidden = (k !== name); });
     }
-    </script>
-    <!-- Deploy package marker: this build is the Control Center (admin)
-         flavor. The website deploy export rewrites this single value to
-         "website" in the website package's index.html; the storefront
-         reads it at runtime and removes every Control Center entry
-         point when it sees "website" (see Storefront.tsx). -->
-    <script>window.__SURGRONIC_PACKAGE__ = "website";</script>
-    
-  <link rel="stylesheet" crossorigin href="./assets/index-t8vfydqm.css"></head>
-  <body>
-    <div
-      data-generated-space-root=""
-      data-generated-space-slug="surgronic-super-admin-control-center"
-    ></div>
-    <noscript>
-      <h1>Surgronic — Precision Surgical Instruments, Sourced to Your Specification</h1>
-      <p>Surgronic is an international supplier of surgical instruments, based in Sisly, Istanbul, Turkey — selected instruments held in stock, the rest sourced to your exact specification and inspected before shipment. Contact Yusuf — yusuf@surgronic.com · +90 552 608 1432 (also on WhatsApp) — for the catalogue and quotations.</p>
-    </noscript>
-    <script>
-      // NO SERVICE WORKER — direct API connection to Cloudflare
-      // Unregister any old service workers, then patch fetch to use the real API
-      (function() {
-        var API_URL = 'https://surgronic.pages.dev/actions';
-        var BASE = '/surgronic-website';
-        // Remove any stale service workers from previous deployments
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.getRegistrations().then(function(regs) {
-            regs.forEach(function(r) { r.unregister().catch(function(){}); });
-          }).catch(function(){});
+    tabs.forEach(function(x){
+      x.addEventListener("click", function(){ selectTab(x.getAttribute("data-tab")); });
+      x.addEventListener("keydown", function(e){
+        var order = ["name","ref","photo"], i = order.indexOf(x.getAttribute("data-tab")), n = null;
+        if (e.key === "ArrowRight") n = order[(i+1)%3];
+        else if (e.key === "ArrowLeft") n = order[(i+2)%3];
+        else if (e.key === "Home") n = order[0];
+        else if (e.key === "End") n = order[2];
+        if (n) { e.preventDefault(); selectTab(n, true); }
+      });
+    });
+    function goCatalogue(q){ location.href = "catalogue.html?q=" + encodeURIComponent(q || ""); }
+    var inName = document.getElementById("finderName");
+    document.getElementById("finderGoName").addEventListener("click", function(){ goCatalogue(inName.value.trim()); });
+    inName.addEventListener("keydown", function(e){ if (e.key === "Enter") goCatalogue(inName.value.trim()); });
+    document.querySelectorAll(".finder-chips .chip").forEach(function(c){
+      c.addEventListener("click", function(){ goCatalogue(c.getAttribute("data-chip")); });
+    });
+    var inRef = document.getElementById("finderRef");
+    function goSourcing(){
+      var r = inRef.value.trim();
+      location.href = "quote.html" + (r ? "?ref=" + encodeURIComponent(r) : "") + "#sourcing";
+    }
+    document.getElementById("finderGoRef").addEventListener("click", goSourcing);
+    inRef.addEventListener("keydown", function(e){ if (e.key === "Enter") goSourcing(); });
+    /* Photo: drag-drop with preview */
+    var drop = document.getElementById("finderDrop"),
+        fileInput = document.getElementById("finderPhoto"),
+        preview = document.getElementById("finderPreview"),
+        previewImg = document.getElementById("finderPreviewImg"),
+        fileName = document.getElementById("finderFileName");
+    function handleFile(f){
+      if (!f || !f.type || f.type.indexOf("image/") !== 0) return;
+      fileName.textContent = f.name;
+      try { previewImg.src = URL.createObjectURL(f); previewImg.alt = f.name; } catch(e){}
+      preview.hidden = false;
+    }
+    fileInput.addEventListener("change", function(){ if (fileInput.files && fileInput.files[0]) handleFile(fileInput.files[0]); });
+    ["dragenter","dragover"].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add("over"); }); });
+    ["dragleave","drop"].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove("over"); }); });
+    drop.addEventListener("drop", function(e){
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f) handleFile(f);
+    });
+    document.getElementById("finderChange").addEventListener("click", function(e){ e.preventDefault(); fileInput.click(); });
+    document.getElementById("finderGoPhoto").addEventListener("click", function(){ location.href = "quote.html#photo"; });
+  })();
+
+  /* ---------- Specialties: 11, from live SG.SPECIALTIES ---------- */
+  function renderSpecs(){
+    var grid = document.getElementById("specGrid");
+    if (!grid) return;
+    var specs = (SG.SPECIALTIES && (SG.SPECIALTIES[SG.getLang()] || SG.SPECIALTIES.en)) || [];
+    var idx = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI"];
+    grid.innerHTML = specs.map(function(s, i){
+      return '<a class="spec-card rv in" href="catalogue.html?search=' + encodeURIComponent(s[0].split(" ")[0]) + '">' +
+        '<span class="spec-ref">' + idx[i] + '</span><h3>' + SG.esc(s[0]) + '</h3><span>' + SG.esc(s[1]) + '</span></a>';
+    }).join("");
+  }
+
+  /* ---------- Featured: live API, skeleton first, verified fallback ---------- */
+  var FEATURED_SKUS = ["SUR-SKL-01146","SUR-SKL-01315","SUR-SKL-01610","SUR-AES-04036",
+                       "SUR-AES-01245","SUR-AES-03379","SUR-AES-00883","SUR-SKL-00238"];
+  var FEATURED_FALLBACK = {
+    "SUR-SKL-01146": {name:"Adlerkreutz Tissue Forceps", brand:"Sklar", img:"sur-skl-01146.jpg"},
+    "SUR-SKL-01315": {name:"Aufricht Facelift Scissors", brand:"Sklar", img:"sur-skl-01315.jpg"},
+    "SUR-SKL-01610": {name:"Cottle Nasal Speculum", brand:"Sklar", img:"sur-skl-01610.jpg"},
+    "SUR-AES-04036": {name:"ADSON Needle Holder", brand:"Aesculap", img:"sur-aes-04036.jpg"},
+    "SUR-AES-01245": {name:"ABRAHAM Tonsil Grasping Forceps", brand:"Aesculap", img:"sur-aes-01245.jpg"},
+    "SUR-AES-03379": {name:"Bandage- and Cloth Scissors", brand:"Aesculap", img:"sur-aes-03379.jpg"},
+    "SUR-AES-00883": {name:"ABEL Tenaculum Forceps", brand:"Aesculap", img:"sur-aes-00883.jpg"},
+    "SUR-SKL-00238": {name:"Bennet Bone Elevator", brand:"Sklar", img:"sur-skl-00238.jpg"}
+  };
+  function skeletonHTML(){
+    var h = "";
+    for (var i = 0; i < 8; i++){
+      h += '<div class="skel" aria-hidden="true"><div class="sk-img"></div>' +
+           '<div class="sk-body"><div class="sk-l" style="width:40%"></div>' +
+           '<div class="sk-l" style="width:90%"></div><div class="sk-l" style="width:60%"></div></div></div>';
+    }
+    return h;
+  }
+  function featuredFallbackHTML(){
+    return FEATURED_SKUS.map(function(sku){
+      var f = FEATURED_FALLBACK[sku];
+      return SG.cardHTML({sku:sku, name:f.name, nameFr:f.name, nameAr:f.name, brand:f.brand, imageFiles:[f.img]});
+    }).join("");
+  }
+  function renderFeatured(){
+    var grid = document.getElementById("featGrid");
+    if (!grid) return;
+    grid.setAttribute("aria-busy", "true");
+    grid.innerHTML = skeletonHTML();
+    var calls = Promise.all(FEATURED_SKUS.map(function(sku){ return SG.api("getProduct", {sku:sku}); }));
+    var timeout = new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("featured-timeout")); }, 6000); });
+    Promise.race([calls, timeout]).then(function(results){
+      var list = results.map(function(r){ return r && (r.product || r); }).filter(function(p){ return p && p.sku; });
+      if (!list.length) throw new Error("empty");
+      grid.innerHTML = list.map(SG.cardHTML).join("");
+      SG.bindAddButtons(grid);
+      grid.setAttribute("aria-busy", "false");
+    }).catch(function(){
+      try {
+        grid.innerHTML = featuredFallbackHTML();
+        SG.bindAddButtons(grid);
+      } catch(e){
+        grid.innerHTML = '<div class="feat-err"><p><b>' + SG.esc(SG.t("feat.errT")) + '</b></p>' +
+          '<p style="margin-top:16px"><a class="btn btn-outline" href="catalogue.html">' + SG.esc(SG.t("feat.errB")) + '</a></p></div>';
+      }
+      grid.setAttribute("aria-busy", "false");
+    });
+  }
+
+  /* ---------- Reveal on scroll (slow, eased) ---------- */
+  function initReveal(){
+    var els = document.querySelectorAll(".rv");
+    if (!("IntersectionObserver" in window) ||
+        (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)){
+      els.forEach(function(e){ e.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, {threshold:.12});
+    els.forEach(function(e){ io.observe(e); });
+  }
+
+  /* ---------- Count-up ---------- */
+  function initCount(){
+    var el = document.querySelector("[data-count]");
+    if (!el) return;
+    var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+    function fmt(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+    if (!("IntersectionObserver" in window) ||
+        (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)){
+      el.textContent = fmt(target); return;
+    }
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        var t0 = null, dur = 1400;
+        function step(ts){
+          if (!t0) t0 = ts;
+          var p = Math.min(1, (ts - t0) / dur), v = Math.round(target * (1 - Math.pow(1 - p, 3)));
+          el.textContent = fmt(v);
+          if (p < 1) requestAnimationFrame(step);
         }
-        // Fix image URLs: rewrite absolute /assets/ to subpath /surgronic-website/assets/
-        // (React was built for domain root; GitHub Pages uses a subpath)
-        // Patch HTMLImageElement.src setter to catch ALL image loads (React sets src dynamically)
-        (function() {
-          var desc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
-          if (desc && desc.set) {
-            var origSet = desc.set;
-            Object.defineProperty(HTMLImageElement.prototype, 'src', {
-              set: function(v) {
-                if (typeof v === 'string' && v.indexOf('/assets/') === 0 && v.indexOf(BASE + '/assets/') !== 0) {
-                  v = BASE + v;
-                }
-                origSet.call(this, v);
-              },
-              get: desc.get,
-              configurable: true
-            });
-          }
-        })();
-        function fixImages(root) {
-          var imgs = (root || document).querySelectorAll('img[src^="/assets/"]');
-          for (var i = 0; i < imgs.length; i++) {
-            var s = imgs[i].getAttribute('src');
-            if (s.indexOf(BASE + '/assets/') !== 0) imgs[i].src = BASE + s;
-          }
-        }
-        // Watch for dynamically added images (React renders them after load)
-        if (window.MutationObserver) {
-          var obs = new MutationObserver(function(mutations) {
-            mutations.forEach(function(m) {
-              m.addedNodes.forEach(function(n) {
-                if (n.nodeType === 1) {
-                  if (n.tagName === 'IMG' && n.src.indexOf('/assets/') === 0) {
-                    n.src = BASE + n.getAttribute('src');
-                  }
-                  fixImages(n);
-                }
-              });
-            });
-          });
-          obs.observe(document.documentElement, { childList: true, subtree: true });
-        }
-        // Patch fetch: redirect ./actions to the Cloudflare API + normalize products
-        var origFetch = window.fetch;
-        window.fetch = function(url, opts) {
-          var urlStr = typeof url === 'string' ? url : (url && url.url) || '';
-          if (urlStr.indexOf('/actions') !== -1) {
-            var body = (opts && opts.body) || '';
-            return origFetch(API_URL, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: typeof body === 'string' ? body : JSON.stringify(body)
-            }).then(function(res) { return res.json(); }).then(function(json) {
-              // Normalize: ensure fields React cards expect exist
-              if (json && json.data && Array.isArray(json.data.products)) {
-                json.data.products = json.data.products.map(function(p) {
-                  p.finishOptions = p.finishOptions || [];
-                  p.imageFiles = Array.isArray(p.imageFiles) ? p.imageFiles : [];
-                  p.priceCents = p.priceCents || null;
-                  return p;
-                });
-              }
-              if (json && json.data && json.data.product) {
-                var p = json.data.product;
-                p.finishOptions = p.finishOptions || [];
-                p.imageFiles = Array.isArray(p.imageFiles) ? p.imageFiles : [];
-                p.priceCents = p.priceCents || null;
-              }
-              return new Response(JSON.stringify(json), {
-                headers: { 'Content-Type': 'application/json' }
-              });
-            });
-          }
-          return origFetch.apply(this, arguments);
-        };
-        // Load React immediately
-        var s = document.createElement('script');
-        s.type = 'module';
-        s.crossOrigin = 'anonymous';
-        s.src = './assets/index-qah0y4z1.js';
-        document.body.appendChild(s);
-      })();
-    </script>
-  </body>
+        requestAnimationFrame(step);
+      });
+    }, {threshold:.4});
+    io.observe(el);
+  }
+
+  renderSpecs();
+  renderFeatured();
+  initReveal();
+  initCount();
+  document.addEventListener("surgronic:lang", function(){
+    SG.applyI18n();
+    renderSpecs();
+    renderFeatured();
+  });
+})();
+</script>
+<script>SG.mountChrome("home");SG.applyI18n();</script>
+</body>
 </html>

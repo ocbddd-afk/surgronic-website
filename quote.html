@@ -3,81 +3,226 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Get a Quote — Surgronic</title>
-<link rel="stylesheet" href="./styles.css">
+<title data-i18n-title="meta.quoteTitle">Request a Quote — Surgronic</title>
+<meta name="description" content="Build your instrument quote list and request a quotation. Response within one business day.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=align001">
 </head>
 <body>
-<header class="site-header">
-<a class="logo" href="./">SURGRONIC<span>.</span></a>
-<button class="hamburger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')">☰</button>
-<nav>
-<a href="./">Home</a>
-<a href="./catalogue.html">Catalogue</a>
-<a href="./brands.html">Brands</a>
-<a href="./quote.html" class="active">Get a Quote</a>
-<a href="./about.html">About</a>
-<a href="./contact.html">Contact</a>
-</nav>
-<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
-</header>
-<div class="drawer-overlay" id="overlay" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
-<div class="drawer" id="drawer">
-<button class="close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')">✕</button>
-<nav>
-<a href="./">Home</a>
-<a href="./catalogue.html">Catalogue</a>
-<a href="./brands.html">Brands</a>
-<a href="./quote.html">Get a Quote</a>
-<a href="./about.html">About</a>
-<a href="./contact.html">Contact</a>
-</nav>
-<div class="contact">yusuf@surgronic.com<br>+90 552 608 1432</div>
+<script src="app.js?v=promise001"></script>
+
+<div class="container" style="padding-bottom:96px">
+  <div class="breadcrumb"><a href="index.html" data-i18n="pd.breadcrumb">Home</a> &rarr; <span data-i18n="q.crumb">Request a Quote</span></div>
+  <span class="eyebrow" data-i18n="q.eyebrow">Quotation request</span>
+  <h2 class="section-title" data-i18n="q.title">Request a quotation.</h2>
+  <p class="section-sub" data-i18n="q.sub">Review your selection, add any references or a photograph, and send. We respond within one business day.</p>
+
+  <div id="quoteApp"></div>
 </div>
-<div class="container">
-<div class="breadcrumb"><a href="./">Home</a> / Get a Quote</div>
-<div class="section" style="max-width: 700px; margin: 0 auto;">
-<h2>Request a Quotation</h2>
-<p class="text-center" style="color: var(--muted); margin-bottom: 2rem;">Tell us what you need. We respond within 1 business day with a written quotation.</p>
-<div id="product-info" style="display:none; background: white; padding: 1.5rem; border-radius: 1rem; margin-bottom: 1.5rem; border-left: 4px solid var(--accent);"></div>
-<form id="quote-form" action="https://formsubmit.co/yusuf@surgronic.com" method="POST">
-<input type="hidden" name="_subject" value="New RFQ from Surgronic Website">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" id="form-sku" name="Article Number" value="">
-<div class="form-group"><label>Full Name *</label><input type="text" name="Name" required placeholder="Your name"></div>
-<div class="form-group"><label>Organization *</label><input type="text" name="Organization" required placeholder="Hospital, clinic, or distributor"></div>
-<div class="form-group"><label>Email *</label><input type="email" name="Email" required placeholder="you@example.com"></div>
-<div class="form-group"><label>Phone / WhatsApp</label><input type="tel" name="Phone" placeholder="+..."></div>
-<div class="form-group"><label>Country *</label><input type="text" name="Country" required placeholder="Country"></div>
-<div class="form-group"><label>Products / Requirements *</label><textarea name="Requirements" id="requirements" required placeholder="Article numbers, quantities, specifications..."></textarea></div>
-<div class="form-group"><label>Additional Notes</label><textarea name="Notes" placeholder="Delivery timeline, special requirements..."></textarea></div>
-<button type="submit" class="btn btn-primary" style="width: 100%;">Submit Quotation Request</button>
-<p style="font-size: 0.85rem; color: var(--muted); margin-top: 1rem; text-align: center;">Prefer WhatsApp? <a href="https://wa.me/905526081432">Message us directly</a>. Deposit refundable minus costs already committed. Nothing ships until you've seen and approved it.</p>
-</form>
-</div>
-</div>
-<footer class="site-footer">
-<div class="inner">
-<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
-<div><h3>Policies</h3><p><a href="./payment.html">Payment & Deposit</a><br><a href="./returns.html">Returns & Claims</a><br><a href="./shipping.html">Shipping & Documentation</a><br><a href="./privacy.html">Privacy</a><br><a href="./terms.html">Terms of Sale</a></p></div>
-<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
-</div>
-<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
-</footer>
-<script src="./app.js"></script>
+
 <script>
-// Pre-fill if coming from a product page
-const sku = getQueryParam('sku');
-if (sku) {
-  loadProducts().then(products => {
-    const p = products.find(x => (x.sku||'').toLowerCase() === sku.toLowerCase());
-    if (p) {
-      document.getElementById('product-info').style.display = 'block';
-      document.getElementById('product-info').innerHTML = '<strong>' + p.sku + '</strong> — ' + p.name;
-      document.getElementById('form-sku').value = p.sku;
-      document.getElementById('requirements').value = p.sku + ' - ' + p.name + '\nQuantity: ';
+(function(){
+  var app = document.getElementById("quoteApp");
+  var WA = "905526081432";
+
+  function basketItemName(i){
+    var l = SG.getLang();
+    if(l==="fr" && i.nameFr) return i.nameFr;
+    if(l==="ar" && i.nameAr) return i.nameAr;
+    return i.name;
+  }
+
+  function render(){
+    var b = SG.getBasket();
+    if(!b.length){
+      app.innerHTML =
+        '<div class="error-box" style="margin-top:32px">'+SG.t("q.empty")+' '+
+        '<a href="catalogue.html" style="font-weight:600;color:var(--bronze-dark)">'+SG.t("q.emptyBrowse")+'</a> '+
+        SG.t("q.emptyOr")+'</div>'
+        + '<div class="quote-layout" style="grid-template-columns:1fr;max-width:640px"><div>'+formHTML()+'</div></div>';
+      bindForm();
+      return;
     }
-  }).catch(()=>{});
-}
+    var items = b.map(function(i,idx){
+      var nm = basketItemName(i);
+      var img = i.image
+        ? '<img src="./assets/'+SG.esc(i.image)+'" alt="">'
+        : '<div style="width:96px;height:72px;background:var(--bg-soft);border-radius:var(--radius-sm)"></div>';
+      return '<div class="qitem">'+img+
+        '<div class="qi-body"><b>'+SG.esc(nm)+'</b><small>'+SG.esc(i.sku)+(i.brand?" &middot; "+SG.esc(i.brand):"")+'</small></div>'+
+        '<div class="qty"><button data-dec="'+idx+'" aria-label="'+SG.t("q.dec")+'">&minus;</button><b>'+i.qty+'</b><button data-inc="'+idx+'" aria-label="'+SG.t("q.inc")+'">+</button></div>'+
+        '<button class="qremove" data-rm="'+idx+'">'+SG.t("q.remove")+'</button>'+
+      '</div>';
+    }).join("");
+    var n = SG.basketCount();
+    app.innerHTML =
+      '<div class="quote-layout">'+
+        '<div class="quote-items"><h3>'+SG.t("q.yourRequest")+' &mdash; '+n+' '+(n!==1?SG.t("q.units"):SG.t("q.unit"))+'</h3>'+items+
+          '<div style="margin-top:16px"><a class="btn btn-outline" href="catalogue.html">'+SG.t("q.addMore")+'</a></div>'+
+        '</div>'+
+        '<div>'+formHTML()+'</div>'+
+      '</div>';
+    bindItems(); bindForm();
+    /* Update WhatsApp basket link */
+    var qwa = document.getElementById("qwa");
+    if(qwa && SG.waBasketUrl) qwa.href = SG.waBasketUrl();
+  }
+
+  function formHTML(){
+    return '<form class="qform" id="qform">'+
+      '<h3>'+SG.t("q.formTitle")+'</h3>'+
+      '<p class="qform-sub">'+SG.t("q.formSub")+'</p>'+
+      '<label for="qn">'+SG.t("q.name")+'</label><input id="qn" required autocomplete="name" placeholder="'+SG.t("q.namePh")+'">'+
+      '<label for="qe">'+SG.t("q.email")+'</label><input id="qe" type="email" required autocomplete="email" placeholder="'+SG.t("q.emailPh")+'">'+
+      '<label for="qc">'+SG.t("q.company")+'</label><input id="qc" autocomplete="organization" placeholder="'+SG.t("q.companyPh")+'">'+
+      '<label for="qco">'+SG.t("q.country")+'</label><input id="qco" autocomplete="country-name" placeholder="'+SG.t("q.countryPh")+'">'+
+      '<label for="qref">'+SG.t("q.ref")+'</label><input id="qref" placeholder="'+SG.t("q.refPh")+'">'+
+      '<label for="qnotes">'+SG.t("q.specs")+'</label><textarea id="qnotes" rows="4" placeholder="'+SG.t("q.specsPh")+'"></textarea>'+
+      '<label for="qphoto">'+SG.t("q.photo")+'</label>'+
+      '<div class="qphoto-zone" id="qphotoZone">'+
+        '<label class="qphoto-drop" id="qphotoDrop" for="qphoto">'+
+          '<span data-i18n="q.photoDrop">'+SG.t("q.photoDrop")+'</span>'+
+          '<small>'+SG.t("q.photoBrowse")+'</small>'+
+        '</label>'+
+        '<input id="qphoto" type="file" accept="image/*" hidden>'+
+        '<div class="qphoto-preview" id="qphotoPreview" hidden>'+
+          '<img id="qphotoImg" alt="">'+
+          '<span><b>'+SG.t("finder.photoReady")+'</b> &mdash; <span id="qphotoName"></span><br>'+
+          '<a href="#" id="qphotoChange">'+SG.t("finder.photoChange")+'</a></span>'+
+        '</div>'+
+      '</div>'+
+      '<p style="font-size:12.5px;color:var(--muted);margin-top:8px">'+SG.t("q.photoNote")+'</p>'+
+      '<button class="btn btn-primary" type="submit">'+SG.t("q.submit")+' <span class="arr">&rarr;</span></button>'+
+      '<a id="qwa" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:10px" target="_blank" rel="noopener">'+SG.t("q.whatsapp")+'</a>'+
+      '<p class="qnote">'+SG.t("q.deposit")+'<br>'+SG.t("q.finalPrice")+'</p>'+
+    '</form>';
+  }
+
+  function bindItems(){
+    app.querySelectorAll("[data-inc]").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        var b=SG.getBasket(); b[+btn.getAttribute("data-inc")].qty++; SG.saveBasket(b); render();
+      });
+    });
+    app.querySelectorAll("[data-dec]").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        var b=SG.getBasket(), i=+btn.getAttribute("data-dec");
+        b[i].qty=Math.max(1,b[i].qty-1); SG.saveBasket(b); render();
+      });
+    });
+    app.querySelectorAll("[data-rm]").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        var b=SG.getBasket(); b.splice(+btn.getAttribute("data-rm"),1); SG.saveBasket(b); render();
+      });
+    });
+  }
+
+  function collect(){
+    var b = SG.getBasket();
+    return {
+      items: b.map(function(i){return {sku:i.sku,name:basketItemName(i),brand:i.brand,qty:i.qty};}),
+      contact: {
+        name: document.getElementById("qn").value.trim(),
+        email: document.getElementById("qe").value.trim(),
+        company: document.getElementById("qc").value.trim(),
+        country: document.getElementById("qco").value.trim()
+      },
+      reference: document.getElementById("qref").value.trim(),
+      notes: document.getElementById("qnotes").value.trim()
+    };
+  }
+  function waLink(q){
+    var lines = q.items.map(function(i){return "- "+i.sku+" / "+i.name+" x"+i.qty;});
+    var msg = "Surgronic quotation request\n\n"+lines.join("\n")+"\n\n"+
+      (q.reference? "Reference: "+q.reference+"\n":"")+
+      (q.notes? "Notes: "+q.notes+"\n":"")+
+      "\n"+q.contact.name+" ("+q.contact.company+", "+q.contact.country+") "+q.contact.email;
+    return "https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
+  }
+
+  function bindForm(){
+    var f = document.getElementById("qform");
+    if(!f) return;
+    /* Photo drag-drop with preview + filename confirmation */
+    (function bindPhoto(){
+      var drop = document.getElementById("qphotoDrop"),
+          input = document.getElementById("qphoto"),
+          prev = document.getElementById("qphotoPreview"),
+          prevImg = document.getElementById("qphotoImg"),
+          nameEl = document.getElementById("qphotoName");
+      if(!drop || !input) return;
+      function handleFile(file){
+        if(!file || !file.type || file.type.indexOf("image/") !== 0) return;
+        nameEl.textContent = file.name;
+        try{ prevImg.src = URL.createObjectURL(file); prevImg.alt = file.name; }catch(e){}
+        prev.hidden = false;
+      }
+      input.addEventListener("change", function(){
+        if(input.files && input.files[0]) handleFile(input.files[0]);
+      });
+      ["dragenter","dragover"].forEach(function(ev){
+        drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add("over"); });
+      });
+      ["dragleave","drop"].forEach(function(ev){
+        drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove("over"); });
+      });
+      drop.addEventListener("drop", function(e){
+        var fl = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if(fl) handleFile(fl);
+      });
+      var chg = document.getElementById("qphotoChange");
+      if(chg) chg.addEventListener("click", function(e){ e.preventDefault(); input.click(); });
+    })();
+    f.addEventListener("submit",function(ev){
+      ev.preventDefault();
+      var q = collect();
+      var btn = f.querySelector('[type="submit"]');
+      btn.disabled = true; btn.textContent = SG.t("q.sending");
+      SG.api("submitRfq",q).then(function(){ done(false); }).catch(function(){ done(true); });
+      function done(fallback){
+        try{ localStorage.removeItem("surgronic_quote_v2"); }catch(e){}
+        SG.updateBasketUI();
+        app.innerHTML = '<div class="qsuccess" style="margin-top:32px">'+
+          '<h2>'+SG.t("q.successT")+'</h2>'+
+          '<p>'+SG.t("q.successThanks")+' '+SG.esc(q.contact.name.split(" ")[0])+'. '+
+          (fallback ? SG.t("q.successDfb") : SG.t("q.successD"))+
+          '</p>'+
+          '<div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">'+
+            '<a class="btn btn-primary" target="_blank" rel="noopener" href="'+waLink(q)+'">'+SG.t("q.waConfirm")+'</a>'+
+            '<a class="btn btn-outline" href="catalogue.html">'+SG.t("q.backCatalog")+'</a>'+
+          '</div></div>';
+        window.scrollTo({top:0,behavior:"smooth"});
+      }
+    });
+    if(location.hash === "#photo"){
+      var ph = document.getElementById("qphoto");
+      if(ph){ ph.scrollIntoView({behavior:"smooth",block:"center"}); ph.focus(); }
+    }
+    /* Prefill reference from ?ref= (finder "Reference" tab); #sourcing scrolls to it */
+    try{
+      var qp = new URLSearchParams(location.search);
+      var prefill = qp.get("ref");
+      if(prefill){
+        var rf = document.getElementById("qref");
+        if(rf && !rf.value) rf.value = prefill;
+      }
+    }catch(e){}
+    if(location.hash === "#sourcing"){
+      var rf2 = document.getElementById("qref");
+      if(rf2){ rf2.scrollIntoView({behavior:"smooth",block:"center"}); rf2.focus(); }
+    }
+  }
+
+  render();
+  document.addEventListener("surgronic:lang", function(){
+    SG.applyI18n();
+    render();
+  });
+})();
 </script>
+<script>SG.mountChrome("quote");SG.applyI18n();</script>
 </body>
 </html>

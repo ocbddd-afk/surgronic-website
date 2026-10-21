@@ -3,96 +3,184 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Product — Surgronic</title>
-<link rel="stylesheet" href="./styles.css">
+<title data-i18n-title="meta.pdTitle">Product — Surgronic</title>
+<meta name="description" content="Surgical instrument details, specifications, and quotation.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=align001">
 </head>
 <body>
-<header class="site-header">
-<a class="logo" href="./">SURGRONIC<span>.</span></a>
-<button class="hamburger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')">☰</button>
-<nav>
-<a href="./">Home</a>
-<a href="./catalogue.html">Catalogue</a>
-<a href="./brands.html">Brands</a>
-<a href="./quote.html">Get a Quote</a>
-<a href="./about.html">About</a>
-<a href="./contact.html">Contact</a>
-</nav>
-<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
-</header>
-<div class="drawer-overlay" id="overlay" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
-<div class="drawer" id="drawer">
-<button class="close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')">✕</button>
-<nav>
-<a href="./">Home</a>
-<a href="./catalogue.html">Catalogue</a>
-<a href="./brands.html">Brands</a>
-<a href="./quote.html">Get a Quote</a>
-<a href="./about.html">About</a>
-<a href="./contact.html">Contact</a>
-</nav>
-<div class="contact">yusuf@surgronic.com<br>+90 552 608 1432</div>
-</div>
+<script src="app.js?v=promise001"></script>
 
 <div class="container">
-<div class="breadcrumb"><a href="./">Home</a> / <a href="./catalogue.html">Catalogue</a> / <span id="crumb-sku">Product</span></div>
-<div id="detail"></div>
-<div class="loading" id="loading">Loading product...</div>
+  <div class="breadcrumb"><a href="index.html" data-i18n="pd.breadcrumb">Home</a> → <a href="catalogue.html" data-i18n="pd.catalog">Catalog</a> → <span id="crumbSku">Product</span></div>
+  <div id="pd"></div>
+  <div id="relatedWrap" style="margin:70px 0 30px;display:none">
+    <h2 class="section-title" style="font-size:32px" data-i18n="pd.related">Related instruments</h2>
+    <div class="feat-grid" id="relatedGrid" style="grid-template-columns:repeat(4,1fr)"></div>
+  </div>
 </div>
 
-<footer class="site-footer">
-<div class="inner">
-<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
-<div><h3>Policies</h3><p><a href="./payment.html">Payment & Deposit</a><br><a href="./returns.html">Returns & Claims</a><br><a href="./shipping.html">Shipping & Documentation</a><br><a href="./privacy.html">Privacy</a><br><a href="./terms.html">Terms of Sale</a></p></div>
-<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
-</div>
-<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
-</footer>
-
-<script src="./app.js"></script>
 <script>
-async function init() {
-  const sku = getQueryParam('sku');
-  if (!sku) { document.getElementById('loading').innerHTML = '<div class="error">No product specified.</div>'; return; }
-  try {
-    const products = await loadProducts();
-    const p = products.find(x => (x.sku||'').toLowerCase() === sku.toLowerCase());
-    document.getElementById('loading').style.display = 'none';
-    if (!p) { document.getElementById('detail').innerHTML = '<div class="error">Product not found.</div>'; return; }
-    document.getElementById('crumb-sku').textContent = p.sku;
-    document.title = (p.name||p.sku) + ' — Surgronic';
-    const img = productImage(p);
-    const waText = encodeURIComponent('Hello, I am interested in ' + (p.sku||'') + ' - ' + (p.name||''));
-    // Related products (same brand)
-    const related = products.filter(x => x.brand === p.brand && x.sku !== p.sku).slice(0, 4);
-    document.getElementById('detail').innerHTML =
-    '<div style="display:grid; grid-template-columns: 1fr 1fr; gap:2.5rem; background:white; padding:2.5rem; border-radius:1rem; box-shadow: var(--shadow); margin: 1rem 0 3rem;">' +
-      '<div><img src="' + img + '" alt="" style="width:100%; object-fit:contain; background:#f8fafc; border-radius:0.75rem; padding:1.5rem;" onerror="this.src=\'./assets/placeholder.svg\'"></div>' +
-      '<div>' +
-        '<div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.5px; font-weight:600;">' + (p.sku||'') + '</div>' +
-        '<h1 style="margin:0.5rem 0; font-size:2rem; color:var(--navy); line-height:1.3;">' + (p.name||'') + '</h1>' +
-        '<div style="color:var(--accent); margin-bottom:1rem; font-weight:600; font-size:1.05rem;">' + (p.brand||'') + '</div>' +
-        (p.description && p.description !== p.name ? '<p style="color:var(--muted); margin-bottom:1rem;">' + p.description + '</p>' : '') +
-        '<div style="margin:1.25rem 0; padding:1.25rem; background:#f8fafc; border-radius:0.75rem; border-left:4px solid var(--accent);">' +
-          '<div style="font-weight:700; margin-bottom:0.25rem; font-size:1.1rem;">Price on request</div>' +
-          '<div style="font-size:0.85rem; color:var(--muted);">Indicative price, excl. shipping and duties, valid until ' + new Date(Date.now() + 60*24*3600*1000).toLocaleDateString() + '. Final price confirmed in writing.</div>' +
-        '</div>' +
-        '<div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">' +
-        '<a class="btn btn-whatsapp" href="https://wa.me/905526081432?text=' + waText + '">Request Quote via WhatsApp</a>' +
-        '<a class="btn btn-outline" href="./quote.html?sku=' + encodeURIComponent(p.sku||'') + '">Detailed Quote Form</a>' +
-        '</div>' +
-        '<div style="margin-top:1.5rem; font-size:0.9rem; color:var(--muted);">' +
-          '<p><strong>From stock</strong> / <strong>Sourced to specification</strong> / <strong>Inspected before shipment</strong></p>' +
-          '<p style="margin-top:0.5rem;">Contact: yusuf@surgronic.com · +90 552 608 1432<br>Response within 1 business day. Nothing ships until you\'ve seen it and approved it.</p>' +
-        '</div>' +
-      '</div>' +
-    '</div>' +
-    (related.length ? '<div class="section"><h2>Related Instruments</h2><div class="product-grid">' + related.map(productCard).join('') + '</div></div>' : '');
-  } catch(e) {
-    document.getElementById('loading').innerHTML = '<div class="error">Unable to load product. Please try again.</div>';
+(function(){
+  var sku = new URLSearchParams(location.search).get("sku") || "";
+  var wrap = document.getElementById("pd");
+  document.getElementById("crumbSku").textContent = sku;
+
+  function render(){
+    if(!sku){
+      wrap.innerHTML = '<div class="error-box">'+SG.t("pd.noproduct")+' <a href="catalogue.html">'+SG.t("pd.back")+'</a>.</div>';
+      return;
+    }
+    wrap.innerHTML = '<div class="loading">'+SG.t("pd.loading")+'</div>';
+    SG.api("getProduct",{sku:sku}).then(function(d){
+      var p = SG.normProduct(d.product);
+      if(!p){
+        wrap.innerHTML = '<div class="error-box">'+SG.t("pd.notfound")+' <a href="catalogue.html">'+SG.t("pd.back")+'</a>.</div>';
+        return;
+      }
+      var nm = SG.productName(p);
+      var ds = SG.productDesc(p);
+      document.title = nm + " (" + p.sku + ") — Surgronic";
+      var img = SG.imgUrl(p);
+      var gallery = img
+        ? '<div class="pd-gallery"><img src="'+img+'" alt="'+SG.esc(nm)+'"></div>'
+        : '<div class="pd-gallery"><span style="color:var(--muted)">'+SG.t("card.imgSoon")+'</span></div>';
+      var finishes = (p.finishOptions&&p.finishOptions.length)
+        ? p.finishOptions.map(SG.esc).join(", ") : "—";
+      wrap.innerHTML =
+      '<div class="pd-grid">'+ gallery +
+        '<div class="pd-info">'+
+          '<div class="psku">'+SG.esc(p.sku)+'</div>'+
+          '<h1>'+SG.esc(nm)+'</h1>'+
+          '<div class="pd-brand">'+SG.esc(p.brand||"")+'</div>'+
+          (ds ? '<p class="pd-desc">'+SG.esc(ds)+'</p>' : '')+
+          '<div class="pd-actions">'+
+            '<button class="btn btn-primary" id="pdAdd">'+SG.t("card.add")+' <span class="arr">&rarr;</span></button>'+
+            '<a class="btn btn-wa" id="pdWa" target="_blank" rel="noopener">'+SG.t("q.whatsapp")+'</a>'+
+          '</div>'+
+          '<div class="pd-meta">'+
+            '<div><dt>'+SG.t("pd.ref")+'</dt><dd>'+SG.esc(p.sku)+'</dd></div>'+
+            '<div><dt>'+SG.t("pd.mfr")+'</dt><dd>'+SG.esc(p.brand||"—")+'</dd></div>'+
+            '<div><dt>'+SG.t("pd.finishes")+'</dt><dd>'+finishes+'</dd></div>'+
+            '<div><dt>'+SG.t("pd.price")+'</dt><dd>'+SG.t("card.por")+'</dd></div>'+
+            '<div><dt>'+SG.t("pd.avail")+'</dt><dd>'+SG.t("pd.availV")+'</dd></div>'+
+          '</div>'+
+          '<p style="margin-top:18px;font-size:14px;color:var(--muted)">'+SG.t("pd.disclaimer")+'</p>'+
+        '</div>'+
+      '</div>'+
+      /* Streamlined per-product quote form */
+      '<section class="pd-quote" id="pdQuote">'+
+        '<h2>'+SG.t("pdq.title")+'</h2>'+
+        '<p class="pdq-sub">'+SG.t("pdq.sub")+'</p>'+
+        '<form class="pdq-form" id="pdqForm" novalidate>'+
+          '<div class="pdq-row">'+
+            '<div class="pdq-field"><label for="pdqQty">'+SG.t("pdq.qty")+'</label>'+
+            '<input id="pdqQty" type="number" min="1" value="1" inputmode="numeric" required></div>'+
+            '<div class="pdq-field pdq-wide"><label for="pdqNotes">'+SG.t("pdq.notes")+'</label>'+
+            '<input id="pdqNotes" type="text" placeholder="'+SG.t("pdq.notesPh")+'"></div>'+
+          '</div>'+
+          '<div class="pdq-row">'+
+            '<div class="pdq-field"><label for="pdqName">'+SG.t("pdq.name")+'</label>'+
+            '<input id="pdqName" type="text" autocomplete="name" placeholder="'+SG.t("pdq.namePh")+'" required></div>'+
+            '<div class="pdq-field"><label for="pdqContact">'+SG.t("pdq.contact")+'</label>'+
+            '<input id="pdqContact" type="text" autocomplete="email" placeholder="'+SG.t("pdq.contactPh")+'" required></div>'+
+          '</div>'+
+          '<div class="pdq-row">'+
+            '<div class="pdq-field"><label for="pdqCountry">'+SG.t("pdq.country")+'</label>'+
+            '<input id="pdqCountry" type="text" autocomplete="country-name" placeholder="'+SG.t("pdq.countryPh")+'"></div>'+
+            '<div class="pdq-field pdq-actions">'+
+              '<button class="btn btn-primary pdq-submit" type="submit">'+SG.t("pdq.submit")+'</button>'+
+            '</div>'+
+          '</div>'+
+          '<p class="pdq-err" id="pdqErr" hidden></p>'+
+          '<button class="btn btn-wa pdq-wa" id="pdqWa" type="button">'+SG.t("pdq.waSend")+'</button>'+
+          '<p class="pdq-note">'+SG.t("pdq.reassure")+'</p>'+
+        '</form>'+
+        '<div class="pdq-done" id="pdqDone" hidden>'+
+          '<h3>'+SG.t("pdq.doneT")+'</h3>'+
+          '<p>'+SG.t("pdq.doneD")+'</p>'+
+          '<div class="pdq-done-btns">'+
+            '<a class="btn btn-wa" id="pdqDoneWa" target="_blank" rel="noopener">'+SG.t("pdq.waSend")+'</a>'+
+            '<a class="btn btn-outline" href="quote.html">'+SG.t("pdq.viewQuote")+'</a>'+
+          '</div>'+
+        '</div>'+
+      '</section>';
+      document.getElementById("pdAdd").addEventListener("click",function(){
+        SG.addToQuote(p,1); this.textContent = SG.t("pd.added");
+      });
+      /* Product WhatsApp (top actions) */
+      var waTop = document.getElementById("pdWa");
+      if(waTop && SG.waProductUrl) waTop.href = SG.waProductUrl(p, nm, 1);
+      /* Per-product quote form */
+      (function bindPdq(){
+        var form = document.getElementById("pdqForm");
+        if(!form) return;
+        var qtyEl = document.getElementById("pdqQty"),
+            notesEl = document.getElementById("pdqNotes"),
+            nameEl = document.getElementById("pdqName"),
+            contactEl = document.getElementById("pdqContact"),
+            countryEl = document.getElementById("pdqCountry"),
+            errEl = document.getElementById("pdqErr"),
+            waBtn = document.getElementById("pdqWa");
+        function showErr(msg){ errEl.textContent = msg; errEl.hidden = false; }
+        function clearErr(){ errEl.hidden = true; errEl.textContent = ""; }
+        function waFor(qty){
+          return SG.waProductUrl(p, nm, qty||parseInt(qtyEl.value,10)||1);
+        }
+        waBtn.href = waFor(1);
+        qtyEl.addEventListener("input", function(){ waBtn.href = waFor(); });
+        waBtn.addEventListener("click", function(){
+          window.open(waFor(), "_blank", "noopener");
+        });
+        form.addEventListener("submit", function(ev){
+          ev.preventDefault(); clearErr();
+          var qty = parseInt(qtyEl.value,10);
+          if(!qty || qty < 1){ showErr(SG.t("pdq.errQty")); qtyEl.focus(); return; }
+          if(!nameEl.value.trim()){ showErr(SG.t("pdq.errName")); nameEl.focus(); return; }
+          if(!contactEl.value.trim()){ showErr(SG.t("pdq.errContact")); contactEl.focus(); return; }
+          /* Save to quote basket with quantity */
+          SG.addToQuote(p, qty);
+          /* Build RFQ payload incl. contact details */
+          var rfq = {
+            items:[{sku:p.sku, name:nm, brand:p.brand, qty:qty}],
+            contact:{name:nameEl.value.trim(), email:contactEl.value.trim(), company:"", country:countryEl.value.trim()},
+            reference:"", notes:notesEl.value.trim()
+          };
+          var btn = form.querySelector('[type="submit"]');
+          btn.disabled = true; btn.textContent = SG.t("q.sending");
+          function done(){
+            document.getElementById("pdqDoneWa").href = waFor(qty);
+            form.hidden = true;
+            document.getElementById("pdqDone").hidden = false;
+            document.getElementById("pdQuote").scrollIntoView({behavior:"smooth",block:"center"});
+          }
+          SG.api("submitRfq", rfq).then(done).catch(done);
+        });
+      })();
+      if(p.brand){
+        SG.api("listProducts",{limit:4,offset:0,manufacturer:p.brand,storefront:true}).then(function(r){
+          var rel=(r.products||[]).filter(function(x){return x.sku!==p.sku;}).slice(0,4);
+          if(rel.length){
+            document.getElementById("relatedWrap").style.display="block";
+            document.getElementById("relatedGrid").innerHTML=rel.map(SG.cardHTML).join("");
+            SG.bindAddButtons(document.getElementById("relatedGrid"));
+          }
+        }).catch(function(){});
+      }
+    }).catch(function(){
+      wrap.innerHTML = '<div class="error-box">'+SG.t("pd.unreachable")+'</div>';
+    });
   }
-}
-init();
+  render();
+  document.addEventListener("surgronic:lang", function(){
+    SG.applyI18n();
+    render();
+  });
+})();
 </script>
+<script>SG.mountChrome("catalog");SG.applyI18n();</script>
 </body>
 </html>
