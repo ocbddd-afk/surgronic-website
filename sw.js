@@ -15,8 +15,27 @@ self.addEventListener('fetch', event => {
           headers: { 'Content-Type': 'application/json' },
           body: body,
         });
-        const data = await res.text();
-        return new Response(data, {
+        const json = await res.json();
+        // Normalize product shapes: ensure fields the React cards expect exist
+        // (prevents render crash from undefined.finishOptions etc.)
+        if (json && json.data && Array.isArray(json.data.products)) {
+          json.data.products = json.data.products.map(p => ({
+            ...p,
+            finishOptions: p.finishOptions || [],
+            imageFiles: Array.isArray(p.imageFiles) ? p.imageFiles : [],
+            priceCents: p.priceCents || null,
+          }));
+        }
+        if (json && json.data && json.data.product) {
+          const p = json.data.product;
+          json.data.product = {
+            ...p,
+            finishOptions: p.finishOptions || [],
+            imageFiles: Array.isArray(p.imageFiles) ? p.imageFiles : [],
+            priceCents: p.priceCents || null,
+          };
+        }
+        return new Response(JSON.stringify(json), {
           headers: { 'Content-Type': 'application/json' }
         });
       } catch (e) {
