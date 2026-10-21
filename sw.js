@@ -8,13 +8,16 @@ async function getProducts() {
   if (cache) return cache;
   const res = await fetch(JSON_URL);
   const data = await res.json();
-  // Convert to camelCase for React app
+  // Convert to camelCase for React app + add fields the app expects
   cache = data.map(p => ({
     ...p,
     nameFr: p.name_fr || p.name,
     nameAr: p.name_ar || p.name,
     descriptionFr: p.description_fr || p.description,
     descriptionAr: p.description_ar || p.description,
+    finishOptions: p.finishOptions || [],
+    priceCents: p.priceCents || null,
+    family: p.family || null,
   }));
   return cache;
 }
@@ -75,7 +78,26 @@ async function handleAction(action, args) {
     return { ga4MeasurementId: null };
   }
 
-  // Unknown actions return empty (don't break the app)
+  // Actions the app fires on mount — return safe empty shapes
+  // (prevents TypeError on .map()/.length of undefined which unmounts the tree)
+  if (action === 'listArticles') {
+    return { articles: [], total: 0 };
+  }
+  if (action === 'getArticle' || action === 'getPost') {
+    return { article: null, post: null };
+  }
+  if (action === 'getQuoteBasket' || action === 'getBasket' || action === 'listQuoteItems') {
+    return { items: [], total: 0, count: 0 };
+  }
+  if (action === 'listManufacturers' || action === 'listBrands') {
+    const brands = [...new Set(products.map(p => p.brand).filter(Boolean))].sort();
+    return { manufacturers: brands.map((b, i) => ({ id: i+1, name: b })), brands };
+  }
+  if (action === 'getSiteSettings' || action === 'getSettings') {
+    return { settings: {} };
+  }
+
+  // Unknown actions: return empty object (not null) to avoid crashes
   return {};
 }
 
