@@ -3,9 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Surgronic — Precision Surgical Instruments</title>
-<meta name="description" content="Precision surgical instruments, sourced to your specification. 8,658 products from Aesculap and Sklar. From stock or made to order. Inspected before shipment.">
+<title>Surgronic — Precision Surgical Instruments, Sourced to Your Specification</title>
+<meta name="description" content="Explore surgical instruments across medical specialties and request tailored procurement quotations through one streamlined platform.">
 <link rel="stylesheet" href="./styles.css">
+<style>
+.hero-full { background: linear-gradient(135deg, #071426 0%, #102A43 60%, #1a3a5c 100%); color: white; padding: 5rem 2rem; position: relative; overflow: hidden; }
+.hero-full .inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.hero-full h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; letter-spacing: -1px; margin-bottom: 1.25rem; }
+.hero-full p.sub { font-size: 1.2rem; opacity: 0.85; margin-bottom: 2rem; line-height: 1.6; }
+.hero-full .ctas { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+.hero-full .stats { display: flex; gap: 2.5rem; }
+.hero-full .stat .num { font-size: 2rem; font-weight: 800; color: #3186F6; }
+.hero-full .stat .lbl { font-size: 0.85rem; opacity: 0.7; }
+.hero-full .hero-img { border-radius: 1rem; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.hero-full .hero-img img { width: 100%; height: 400px; object-fit: cover; display: block; }
+.hero-full .caption { font-size: 0.85rem; opacity: 0.7; margin-top: 0.75rem; font-style: italic; }
+@media (max-width: 900px) { .hero-full .inner { grid-template-columns: 1fr; } .hero-full h1 { font-size: 2.25rem; } }
+.specialties { padding: 4rem 0; }
+.specialties h2 { text-align: center; font-size: 2rem; color: #071426; margin-bottom: 0.75rem; }
+.specialties .sub { text-align: center; color: #64748b; max-width: 700px; margin: 0 auto 2.5rem; }
+.spec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
+.spec-card { background: white; border-radius: 1rem; padding: 1.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #f1f5f9; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: block; }
+.spec-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(7,20,38,0.1); text-decoration: none; }
+.spec-card h3 { color: #071426; font-size: 1.1rem; margin-bottom: 0.5rem; }
+.spec-card .meta { display: flex; gap: 0.75rem; margin-top: 1rem; font-size: 0.82rem; }
+.spec-card .count { background: #f1f5f9; padding: 0.25rem 0.75rem; border-radius: 1rem; color: #475569; }
+.spec-card .tag { background: #dbeafe; padding: 0.25rem 0.75rem; border-radius: 1rem; color: #1d4ed8; }
+.featured { background: white; padding: 4rem 0; }
+.featured h2 { text-align: center; font-size: 2rem; color: #071426; margin-bottom: 0.5rem; }
+.featured .sub { text-align: center; color: #64748b; margin-bottom: 2.5rem; }
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -21,34 +48,50 @@
 <div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
 </header>
 
-<div class="hero">
-<h1>Precision Surgical Instruments</h1>
-<p>Sourced to your specification. From stock or made to order — every instrument inspected before shipment.</p>
-<div class="badges">
-<span class="badge">✓ From Stock</span>
-<span class="badge">✓ Sourced to Specification</span>
-<span class="badge">✓ Inspected Before Shipment</span>
+<div class="hero-full">
+<div class="inner">
+<div>
+<h1>Precision Surgical Instruments. Sourced to Your Specification.</h1>
+<p class="sub">Explore surgical instruments across medical specialties and request tailored procurement quotations through one streamlined platform.</p>
+<div class="ctas">
+<a class="btn btn-primary" href="./catalogue.html" style="background:#3186F6;">Explore Instruments</a>
+<a class="btn btn-outline" href="./quote.html" style="border-color:white; color:white;">Source an Instrument</a>
 </div>
-<br>
-<a class="cta" href="./catalogue.html">Browse 8,658 Instruments</a>
+<div class="stats">
+<div class="stat"><div class="num" id="stat-instr">8,658</div><div class="lbl">Instruments catalogued</div></div>
+<div class="stat"><div class="num">11</div><div class="lbl">Surgical specialties</div></div>
+<div class="stat"><div class="num" id="stat-fam">—</div><div class="lbl">Instrument families</div></div>
+</div>
+</div>
+<div>
+<div class="hero-img"><img id="hero-img" src="./assets/placeholder.svg" alt="Blakesley nasal forceps from the Surgronic rhinoplasty range"></div>
+<div class="caption">From the catalogue — the rhinoplasty range: Blakesley Nasal Forceps, Cottle Nasal Speculum, Freer Elevator, Cottle TC Scissors.</div>
+</div>
+</div>
 </div>
 
 <div class="container">
-<div class="section">
-<h2>Shop by Brand</h2>
-<div class="cat-grid" id="brands"></div>
+<div class="specialties">
+<h2>Surgical Specialties</h2>
+<p class="sub">Browse by clinical specialty. Selected ranges are held in stock; where a range is not stocked, we source it to your specification — send the details and we quote against them.</p>
+<div class="spec-grid" id="spec-grid"></div>
+</div>
 </div>
 
-<div class="section">
-<h2>Featured Instruments</h2>
+<div class="featured">
+<div class="container">
+<h2>From the Rhinoplasty Range</h2>
+<p class="sub">Catalogued instruments with verified photography.</p>
 <div class="product-grid" id="featured"></div>
-<div class="text-center mt-2"><a class="btn btn-outline" href="./catalogue.html">View Full Catalogue</a></div>
+<div class="text-center mt-2"><a class="btn btn-outline" href="./catalogue.html">Full Catalogue</a></div>
+</div>
 </div>
 
+<div class="container">
 <div class="section" style="background: white; border-radius: 1rem; padding: 3rem 2rem; margin: 2rem 0;">
 <h2>How It Works</h2>
 <div class="cat-grid">
-<div class="cat-card"><h3>1. Browse & Request</h3><p>Search 8,658 instruments by name, article number, or brand. Request a quote via WhatsApp or our form.</p></div>
+<div class="cat-card"><h3>1. Browse & Request</h3><p>Search 8,658 instruments by name, article number, or specialty. Request a quote via WhatsApp or our form.</p></div>
 <div class="cat-card"><h3>2. Specification Confirmed</h3><p>We confirm every detail in writing — product, size, material, finish, quantity — before you commit.</p></div>
 <div class="cat-card"><h3>3. Inspected Before Shipment</h3><p>Nothing ships until you've seen it and approved it. Pre-shipment photos or video on every order.</p></div>
 </div>
@@ -58,26 +101,51 @@
 <footer class="site-footer">
 <div class="inner">
 <div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification. Serving hospitals, clinics and distributors across MENA.</p></div>
+<div><h3>Specialties</h3><p><a href="./catalogue.html">General Surgery</a><br><a href="./catalogue.html">Orthopedics</a><br><a href="./catalogue.html">Plastic Surgery</a><br><a href="./catalogue.html">Neurosurgery</a></p></div>
 <div><h3>Contact</h3><p>Yusuf Mohamed<br><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a> (WhatsApp)</p></div>
-<div><h3>Location</h3><p>Sisly, Istanbul, Turkey</p><p style="margin-top:0.5rem;">Response within 1 business day.</p></div>
 </div>
 <div class="bottom">© 2026 Surgronic. All rights reserved.</div>
 </footer>
 
 <script src="./app.js"></script>
 <script>
+const SPECIALTIES = [
+  { slug: 'general-surgery', name: 'General Surgery & Laparoscopy', kw: ['retractor','forceps','scissors','clamp','laparoscop'] },
+  { slug: 'orthopedics', name: 'Orthopedics & Trauma', kw: ['bone','orthopedic','osteotome','rongeur','mallet'] },
+  { slug: 'omfs', name: 'Oral & Maxillofacial', kw: ['dental','oral','maxillofacial'] },
+  { slug: 'plastic', name: 'Plastic, Reconstructive & Aesthetic', kw: ['rhinoplasty','nasal','plastic','cottle','freer','blakesley'] },
+  { slug: 'cardiovascular', name: 'Cardiovascular & Thoracic', kw: ['cardio','vascular','thoracic'] },
+  { slug: 'neurosurgery', name: 'Neurosurgery & Spine', kw: ['neuro','spine','cranial'] },
+  { slug: 'ophthalmology', name: 'Ophthalmology', kw: ['ophthalm','eye','ocular'] },
+  { slug: 'ent', name: 'ENT', kw: ['ent','ear','nasal speculum'] },
+  { slug: 'obgyn', name: 'OB/GYN & Urology', kw: ['gynecolog','obstetric','urolog','vaginal'] },
+  { slug: 'energy', name: 'Energy & Powered Systems', kw: ['electro','cautery','bipolar'] },
+  { slug: 'dental', name: 'Dental & Implant Surgery', kw: ['implant','extraction'] },
+];
 loadProducts().then(products => {
-  // Brands
-  const brands = {};
-  products.forEach(p => { const b = p.brand || 'Other'; brands[b] = (brands[b]||0)+1; });
-  document.getElementById('brands').innerHTML = Object.entries(brands).map(([b,c]) =>
-    '<a class="cat-card" href="./catalogue.html?brand=' + encodeURIComponent(b.toLowerCase()) + '"><h3>' + b + '</h3><p>Precision instruments from ' + b + '.</p><span class="count">' + c.toLocaleString() + ' products</span></a>'
-  ).join('');
-  // Featured (first 8 with images)
-  const featured = products.filter(p => p.imageFiles && p.imageFiles[0] && p.imageFiles[0] !== 'placeholder.svg').slice(0, 8);
-  document.getElementById('featured').innerHTML = featured.map(productCard).join('');
-}).catch(e => {
-  document.getElementById('featured').innerHTML = '<div class="error">Unable to load products. Please refresh.</div>';
+  document.getElementById('stat-instr').textContent = products.length.toLocaleString();
+  // Families (unique first words)
+  const fams = new Set(products.map(p => (p.name||'').split(' ')[0]));
+  document.getElementById('stat-fam').textContent = fams.size.toLocaleString();
+  // Hero image (rhinoplasty)
+  const rhino = products.find(p => (p.name||'').toLowerCase().includes('blakesley') && p.imageFiles && p.imageFiles[0] && p.imageFiles[0] !== 'placeholder.svg');
+  if (rhino) document.getElementById('hero-img').src = './assets/' + rhino.imageFiles[0];
+  // Specialties with counts
+  document.getElementById('spec-grid').innerHTML = SPECIALTIES.map(s => {
+    const count = products.filter(p => s.kw.some(k => (p.name||'').toLowerCase().includes(k))).length;
+    return '<a class="spec-card" href="./catalogue.html?search=' + encodeURIComponent(s.kw[0]) + '">' +
+      '<h3>' + s.name + '</h3>' +
+      '<div class="meta"><span class="count">' + count.toLocaleString() + ' in catalogue</span>' +
+      (count === 0 ? '<span class="tag">Sourcing</span>' : '') + '</div></a>';
+  }).join('');
+  // Featured rhinoplasty
+  const feat = products.filter(p => {
+    const n = (p.name||'').toLowerCase();
+    return (n.includes('blakesley') || n.includes('cottle') || n.includes('freer')) && p.imageFiles && p.imageFiles[0] && p.imageFiles[0] !== 'placeholder.svg';
+  }).slice(0, 8);
+  document.getElementById('featured').innerHTML = feat.map(productCard).join('') || '<p class="text-center">Loading...</p>';
+}).catch(() => {
+  document.getElementById('featured').innerHTML = '<div class="error">Unable to load. Please refresh.</div>';
 });
 </script>
 </body>
