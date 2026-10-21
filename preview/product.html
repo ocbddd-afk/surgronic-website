@@ -59,7 +59,7 @@
           (ds ? '<p class="pd-desc">'+SG.esc(ds)+'</p>' : '')+
           '<div class="pd-actions">'+
             '<button class="btn btn-primary" id="pdAdd">'+SG.t("card.add")+' <span class="arr">&rarr;</span></button>'+
-            '<a class="btn btn-outline" href="quote.html">'+SG.t("nav.quote")+'</a>'+
+            '<a class="btn btn-wa" id="pdWa" target="_blank" rel="noopener">'+SG.t("q.whatsapp")+'</a>'+
           '</div>'+
           '<div class="pd-meta">'+
             '<div><dt>'+SG.t("pd.ref")+'</dt><dd>'+SG.esc(p.sku)+'</dd></div>'+
@@ -70,10 +70,96 @@
           '</div>'+
           '<p style="margin-top:18px;font-size:14px;color:var(--muted)">'+SG.t("pd.disclaimer")+'</p>'+
         '</div>'+
-      '</div>';
+      '</div>'+
+      /* Streamlined per-product quote form */
+      '<section class="pd-quote" id="pdQuote">'+
+        '<h2>'+SG.t("pdq.title")+'</h2>'+
+        '<p class="pdq-sub">'+SG.t("pdq.sub")+'</p>'+
+        '<form class="pdq-form" id="pdqForm" novalidate>'+
+          '<div class="pdq-row">'+
+            '<div class="pdq-field"><label for="pdqQty">'+SG.t("pdq.qty")+'</label>'+
+            '<input id="pdqQty" type="number" min="1" value="1" inputmode="numeric" required></div>'+
+            '<div class="pdq-field pdq-wide"><label for="pdqNotes">'+SG.t("pdq.notes")+'</label>'+
+            '<input id="pdqNotes" type="text" placeholder="'+SG.t("pdq.notesPh")+'"></div>'+
+          '</div>'+
+          '<div class="pdq-row">'+
+            '<div class="pdq-field"><label for="pdqName">'+SG.t("pdq.name")+'</label>'+
+            '<input id="pdqName" type="text" autocomplete="name" placeholder="'+SG.t("pdq.namePh")+'" required></div>'+
+            '<div class="pdq-field"><label for="pdqContact">'+SG.t("pdq.contact")+'</label>'+
+            '<input id="pdqContact" type="text" autocomplete="email" placeholder="'+SG.t("pdq.contactPh")+'" required></div>'+
+          '</div>'+
+          '<div class="pdq-row">'+
+            '<div class="pdq-field"><label for="pdqCountry">'+SG.t("pdq.country")+'</label>'+
+            '<input id="pdqCountry" type="text" autocomplete="country-name" placeholder="'+SG.t("pdq.countryPh")+'"></div>'+
+            '<div class="pdq-field pdq-actions">'+
+              '<button class="btn btn-primary pdq-submit" type="submit">'+SG.t("pdq.submit")+'</button>'+
+            '</div>'+
+          '</div>'+
+          '<p class="pdq-err" id="pdqErr" hidden></p>'+
+          '<button class="btn btn-wa pdq-wa" id="pdqWa" type="button">'+SG.t("pdq.waSend")+'</button>'+
+          '<p class="pdq-note">'+SG.t("pdq.reassure")+'</p>'+
+        '</form>'+
+        '<div class="pdq-done" id="pdqDone" hidden>'+
+          '<h3>'+SG.t("pdq.doneT")+'</h3>'+
+          '<p>'+SG.t("pdq.doneD")+'</p>'+
+          '<div class="pdq-done-btns">'+
+            '<a class="btn btn-wa" id="pdqDoneWa" target="_blank" rel="noopener">'+SG.t("pdq.waSend")+'</a>'+
+            '<a class="btn btn-outline" href="quote.html">'+SG.t("pdq.viewQuote")+'</a>'+
+          '</div>'+
+        '</div>'+
+      '</section>';
       document.getElementById("pdAdd").addEventListener("click",function(){
         SG.addToQuote(p,1); this.textContent = SG.t("pd.added");
       });
+      /* Product WhatsApp (top actions) */
+      var waTop = document.getElementById("pdWa");
+      if(waTop && SG.waProductUrl) waTop.href = SG.waProductUrl(p, nm, 1);
+      /* Per-product quote form */
+      (function bindPdq(){
+        var form = document.getElementById("pdqForm");
+        if(!form) return;
+        var qtyEl = document.getElementById("pdqQty"),
+            notesEl = document.getElementById("pdqNotes"),
+            nameEl = document.getElementById("pdqName"),
+            contactEl = document.getElementById("pdqContact"),
+            countryEl = document.getElementById("pdqCountry"),
+            errEl = document.getElementById("pdqErr"),
+            waBtn = document.getElementById("pdqWa");
+        function showErr(msg){ errEl.textContent = msg; errEl.hidden = false; }
+        function clearErr(){ errEl.hidden = true; errEl.textContent = ""; }
+        function waFor(qty){
+          return SG.waProductUrl(p, nm, qty||parseInt(qtyEl.value,10)||1);
+        }
+        waBtn.href = waFor(1);
+        qtyEl.addEventListener("input", function(){ waBtn.href = waFor(); });
+        waBtn.addEventListener("click", function(){
+          window.open(waFor(), "_blank", "noopener");
+        });
+        form.addEventListener("submit", function(ev){
+          ev.preventDefault(); clearErr();
+          var qty = parseInt(qtyEl.value,10);
+          if(!qty || qty < 1){ showErr(SG.t("pdq.errQty")); qtyEl.focus(); return; }
+          if(!nameEl.value.trim()){ showErr(SG.t("pdq.errName")); nameEl.focus(); return; }
+          if(!contactEl.value.trim()){ showErr(SG.t("pdq.errContact")); contactEl.focus(); return; }
+          /* Save to quote basket with quantity */
+          SG.addToQuote(p, qty);
+          /* Build RFQ payload incl. contact details */
+          var rfq = {
+            items:[{sku:p.sku, name:nm, brand:p.brand, qty:qty}],
+            contact:{name:nameEl.value.trim(), email:contactEl.value.trim(), company:"", country:countryEl.value.trim()},
+            reference:"", notes:notesEl.value.trim()
+          };
+          var btn = form.querySelector('[type="submit"]');
+          btn.disabled = true; btn.textContent = SG.t("q.sending");
+          function done(){
+            document.getElementById("pdqDoneWa").href = waFor(qty);
+            form.hidden = true;
+            document.getElementById("pdqDone").hidden = false;
+            document.getElementById("pdQuote").scrollIntoView({behavior:"smooth",block:"center"});
+          }
+          SG.api("submitRfq", rfq).then(done).catch(done);
+        });
+      })();
       if(p.brand){
         SG.api("listProducts",{limit:4,offset:0,manufacturer:p.brand,storefront:true}).then(function(r){
           var rel=(r.products||[]).filter(function(x){return x.sku!==p.sku;}).slice(0,4);

@@ -454,6 +454,44 @@ section{padding:88px 0}
 .pd-meta dd{font-weight:600;text-align:end}
 .pd-actions{display:flex;gap:12px;flex-wrap:wrap}
 
+/* Quote photo drop zone (quote.html) */
+.qphoto-drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1.5px dashed var(--line);border-radius:var(--radius-sm);padding:28px 16px;text-align:center;cursor:pointer;color:var(--ink-600);font-size:.94rem;min-height:110px;transition:border-color .25s,background .25s}
+.qphoto-drop small{font-size:.8rem;color:var(--muted)}
+.qphoto-drop:hover,.qphoto-drop.over{border-color:var(--blue-500);background:rgba(47,134,246,.06);color:var(--ink)}
+.qphoto-preview{display:flex;align-items:center;gap:14px;margin-top:12px;background:var(--mist-50);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 16px;font-size:.9rem}
+.qphoto-preview img{max-height:64px;border-radius:8px}
+.qphoto-preview a{color:var(--blue-500);font-weight:600}
+
+/* ==========================================================================
+   PRODUCT QUOTE FORM (mobile-optimized)
+   ========================================================================== */
+.pd-quote{max-width:880px;margin:0 auto 96px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(24px,4vw,48px)}
+.pd-quote h2{font-family:var(--font-display);font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:8px}
+.pdq-sub{color:var(--ink-600);margin-bottom:28px}
+.pdq-form{display:grid;gap:18px}
+.pdq-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pdq-field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.pdq-field.pdq-wide{grid-column:span 1}
+.pdq-field label{font-weight:600;font-size:.88rem}
+.pdq-field input{min-height:52px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 16px;font-size:1rem;width:100%;font-family:var(--font-body)}
+.pdq-field input:focus{outline:2px solid var(--blue-500);outline-offset:1px;border-color:var(--blue-500)}
+.pdq-actions{justify-content:flex-end;align-items:flex-end}
+.pdq-submit{min-height:52px;width:100%}
+.pdq-err{color:#b3261e;font-weight:600;font-size:.92rem;background:#fdecea;border:1px solid #f5c6c2;border-radius:var(--radius-sm);padding:12px 16px}
+.pdq-wa{width:100%;justify-content:center;min-height:52px;font-size:1rem}
+.pdq-note{font-size:.85rem;color:var(--ink-600);text-align:center;margin-top:4px}
+.pdq-done{text-align:center;padding:16px 0}
+.pdq-done h3{font-family:var(--font-display);font-size:1.4rem;margin-bottom:12px}
+.pdq-done p{color:var(--ink-600);margin-bottom:24px}
+.pdq-done-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;border:1px solid #1faa55;color:#128a43;background:#f2fbf5;font-weight:600;padding:13px 22px;border-radius:999px;text-decoration:none;transition:.2s}
+.btn-wa:hover{border-color:#1faa55;background:#e6f7ec;transform:translateY(-1px)}
+@media (max-width:640px){
+  .pdq-row{grid-template-columns:1fr}
+  .pd-quote{margin:0 0 72px;padding:24px 18px}
+  .pd-actions .btn{flex:1 1 100%;justify-content:center;min-height:52px}
+}
+
 /* ==========================================================================
    QUOTE
    ========================================================================== */
@@ -574,6 +612,11 @@ section{padding:88px 0}
 .hero-kicker::before{content:"";width:26px;height:2px;background:var(--blue-500);border-radius:2px}
 .hero-sub{font-size:clamp(1.05rem,1.8vw,1.28rem);color:var(--navy-text-dim);max-width:46ch;margin-top:20px}
 .hero-visual img{width:100%;aspect-ratio:4/3.2;object-fit:cover;border-radius:28px;border:1px solid var(--line-dark);position:relative;box-shadow:0 40px 100px rgba(0,0,0,.5)}
+/* Hero image -> product link: clickable, subtle hover */
+a.hero-visual-link{display:block;cursor:pointer;text-decoration:none;color:inherit}
+a.hero-visual-link img{transition:transform .35s ease,box-shadow .35s ease}
+a.hero-visual-link:hover img{transform:scale(1.015);box-shadow:0 48px 110px rgba(0,0,0,.55),0 0 0 2px var(--blue-500)}
+a.hero-visual-link:focus-visible{outline:3px solid var(--blue-400);outline-offset:6px;border-radius:28px}
 .hero-tag{
   position:absolute;left:20px;right:20px;bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:14px;
   background:rgba(8,20,42,.72);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
