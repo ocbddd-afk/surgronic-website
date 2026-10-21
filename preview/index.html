@@ -4,58 +4,86 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n-title="meta.homeTitle">Surgronic — Precision Surgical Instruments, Sourced to Your Specification</title>
-<meta name="description" content="Explore 8,658 surgical instruments across 11 specialties, or send your exact requirements. From stock, sourced to specification, inspected before shipment.">
+<meta name="description" content="Have an instrument in mind? Let's find the right specification. From stock or sourced to your specification. We respond within one business day.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <script src="app.js"></script>
 
-<!-- ============ HERO (text left, product image right) ============ -->
+<!-- ============ HERO — VALUE PROPOSITION ============ -->
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow" data-i18n="hero.eyebrow">Precision Sourcing Platform</span>
-      <h1 data-i18n="hero.title">Precision instruments.<br>Ready when you need them.</h1>
-      <p class="lead" data-i18n="hero.lead">Surgical instruments available from stock or sourced to your exact specification. Explore our catalog, send a reference, or request a quotation directly.</p>
+      <span class="eyebrow" data-i18n="hero.eyebrow">Surgical Instrument Sourcing</span>
+      <h1 data-i18n="hero.title">Have an instrument in mind?</h1>
+      <div class="sub-head" data-i18n="hero.subtitle">Let's find the right specification.</div>
+      <p class="lead" data-i18n="hero.lead">From stock or sourced to your specification. Search our surgical instrument catalog, send a manufacturer reference, or upload a photograph. We respond within one business day.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="catalogue.html"><span data-i18n="hero.cta1">Explore Instruments</span> <span class="arr">&rarr;</span></a>
-        <a class="btn btn-outline" href="quote.html" data-i18n="hero.cta2">Request a Quote</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><b data-i18n="hero.stat1n">8,658</b><span data-i18n="hero.stat1l">Instruments catalogued</span></div>
-        <div class="stat"><b data-i18n="hero.stat2n">11</b><span data-i18n="hero.stat2l">Surgical specialties</span></div>
-        <div class="stat"><b data-i18n="hero.stat3n">1</b><span data-i18n="hero.stat3l">Business day response</span></div>
+        <a class="btn btn-primary" href="quote.html"><span data-i18n="hero.cta1">Request a Quote</span> <span class="arr">&rarr;</span></a>
+        <a class="btn btn-outline" href="catalogue.html" data-i18n="hero.cta2">Explore Instruments</a>
+        <a class="btn btn-outline" href="quote.html#sourcing" data-i18n="hero.cta3">Send a Reference / Photo</a>
       </div>
     </div>
     <div class="hero-image">
-      <img src="assets/sur-aes-00883.jpg" alt="ABEL Tenaculum Forceps — precision surgical instrument">
+      <img src="assets/sur-skl-01146.jpg" alt="Adlerkreutz Tissue Forceps — precision surgical instrument">
+      <div class="hero-badge">
+        <strong data-i18n="hero.badgeT">Adlerkreutz Tissue Forceps</strong>
+        <span data-i18n="hero.badgeS">SUR-SKL-01146 · From our catalogued range</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SUPPLY CHANNELS ============ -->
+<!-- ============ DIRECT SOURCING / QUOTE ACTIONS ============ -->
+<section style="background:var(--bg-soft);border-bottom:1px solid var(--line)">
+  <div class="container">
+    <span class="eyebrow" data-i18n="actions.eyebrow">Start here</span>
+    <h2 class="section-title" data-i18n="actions.title">Three ways to get the right instrument.</h2>
+    <div class="sourcing-actions">
+      <div class="action-card">
+        <h3 data-i18n="action1.t">Browse the Catalog</h3>
+        <p data-i18n="action1.d">Search 8,658 instruments by specialty, name, or manufacturer reference.</p>
+        <a class="btn btn-white" href="catalogue.html"><span data-i18n="action1.b">Explore Instruments</span></a>
+      </div>
+      <div class="action-card">
+        <h3 data-i18n="action2.t">Send a Reference</h3>
+        <p data-i18n="action2.d">Submit a manufacturer reference, SKU, or specification for sourcing.</p>
+        <a class="btn btn-white" href="quote.html#sourcing"><span data-i18n="action2.b">Request Sourcing</span></a>
+      </div>
+      <div class="action-card">
+        <h3 data-i18n="action3.t">Upload a Photograph</h3>
+        <p data-i18n="action3.d">Send a product photo for identification and manual sourcing review.</p>
+        <a class="btn btn-white" href="quote.html#sourcing"><span data-i18n="action3.b">Upload Photo</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STOCK AND SOURCING CAPABILITIES ============ -->
 <section>
   <div class="container">
     <span class="eyebrow" data-i18n="channels.eyebrow">Supply channels</span>
     <h2 class="section-title" data-i18n="channels.title">Two channels. One standard of precision.</h2>
     <p class="section-sub" data-i18n="channels.sub">Catalogued products and stocked products are not the same thing. We are transparent about both.</p>
-    <div class="paths-grid paths-2">
-      <div class="path-card">
-        <div class="path-num">01</div>
+    <div class="channels-grid">
+      <div class="channel-card">
+        <div class="ch-num">01</div>
         <h3 data-i18n="channel1.t">Available from Stock</h3>
         <p data-i18n="channel1.d">Some instruments may already be available in our inventory.</p>
+        <a href="catalogue.html" data-i18n="channel1.l">Explore instruments &rarr;</a>
       </div>
-      <div class="path-card">
-        <div class="path-num">02</div>
+      <div class="channel-card">
+        <div class="ch-num">02</div>
         <h3 data-i18n="channel2.t">Sourced to Specification</h3>
-        <p data-i18n="channel2.d">If an instrument is not available from stock, we source it to your exact requirements.</p>
+        <p data-i18n="channel2.d">When the required instrument is unavailable, we can source it to your exact requirements.</p>
+        <a href="quote.html" data-i18n="channel2.l">Start a sourcing request &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ SPECIALTIES ============ -->
-<section class="specialties" id="specialties">
+<section class="specialties" id="specialties" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="container">
     <span class="eyebrow" data-i18n="spec.eyebrow">Specialties</span>
     <h2 class="section-title" data-i18n="spec.title">Explore surgical specialties.</h2>
@@ -64,8 +92,21 @@
   </div>
 </section>
 
-<!-- ============ HOW IT WORKS ============ -->
-<section id="how">
+<!-- ============ FEATURED INSTRUMENTS ============ -->
+<section>
+  <div class="container">
+    <span class="eyebrow" data-i18n="feat.eyebrow">Featured</span>
+    <h2 class="section-title" data-i18n="feat.title">Instruments buyers ask for.</h2>
+    <p class="section-sub" data-i18n="feat.sub">A curated selection from the live catalogue — diverse specialties, verified imagery.</p>
+    <div class="feat-grid" id="featGrid"><div class="loading" data-i18n="feat.loading">Loading featured instruments&hellip;</div></div>
+    <div style="text-align:center;margin-top:40px">
+      <a class="btn btn-outline" href="catalogue.html"><span data-i18n="feat.browse">Browse all 8,658 instruments</span> <span class="arr">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW SURGRONIC WORKS ============ -->
+<section id="how" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="container">
     <span class="eyebrow" data-i18n="how.eyebrow">How Surgronic works</span>
     <h2 class="section-title" data-i18n="how.title">From requirement to delivery.</h2>
@@ -79,7 +120,7 @@
 </section>
 
 <!-- ============ TIMELINES ============ -->
-<section id="timelines" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<section id="timelines">
   <div class="container">
     <span class="eyebrow" data-i18n="time.eyebrow">Operational timelines</span>
     <h2 class="section-title" data-i18n="time.title">Precision sourcing. Clear timelines.</h2>
@@ -92,23 +133,10 @@
   </div>
 </section>
 
-<!-- ============ FEATURED ============ -->
-<section style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<!-- ============ WHY SURGRONIC ============ -->
+<section class="trust" id="trust" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="container">
-    <span class="eyebrow" data-i18n="feat.eyebrow">Featured</span>
-    <h2 class="section-title" data-i18n="feat.title">Instruments buyers ask for.</h2>
-    <p class="section-sub" data-i18n="feat.sub">A curated selection from the live catalogue.</p>
-    <div class="feat-grid" id="featGrid"><div class="loading" data-i18n="feat.loading">Loading featured instruments&hellip;</div></div>
-    <div style="text-align:center;margin-top:40px">
-      <a class="btn btn-outline" href="catalogue.html"><span data-i18n="feat.browse">Browse all 8,658 instruments</span> <span class="arr">&rarr;</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TRUST ============ -->
-<section class="trust" id="trust">
-  <div class="container">
-    <span class="eyebrow" style="color:#c9a96a" data-i18n="trust.eyebrow">Why Surgronic</span>
+    <span class="eyebrow" data-i18n="trust.eyebrow">Why Surgronic</span>
     <h2 class="section-title" data-i18n="trust.title">Built for procurement teams.</h2>
     <div class="trust-grid">
       <div class="trust-item"><b data-i18n="trust.1n">8,658</b><span data-i18n="trust.1d">Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.</span></div>
@@ -128,8 +156,8 @@
     <h2 data-i18n="final.title">Have an instrument in mind?<br>Let&rsquo;s find the right specification.</h2>
     <p data-i18n="final.sub">Send a reference, a name, or a photograph. We respond within one business day.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a class="btn btn-primary" href="quote.html"><span data-i18n="final.cta1">Request a Quote</span> <span class="arr">&rarr;</span></a>
-      <a class="btn btn-outline" href="quote.html" data-i18n="final.cta2">Send a Product Reference</a>
+      <a class="btn btn-white" href="quote.html"><span data-i18n="final.cta1">Request a Quote</span> <span class="arr">&rarr;</span></a>
+      <a class="btn btn-outline" href="catalogue.html" style="color:#fff;border-color:rgba(255,255,255,.4)" data-i18n="final.cta2">Explore Instruments</a>
     </div>
   </div>
 </section>
@@ -148,8 +176,8 @@
   function renderFeatured(){
     var grid = document.getElementById("featGrid");
     grid.innerHTML = '<div class="loading">'+SG.t("feat.loading")+'</div>';
-    var skus = ["SUR-AES-00883","SUR-SKL-01315","SUR-SKL-01610","SUR-AES-04036",
-                "SUR-SKL-00238","SUR-AES-01245","SUR-AES-03379","SUR-SKL-01146"];
+    var skus = ["SUR-SKL-01146","SUR-SKL-01315","SUR-SKL-01610","SUR-AES-04036",
+                "SUR-AES-01245","SUR-AES-03379","SUR-AES-00883","SUR-SKL-00238"];
     var calls = skus.map(function(sku){ return SG.api("getProduct",{sku:sku}); });
     Promise.all(calls).then(function(results){
       var list = results.map(function(r){ return r.product || r; }).filter(function(p){ return p && p.sku; });
