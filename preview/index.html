@@ -3,29 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Surgronic — Precision Surgical Instruments, Sourced to Your Specification</title>
+<title data-i18n-title="meta.homeTitle">Surgronic — Precision Surgical Instruments, Sourced to Your Specification</title>
 <meta name="description" content="Explore 8,658 surgical instruments across 11 specialties, or send your exact requirements. From stock, sourced to specification, inspected before shipment.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <script src="app.js"></script>
-<script>SG.mountChrome("home");</script>
+<script>SG.mountChrome("home");SG.applyI18n();</script>
 
 <!-- ============ HERO (text left, product image right) ============ -->
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow">Precision Sourcing Platform</span>
-      <h1>Precision instruments.<br>Precisely sourced.</h1>
-      <p class="lead">Explore surgical instruments across 11 specialties, or send us your exact requirements. We help procurement teams identify and source instruments to specification.</p>
+      <span class="eyebrow" data-i18n="hero.eyebrow">Precision Sourcing Platform</span>
+      <h1 data-i18n="hero.title">Precision instruments.<br>Precisely sourced.</h1>
+      <p class="lead" data-i18n="hero.lead">Explore surgical instruments across 11 specialties, or send us your exact requirements. We help procurement teams identify and source instruments to specification.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="catalogue.html">Explore Instruments <span class="arr">&rarr;</span></a>
-        <a class="btn btn-outline" href="quote.html">Request a Quote</a>
+        <a class="btn btn-primary" href="catalogue.html"><span data-i18n="hero.cta1">Explore Instruments</span> <span class="arr">&rarr;</span></a>
+        <a class="btn btn-outline" href="quote.html" data-i18n="hero.cta2">Request a Quote</a>
       </div>
       <div class="hero-stats">
-        <div class="stat"><b>8,658</b><span>Instruments catalogued</span></div>
-        <div class="stat"><b>11</b><span>Surgical specialties</span></div>
-        <div class="stat"><b>1</b><span>Business day response</span></div>
+        <div class="stat"><b data-i18n="hero.stat1n">8,658</b><span data-i18n="hero.stat1l">Instruments catalogued</span></div>
+        <div class="stat"><b data-i18n="hero.stat2n">11</b><span data-i18n="hero.stat2l">Surgical specialties</span></div>
+        <div class="stat"><b data-i18n="hero.stat3n">1</b><span data-i18n="hero.stat3l">Business day response</span></div>
       </div>
     </div>
     <div class="hero-image">
@@ -37,27 +37,27 @@
 <!-- ============ PROCUREMENT PATHS ============ -->
 <section>
   <div class="container">
-    <span class="eyebrow">Choose your path</span>
-    <h2 class="section-title">Three ways to get the right instrument.</h2>
-    <p class="section-sub">Whether you know the reference or only have a photograph, there is a direct route to a quotation.</p>
+    <span class="eyebrow" data-i18n="paths.eyebrow">Choose your path</span>
+    <h2 class="section-title" data-i18n="paths.title">Three ways to get the right instrument.</h2>
+    <p class="section-sub" data-i18n="paths.sub">Whether you know the reference or only have a photograph, there is a direct route to a quotation.</p>
     <div class="paths-grid">
       <a class="path-card" href="catalogue.html">
         <div class="path-num">01</div>
-        <h3>Browse the Catalog</h3>
-        <p>Find instruments by specialty, name, or manufacturer reference across 8,658 catalogued products.</p>
-        <span class="path-link">Explore instruments &rarr;</span>
+        <h3 data-i18n="path1.t">Browse the Catalog</h3>
+        <p data-i18n="path1.d">Find instruments by specialty, name, or manufacturer reference across 8,658 catalogued products.</p>
+        <span class="path-link"><span data-i18n="path1.l">Explore instruments</span> &rarr;</span>
       </a>
       <a class="path-card" href="quote.html">
         <div class="path-num">02</div>
-        <h3>Source a Specific Instrument</h3>
-        <p>Submit an instrument name, SKU, manufacturer reference, or full specifications. We confirm and quote.</p>
-        <span class="path-link">Start a sourcing request &rarr;</span>
+        <h3 data-i18n="path2.t">Source a Specific Instrument</h3>
+        <p data-i18n="path2.d">Submit an instrument name, SKU, manufacturer reference, or full specifications. We confirm and quote.</p>
+        <span class="path-link"><span data-i18n="path2.l">Start a sourcing request</span> &rarr;</span>
       </a>
       <a class="path-card" href="quote.html#photo">
         <div class="path-num">03</div>
-        <h3>Send a Photograph</h3>
-        <p>Upload a product image. Our team identifies it or sources it manually &mdash; no automated guesswork.</p>
-        <span class="path-link">Upload a photo &rarr;</span>
+        <h3 data-i18n="path3.t">Send a Photograph</h3>
+        <p data-i18n="path3.d">Upload a product image. Our team identifies it or sources it manually &mdash; no automated guesswork.</p>
+        <span class="path-link"><span data-i18n="path3.l">Upload a photo</span> &rarr;</span>
       </a>
     </div>
   </div>
@@ -66,9 +66,9 @@
 <!-- ============ SPECIALTIES ============ -->
 <section class="specialties" id="specialties">
   <div class="container">
-    <span class="eyebrow">Specialties</span>
-    <h2 class="section-title">Explore surgical specialties.</h2>
-    <p class="section-sub">Eleven disciplines. One catalogue. Each specialty is a navigable destination.</p>
+    <span class="eyebrow" data-i18n="spec.eyebrow">Specialties</span>
+    <h2 class="section-title" data-i18n="spec.title">Explore surgical specialties.</h2>
+    <p class="section-sub" data-i18n="spec.sub">Eleven disciplines. One catalogue. Each specialty is a navigable destination.</p>
     <div class="spec-grid" id="specGrid"></div>
   </div>
 </section>
@@ -76,13 +76,13 @@
 <!-- ============ HOW IT WORKS ============ -->
 <section id="how">
   <div class="container">
-    <span class="eyebrow">How Surgronic works</span>
-    <h2 class="section-title">From requirement to delivery.</h2>
+    <span class="eyebrow" data-i18n="how.eyebrow">How Surgronic works</span>
+    <h2 class="section-title" data-i18n="how.title">From requirement to delivery.</h2>
     <div class="process-steps">
-      <div class="step"><div class="step-no">Step 01</div><h3>Tell us what you need</h3><p>Browse the catalog, send a reference, or upload a photograph.</p></div>
-      <div class="step"><div class="step-no">Step 02</div><h3>We confirm the specification</h3><p>Written specification confirmation before anything is committed.</p></div>
-      <div class="step"><div class="step-no">Step 03</div><h3>Receive a quotation</h3><p>Clear pricing within one business day. Final price confirmed in writing.</p></div>
-      <div class="step"><div class="step-no">Step 04</div><h3>Confirm and receive</h3><p>Nothing ships until you have seen it and approved it.</p></div>
+      <div class="step"><div class="step-no">Step 01</div><h3 data-i18n="step1.t">Tell us what you need</h3><p data-i18n="step1.d">Browse the catalog, send a reference, or upload a photograph.</p></div>
+      <div class="step"><div class="step-no">Step 02</div><h3 data-i18n="step2.t">We confirm the specification</h3><p data-i18n="step2.d">Written specification confirmation before anything is committed.</p></div>
+      <div class="step"><div class="step-no">Step 03</div><h3 data-i18n="step3.t">Receive a quotation</h3><p data-i18n="step3.d">Clear pricing within one business day. Final price confirmed in writing.</p></div>
+      <div class="step"><div class="step-no">Step 04</div><h3 data-i18n="step4.t">Confirm and receive</h3><p data-i18n="step4.d">Nothing ships until you have seen it and approved it.</p></div>
     </div>
   </div>
 </section>
@@ -90,12 +90,12 @@
 <!-- ============ FEATURED ============ -->
 <section style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="container">
-    <span class="eyebrow">Featured</span>
-    <h2 class="section-title">Instruments buyers ask for.</h2>
-    <p class="section-sub">A curated selection from the live catalogue.</p>
-    <div class="feat-grid" id="featGrid"><div class="loading">Loading featured instruments&hellip;</div></div>
+    <span class="eyebrow" data-i18n="feat.eyebrow">Featured</span>
+    <h2 class="section-title" data-i18n="feat.title">Instruments buyers ask for.</h2>
+    <p class="section-sub" data-i18n="feat.sub">A curated selection from the live catalogue.</p>
+    <div class="feat-grid" id="featGrid"><div class="loading" data-i18n="feat.loading">Loading featured instruments&hellip;</div></div>
     <div style="text-align:center;margin-top:40px">
-      <a class="btn btn-outline" href="catalogue.html">Browse all 8,658 instruments <span class="arr">&rarr;</span></a>
+      <a class="btn btn-outline" href="catalogue.html"><span data-i18n="feat.browse">Browse all 8,658 instruments</span> <span class="arr">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -103,16 +103,16 @@
 <!-- ============ TRUST ============ -->
 <section class="trust" id="trust">
   <div class="container">
-    <span class="eyebrow" style="color:#c9a96a">Why Surgronic</span>
-    <h2 class="section-title">Built for procurement teams.</h2>
+    <span class="eyebrow" style="color:#c9a96a" data-i18n="trust.eyebrow">Why Surgronic</span>
+    <h2 class="section-title" data-i18n="trust.title">Built for procurement teams.</h2>
     <div class="trust-grid">
-      <div class="trust-item"><b>8,658</b><span>Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.</span></div>
-      <div class="trust-item"><b>3 paths</b><span>From stock, sourced to specification, or identified from your photograph &mdash; one quotation workflow.</span></div>
-      <div class="trust-item"><b>1 day</b><span>Response within one business day. Written specification confirmation before any commitment.</span></div>
+      <div class="trust-item"><b data-i18n="trust.1n">8,658</b><span data-i18n="trust.1d">Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.</span></div>
+      <div class="trust-item"><b data-i18n="trust.2n">3 paths</b><span data-i18n="trust.2d">From stock, sourced to specification, or identified from your photograph &mdash; one quotation workflow.</span></div>
+      <div class="trust-item"><b data-i18n="trust.3n">1 day</b><span data-i18n="trust.3d">Response within one business day. Written specification confirmation before any commitment.</span></div>
     </div>
     <div class="trust-quote">
-      <p>&ldquo;Nothing ships until you&rsquo;ve seen it and approved it.&rdquo;</p>
-      <small>Our prevention-over-returns promise &mdash; spec confirmation, deposit, pre-shipment inspection photos.</small>
+      <p data-i18n="trust.quote">&ldquo;Nothing ships until you&rsquo;ve seen it and approved it.&rdquo;</p>
+      <small data-i18n="trust.quoteSub">Our prevention-over-returns promise &mdash; spec confirmation, deposit, pre-shipment inspection photos.</small>
     </div>
   </div>
 </section>
@@ -120,46 +120,43 @@
 <!-- ============ FINAL CTA ============ -->
 <section class="final-cta">
   <div class="container">
-    <h2>Have an instrument in mind?<br>Let&rsquo;s find the right specification.</h2>
-    <p>Send a reference, a name, or a photograph. We respond within one business day.</p>
+    <h2 data-i18n="final.title">Have an instrument in mind?<br>Let&rsquo;s find the right specification.</h2>
+    <p data-i18n="final.sub">Send a reference, a name, or a photograph. We respond within one business day.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a class="btn btn-primary" href="quote.html">Request a Quote <span class="arr">&rarr;</span></a>
-      <a class="btn btn-outline" href="quote.html">Send a Product Reference</a>
+      <a class="btn btn-primary" href="quote.html"><span data-i18n="final.cta1">Request a Quote</span> <span class="arr">&rarr;</span></a>
+      <a class="btn btn-outline" href="quote.html" data-i18n="final.cta2">Send a Product Reference</a>
     </div>
   </div>
 </section>
 
 <script>
 (function(){
-  /* Specialty explorer */
-  var specs = [
-    ["General Surgery & Laparoscopy","The broadest range &mdash; retractors, forceps, clamps"],
-    ["Orthopedics & Trauma","Bone instruments, fixation, trauma sets"],
-    ["Oral & Maxillofacial","Precision instruments for facial surgery"],
-    ["Plastic, Reconstructive & Aesthetic","Rhinoplasty and aesthetic surgery range"],
-    ["Cardiovascular & Thoracic","Cardiac and thoracic instrumentation"],
-    ["Neurosurgery & Spine","Micro-instruments for neuro and spinal work"],
-    ["Ophthalmology","Delicate eye-surgery instruments"],
-    ["ENT","Ear, nose and throat instrumentation"],
-    ["OB/GYN & Urology","Obstetric, gynecologic and urologic tools"],
-    ["Energy & Powered Systems","Electrosurgical and powered instruments"],
-    ["Dental & Implant Surgery","Dental and implantology instruments"]
-  ];
-  var grid = document.getElementById("specGrid");
-  var idx = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI"];
-  grid.innerHTML = specs.map(function(s,i){
-    return '<a class="spec-card" href="catalogue.html?search='+encodeURIComponent(s[0].split(" ")[0])+'">'+
-      '<span class="spec-ref">'+idx[i]+'</span><h3>'+s[0]+'</h3><span>'+s[1]+'</span></a>';
-  }).join("");
-
-  /* Featured instruments from live API */
-  SG.api("listProducts",{limit:8,offset:0,storefront:true}).then(function(d){
-    var list = (d.products||[]).slice(0,8);
-    document.getElementById("featGrid").innerHTML = list.map(SG.cardHTML).join("");
-    SG.bindAddButtons(document.getElementById("featGrid"));
-  }).catch(function(){
-    document.getElementById("featGrid").innerHTML =
-      '<div class="error-box">The catalogue is temporarily unreachable. Please try again shortly.</div>';
+  function renderSpecs(){
+    var specs = SG.SPECIALTIES[SG.getLang()] || SG.SPECIALTIES.en;
+    var grid = document.getElementById("specGrid");
+    var idx = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI"];
+    grid.innerHTML = specs.map(function(s,i){
+      return '<a class="spec-card" href="catalogue.html?search='+encodeURIComponent(s[0].split(" ")[0])+'">'+
+        '<span class="spec-ref">'+idx[i]+'</span><h3>'+s[0]+'</h3><span>'+s[1]+'</span></a>';
+    }).join("");
+  }
+  function renderFeatured(){
+    var grid = document.getElementById("featGrid");
+    grid.innerHTML = '<div class="loading">'+SG.t("feat.loading")+'</div>';
+    SG.api("listProducts",{limit:8,offset:0,storefront:true}).then(function(d){
+      var list = (d.products||[]).slice(0,8);
+      grid.innerHTML = list.map(SG.cardHTML).join("");
+      SG.bindAddButtons(grid);
+    }).catch(function(){
+      grid.innerHTML = '<div class="error-box">'+SG.t("cat.unavailable")+'</div>';
+    });
+  }
+  renderSpecs();
+  renderFeatured();
+  document.addEventListener("surgronic:lang", function(){
+    SG.applyI18n();
+    renderSpecs();
+    renderFeatured();
   });
 })();
 </script>

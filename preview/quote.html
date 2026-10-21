@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Request a Quote — Surgronic</title>
+<title data-i18n-title="meta.quoteTitle">Request a Quote — Surgronic</title>
 <meta name="description" content="Build your instrument quote list and request a quotation. Response within one business day.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <script src="app.js"></script>
-<script>SG.mountChrome("quote");</script>
+<script>SG.mountChrome("quote");SG.applyI18n();</script>
 
 <div class="container" style="padding-bottom:96px">
-  <div class="breadcrumb"><a href="index.html">Home</a> &rarr; Request a Quote</div>
-  <span class="eyebrow">Quotation request</span>
-  <h2 class="section-title">Request a quotation.</h2>
-  <p class="section-sub">Review your selection, add any references or a photograph, and send. We respond within one business day.</p>
+  <div class="breadcrumb"><a href="index.html" data-i18n="pd.breadcrumb">Home</a> &rarr; <span data-i18n="q.crumb">Request a Quote</span></div>
+  <span class="eyebrow" data-i18n="q.eyebrow">Quotation request</span>
+  <h2 class="section-title" data-i18n="q.title">Request a quotation.</h2>
+  <p class="section-sub" data-i18n="q.sub">Review your selection, add any references or a photograph, and send. We respond within one business day.</p>
 
   <div id="quoteApp"></div>
 </div>
@@ -25,51 +25,60 @@
   var app = document.getElementById("quoteApp");
   var WA = "905526081432";
 
+  function basketItemName(i){
+    var l = SG.getLang();
+    if(l==="fr" && i.nameFr) return i.nameFr;
+    if(l==="ar" && i.nameAr) return i.nameAr;
+    return i.name;
+  }
+
   function render(){
     var b = SG.getBasket();
     if(!b.length){
       app.innerHTML =
-        '<div class="error-box" style="margin-top:32px">Your quote list is empty. '+
-        '<a href="catalogue.html" style="font-weight:600;color:var(--bronze-dark)">Browse the catalog</a> '+
-        'or describe the instrument you need below &mdash; you can still send a sourcing request with no items.</div>'
-        + '<div class="quote-layout" style="grid-template-columns:1fr;max-width:640px"><div>'+formHTML(true)+'</div></div>';
+        '<div class="error-box" style="margin-top:32px">'+SG.t("q.empty")+' '+
+        '<a href="catalogue.html" style="font-weight:600;color:var(--bronze-dark)">'+SG.t("q.emptyBrowse")+'</a> '+
+        SG.t("q.emptyOr")+'</div>'
+        + '<div class="quote-layout" style="grid-template-columns:1fr;max-width:640px"><div>'+formHTML()+'</div></div>';
       bindForm();
       return;
     }
     var items = b.map(function(i,idx){
+      var nm = basketItemName(i);
       var img = i.image
         ? '<img src="./assets/'+SG.esc(i.image)+'" alt="">'
         : '<div style="width:96px;height:72px;background:var(--bg-soft);border-radius:var(--radius-sm)"></div>';
       return '<div class="qitem">'+img+
-        '<div class="qi-body"><b>'+SG.esc(i.name)+'</b><small>'+SG.esc(i.sku)+(i.brand?" &middot; "+SG.esc(i.brand):"")+'</small></div>'+
-        '<div class="qty"><button data-dec="'+idx+'" aria-label="Decrease">&minus;</button><b>'+i.qty+'</b><button data-inc="'+idx+'" aria-label="Increase">+</button></div>'+
-        '<button class="qremove" data-rm="'+idx+'">Remove</button>'+
+        '<div class="qi-body"><b>'+SG.esc(nm)+'</b><small>'+SG.esc(i.sku)+(i.brand?" &middot; "+SG.esc(i.brand):"")+'</small></div>'+
+        '<div class="qty"><button data-dec="'+idx+'" aria-label="'+SG.t("q.dec")+'">&minus;</button><b>'+i.qty+'</b><button data-inc="'+idx+'" aria-label="'+SG.t("q.inc")+'">+</button></div>'+
+        '<button class="qremove" data-rm="'+idx+'">'+SG.t("q.remove")+'</button>'+
       '</div>';
     }).join("");
+    var n = SG.basketCount();
     app.innerHTML =
       '<div class="quote-layout">'+
-        '<div class="quote-items"><h3>Your Request &mdash; '+SG.basketCount()+' unit'+(SG.basketCount()!==1?"s":"")+'</h3>'+items+
-          '<div style="margin-top:16px"><a class="btn btn-outline" href="catalogue.html">Add More Instruments</a></div>'+
+        '<div class="quote-items"><h3>'+SG.t("q.yourRequest")+' &mdash; '+n+' '+(n!==1?SG.t("q.units"):SG.t("q.unit"))+'</h3>'+items+
+          '<div style="margin-top:16px"><a class="btn btn-outline" href="catalogue.html">'+SG.t("q.addMore")+'</a></div>'+
         '</div>'+
-        '<div>'+formHTML(false)+'</div>'+
+        '<div>'+formHTML()+'</div>'+
       '</div>';
     bindItems(); bindForm();
   }
 
   function formHTML(){
     return '<form class="qform" id="qform">'+
-      '<h3>Request Quotation</h3>'+
-      '<p class="qform-sub">No online payment required. Receive a quotation based on your specifications.</p>'+
-      '<label for="qn">Full name</label><input id="qn" required autocomplete="name" placeholder="Dr. Jane Smith">'+
-      '<label for="qe">Work email</label><input id="qe" type="email" required autocomplete="email" placeholder="name@hospital.org">'+
-      '<label for="qc">Company / Institution</label><input id="qc" autocomplete="organization" placeholder="Hospital or distributor name">'+
-      '<label for="qco">Country</label><input id="qco" autocomplete="country-name" placeholder="United Arab Emirates">'+
-      '<label for="qref">Product reference</label><input id="qref" placeholder="Manufacturer article number, if known">'+
-      '<label for="qnotes">Specifications</label><textarea id="qnotes" rows="4" placeholder="Sizes, materials, finishes, quantities&hellip;"></textarea>'+
-      '<label for="qphoto">Product photo</label><input id="qphoto" type="file" accept="image/*">'+
-      '<p style="font-size:12.5px;color:var(--muted);margin-top:8px">Photos go to our team for manual identification &mdash; never presented as automated recognition.</p>'+
-      '<button class="btn btn-primary" type="submit">Request Quotation <span class="arr">&rarr;</span></button>'+
-      '<p class="qnote">Deposit refundable minus costs already committed to the supplier.<br>Final price confirmed in writing.</p>'+
+      '<h3>'+SG.t("q.formTitle")+'</h3>'+
+      '<p class="qform-sub">'+SG.t("q.formSub")+'</p>'+
+      '<label for="qn">'+SG.t("q.name")+'</label><input id="qn" required autocomplete="name" placeholder="'+SG.t("q.namePh")+'">'+
+      '<label for="qe">'+SG.t("q.email")+'</label><input id="qe" type="email" required autocomplete="email" placeholder="'+SG.t("q.emailPh")+'">'+
+      '<label for="qc">'+SG.t("q.company")+'</label><input id="qc" autocomplete="organization" placeholder="'+SG.t("q.companyPh")+'">'+
+      '<label for="qco">'+SG.t("q.country")+'</label><input id="qco" autocomplete="country-name" placeholder="'+SG.t("q.countryPh")+'">'+
+      '<label for="qref">'+SG.t("q.ref")+'</label><input id="qref" placeholder="'+SG.t("q.refPh")+'">'+
+      '<label for="qnotes">'+SG.t("q.specs")+'</label><textarea id="qnotes" rows="4" placeholder="'+SG.t("q.specsPh")+'"></textarea>'+
+      '<label for="qphoto">'+SG.t("q.photo")+'</label><input id="qphoto" type="file" accept="image/*">'+
+      '<p style="font-size:12.5px;color:var(--muted);margin-top:8px">'+SG.t("q.photoNote")+'</p>'+
+      '<button class="btn btn-primary" type="submit">'+SG.t("q.submit")+' <span class="arr">&rarr;</span></button>'+
+      '<p class="qnote">'+SG.t("q.deposit")+'<br>'+SG.t("q.finalPrice")+'</p>'+
     '</form>';
   }
 
@@ -95,7 +104,7 @@
   function collect(){
     var b = SG.getBasket();
     return {
-      items: b.map(function(i){return {sku:i.sku,name:i.name,brand:i.brand,qty:i.qty};}),
+      items: b.map(function(i){return {sku:i.sku,name:basketItemName(i),brand:i.brand,qty:i.qty};}),
       contact: {
         name: document.getElementById("qn").value.trim(),
         email: document.getElementById("qe").value.trim(),
@@ -122,21 +131,19 @@
       ev.preventDefault();
       var q = collect();
       var btn = f.querySelector('[type="submit"]');
-      btn.disabled = true; btn.textContent = "Sending\u2026";
+      btn.disabled = true; btn.textContent = SG.t("q.sending");
       SG.api("submitRfq",q).then(function(){ done(false); }).catch(function(){ done(true); });
       function done(fallback){
         try{ localStorage.removeItem("surgronic_quote_v2"); }catch(e){}
         SG.updateBasketUI();
         app.innerHTML = '<div class="qsuccess" style="margin-top:32px">'+
-          '<h2>Request received.</h2>'+
-          '<p>Thank you, '+SG.esc(q.contact.name.split(" ")[0])+'. '+
-          (fallback
-            ? 'Our API is temporarily unreachable &mdash; please confirm via WhatsApp so nothing is lost.'
-            : 'Our team will respond within one business day.')+
+          '<h2>'+SG.t("q.successT")+'</h2>'+
+          '<p>'+SG.t("q.successThanks")+' '+SG.esc(q.contact.name.split(" ")[0])+'. '+
+          (fallback ? SG.t("q.successDfb") : SG.t("q.successD"))+
           '</p>'+
           '<div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">'+
-            '<a class="btn btn-primary" target="_blank" rel="noopener" href="'+waLink(q)+'">Confirm via WhatsApp</a>'+
-            '<a class="btn btn-outline" href="catalogue.html">Back to catalog</a>'+
+            '<a class="btn btn-primary" target="_blank" rel="noopener" href="'+waLink(q)+'">'+SG.t("q.waConfirm")+'</a>'+
+            '<a class="btn btn-outline" href="catalogue.html">'+SG.t("q.backCatalog")+'</a>'+
           '</div></div>';
         window.scrollTo({top:0,behavior:"smooth"});
       }
@@ -148,6 +155,10 @@
   }
 
   render();
+  document.addEventListener("surgronic:lang", function(){
+    SG.applyI18n();
+    render();
+  });
 })();
 </script>
 </body>

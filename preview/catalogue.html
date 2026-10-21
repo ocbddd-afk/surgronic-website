@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Instrument Catalog — Surgronic</title>
+<title data-i18n-title="meta.catTitle">Instrument Catalog — Surgronic</title>
 <meta name="description" content="Search 8,658 surgical instruments by specialty, name, or manufacturer reference.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <script src="app.js"></script>
-<script>SG.mountChrome("catalog");</script>
+<script>SG.mountChrome("catalog");SG.applyI18n();</script>
 
 <div class="catalog-hero">
   <div class="container">
-    <h1>Instrument catalogue.</h1>
-    <p>Guided search across 8,658 catalogued instruments. Filter by specialty, family, and manufacturer.</p>
+    <h1 data-i18n="cat.title">Instrument catalogue.</h1>
+    <p data-i18n="cat.sub">Guided search across 8,658 catalogued instruments. Filter by specialty, family, and manufacturer.</p>
     <div class="search-bar">
-      <input id="q" type="search" placeholder="Search by name, SKU, or manufacturer reference…" aria-label="Search instruments">
-      <button class="btn btn-primary" id="searchBtn">Search</button>
+      <input id="q" type="search" data-i18n-ph="cat.searchPh" placeholder="Search by name, SKU, or manufacturer reference…" data-i18n-aria="cat.search" aria-label="Search instruments">
+      <button class="btn btn-primary" id="searchBtn" data-i18n="cat.search">Search</button>
     </div>
   </div>
 </div>
@@ -25,13 +25,13 @@
 <section style="padding-top:36px">
   <div class="container">
     <div class="filters">
-      <select id="fBrand" aria-label="Manufacturer">
-        <option value="">All manufacturers</option>
+      <select id="fBrand" data-i18n-aria="cat.allMfr" aria-label="Manufacturer">
+        <option value="" data-i18n="cat.allMfr">All manufacturers</option>
         <option>Aesculap</option>
         <option>Sklar</option>
       </select>
-      <select id="fFamily" aria-label="Instrument family">
-        <option value="">All families</option>
+      <select id="fFamily" data-i18n-aria="cat.allFam" aria-label="Instrument family">
+        <option value="" data-i18n="cat.allFam">All families</option>
         <option>Forceps</option>
         <option>Scissors</option>
         <option>Retractor</option>
@@ -41,13 +41,13 @@
         <option>Elevator</option>
       </select>
       <select id="fSort" aria-label="Sort">
-        <option value="name">Sort: Name</option>
-        <option value="sku">Sort: Reference</option>
-        <option value="brand">Sort: Brand</option>
+        <option value="name" data-i18n="cat.sortName">Sort: Name</option>
+        <option value="sku" data-i18n="cat.sortSku">Sort: Reference</option>
+        <option value="brand" data-i18n="cat.sortBrand">Sort: Brand</option>
       </select>
     </div>
     <div class="catalog-meta">
-      <span id="metaCount">Loading catalogue…</span>
+      <span id="metaCount" data-i18n="cat.loading">Loading catalogue…</span>
       <span id="metaPage"></span>
     </div>
     <div class="catalog-grid" id="grid"></div>
@@ -72,7 +72,6 @@
       sort: document.getElementById("fSort").value
     };
   }
-  // preselect from URL (?brand= / ?search=)
   (function(){
     var p = new URLSearchParams(location.search);
     if(p.get("brand")) document.getElementById("fBrand").value = p.get("brand");
@@ -83,8 +82,8 @@
     var f = params();
     var search = f.q;
     if(f.family) search = (search ? search+" " : "") + f.family;
-    grid.innerHTML = '<div class="loading">Loading instruments…</div>';
-    metaCount.textContent = "Loading catalogue…";
+    grid.innerHTML = '<div class="loading">'+SG.t("cat.loading")+'</div>';
+    metaCount.textContent = SG.t("cat.loading");
     SG.api("listProducts",{
       limit: PER, offset:(page-1)*PER,
       search: search || undefined,
@@ -93,14 +92,14 @@
     }).then(function(d){
       total = d.total||0;
       var list = d.products||[];
-      metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> of <b>8,658</b> catalogued instruments";
+      metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>8,658</b> "+SG.t("cat.catalogued");
       var pages = Math.max(1, Math.ceil(total/PER));
-      metaPage.textContent = "Page "+page+" of "+pages;
+      metaPage.textContent = SG.t("cat.page")+" "+page+" "+SG.t("cat.of")+" "+pages;
       if(!list.length){
         grid.innerHTML = '<div class="error-box" style="grid-column:1/-1;text-align:center;padding:48px 32px">'+
-          '<h3 style="font-size:20px;margin-bottom:10px">Can&rsquo;t find your instrument?</h3>'+
-          '<p style="color:var(--muted);margin-bottom:20px">Send us the manufacturer reference or a photograph &mdash; we&rsquo;ll source it and quote.</p>'+
-          '<a class="btn btn-primary" href="quote.html">Request Sourcing</a></div>';
+          '<h3 style="font-size:20px;margin-bottom:10px">'+SG.t("cat.empty.t")+'</h3>'+
+          '<p style="color:var(--muted);margin-bottom:20px">'+SG.t("cat.empty.d")+'</p>'+
+          '<a class="btn btn-primary" href="quote.html">'+SG.t("cat.empty.b")+'</a></div>';
       } else {
         grid.innerHTML = list.map(SG.cardHTML).join("");
         SG.bindAddButtons(grid);
@@ -108,14 +107,14 @@
       renderPager(pages);
       window.scrollTo({top:0,behavior:"smooth"});
     }).catch(function(){
-      grid.innerHTML = '<div class="error-box" style="grid-column:1/-1">The catalogue API is unreachable right now. Please try again in a moment.</div>';
-      metaCount.textContent = "Catalogue unavailable";
+      grid.innerHTML = '<div class="error-box" style="grid-column:1/-1">'+SG.t("cat.unavailable")+'</div>';
+      metaCount.textContent = SG.t("cat.unavailableShort");
     });
   }
   function renderPager(pages){
-    var h = '<button id="pgPrev" '+(page<=1?"disabled":"")+'>← Prev</button>'+
-            '<span class="pg-info">Page '+page+' of '+pages+'</span>'+
-            '<button id="pgNext" '+(page>=pages?"disabled":"")+'>Next →</button>';
+    var h = '<button id="pgPrev" '+(page<=1?"disabled":"")+'>'+SG.t("cat.prev")+'</button>'+
+            '<span class="pg-info">'+SG.t("cat.page")+' '+page+' '+SG.t("cat.of")+' '+pages+'</span>'+
+            '<button id="pgNext" '+(page>=pages?"disabled":"")+'>'+SG.t("cat.next")+'</button>';
     pager.innerHTML = h;
     document.getElementById("pgPrev").addEventListener("click",function(){ if(page>1){page--;load();} });
     document.getElementById("pgNext").addEventListener("click",function(){ if(page<pages){page++;load();} });
@@ -129,6 +128,10 @@
     document.getElementById(id).addEventListener("change",function(){page=1;load();});
   });
   load();
+  document.addEventListener("surgronic:lang", function(){
+    SG.applyI18n();
+    load();
+  });
 })();
 </script>
 </body>

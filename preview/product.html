@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Product — Surgronic</title>
+<title data-i18n-title="meta.pdTitle">Product — Surgronic</title>
 <meta name="description" content="Surgical instrument details, specifications, and quotation.">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <script src="app.js"></script>
-<script>SG.mountChrome("catalog");</script>
+<script>SG.mountChrome("catalog");SG.applyI18n();</script>
 
 <div class="container">
-  <div class="breadcrumb"><a href="index.html">Home</a> → <a href="catalogue.html">Catalog</a> → <span id="crumbSku">Product</span></div>
+  <div class="breadcrumb"><a href="index.html" data-i18n="pd.breadcrumb">Home</a> → <a href="catalogue.html" data-i18n="pd.catalog">Catalog</a> → <span id="crumbSku">Product</span></div>
   <div id="pd"></div>
   <div id="relatedWrap" style="margin:70px 0 30px;display:none">
-    <h2 class="section-title" style="font-size:32px">Related instruments</h2>
+    <h2 class="section-title" style="font-size:32px" data-i18n="pd.related">Related instruments</h2>
     <div class="feat-grid" id="relatedGrid" style="grid-template-columns:repeat(4,1fr)"></div>
   </div>
 </div>
@@ -25,61 +25,70 @@
   var sku = new URLSearchParams(location.search).get("sku") || "";
   var wrap = document.getElementById("pd");
   document.getElementById("crumbSku").textContent = sku;
-  if(!sku){
-    wrap.innerHTML = '<div class="error-box">No product reference given. <a href="catalogue.html">Back to catalog</a>.</div>';
-    return;
-  }
-  wrap.innerHTML = '<div class="loading">Loading product…</div>';
-  SG.api("getProduct",{sku:sku}).then(function(d){
-    var p = SG.normProduct(d.product);
-    if(!p){
-      wrap.innerHTML = '<div class="error-box">Product not found. <a href="catalogue.html">Back to catalog</a>.</div>';
+
+  function render(){
+    if(!sku){
+      wrap.innerHTML = '<div class="error-box">'+SG.t("pd.noproduct")+' <a href="catalogue.html">'+SG.t("pd.back")+'</a>.</div>';
       return;
     }
-    document.title = p.name + " (" + p.sku + ") — Surgronic";
-    var img = SG.imgUrl(p);
-    var gallery = img
-      ? '<div class="pd-gallery"><img src="'+img+'" alt="'+SG.esc(p.name)+'"></div>'
-      : '<div class="pd-gallery"><span style="color:var(--muted)">Image coming soon</span></div>';
-    var finishes = (p.finishOptions&&p.finishOptions.length)
-      ? p.finishOptions.map(SG.esc).join(", ") : "—";
-    wrap.innerHTML =
-    '<div class="pd-grid">'+ gallery +
-      '<div class="pd-info">'+
-        '<div class="psku">'+SG.esc(p.sku)+'</div>'+
-        '<h1>'+SG.esc(p.name)+'</h1>'+
-        '<div class="pd-brand">'+SG.esc(p.brand||"")+'</div>'+
-        (p.description ? '<p class="pd-desc">'+SG.esc(p.description)+'</p>' : '')+
-        '<div class="pd-actions">'+
-          '<button class="btn btn-primary" id="pdAdd">Add to Quote <span class="arr">&rarr;</span></button>'+
-          '<a class="btn btn-outline" href="quote.html">Request a Quote</a>'+
+    wrap.innerHTML = '<div class="loading">'+SG.t("pd.loading")+'</div>';
+    SG.api("getProduct",{sku:sku}).then(function(d){
+      var p = SG.normProduct(d.product);
+      if(!p){
+        wrap.innerHTML = '<div class="error-box">'+SG.t("pd.notfound")+' <a href="catalogue.html">'+SG.t("pd.back")+'</a>.</div>';
+        return;
+      }
+      var nm = SG.productName(p);
+      var ds = SG.productDesc(p);
+      document.title = nm + " (" + p.sku + ") — Surgronic";
+      var img = SG.imgUrl(p);
+      var gallery = img
+        ? '<div class="pd-gallery"><img src="'+img+'" alt="'+SG.esc(nm)+'"></div>'
+        : '<div class="pd-gallery"><span style="color:var(--muted)">'+SG.t("card.imgSoon")+'</span></div>';
+      var finishes = (p.finishOptions&&p.finishOptions.length)
+        ? p.finishOptions.map(SG.esc).join(", ") : "—";
+      wrap.innerHTML =
+      '<div class="pd-grid">'+ gallery +
+        '<div class="pd-info">'+
+          '<div class="psku">'+SG.esc(p.sku)+'</div>'+
+          '<h1>'+SG.esc(nm)+'</h1>'+
+          '<div class="pd-brand">'+SG.esc(p.brand||"")+'</div>'+
+          (ds ? '<p class="pd-desc">'+SG.esc(ds)+'</p>' : '')+
+          '<div class="pd-actions">'+
+            '<button class="btn btn-primary" id="pdAdd">'+SG.t("card.add")+' <span class="arr">&rarr;</span></button>'+
+            '<a class="btn btn-outline" href="quote.html">'+SG.t("nav.quote")+'</a>'+
+          '</div>'+
+          '<div class="pd-meta">'+
+            '<div><dt>'+SG.t("pd.ref")+'</dt><dd>'+SG.esc(p.sku)+'</dd></div>'+
+            '<div><dt>'+SG.t("pd.mfr")+'</dt><dd>'+SG.esc(p.brand||"—")+'</dd></div>'+
+            '<div><dt>'+SG.t("pd.finishes")+'</dt><dd>'+finishes+'</dd></div>'+
+            '<div><dt>'+SG.t("pd.price")+'</dt><dd>'+SG.t("card.por")+'</dd></div>'+
+            '<div><dt>'+SG.t("pd.avail")+'</dt><dd>'+SG.t("pd.availV")+'</dd></div>'+
+          '</div>'+
+          '<p style="margin-top:18px;font-size:14px;color:var(--muted)">'+SG.t("pd.disclaimer")+'</p>'+
         '</div>'+
-        '<div class="pd-meta">'+
-          '<div><dt>Reference</dt><dd>'+SG.esc(p.sku)+'</dd></div>'+
-          '<div><dt>Manufacturer</dt><dd>'+SG.esc(p.brand||"—")+'</dd></div>'+
-          '<div><dt>Finishes</dt><dd>'+finishes+'</dd></div>'+
-          '<div><dt>Price</dt><dd>Price on request</dd></div>'+
-          '<div><dt>Availability</dt><dd>From stock or sourced to specification</dd></div>'+
-        '</div>'+
-        '<p style="margin-top:18px;font-size:14px;color:var(--muted)">Indicative price, excl. shipping and duties. Final price confirmed in writing. Nothing ships until you\'ve seen it and approved it.</p>'+
-      '</div>'+
-    '</div>';
-    document.getElementById("pdAdd").addEventListener("click",function(){
-      SG.addToQuote(p,1); this.textContent="Added ✓";
+      '</div>';
+      document.getElementById("pdAdd").addEventListener("click",function(){
+        SG.addToQuote(p,1); this.textContent = SG.t("pd.added");
+      });
+      if(p.brand){
+        SG.api("listProducts",{limit:4,offset:0,manufacturer:p.brand,storefront:true}).then(function(r){
+          var rel=(r.products||[]).filter(function(x){return x.sku!==p.sku;}).slice(0,4);
+          if(rel.length){
+            document.getElementById("relatedWrap").style.display="block";
+            document.getElementById("relatedGrid").innerHTML=rel.map(SG.cardHTML).join("");
+            SG.bindAddButtons(document.getElementById("relatedGrid"));
+          }
+        }).catch(function(){});
+      }
+    }).catch(function(){
+      wrap.innerHTML = '<div class="error-box">'+SG.t("pd.unreachable")+'</div>';
     });
-    /* Related: same brand, first page */
-    if(p.brand){
-      SG.api("listProducts",{limit:4,offset:0,manufacturer:p.brand,storefront:true}).then(function(r){
-        var rel=(r.products||[]).filter(function(x){return x.sku!==p.sku;}).slice(0,4);
-        if(rel.length){
-          document.getElementById("relatedWrap").style.display="block";
-          document.getElementById("relatedGrid").innerHTML=rel.map(SG.cardHTML).join("");
-          SG.bindAddButtons(document.getElementById("relatedGrid"));
-        }
-      }).catch(function(){});
-    }
-  }).catch(function(){
-    wrap.innerHTML = '<div class="error-box">The product API is unreachable right now. Please try again in a moment.</div>';
+  }
+  render();
+  document.addEventListener("surgronic:lang", function(){
+    SG.applyI18n();
+    render();
   });
 })();
 </script>
