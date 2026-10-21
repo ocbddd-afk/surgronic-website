@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payment & Deposit — Surgronic</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="./">SURGRONIC<span>.</span></a>
+<button class="hamburger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')">☰</button>
+<nav><a href="./">Home</a><a href="./catalogue.html">Catalogue</a><a href="./brands.html">Brands</a><a href="./quote.html">Get a Quote</a><a href="./about.html">About</a><a href="./contact.html">Contact</a></nav>
+<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
+</header>
+<div class="drawer-overlay" id="overlay" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
+<div class="drawer" id="drawer">
+<button class="close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')">✕</button>
+<nav><a href="./">Home</a><a href="./catalogue.html">Catalogue</a><a href="./brands.html">Brands</a><a href="./quote.html">Get a Quote</a><a href="./about.html">About</a><a href="./contact.html">Contact</a></nav>
+<div class="contact">yusuf@surgronic.com<br>+90 552 608 1432</div>
+</div>
+<div class="container">
+<div class="breadcrumb"><a href="./">Home</a> / Payment & Deposit</div>
+<div class="section" style="max-width: 800px; margin: 0 auto;">
+<h2>Payment & Deposit</h2>
+<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">How It Works</h3>
+<p>1. Request a quotation → 2. Written Specification Confirmation (your sign-off) → 3. Deposit → 4. Pre-shipment inspection (your approval) → 5. Balance → 6. Shipment.</p>
+<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Deposit</h3>
+<p>Deposit percentage is stated in your quotation. Deposit refundable minus costs already committed to the supplier.</p>
+<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Payment Methods</h3>
+<p>Bank transfer. Details provided with your proforma invoice.</p>
+<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Pricing</h3>
+<p>All prices are indicative, excluding shipping and duties, valid until the date shown. Final price confirmed in writing in your quotation.</p>
+</div>
+</div>
+<footer class="site-footer">
+<div class="inner">
+<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
+<div><h3>Policies</h3><p><a href="./payment.html">Payment & Deposit</a><br><a href="./returns.html">Returns & Claims</a><br><a href="./shipping.html">Shipping & Documentation</a><br><a href="./privacy.html">Privacy</a><br><a href="./terms.html">Terms of Sale</a></p></div>
+<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
+</div>
+<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
+</footer>
+</body>
+</html>
