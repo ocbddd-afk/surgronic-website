@@ -98,11 +98,36 @@
       // Unregister any old service workers, then patch fetch to use the real API
       (function() {
         var API_URL = 'https://surgronic.pages.dev/actions';
+        var BASE = '/surgronic-website';
         // Remove any stale service workers from previous deployments
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.getRegistrations().then(function(regs) {
             regs.forEach(function(r) { r.unregister().catch(function(){}); });
           }).catch(function(){});
+        }
+        // Fix image URLs: rewrite absolute /assets/ to subpath /surgronic-website/assets/
+        // (React was built for domain root; GitHub Pages uses a subpath)
+        function fixImages(root) {
+          var imgs = (root || document).querySelectorAll('img[src^="/assets/"]');
+          for (var i = 0; i < imgs.length; i++) {
+            imgs[i].src = BASE + imgs[i].getAttribute('src');
+          }
+        }
+        // Watch for dynamically added images (React renders them after load)
+        if (window.MutationObserver) {
+          var obs = new MutationObserver(function(mutations) {
+            mutations.forEach(function(m) {
+              m.addedNodes.forEach(function(n) {
+                if (n.nodeType === 1) {
+                  if (n.tagName === 'IMG' && n.src.indexOf('/assets/') === 0) {
+                    n.src = BASE + n.getAttribute('src');
+                  }
+                  fixImages(n);
+                }
+              });
+            });
+          });
+          obs.observe(document.documentElement, { childList: true, subtree: true });
         }
         // Patch fetch: redirect ./actions to the Cloudflare API + normalize products
         var origFetch = window.fetch;
