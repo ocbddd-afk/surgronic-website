@@ -1,37 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-i18n-title="meta.homeTitle">Surgronic — Precision Surgical Instruments, Sourced to Your Specification</title>
-<meta name="description" content="Name the instrument. We'll find it. Surgical instruments available from stock or sourced to your requirements. We respond within one business day.">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Surgronic — Precision surgical instruments, sourced to your specification</title>
+<meta name="description" content="Name the instrument. We’ll find it. Surgical instruments from stock or sourced to your specification. Response within one business day.">
+<meta property="og:title" content="Surgronic — Precision surgical instruments">
+<meta property="og:description" content="Name the instrument. We’ll find it. From stock or sourced to your specification.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308142A'/%3E%3Ccircle cx='26' cy='34' r='13' fill='none' stroke='%232F86F6' stroke-width='7'/%3E%3Cg fill='%232F86F6'%3E%3Crect x='42' y='12' width='6' height='16'/%3E%3Crect x='37' y='17' width='16' height='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SURGRONIC — $250k brand system
+   Premium medical-industrial. Navy is the world, blue the spark.
+   ============================================================ */
+:root{
+  --navy-950:#08142A; --navy-900:#0C1B36; --navy-700:#153A72;
+  --blue-500:#2F86F6; --blue-400:#5AA2F8;
+  --mist-50:#F2F5FA; --white:#FFFFFF;
+  --ink-900:#0E1B2E; --ink-600:#5B6B82;
+  --line-dark:rgba(255,255,255,.10); --line-light:#DCE3EE;
+  --r-xl:28px; --r-lg:24px; --r-md:20px; --r-sm:12px;
+  --fd:"Manrope","Inter",system-ui,sans-serif;
+  --fb:"Inter",system-ui,sans-serif;
+  --max:1200px; --gutter:24px;
+  --shadow-lg:0 32px 64px -24px rgba(8,20,42,.35);
+  --shadow-md:0 16px 40px -16px rgba(8,20,42,.22);
+  --ease:cubic-bezier(.22,.61,.21,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--fb);color:var(--ink-900);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+h1,h2,h3{font-family:var(--fd);letter-spacing:-.02em;line-height:1.08;font-weight:800}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+section{padding:96px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-500);margin-bottom:20px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;border:2px solid var(--blue-500)}
+.sec-title{font-size:clamp(32px,4.4vw,54px);margin-bottom:16px;max-width:20ch}
+.sec-sub{color:var(--ink-600);font-size:17px;max-width:60ch}
+:focus-visible{outline:3px solid var(--blue-500);outline-offset:3px;border-radius:6px}
+/* ---------- header ---------- */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,20,42,.72);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-dark)}
+.header-inner{display:flex;align-items:center;gap:32px;height:72px}
+.brand{display:inline-flex;align-items:center;min-width:96px}
+.brand svg{height:26px;width:auto;display:block}
+.main-nav{display:flex;gap:30px;margin-inline-start:8px}
+.main-nav a{color:rgba(255,255,255,.78);font-size:15px;font-weight:500;transition:color .2s}
+.main-nav a:hover{color:#fff}
+.header-actions{margin-inline-start:auto;display:flex;align-items:center;gap:14px}
+.lang-switch{display:flex;border:1px solid var(--line-dark);border-radius:999px;overflow:hidden}
+.lang-switch button{background:transparent;border:0;color:rgba(255,255,255,.6);font-size:12px;font-weight:700;letter-spacing:.06em;padding:8px 13px;cursor:pointer;min-height:36px}
+.lang-switch button.on{background:var(--blue-500);color:#fff}
+.quote-pill{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.85);font-size:14px;font-weight:600;border:1px solid var(--line-dark);border-radius:999px;padding:9px 16px;transition:border-color .2s}
+.quote-pill:hover{border-color:var(--blue-400)}
+.quote-pill .count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:999px;background:var(--blue-500);color:#fff;font-size:12px;font-weight:700;padding:0 7px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:15px;border-radius:999px;border:1px solid transparent;cursor:pointer;padding:14px 28px;min-height:48px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s}
+.btn-primary{background:var(--blue-500);color:#fff}
+.btn-primary:hover{background:var(--blue-400);transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(47,134,246,.55)}
+.btn-ghost-w{border-color:rgba(255,255,255,.35);color:#fff;background:transparent}
+.btn-ghost-w:hover{border-color:#fff}
+.btn-outline{border-color:var(--line-light);color:var(--ink-900);background:#fff}
+.btn-outline:hover{border-color:var(--blue-500);color:var(--blue-500)}
+.btn-sm{padding:10px 20px;min-height:44px;font-size:14px}
+.hamburger{display:none;background:none;border:1px solid var(--line-dark);border-radius:10px;color:#fff;font-size:20px;width:44px;height:44px;cursor:pointer}
+.mobile-nav{position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(340px,88vw);background:var(--navy-900);z-index:200;padding:88px 32px 32px;transform:translateX(105%);transition:transform .35s var(--ease);display:flex;flex-direction:column;gap:6px}
+[dir="rtl"] .mobile-nav{transform:translateX(-105%)}
+.mobile-nav.open{transform:translateX(0)}
+.mobile-nav a{color:#fff;font-size:20px;font-weight:700;font-family:var(--fd);padding:12px 0;border-bottom:1px solid var(--line-dark)}
+.mobile-nav .close{position:absolute;top:20px;inset-inline-end:24px;background:none;border:0;color:#fff;font-size:32px;cursor:pointer;width:44px;height:44px}
+/* ---------- hero ---------- */
+.hero{background:var(--navy-950);color:#fff;padding:152px 0 96px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-20%;inset-inline-end:-10%;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(47,134,246,.22),transparent 65%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center;position:relative}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-400);margin-bottom:24px}
+.hero h1{font-size:clamp(44px,6.4vw,84px);color:#fff;margin-bottom:22px}
+.hero h1 .accent{color:var(--blue-400)}
+.hero-sub{color:rgba(255,255,255,.72);font-size:18px;max-width:46ch;margin-bottom:36px}
+.finder{background:var(--white);border-radius:var(--r-lg);padding:12px;box-shadow:var(--shadow-lg);color:var(--ink-900)}
+.finder-tabs{display:flex;gap:4px;padding:4px;background:var(--mist-50);border-radius:16px;margin-bottom:4px}
+.finder-tab{flex:1;border:0;background:transparent;border-radius:12px;padding:13px 10px;font-size:14px;font-weight:700;color:var(--ink-600);cursor:pointer;min-height:48px;transition:background .2s,color .2s}
+.finder-tab[aria-selected="true"]{background:#fff;color:var(--navy-950);box-shadow:0 2px 8px rgba(8,20,42,.08)}
+.finder-panel{padding:8px}
+.finder-row{display:flex;gap:10px}
+.finder-row input[type="text"]{flex:1;min-width:0;border:1px solid var(--line-light);border-radius:14px;padding:15px 18px;font-size:16px;font-family:var(--fb);color:var(--ink-900);background:var(--mist-50);outline:none;transition:border-color .2s}
+.finder-row input[type="text"]:focus{border-color:var(--blue-500);background:#fff}
+.finder-help{font-size:13px;color:var(--ink-600);margin:10px 4px 0}
+.finder-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{border:1px solid var(--line-light);background:#fff;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--ink-900);cursor:pointer;min-height:36px;transition:border-color .2s,color .2s}
+.chip:hover{border-color:var(--blue-500);color:var(--blue-500)}
+.drop{flex:1;border:1.5px dashed #B9C6DA;border-radius:14px;padding:26px 18px;text-align:center;color:var(--ink-600);cursor:pointer;font-size:15px;background:var(--mist-50);transition:border-color .2s}
+.drop:hover,.drop.over{border-color:var(--blue-500);color:var(--blue-500)}
+.drop-preview{display:flex;align-items:center;gap:12px;margin-top:10px;font-size:14px}
+.drop-preview img{width:52px;height:52px;object-fit:cover;border-radius:10px}
+.trust-strip{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line-dark);font-size:14px;color:rgba(255,255,255,.65)}
+.trust-strip b{color:#fff;font-weight:700}
+.hero-visual{position:relative;border-radius:var(--r-xl);overflow:hidden;background:linear-gradient(160deg,var(--navy-900),var(--navy-700));border:1px solid var(--line-dark);aspect-ratio:4/4.6;display:flex;align-items:center;justify-content:center}
+.hero-visual::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 30%,rgba(47,134,246,.28),transparent 70%);pointer-events:none}
+.hero-visual img{width:82%;position:relative;z-index:1;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+.hero-tag{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;background:rgba(8,20,42,.66);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--line-dark);border-radius:16px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.hero-tag b{display:block;font-size:14px;color:#fff}
+.hero-tag span{font-size:12px;color:rgba(255,255,255,.6)}
+.hero-tag .pill{color:var(--blue-400);font-weight:700;font-size:13px;white-space:nowrap}
+/* ---------- channels ---------- */
+.channels-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.channel-card{background:#fff;border:1px solid var(--line-light);border-radius:var(--r-lg);padding:44px;position:relative;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.channel-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.channel-badge{display:inline-flex;align-items:center;gap:8px;background:var(--navy-950);color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:9px 18px;margin-bottom:24px}
+.channel-badge.blue{background:var(--blue-500)}
+.channel-card h3{font-size:clamp(24px,3vw,34px);margin-bottom:14px}
+.channel-card p{color:var(--ink-600);margin-bottom:8px}
+.channel-time{display:flex;align-items:center;gap:10px;color:var(--blue-500);font-weight:700;font-size:15px;margin:18px 0 28px}
+.channel-time::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue-500)}
+.channel-rule{margin-top:40px;padding:22px 28px;background:var(--mist-50);border-radius:var(--r-md);border-inline-start:4px solid var(--blue-500);color:var(--ink-600);font-size:15px;max-width:72ch}
+/* ---------- specialties ---------- */
+.specialties{background:var(--mist-50)}
+.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.spec-card{background:#fff;border:1px solid var(--line-light);border-radius:var(--r-md);padding:28px 24px;display:flex;flex-direction:column;gap:6px;min-height:150px;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
+.spec-card:hover{transform:translateY(-4px);border-color:var(--blue-500);box-shadow:var(--shadow-md)}
+.spec-card .spec-ref{font-family:var(--fd);font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--blue-500)}
+.spec-card h3{font-size:19px}
+.spec-card span{font-size:13px;color:var(--ink-600)}
+/* ---------- featured ---------- */
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.product-card{background:#fff;border:1px solid var(--line-light);border-radius:var(--r-md);overflow:hidden;display:grid;grid-template-rows:220px 1fr;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.pimg{height:220px;display:flex;align-items:center;justify-content:center;background:var(--mist-50);padding:20px}
+.pimg img{max-height:100%;max-width:100%;object-fit:contain}
+.pbody{padding:20px;display:flex;flex-direction:column;gap:6px}
+.psku{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ink-600);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pbody h3{font-size:16px;font-weight:700;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:42px}
+.pbrand{font-size:13px;color:var(--ink-600)}
+.por{font-size:13px;font-weight:600;color:var(--ink-600)}
+.pfoot{margin-top:auto;padding-top:14px;display:grid;gap:8px}
+.btn-add-quote{width:100%;background:var(--navy-950);color:#fff;border:0;border-radius:12px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;min-height:44px;transition:background .2s}
+.btn-add-quote:hover{background:var(--navy-700)}
+.prow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line-light);border-radius:12px;padding:10px;font-size:13px;font-weight:600;color:var(--ink-900);min-height:40px;transition:border-color .2s}
+.btn-wa:hover{border-color:#25D366;color:#128C4B}
+.btn-view{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line-light);border-radius:12px;padding:10px;font-size:13px;font-weight:600;color:var(--ink-600);min-height:40px}
+.btn-view:hover{border-color:var(--blue-500);color:var(--blue-500)}
+.skel{border-radius:var(--r-md);overflow:hidden;background:#fff;border:1px solid var(--line-light)}
+.skel .sk-img{height:220px;background:linear-gradient(100deg,var(--mist-50) 40%,#E7EDF5 50%,var(--mist-50) 60%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+.skel .sk-body{padding:20px;display:grid;gap:10px}
+.skel .sk-l{height:14px;border-radius:7px;background:linear-gradient(100deg,var(--mist-50) 40%,#E7EDF5 50%,var(--mist-50) 60%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.skel .sk-img,.skel .sk-l{animation:none}}
+.feat-err{text-align:center;padding:56px 20px;border:1px dashed var(--line-light);border-radius:var(--r-lg);color:var(--ink-600)}
+/* ---------- how ---------- */
+.how{background:var(--mist-50)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;position:relative}
+.steps::before{content:"";position:absolute;top:5px;left:2%;right:2%;height:1px;background:var(--line-light)}
+.step{padding:32px 28px 0 0;position:relative}
+[dir="rtl"] .step{padding:32px 0 0 28px}
+.step::before{content:"";position:absolute;top:0;left:0;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid var(--blue-500)}
+[dir="rtl"] .step::before{left:auto;right:0}
+.step small{color:var(--blue-500);font-weight:700;letter-spacing:.12em;font-size:12px}
+.step h3{font-size:21px;margin:12px 0 10px}
+.step p{color:var(--ink-600);font-size:15px}
+/* ---------- why (dark) ---------- */
+.why{background:var(--navy-950);color:#fff}
+.why .sec-title{color:#fff}
+.why .sec-sub{color:rgba(255,255,255,.65)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;padding-top:48px;border-top:1px solid var(--line-dark)}
+.stat b{display:block;font-family:var(--fd);font-weight:800;font-size:clamp(44px,5.6vw,76px);letter-spacing:-.03em;color:#fff}
+.stat b .u{color:var(--blue-400)}
+.stat p{color:rgba(255,255,255,.6);margin-top:12px;max-width:32ch;font-size:15px}
+.promise{margin-top:72px;background:rgba(255,255,255,.04);border:1px solid var(--line-dark);border-radius:var(--r-xl);padding:64px;text-align:center}
+.promise blockquote{font-family:var(--fd);font-weight:700;font-size:clamp(26px,3.6vw,44px);letter-spacing:-.02em;line-height:1.2;max-width:24ch;margin:0 auto 20px}
+.promise blockquote .q{color:var(--blue-400)}
+.promise p{color:rgba(255,255,255,.6);max-width:56ch;margin:0 auto;font-size:15px}
+/* ---------- trust ---------- */
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.trust-card{border:1px dashed #B9C6DA;border-radius:var(--r-lg);padding:36px;background:var(--mist-50)}
+.trust-card h3{font-size:20px;margin-bottom:10px}
+.trust-card .tbd{display:inline-block;background:#fff;border:1px solid var(--line-light);color:var(--ink-600);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:6px 14px;margin-bottom:14px}
+.trust-card p{color:var(--ink-600);font-size:14px}
+.trust-contact{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;font-size:15px;color:var(--ink-600)}
+.trust-contact b{color:var(--ink-900)}
+/* ---------- final cta ---------- */
+.final{background:linear-gradient(150deg,var(--navy-700),#2A7BE4);color:#fff;text-align:center;border-radius:32px;margin:0 16px}
+.final h2{font-size:clamp(30px,4.4vw,52px);color:#fff;max-width:22ch;margin:0 auto 18px}
+.final p{color:rgba(255,255,255,.75);max-width:52ch;margin:0 auto 34px}
+.final .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+/* ---------- footer ---------- */
+footer{background:var(--navy-950);color:rgba(255,255,255,.7);padding:72px 0 32px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.footer-brand svg{height:30px;width:auto;margin-bottom:20px}
+.footer-brand p{font-size:14px;max-width:34ch}
+footer h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;font-family:var(--fb);font-weight:700}
+footer .fcol a{display:block;font-size:14px;padding:6px 0;transition:color .2s}
+footer .fcol a:hover{color:#fff}
+.footer-bottom{margin-top:56px;padding-top:24px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.45)}
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-visual{aspect-ratio:16/10;max-width:640px}
+  .spec-grid{grid-template-columns:repeat(3,1fr)}
+  .feat-grid{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr);gap:32px}
+  .steps::before{display:none}
+  .trust-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  section{padding:72px 0}
+  .main-nav{display:none}
+  .hamburger{display:inline-flex;align-items:center;justify-content:center}
+  .quote-pill span.lbl{display:none}
+  .channels-grid{grid-template-columns:1fr}
+  .spec-grid{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:1fr;gap:32px}
+  .finder-row{flex-direction:column}
+  .finder-row .btn{min-height:52px}
+}
+@media (max-width:520px){
+  .spec-grid,.feat-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .hero{padding:128px 0 72px}
+  .header-actions .btn{display:none}
+  .promise{padding:44px 24px}
+  .final{margin:0 8px;border-radius:24px}
+}
+[dir="rtl"] .finder-tab,[dir="rtl"] .chip{text-align:center}
+[dir="rtl"] .psku{letter-spacing:.02em}
+</style>
 </head>
 <body>
-<script src="app.js"></script>
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Surgronic"><svg height="26" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -1598 11224 1828"><g transform="matrix(1 0 0 -1 0 0)"><g transform="translate(0,0)"><path d="M1047 1085V813Q932 861 825.0 885.0Q718 909 623 909Q521 909 471.5 883.5Q422 858 422 805Q422 762 459.5 739.0Q497 716 594 705L657 696Q932 661 1027.0 581.0Q1122 501 1122 330Q1122 151 990.0 61.0Q858 -29 596 -29Q485 -29 366.5 -11.5Q248 6 123 41V313Q230 261 342.5 235.0Q455 209 571 209Q676 209 729.0 238.0Q782 267 782 324Q782 372 745.5 395.5Q709 419 600 432L537 440Q298 470 202.0 551.0Q106 632 106 797Q106 975 228.0 1061.0Q350 1147 602 1147Q701 1147 810.0 1132.0Q919 1117 1047 1085Z" fill="#FFFFFF"/></g><g transform="translate(1239,0)"><path d="M160 436V1120H520V1008Q520 917 519.0 779.5Q518 642 518 596Q518 461 525.0 401.5Q532 342 549 315Q571 280 606.5 261.0Q642 242 688 242Q800 242 864.0 328.0Q928 414 928 567V1120H1286V0H928V162Q847 64 756.5 17.5Q666 -29 557 -29Q363 -29 261.5 90.0Q160 209 160 436Z" fill="#FFFFFF"/></g><g transform="translate(2717,0)"><path d="M1004 815Q957 837 910.5 847.5Q864 858 817 858Q679 858 604.5 769.5Q530 681 530 516V0H172V1120H530V936Q599 1046 688.5 1096.5Q778 1147 903 1147Q921 1147 942.0 1145.5Q963 1144 1003 1139Z" fill="#FFFFFF"/></g><g transform="translate(3747,0)"><path d="M934 190Q860 92 771.0 46.0Q682 0 565 0Q360 0 226.0 161.5Q92 323 92 573Q92 824 226.0 984.5Q360 1145 565 1145Q682 1145 771.0 1099.0Q860 1053 934 954V1120H1294V113Q1294 -157 1123.5 -299.5Q953 -442 629 -442Q524 -442 426.0 -426.0Q328 -410 229 -377V-98Q323 -152 413.0 -178.5Q503 -205 594 -205Q770 -205 852.0 -128.0Q934 -51 934 113ZM698 887Q587 887 525.0 805.0Q463 723 463 573Q463 419 523.0 339.5Q583 260 698 260Q810 260 872.0 342.0Q934 424 934 573Q934 723 872.0 805.0Q810 887 698 887Z" fill="#FFFFFF"/></g><g transform="translate(5233,0)"><path d="M1004 815Q957 837 910.5 847.5Q864 858 817 858Q679 858 604.5 769.5Q530 681 530 516V0H172V1120H530V936Q599 1046 688.5 1096.5Q778 1147 903 1147Q921 1147 942.0 1145.5Q963 1144 1003 1139Z" fill="#FFFFFF"/></g><circle cx="6966" cy="559" r="520" fill="none" stroke="#3186F6" stroke-width="190"/><g transform="translate(7690,0)"><path d="M1298 682V0H938V111V522Q938 667 931.5 722.0Q925 777 909 803Q888 838 852.0 857.5Q816 877 770 877Q658 877 594.0 790.5Q530 704 530 551V0H172V1120H530V956Q611 1054 702.0 1100.5Q793 1147 903 1147Q1097 1147 1197.5 1028.0Q1298 909 1298 682Z" fill="#FFFFFF"/></g><g transform="translate(9168,0)"><path d="M172 1120H530V0H172Z" fill="#FFFFFF"/></g><g fill="#3186F6"><rect x="9471" y="1302" width="96" height="236"/><rect x="9401" y="1372" width="236" height="96"/></g><g transform="translate(9890,0)"><path d="M1077 1085V793Q1004 843 930.5 867.0Q857 891 778 891Q628 891 544.5 803.5Q461 716 461 559Q461 402 544.5 314.5Q628 227 778 227Q862 227 937.5 252.0Q1013 277 1077 326V33Q993 2 906.5 -13.5Q820 -29 733 -29Q430 -29 259.0 126.5Q88 282 88 559Q88 836 259.0 991.5Q430 1147 733 1147Q821 1147 906.5 1131.5Q992 1116 1077 1085Z" fill="#FFFFFF"/></g></g></svg></a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="catalogue.html" data-i18n="nav.catalog">Instrument Catalog</a>
+      <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#why" data-i18n="nav.why">Why Surgronic</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button data-lang="en" class="on">EN</button><button data-lang="fr">FR</button><button data-lang="ar">AR</button>
+      </div>
+      <a class="quote-pill" href="quote.html"><span class="lbl" data-i18n="nav.quoteList">Quote list</span><span class="count" data-basket-count>0</span></a>
+      <a class="btn btn-primary btn-sm" href="quote.html" data-i18n="nav.quote">Request a quote</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close" id="mobileClose" aria-label="Close">&times;</button>
+  <a href="catalogue.html" data-i18n="nav.catalog">Instrument Catalog</a>
+  <a href="#how" data-i18n="nav.how">How it works</a>
+  <a href="#why" data-i18n="nav.why">Why Surgronic</a>
+  <a href="quote.html" data-i18n="nav.quote">Request a quote</a>
+</div>
 
-<!-- ============ HERO — VALUE PROPOSITION ============ -->
+<main>
+<!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="container hero-grid">
+  <div class="wrap hero-grid">
     <div>
-      <div class="hero-brand"><strong>SURGRONIC</strong><span data-i18n="hero.tagline">Precision surgical instruments · Stock &amp; sourcing</span></div>
-      <h1 data-i18n="hero.title">Name the instrument. We&#8217;ll find it.</h1>
-
-      <!-- Instrument finder: one finder replaces three cards -->
-      <div class="finder" role="region" data-i18n-aria="finder.aria" aria-label="Instrument finder">
+      <span class="hero-kicker" data-i18n="hero.kicker">Precision surgical instruments</span>
+      <h1 data-i18n="hero.title">Name the instrument. We&rsquo;ll find it.</h1>
+      <p class="hero-sub" data-i18n="hero.lead">Surgical instruments available from stock or sourced to your requirements. Search by instrument name, manufacturer reference, or specialty&mdash;or send us a photograph.</p>
+      <div class="finder rv" role="region" aria-label="Instrument finder">
         <div class="finder-tabs" role="tablist" aria-label="Finder">
-          <button class="finder-tab on" role="tab" id="ftab-name" aria-selected="true" aria-controls="fpanel-name" data-tab="name"><span data-i18n="finder.tab1">Name</span></button>
-          <button class="finder-tab" role="tab" id="ftab-ref" aria-selected="false" aria-controls="fpanel-ref" data-tab="ref" tabindex="-1"><span data-i18n="finder.tab2">Reference</span></button>
-          <button class="finder-tab" role="tab" id="ftab-photo" aria-selected="false" aria-controls="fpanel-photo" data-tab="photo" tabindex="-1"><span data-i18n="finder.tab3">Photograph</span></button>
+          <button class="finder-tab" role="tab" id="ftab-name" aria-selected="true" aria-controls="fpanel-name" data-tab="name"><span data-i18n="finder.tabBy1">By name</span></button>
+          <button class="finder-tab" role="tab" id="ftab-ref" aria-selected="false" aria-controls="fpanel-ref" data-tab="ref" tabindex="-1"><span data-i18n="finder.tabBy2">By reference</span></button>
+          <button class="finder-tab" role="tab" id="ftab-photo" aria-selected="false" aria-controls="fpanel-photo" data-tab="photo" tabindex="-1"><span data-i18n="finder.tabBy3">By photograph</span></button>
         </div>
         <div class="finder-panel" role="tabpanel" id="fpanel-name" aria-labelledby="ftab-name">
           <div class="finder-row">
-            <input type="text" id="finderName" data-i18n-ph="finder.namePh" placeholder="Search by instrument name&hellip;">
+            <input type="text" id="finderName" data-i18n-ph="finder.namePh" placeholder="Search by instrument name&hellip;" aria-label="Instrument name">
             <button class="btn btn-primary" id="finderGoName"><span data-i18n="finder.goName">Find Instruments</span></button>
           </div>
+          <p class="finder-help" data-i18n="finder.nameHelp">Type any part of the instrument name.</p>
           <div class="finder-chips">
-            <span class="chips-label" data-i18n="finder.popular">Popular:</span>
             <button class="chip" data-chip="Forceps">Forceps</button>
             <button class="chip" data-chip="Scissors">Scissors</button>
             <button class="chip" data-chip="Retractor">Retractor</button>
@@ -41,248 +295,1309 @@
         </div>
         <div class="finder-panel" role="tabpanel" id="fpanel-ref" aria-labelledby="ftab-ref" hidden>
           <div class="finder-row">
-            <input type="text" id="finderRef" data-i18n-ph="finder.refPh" placeholder="Enter manufacturer reference or SKU&hellip;">
+            <input type="text" id="finderRef" data-i18n-ph="finder.refPh" placeholder="Enter manufacturer reference or SKU&hellip;" aria-label="Reference">
             <button class="btn btn-primary" id="finderGoRef"><span data-i18n="finder.goRef">Source by Reference</span></button>
           </div>
+          <p class="finder-help" data-i18n="finder.refHelp">Paste the manufacturer article number or SKU.</p>
         </div>
         <div class="finder-panel" role="tabpanel" id="fpanel-photo" aria-labelledby="ftab-photo" hidden>
           <div class="finder-row">
-            <input type="file" id="finderPhoto" accept="image/*" data-i18n-aria="q.photo" aria-label="Product photo">
-            <button class="btn btn-primary" id="finderGoPhoto"><span data-i18n="finder.goPhoto">Send Photograph</span></button>
+            <label class="drop" id="finderDrop" for="finderPhoto">
+              <span data-i18n="finder.drop">Drag &amp; drop your photo here</span><br>
+              <small data-i18n="finder.browse">or browse files</small>
+            </label>
+            <input type="file" id="finderPhoto" accept="image/*" hidden>
           </div>
-          <p class="finder-note" data-i18n="finder.photoNote">Photos go to our team for manual identification &mdash; never presented as automated recognition.</p>
-          <span class="finder-file" id="finderFileName" aria-live="polite"></span>
+          <div class="drop-preview" id="finderPreview" hidden>
+            <img id="finderPreviewImg" alt="">
+            <span><b data-i18n="finder.photoReady">Photo ready</b> &mdash; <span id="finderFileName"></span><br>
+            <a href="#" id="finderChange" data-i18n="finder.photoChange">Change photo</a></span>
+          </div>
+          <div class="finder-row" style="margin-top:12px">
+            <button class="btn btn-primary" id="finderGoPhoto" style="width:100%"><span data-i18n="finder.goPhoto">Send Photograph</span></button>
+          </div>
+          <p class="finder-help" data-i18n="finder.photoHelp">Our team identifies it manually &mdash; never automated guesswork.</p>
         </div>
       </div>
-
-      <div class="hero-timelines" data-i18n="hero.timelines">Response within 1 business day · Sourcing typically 1–3 days · Shipping typically 2–5 days</div>
+      <div class="trust-strip" aria-label="Timelines">
+        <span><b data-i18n="strip.1b">1 business day</b> <span data-i18n="strip.1d">response</span></span>
+        <span><b data-i18n="strip.2b">1&ndash;3 days</b> <span data-i18n="strip.2d">sourcing</span></span>
+        <span><b data-i18n="strip.3b">2&ndash;5 days</b> <span data-i18n="strip.3d">shipping</span></span>
+      </div>
     </div>
-    <div class="hero-image">
+    <div class="hero-visual rv">
       <img src="assets/sur-skl-01146.jpg" alt="Adlerkreutz Tissue Forceps — precision surgical instrument">
+      <div class="hero-tag">
+        <div><b>Adlerkreutz Tissue Forceps</b><span>SUR-SKL-01146 &middot; <span data-i18n="hero.tagFrom">From our catalogued range</span></span></div>
+        <span class="pill" data-i18n="hero.tagCat">8,658 instruments</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ STOCK AND SOURCING CAPABILITIES ============ -->
-<section>
-  <div class="container">
-    <span class="eyebrow" data-i18n="channels.eyebrow">Supply channels</span>
-    <h2 class="section-title" data-i18n="channels.title">Two channels. One standard of precision.</h2>
-    <p class="section-sub" data-i18n="channels.sub">Catalogued products and stocked products are not the same thing. We are transparent about both.</p>
+<!-- ============ SUPPLY CHANNELS ============ -->
+<section id="channels">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="channels.eyebrow">Supply channels</span>
+    <h2 class="sec-title rv" data-i18n="channels.title">Two channels. One standard of precision.</h2>
+    <p class="sec-sub rv" data-i18n="channels.sub">Catalogued products and stocked products are not the same thing. We are transparent about both.</p>
     <div class="channels-grid">
-      <div class="channel-card">
-        <div class="ch-num">01</div>
+      <div class="channel-card rv">
+        <span class="channel-badge" data-i18n="ch.badge1">From stock</span>
         <h3 data-i18n="channel1.t">Available from Stock</h3>
-        <p data-i18n="channel1.d">Some instruments may already be available in our inventory.</p>
-        <a href="catalogue.html" data-i18n="channel1.l">Explore instruments &rarr;</a>
+        <p data-i18n="channel1.d">In-stock instruments ship from our inventory.</p>
+        <div class="channel-time" data-i18n="ch.time1">Ships from inventory</div>
+        <a class="btn btn-outline" href="catalogue.html"><span data-i18n="ch.cta1">Browse stock</span></a>
       </div>
-      <div class="channel-card">
-        <div class="ch-num">02</div>
+      <div class="channel-card rv">
+        <span class="channel-badge blue" data-i18n="ch.badge2">Sourced to specification</span>
         <h3 data-i18n="channel2.t">Sourced to Specification</h3>
-        <p data-i18n="channel2.d">When the required instrument is unavailable, we can source it to your exact requirements.</p>
-        <a href="quote.html" data-i18n="channel2.l">Start a sourcing request &rarr;</a>
+        <p data-i18n="channel2.d">When the required instrument is unavailable, we source it to your exact requirements.</p>
+        <div class="channel-time" data-i18n="ch.time2">Typically 1&ndash;3 days sourcing</div>
+        <a class="btn btn-primary" href="quote.html"><span data-i18n="ch.cta2">Start sourcing</span></a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ TRUST ANCHORS ============ -->
-<section class="trust-strip" aria-label="Contact">
-  <div class="container">
-    <span data-i18n="trust.addr">Sisli, Istanbul, Turkey</span>
-    <span class="dot">&middot;</span>
-    <a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a>
-    <span class="dot">&middot;</span>
-    <a href="tel:+905526081432"><bdi>+90 552 608 1432</bdi></a>
+    <p class="channel-rule rv" data-i18n="ch.rule">Stocked items show a stock badge; everything else is sourced, with written specification confirmation.</p>
   </div>
 </section>
 
 <!-- ============ SPECIALTIES ============ -->
-<section class="specialties" id="specialties" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="container">
-    <span class="eyebrow" data-i18n="spec.eyebrow">Specialties</span>
-    <h2 class="section-title" data-i18n="spec.title">Explore surgical specialties.</h2>
-    <p class="section-sub" data-i18n="spec.sub">Eleven disciplines. One catalogue. Each specialty is a navigable destination.</p>
+<section class="specialties" id="specialties">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="spec.eyebrow">Specialties</span>
+    <h2 class="sec-title rv" data-i18n="spec.title">Explore surgical specialties.</h2>
+    <p class="sec-sub rv" data-i18n="spec.sub">Eleven disciplines. One catalogue. Each specialty is a navigable destination.</p>
     <div class="spec-grid" id="specGrid"></div>
   </div>
 </section>
 
-<!-- ============ FEATURED INSTRUMENTS ============ -->
-<section>
-  <div class="container">
-    <span class="eyebrow" data-i18n="feat.eyebrow">Featured</span>
-    <h2 class="section-title" data-i18n="feat.title">Instruments buyers ask for.</h2>
-    <p class="section-sub" data-i18n="feat.sub">A curated selection from the live catalogue — diverse specialties, verified imagery.</p>
-    <div class="feat-grid" id="featGrid"><div class="loading" data-i18n="feat.loading">Loading featured instruments&hellip;</div></div>
-    <div style="text-align:center;margin-top:40px">
-      <a class="btn btn-outline" href="catalogue.html"><span data-i18n="feat.browse">Browse all 8,658 instruments</span> <span class="arr">&rarr;</span></a>
+<!-- ============ FEATURED ============ -->
+<section id="featured">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="feat.eyebrow">Featured</span>
+    <h2 class="sec-title rv" data-i18n="feat.title">Instruments buyers ask for.</h2>
+    <p class="sec-sub rv" data-i18n="feat.sub">A curated selection from the live catalogue &mdash; diverse specialties, verified imagery.</p>
+    <div class="feat-grid" id="featGrid" aria-live="polite"></div>
+    <div style="text-align:center;margin-top:44px">
+      <a class="btn btn-outline" href="catalogue.html"><span data-i18n="feat.browse">Browse all 8,658 instruments</span> &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- ============ OUR PROMISE ============ -->
-<section class="promise">
-  <div class="container">
-    <span class="eyebrow" data-i18n="promise.eyebrow">Our promise</span>
-    <p class="promise-quote" data-i18n="trust.quote">&ldquo;Nothing ships until you&rsquo;ve seen it and approved it.&rdquo;</p>
-    <small data-i18n="trust.quoteSub">Our prevention-over-returns promise &mdash; spec confirmation, deposit, pre-shipment inspection photos.</small>
-  </div>
-</section>
-
-<!-- ============ HOW SURGRONIC WORKS ============ -->
-<section id="how" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="container">
-    <span class="eyebrow" data-i18n="how.eyebrow">How Surgronic works</span>
-    <h2 class="section-title" data-i18n="how.title">From requirement to delivery.</h2>
-    <div class="process-steps">
-      <div class="step"><div class="step-no" data-i18n="step1.n">Step 01</div><h3 data-i18n="step1.t">Tell us what you need</h3><p data-i18n="step1.d">Browse the catalog, send a reference, or upload a photograph.</p></div>
-      <div class="step"><div class="step-no" data-i18n="step2.n">Step 02</div><h3 data-i18n="step2.t">We confirm the specification</h3><p data-i18n="step2.d">Written specification confirmation before anything is committed.</p></div>
-      <div class="step"><div class="step-no" data-i18n="step3.n">Step 03</div><h3 data-i18n="step3.t">Receive a quotation</h3><p data-i18n="step3.d">Clear pricing within one business day. Final price confirmed in writing.</p></div>
-      <div class="step"><div class="step-no" data-i18n="step4.n">Step 04</div><h3 data-i18n="step4.t">Confirm and receive</h3><p data-i18n="step4.d">Nothing ships until you have seen it and approved it.</p></div>
+<!-- ============ HOW IT WORKS ============ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="how.eyebrow">How Surgronic works</span>
+    <h2 class="sec-title rv" data-i18n="how.title">From requirement to delivery.</h2>
+    <div class="steps">
+      <div class="step rv"><small data-i18n="step1.n">Step 01</small><h3 data-i18n="step1.t">Tell us what you need</h3><p data-i18n="step1.d">Search by name, send a reference, or upload a photograph.</p></div>
+      <div class="step rv"><small data-i18n="step2.n">Step 02</small><h3 data-i18n="step2.t">We confirm the specification</h3><p data-i18n="step2.d">Written specification confirmation before anything is committed.</p></div>
+      <div class="step rv"><small data-i18n="step3.n">Step 03</small><h3 data-i18n="step3.t">Receive a quotation</h3><p data-i18n="step3.d">Clear pricing within one business day. Final price confirmed in writing.</p></div>
+      <div class="step rv"><small data-i18n="step4.n">Step 04</small><h3 data-i18n="step4.t">Confirm and receive</h3><p data-i18n="step4.d">Nothing ships until you have seen it and approved it.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ WHY SURGRONIC ============ -->
-<section class="trust" id="trust" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="container">
-    <span class="eyebrow" data-i18n="trust.eyebrow">Why Surgronic</span>
-    <h2 class="section-title" data-i18n="trust.title">Built for procurement teams.</h2>
+<!-- ============ WHY SURGRONIC (dark) ============ -->
+<section class="why" id="why">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="trust.eyebrow">Why Surgronic</span>
+    <h2 class="sec-title rv" data-i18n="trust.title">Built for procurement teams.</h2>
+    <p class="sec-sub rv" data-i18n="trust.sub2">One catalogue, two supply channels, and a specification-first workflow.</p>
+    <div class="stats">
+      <div class="stat rv"><b><span data-count="8658">8,658</span></b><p data-i18n="trust.1d">Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.</p></div>
+      <div class="stat rv"><b><span data-i18n="trust.2n">2 channels</span></b><p data-i18n="trust.2d">Available from stock or sourced to specification &mdash; one quotation workflow.</p></div>
+      <div class="stat rv"><b><span data-i18n="why.stat3n">1 day</span></b><p data-i18n="why.stat3d">Maximum response time. Every enquiry answered within one business day.</p></div>
+    </div>
+    <div class="promise rv">
+      <blockquote><span class="q">&ldquo;</span><span data-i18n="trust.quote">Nothing ships until you&rsquo;ve seen it and approved it.</span><span class="q">&rdquo;</span></blockquote>
+      <p><b style="color:#fff" data-i18n="why.specT">Written specification confirmation</b> &mdash; <span data-i18n="why.specD">No commitment until the specification is confirmed in writing. Deposit only after your approval.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section id="trust">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="trust.eyebrow2">Credentials</span>
+    <h2 class="sec-title rv" data-i18n="trust.title2">Procurement, engineered.</h2>
+    <p class="sec-sub rv" data-i18n="trust.sub">The credentials that matter to professional buyers &mdash; published as they are confirmed.</p>
     <div class="trust-grid">
-      <div class="trust-item"><b data-i18n="trust.1n">8,658</b><span data-i18n="trust.1d">Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.</span></div>
-      <div class="trust-item"><b data-i18n="trust.2n">2 channels</b><span data-i18n="trust.2d">Available from stock or sourced to specification &mdash; one quotation workflow.</span></div>
+      <div class="trust-card rv">
+        <span class="tbd" data-i18n="trust.certsD">To be provided</span>
+        <h3 data-i18n="trust.certsT">Certifications &amp; standards</h3>
+        <p data-i18n="trust.certsN">Supplier and quality certifications will be listed here once confirmed.</p>
+      </div>
+      <div class="trust-card rv">
+        <span class="tbd" data-i18n="trust.matD">To be provided</span>
+        <h3 data-i18n="trust.matT">Materials &amp; craftsmanship</h3>
+        <p data-i18n="trust.matN">Steel grades, finishes and manufacturing standards will be documented here.</p>
+      </div>
+      <div class="trust-card rv">
+        <span class="tbd" data-i18n="trust.custD">To be provided</span>
+        <h3 data-i18n="trust.custT">Trusted by</h3>
+        <p data-i18n="trust.custN">Customer references will appear here with their permission.</p>
+      </div>
+    </div>
+    <div class="trust-contact rv">
+      <span><b data-i18n="trust.addrLabel">Head office</b>: <span data-i18n="trust.addr">Sisli, Istanbul, Turkey</span></span>
+      <a href="mailto:yusuf@surgronic.com"><b>yusuf@surgronic.com</b></a>
+      <a href="tel:+905526081432"><bdi><b>+90 552 608 1432</b></bdi></a>
     </div>
   </div>
 </section>
 
 <!-- ============ FINAL CTA ============ -->
-<section class="final-cta">
-  <div class="container">
-    <h2 data-i18n="final.title">Have an instrument in mind?<br>Let&rsquo;s find the right specification.</h2>
-    <p data-i18n="final.sub">Send a reference, a name, or a photograph. We respond within one business day.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a class="btn btn-white" href="quote.html"><span data-i18n="final.cta1">Request a Quote</span> <span class="arr">&rarr;</span></a>
-      <a class="btn btn-outline" href="catalogue.html" style="color:#fff;border-color:rgba(255,255,255,.4)" data-i18n="final.cta2">Explore Instruments</a>
+<section style="padding-top:0">
+  <div class="final rv">
+    <div class="wrap" style="padding-top:88px;padding-bottom:88px">
+      <h2 data-i18n="final.title">Have an instrument in mind?<br>Let&rsquo;s find the right specification.</h2>
+      <p data-i18n="final.sub">Send a reference, a name, or a photograph. We respond within one business day.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="quote.html"><span data-i18n="final.cta1">Request a Quote</span> &rarr;</a>
+        <a class="btn btn-ghost-w" href="catalogue.html"><span data-i18n="final.cta2">Explore Instruments</span></a>
+      </div>
     </div>
   </div>
 </section>
+</main>
 
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" aria-label="Surgronic"><svg height="26" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -1598 11224 1828"><g transform="matrix(1 0 0 -1 0 0)"><g transform="translate(0,0)"><path d="M1047 1085V813Q932 861 825.0 885.0Q718 909 623 909Q521 909 471.5 883.5Q422 858 422 805Q422 762 459.5 739.0Q497 716 594 705L657 696Q932 661 1027.0 581.0Q1122 501 1122 330Q1122 151 990.0 61.0Q858 -29 596 -29Q485 -29 366.5 -11.5Q248 6 123 41V313Q230 261 342.5 235.0Q455 209 571 209Q676 209 729.0 238.0Q782 267 782 324Q782 372 745.5 395.5Q709 419 600 432L537 440Q298 470 202.0 551.0Q106 632 106 797Q106 975 228.0 1061.0Q350 1147 602 1147Q701 1147 810.0 1132.0Q919 1117 1047 1085Z" fill="#FFFFFF"/></g><g transform="translate(1239,0)"><path d="M160 436V1120H520V1008Q520 917 519.0 779.5Q518 642 518 596Q518 461 525.0 401.5Q532 342 549 315Q571 280 606.5 261.0Q642 242 688 242Q800 242 864.0 328.0Q928 414 928 567V1120H1286V0H928V162Q847 64 756.5 17.5Q666 -29 557 -29Q363 -29 261.5 90.0Q160 209 160 436Z" fill="#FFFFFF"/></g><g transform="translate(2717,0)"><path d="M1004 815Q957 837 910.5 847.5Q864 858 817 858Q679 858 604.5 769.5Q530 681 530 516V0H172V1120H530V936Q599 1046 688.5 1096.5Q778 1147 903 1147Q921 1147 942.0 1145.5Q963 1144 1003 1139Z" fill="#FFFFFF"/></g><g transform="translate(3747,0)"><path d="M934 190Q860 92 771.0 46.0Q682 0 565 0Q360 0 226.0 161.5Q92 323 92 573Q92 824 226.0 984.5Q360 1145 565 1145Q682 1145 771.0 1099.0Q860 1053 934 954V1120H1294V113Q1294 -157 1123.5 -299.5Q953 -442 629 -442Q524 -442 426.0 -426.0Q328 -410 229 -377V-98Q323 -152 413.0 -178.5Q503 -205 594 -205Q770 -205 852.0 -128.0Q934 -51 934 113ZM698 887Q587 887 525.0 805.0Q463 723 463 573Q463 419 523.0 339.5Q583 260 698 260Q810 260 872.0 342.0Q934 424 934 573Q934 723 872.0 805.0Q810 887 698 887Z" fill="#FFFFFF"/></g><g transform="translate(5233,0)"><path d="M1004 815Q957 837 910.5 847.5Q864 858 817 858Q679 858 604.5 769.5Q530 681 530 516V0H172V1120H530V936Q599 1046 688.5 1096.5Q778 1147 903 1147Q921 1147 942.0 1145.5Q963 1144 1003 1139Z" fill="#FFFFFF"/></g><circle cx="6966" cy="559" r="520" fill="none" stroke="#3186F6" stroke-width="190"/><g transform="translate(7690,0)"><path d="M1298 682V0H938V111V522Q938 667 931.5 722.0Q925 777 909 803Q888 838 852.0 857.5Q816 877 770 877Q658 877 594.0 790.5Q530 704 530 551V0H172V1120H530V956Q611 1054 702.0 1100.5Q793 1147 903 1147Q1097 1147 1197.5 1028.0Q1298 909 1298 682Z" fill="#FFFFFF"/></g><g transform="translate(9168,0)"><path d="M172 1120H530V0H172Z" fill="#FFFFFF"/></g><g fill="#3186F6"><rect x="9471" y="1302" width="96" height="236"/><rect x="9401" y="1372" width="236" height="96"/></g><g transform="translate(9890,0)"><path d="M1077 1085V793Q1004 843 930.5 867.0Q857 891 778 891Q628 891 544.5 803.5Q461 716 461 559Q461 402 544.5 314.5Q628 227 778 227Q862 227 937.5 252.0Q1013 277 1077 326V33Q993 2 906.5 -13.5Q820 -29 733 -29Q430 -29 259.0 126.5Q88 282 88 559Q88 836 259.0 991.5Q430 1147 733 1147Q821 1147 906.5 1131.5Q992 1116 1077 1085Z" fill="#FFFFFF"/></g></g></svg></a>
+        <p data-i18n="footer.tagline">Precision surgical instruments, sourced to specification. From stock or made to order. Inspected before shipment. Serving MENA.</p>
+      </div>
+      <div class="fcol">
+        <h4 data-i18n="footer.catalog">Catalog</h4>
+        <a href="catalogue.html" data-i18n="nav.catalog">Instrument Catalog</a>
+        <a href="quote.html" data-i18n="nav.quote">Request a quote</a>
+      </div>
+      <div class="fcol">
+        <h4 data-i18n="footer.company">Company</h4>
+        <a href="#how" data-i18n="nav.how">How it works</a>
+        <a href="#specialties" data-i18n="spec.eyebrow">Specialties</a>
+        <a href="#why" data-i18n="nav.why">Why Surgronic</a>
+      </div>
+      <div class="fcol">
+        <h4 data-i18n="footer.contact">Contact</h4>
+        <a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a>
+        <a href="tel:+905526081432"><bdi>+90 552 608 1432</bdi></a>
+        <a href="https://wa.me/905526081432" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Surgronic. <span data-i18n="footer.rights">All rights reserved.</span></span>
+      <span data-i18n="foot.note">Timelines are operational targets, not unconditional guarantees.</span>
+    </div>
+  </div>
+</footer>
 <script>
 (function(){
-  /* ---------- Finder: one finder replaces three cards ---------- */
-  (function initFinder(){
-    var tabs = document.querySelectorAll(".finder-tab");
-    var panels = {
-      name: document.getElementById("fpanel-name"),
-      ref: document.getElementById("fpanel-ref"),
-      photo: document.getElementById("fpanel-photo")
-    };
-    function selectTab(name, focus){
-      tabs.forEach(function(t){
-        var on = t.getAttribute("data-tab")===name;
-        t.classList.toggle("on", on);
-        t.setAttribute("aria-selected", on?"true":"false");
-        t.tabIndex = on?0:-1;
-        if(on && focus) t.focus();
-      });
-      Object.keys(panels).forEach(function(k){ if(panels[k]) panels[k].hidden = (k!==name); });
-    }
-    tabs.forEach(function(t){
-      t.addEventListener("click", function(){ selectTab(t.getAttribute("data-tab")); });
-      t.addEventListener("keydown", function(e){
-        var order=["name","ref","photo"], i=order.indexOf(t.getAttribute("data-tab")), n=null;
-        if(e.key==="ArrowRight") n=order[(i+1)%3];
-        else if(e.key==="ArrowLeft") n=order[(i+2)%3];
-        else if(e.key==="Home") n=order[0];
-        else if(e.key==="End") n=order[2];
-        if(n){ e.preventDefault(); selectTab(n, true); }
-      });
-    });
-    /* Name tab -> catalogue search */
-    var goName = document.getElementById("finderGoName");
-    var inName = document.getElementById("finderName");
-    function goCatalogue(q){ location.href = "catalogue.html?q="+encodeURIComponent(q||""); }
-    goName.addEventListener("click", function(){ goCatalogue(inName.value.trim()); });
-    inName.addEventListener("keydown", function(e){ if(e.key==="Enter") goCatalogue(inName.value.trim()); });
-    document.querySelectorAll(".finder-chips .chip").forEach(function(c){
-      c.addEventListener("click", function(){ goCatalogue(c.getAttribute("data-chip")); });
-    });
-    /* Reference tab -> quote form with ref prefilled */
-    var goRef = document.getElementById("finderGoRef");
-    var inRef = document.getElementById("finderRef");
-    function goSourcing(){
-      var r = inRef.value.trim();
-      location.href = "quote.html" + (r ? "?ref="+encodeURIComponent(r) : "") + "#sourcing";
-    }
-    goRef.addEventListener("click", goSourcing);
-    inRef.addEventListener("keydown", function(e){ if(e.key==="Enter") goSourcing(); });
-    /* Photo tab -> quote form photo upload */
-    var photoInput = document.getElementById("finderPhoto");
-    var fileName = document.getElementById("finderFileName");
-    photoInput.addEventListener("change", function(){
-      if(fileName) fileName.textContent = (photoInput.files && photoInput.files[0]) ? photoInput.files[0].name : "";
-    });
-    document.getElementById("finderGoPhoto").addEventListener("click", function(){
-      /* Files cannot cross page navigations; the quote form has its own upload. */
-      location.href = "quote.html#photo";
-    });
-  })();
+"use strict";
+var STRINGS = {
+ "en": {
+  "meta.homeTitle": "Surgronic — Precision Surgical Instruments, Sourced to Your Specification",
+  "meta.catTitle": "Instrument Catalog — Surgronic",
+  "meta.quoteTitle": "Request a Quote — Surgronic",
+  "meta.pdTitle": "Product — Surgronic",
+  "nav.home": "Home",
+  "nav.catalog": "Instrument Catalog",
+  "nav.quote": "Request a Quote",
+  "nav.quoteList": "Quote list",
+  "nav.menu": "Menu",
+  "nav.close": "Close",
+  "footer.tagline": "Precision surgical instruments, sourced to specification. From stock or made to order. Inspected before shipment. Serving MENA.",
+  "footer.catalog": "Catalog",
+  "footer.company": "Company",
+  "footer.contact": "Contact",
+  "footer.how": "How it works",
+  "footer.specialties": "Specialties",
+  "footer.why": "Why Surgronic",
+  "footer.rights": "All rights reserved.",
+  "hero.tagline": "Precision surgical instruments · Stock & sourcing",
+  "hero.title": "Name the instrument. We’ll find it.",
+  "hero.subtitle": "Let's find the right specification.",
+  "hero.lead": "Surgical instruments available from stock or sourced to your requirements. Search by instrument name, manufacturer reference, or specialty—or send us a photograph.",
+  "hero.cta1": "Request a Quote",
+  "hero.cta2": "Explore Instruments",
+  "hero.timelines": "Response within 1 business day · Sourcing typically 1–3 days · Shipping typically 2–5 days",
+  "finder.aria": "Instrument finder",
+  "finder.tab1": "Name",
+  "finder.tab2": "Reference",
+  "finder.tab3": "Photograph",
+  "finder.namePh": "Search by instrument name…",
+  "finder.goName": "Find Instruments",
+  "finder.popular": "Popular:",
+  "finder.refPh": "Enter manufacturer reference or SKU…",
+  "finder.goRef": "Source by Reference",
+  "finder.photoNote": "Photos go to our team for manual identification — never presented as automated recognition.",
+  "finder.goPhoto": "Send Photograph",
+  "promise.eyebrow": "Our promise",
+  "trust.addr": "Sisli, Istanbul, Turkey",
+  "action1.t": "Find an Instrument",
+  "action1.d": "Search by instrument name, manufacturer reference, or specialty.",
+  "action1.b": "Explore Instruments",
+  "action2.t": "Source by Reference",
+  "action2.d": "Submit a manufacturer reference or specification for sourcing.",
+  "action2.b": "Request Sourcing",
+  "action3.t": "Send a Photograph",
+  "action3.d": "Upload a product photo for identification and sourcing review.",
+  "action3.b": "Upload Photo",
+  "channels.eyebrow": "Supply channels",
+  "channels.title": "Two channels. One standard of precision.",
+  "channels.sub": "Catalogued products and stocked products are not the same thing. We are transparent about both.",
+  "channel1.t": "Available from Stock",
+  "channel1.d": "In-stock instruments ship from our inventory. Everything else is sourced to your specification.",
+  "channel1.l": "Explore instruments",
+  "channel2.t": "Sourced to Specification",
+  "channel2.d": "If an instrument is not available from stock, we source it to your exact requirements.",
+  "channel2.l": "Start a sourcing request",
+  "spec.eyebrow": "Specialties",
+  "spec.title": "Explore surgical specialties.",
+  "spec.sub": "Eleven disciplines. One catalogue. Each specialty is a navigable destination.",
+  "how.eyebrow": "How Surgronic works",
+  "how.title": "From requirement to delivery.",
+  "step1.n": "Step 01",
+  "step1.t": "Tell us what you need",
+  "step1.d": "Browse the catalog, send a reference, or upload a photograph.",
+  "step2.n": "Step 02",
+  "step2.t": "We confirm the specification",
+  "step2.d": "Written specification confirmation before anything is committed.",
+  "step3.n": "Step 03",
+  "step3.t": "Receive a quotation",
+  "step3.d": "Clear pricing within one business day. Final price confirmed in writing.",
+  "step4.n": "Step 04",
+  "step4.t": "Confirm and receive",
+  "step4.d": "Nothing ships until you have seen it and approved it.",
+  "feat.eyebrow": "Featured",
+  "feat.title": "Instruments buyers ask for.",
+  "feat.sub": "A curated selection from the live catalogue.",
+  "feat.browse": "Browse all 8,658 instruments",
+  "feat.loading": "Loading featured instruments…",
+  "time.eyebrow": "Operational timelines",
+  "time.title": "Precision sourcing. Clear timelines.",
+  "time.sub": "Our standard operational targets — not unconditional guarantees.",
+  "time1.t": "Response",
+  "time1.d": "Within 1 business day.",
+  "time2.t": "Sourcing",
+  "time2.d": "Typically 1–3 days when sourcing is required.",
+  "time3.t": "Shipping",
+  "time3.d": "Typically 2–5 days, depending on destination and logistics.",
+  "trust.eyebrow": "Why Surgronic",
+  "trust.title": "Built for procurement teams.",
+  "trust.1n": "8,658",
+  "trust.1d": "Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.",
+  "trust.2n": "2 channels",
+  "trust.2d": "Available from stock or sourced to specification — one quotation workflow.",
+  "trust.3n": "1 day",
+  "trust.3d": "Response within one business day. Written specification confirmation before any commitment.",
+  "trust.quote": "“Nothing ships until you’ve seen it and approved it.”",
+  "trust.quoteSub": "Our prevention-over-returns promise — spec confirmation, deposit, pre-shipment inspection photos.",
+  "final.title": "Have an instrument in mind?<br>Let’s find the right specification.",
+  "final.sub": "Send a reference, a name, or a photograph. We respond within one business day.",
+  "final.cta1": "Request a Quote",
+  "final.cta2": "Send a Product Reference",
+  "card.add": "Add to Quote",
+  "card.adding": "Adding…",
+  "card.added": "Added to Quote ✓",
+  "card.details": "View details",
+  "card.por": "Price on request",
+  "card.imgSoon": "Image coming soon",
+  "card.whatsapp": "WhatsApp",
+  "wa.single": "Hello Surgronic, I would like a quotation for {sku}, {name}, quantity {qty}. Please confirm availability and pricing.",
+  "wa.multi": "Hello Surgronic, I would like a quotation for the following items:",
+  "wa.link": "Link",
+  "cat.title": "Instrument catalogue.",
+  "cat.sub": "Guided search across 8,658 catalogued instruments. Filter by specialty, family, and manufacturer.",
+  "cat.searchPh": "Search by name, SKU, or manufacturer reference…",
+  "cat.search": "Search",
+  "cat.allMfr": "All manufacturers",
+  "cat.allFam": "All families",
+  "cat.sortName": "Sort: Name",
+  "cat.sortSku": "Sort: Reference",
+  "cat.sortBrand": "Sort: Brand",
+  "cat.loading": "Loading catalogue…",
+  "cat.of": "of",
+  "cat.catalogued": "catalogued instruments",
+  "cat.page": "Page",
+  "cat.prev": "← Prev",
+  "cat.next": "Next →",
+  "cat.empty.t": "Can’t find your instrument?",
+  "cat.empty.d": "Send us the manufacturer reference or a photograph — we’ll source it and quote.",
+  "cat.empty.b": "Request Sourcing",
+  "cat.unavailable": "The catalogue API is unreachable right now. Please try again in a moment.",
+  "cat.unavailableShort": "Catalogue unavailable",
+  "pd.breadcrumb": "Home",
+  "pd.catalog": "Catalog",
+  "pd.noproduct": "No product reference given.",
+  "pd.back": "Back to catalog",
+  "pd.notfound": "Product not found.",
+  "pd.loading": "Loading product…",
+  "pd.ref": "Reference",
+  "pd.mfr": "Manufacturer",
+  "pd.finishes": "Finishes",
+  "pd.price": "Price",
+  "pd.avail": "Availability",
+  "pd.availV": "From stock or sourced to specification",
+  "pd.disclaimer": "Indicative price, excl. shipping and duties. Final price confirmed in writing. Nothing ships until you've seen it and approved it.",
+  "pd.related": "Related instruments",
+  "pd.unreachable": "The product API is unreachable right now. Please try again in a moment.",
+  "pd.added": "Added ✓",
+  "q.crumb": "Request a Quote",
+  "q.eyebrow": "Quotation request",
+  "q.title": "Request a quotation.",
+  "q.sub": "Review your selection, add any references or a photograph, and send. We respond within one business day.",
+  "q.empty": "Your quote list is empty.",
+  "q.emptyBrowse": "Browse the catalog",
+  "q.emptyOr": "or describe the instrument you need below — you can still send a sourcing request with no items.",
+  "q.yourRequest": "Your Request",
+  "q.units": "units",
+  "q.unit": "unit",
+  "q.addMore": "Add More Instruments",
+  "q.formTitle": "Request Quotation",
+  "q.formSub": "No online payment required. Receive a quotation based on your specifications.",
+  "q.name": "Full name",
+  "q.namePh": "Dr. Jane Smith",
+  "q.email": "Work email",
+  "q.emailPh": "name@hospital.org",
+  "q.company": "Company / Institution",
+  "q.companyPh": "Hospital or distributor name",
+  "q.country": "Country",
+  "q.countryPh": "United Arab Emirates",
+  "q.ref": "Product reference",
+  "q.refPh": "Manufacturer article number, if known",
+  "q.specs": "Specifications",
+  "q.specsPh": "Sizes, materials, finishes, quantities…",
+  "q.photo": "Product photo",
+  "q.photoNote": "Photos go to our team for manual identification — never presented as automated recognition.",
+  "q.submit": "Request Quotation",
+  "q.whatsapp": "Send via WhatsApp",
+  "q.sending": "Sending…",
+  "q.deposit": "Deposit refundable minus costs already committed to the supplier.",
+  "q.finalPrice": "Final price confirmed in writing.",
+  "q.remove": "Remove",
+  "q.dec": "Decrease",
+  "q.inc": "Increase",
+  "q.successT": "Request received.",
+  "q.successD": "Our team will respond within one business day.",
+  "q.successDfb": "Our API is temporarily unreachable — please confirm via WhatsApp so nothing is lost.",
+  "q.successThanks": "Thank you,",
+  "q.waConfirm": "Confirm via WhatsApp",
+  "q.backCatalog": "Back to catalog",
+  "common.loading": "Loading…",
+  "common.error": "Something went wrong. Please try again.",
+  "hero.kicker": "Precision surgical instruments",
+  "finder.tabBy1": "By name",
+  "finder.tabBy2": "By reference",
+  "finder.tabBy3": "By photograph",
+  "finder.drop": "Drag & drop your photo here",
+  "finder.browse": "or browse files",
+  "finder.photoReady": "Photo ready",
+  "finder.photoChange": "Change photo",
+  "finder.nameHelp": "Type any part of the instrument name.",
+  "finder.refHelp": "Paste the manufacturer article number or SKU.",
+  "finder.photoHelp": "Our team identifies it manually — never automated guesswork.",
+  "ch.badge1": "From stock",
+  "ch.badge2": "Sourced to specification",
+  "ch.time1": "Ships from inventory",
+  "ch.time2": "Typically 1–3 days sourcing",
+  "ch.rule": "Stocked items show a stock badge; everything else is sourced, with written specification confirmation.",
+  "ch.cta1": "Browse stock",
+  "ch.cta2": "Start sourcing",
+  "why.stat3n": "1 day",
+  "why.stat3d": "Maximum response time. Every enquiry answered within one business day.",
+  "why.specT": "Written specification confirmation",
+  "why.specD": "No commitment until the specification is confirmed in writing. Deposit only after your approval.",
+  "trust.certsT": "Certifications & standards",
+  "trust.certsD": "To be provided",
+  "trust.certsN": "Supplier and quality certifications will be listed here once confirmed.",
+  "trust.matT": "Materials & craftsmanship",
+  "trust.matD": "To be provided",
+  "trust.matN": "Steel grades, finishes and manufacturing standards will be documented here.",
+  "trust.custT": "Trusted by",
+  "trust.custD": "To be provided",
+  "trust.custN": "Customer references will appear here with their permission.",
+  "trust.sub": "The credentials that matter to professional buyers — published as they are confirmed.",
+  "foot.note": "Timelines are operational targets, not unconditional guarantees.",
+  "feat.skelA": "Loading instrument",
+  "feat.errT": "Could not load featured instruments.",
+  "feat.errB": "Browse the catalogue",
+  "nav.how": "How it works",
+  "nav.why": "Why Surgronic",
+  "hero.scroll": "Scroll",
+  "__specs": [
+   [
+    "General Surgery & Laparoscopy",
+    "The broadest range — retractors, forceps, clamps"
+   ],
+   [
+    "Orthopedics & Trauma",
+    "Bone instruments, fixation, trauma sets"
+   ],
+   [
+    "Oral & Maxillofacial",
+    "Precision instruments for facial surgery"
+   ],
+   [
+    "Plastic, Reconstructive & Aesthetic",
+    "Rhinoplasty and aesthetic surgery range"
+   ],
+   [
+    "Cardiovascular & Thoracic",
+    "Cardiac and thoracic instrumentation"
+   ],
+   [
+    "Neurosurgery & Spine",
+    "Micro-instruments for neuro and spinal work"
+   ],
+   [
+    "Ophthalmology",
+    "Delicate eye-surgery instruments"
+   ],
+   [
+    "ENT",
+    "Ear, nose and throat instrumentation"
+   ],
+   [
+    "OB/GYN & Urology",
+    "Obstetric, gynecologic and urologic tools"
+   ],
+   [
+    "Energy & Powered Systems",
+    "Electrosurgical and powered instruments"
+   ],
+   [
+    "Dental & Implant Surgery",
+    "Dental and implantology instruments"
+   ]
+  ],
+  "trust.title2": "Procurement, engineered.",
+  "strip.1b": "1 business day",
+  "strip.1d": "response",
+  "strip.2b": "1–3 days",
+  "strip.2d": "sourcing",
+  "strip.3b": "2–5 days",
+  "strip.3d": "shipping",
+  "hero.tagFrom": "From our catalogued range",
+  "hero.tagCat": "8,658 instruments",
+  "trust.sub2": "One catalogue, two supply channels, and a specification-first workflow.",
+  "trust.eyebrow2": "Credentials",
+  "trust.addrLabel": "Head office"
+ },
+ "fr": {
+  "meta.homeTitle": "Surgronic — Instruments chirurgicaux de précision, sourcés selon vos spécifications",
+  "meta.catTitle": "Catalogue d'instruments — Surgronic",
+  "meta.quoteTitle": "Demander un devis — Surgronic",
+  "meta.pdTitle": "Produit — Surgronic",
+  "nav.home": "Accueil",
+  "nav.catalog": "Catalogue d'instruments",
+  "nav.quote": "Demander un devis",
+  "nav.quoteList": "Liste de devis",
+  "nav.menu": "Menu",
+  "nav.close": "Fermer",
+  "footer.tagline": "Instruments chirurgicaux de précision, sourcés selon vos spécifications. En stock ou fabriqués sur commande. Inspectés avant expédition. Au service de la région MENA.",
+  "footer.catalog": "Catalogue",
+  "footer.company": "Entreprise",
+  "footer.contact": "Contact",
+  "footer.how": "Fonctionnement",
+  "footer.specialties": "Spécialités",
+  "footer.why": "Pourquoi Surgronic",
+  "footer.rights": "Tous droits réservés.",
+  "hero.tagline": "Instruments chirurgicaux de précision · Stock & sourcing",
+  "hero.title": "Nommez l’instrument. Nous le trouverons.",
+  "hero.subtitle": "Trouvons la bonne spécification.",
+  "hero.lead": "Instruments chirurgicaux disponibles en stock ou sourcés selon vos exigences. Recherchez par nom d'instrument, référence fabricant ou spécialité—ou envoyez-nous une photographie.",
+  "hero.cta1": "Demander un devis",
+  "hero.cta2": "Explorer les instruments",
+  "hero.timelines": "Réponse sous 1 jour ouvré · Sourcing généralement 1–3 jours · Expédition généralement 2–5 jours",
+  "finder.aria": "Recherche d’instrument",
+  "finder.tab1": "Nom",
+  "finder.tab2": "Référence",
+  "finder.tab3": "Photographie",
+  "finder.namePh": "Rechercher par nom d’instrument…",
+  "finder.goName": "Trouver des instruments",
+  "finder.popular": "Populaires :",
+  "finder.refPh": "Saisissez la référence fabricant ou le SKU…",
+  "finder.goRef": "Sourcer par référence",
+  "finder.photoNote": "Les photos sont envoyées à notre équipe pour identification manuelle — jamais présentées comme une reconnaissance automatisée.",
+  "finder.goPhoto": "Envoyer la photo",
+  "promise.eyebrow": "Notre promesse",
+  "trust.addr": "Sisli, Istanbul, Turquie",
+  "action1.t": "Trouver un instrument",
+  "action1.d": "Recherchez par nom d'instrument, référence fabricant ou spécialité.",
+  "action1.b": "Explorer les instruments",
+  "action2.t": "Sourcer par référence",
+  "action2.d": "Soumettez une référence fabricant ou une spécification pour le sourcing.",
+  "action2.b": "Demander un sourcing",
+  "action3.t": "Envoyer une photographie",
+  "action3.d": "Téléchargez une photo du produit pour identification et examen.",
+  "action3.b": "Télécharger une photo",
+  "channels.eyebrow": "Canaux d'approvisionnement",
+  "channels.title": "Deux canaux. Une même exigence de précision.",
+  "channels.sub": "Les produits catalogués et les produits en stock ne sont pas la même chose. Nous sommes transparents sur les deux.",
+  "channel1.t": "Disponible en stock",
+  "channel1.d": "Les instruments en stock sont expédiés depuis notre inventaire. Tout le reste est sourcé selon vos spécifications.",
+  "channel1.l": "Explorer les instruments",
+  "channel2.t": "Sourcé sur spécification",
+  "channel2.d": "Si un instrument n'est pas disponible en stock, nous le sourçons selon vos exigences exactes.",
+  "channel2.l": "Démarrer une demande",
+  "spec.eyebrow": "Spécialités",
+  "spec.title": "Explorez les spécialités chirurgicales.",
+  "spec.sub": "Onze disciplines. Un seul catalogue. Chaque spécialité est une destination navigable.",
+  "how.eyebrow": "Fonctionnement de Surgronic",
+  "how.title": "Du besoin à la livraison.",
+  "step1.n": "Étape 01",
+  "step1.t": "Dites-nous ce qu'il vous faut",
+  "step1.d": "Parcourez le catalogue, envoyez une référence ou téléversez une photographie.",
+  "step2.n": "Étape 02",
+  "step2.t": "Nous confirmons la spécification",
+  "step2.d": "Confirmation écrite des spécifications avant tout engagement.",
+  "step3.n": "Étape 03",
+  "step3.t": "Recevez un devis",
+  "step3.d": "Tarification claire sous un jour ouvré. Prix final confirmé par écrit.",
+  "step4.n": "Étape 04",
+  "step4.t": "Confirmez et recevez",
+  "step4.d": "Rien n'est expédié avant que vous l'ayez vu et approuvé.",
+  "feat.eyebrow": "En vedette",
+  "feat.title": "Les instruments les plus demandés.",
+  "feat.sub": "Une sélection du catalogue en direct.",
+  "feat.browse": "Parcourir les 8 658 instruments",
+  "feat.loading": "Chargement des instruments en vedette…",
+  "time.eyebrow": "Délais opérationnels",
+  "time.title": "Sourcing de précision. Des délais clairs.",
+  "time.sub": "Nos objectifs opérationnels standards — sans garantie inconditionnelle.",
+  "time1.t": "Réponse",
+  "time1.d": "Sous 1 jour ouvré.",
+  "time2.t": "Sourcing",
+  "time2.d": "Généralement 1 à 3 jours lorsque le sourcing est requis.",
+  "time3.t": "Expédition",
+  "time3.d": "Généralement 2 à 5 jours, selon la destination et la logistique.",
+  "trust.eyebrow": "Pourquoi Surgronic",
+  "trust.title": "Conçu pour les équipes d’approvisionnement.",
+  "trust.1n": "8 658",
+  "trust.1d": "Instruments catalogués dans 11 spécialités chirurgicales, recherchables par nom, SKU et référence fabricant.",
+  "trust.2n": "2 canaux",
+  "trust.2d": "Disponible en stock ou sourcé sur spécification — un seul flux de devis.",
+  "trust.3n": "1 jour",
+  "trust.3d": "Réponse sous un jour ouvré. Confirmation écrite des spécifications avant tout engagement.",
+  "trust.quote": "« Rien n'est expédié avant que vous l'ayez vu et approuvé. »",
+  "trust.quoteSub": "Notre promesse de prévention plutôt que de retours — confirmation des spécifications, acompte, photos d'inspection avant expédition.",
+  "final.title": "Un instrument en tête ?<br>Trouvons la bonne spécification.",
+  "final.sub": "Envoyez une référence, un nom ou une photographie. Nous répondons sous un jour ouvré.",
+  "final.cta1": "Demander un devis",
+  "final.cta2": "Envoyer une référence produit",
+  "card.add": "Ajouter au devis",
+  "card.adding": "Ajout…",
+  "card.added": "Ajouté au devis ✓",
+  "card.details": "Voir les détails",
+  "card.por": "Prix sur demande",
+  "card.imgSoon": "Image bientôt disponible",
+  "card.whatsapp": "WhatsApp",
+  "wa.single": "Bonjour Surgronic, je souhaite un devis pour {sku}, {name}, quantité {qty}. Merci de confirmer la disponibilité et le prix.",
+  "wa.multi": "Bonjour Surgronic, je souhaite un devis pour les articles suivants :",
+  "wa.link": "Lien",
+  "cat.title": "Catalogue d'instruments.",
+  "cat.sub": "Recherche guidée parmi 8 658 instruments catalogués. Filtrez par spécialité, famille et fabricant.",
+  "cat.searchPh": "Rechercher par nom, SKU ou référence fabricant…",
+  "cat.search": "Rechercher",
+  "cat.allMfr": "Tous les fabricants",
+  "cat.allFam": "Toutes les familles",
+  "cat.sortName": "Tri : Nom",
+  "cat.sortSku": "Tri : Référence",
+  "cat.sortBrand": "Tri : Marque",
+  "cat.loading": "Chargement du catalogue…",
+  "cat.of": "sur",
+  "cat.catalogued": "instruments catalogués",
+  "cat.page": "Page",
+  "cat.prev": "← Préc.",
+  "cat.next": "Suiv. →",
+  "cat.empty.t": "Vous ne trouvez pas votre instrument ?",
+  "cat.empty.d": "Envoyez-nous la référence fabricant ou une photographie — nous le sourcerons et chiffrerons.",
+  "cat.empty.b": "Demander un sourcing",
+  "cat.unavailable": "L'API du catalogue est momentanément inaccessible. Veuillez réessayer dans un instant.",
+  "cat.unavailableShort": "Catalogue indisponible",
+  "pd.breadcrumb": "Accueil",
+  "pd.catalog": "Catalogue",
+  "pd.noproduct": "Aucune référence produit fournie.",
+  "pd.back": "Retour au catalogue",
+  "pd.notfound": "Produit introuvable.",
+  "pd.loading": "Chargement du produit…",
+  "pd.ref": "Référence",
+  "pd.mfr": "Fabricant",
+  "pd.finishes": "Finitions",
+  "pd.price": "Prix",
+  "pd.avail": "Disponibilité",
+  "pd.availV": "En stock ou sourcé sur spécification",
+  "pd.disclaimer": "Prix indicatif, hors livraison et droits de douane. Prix final confirmé par écrit. Rien n'est expédié avant que vous l'ayez vu et approuvé.",
+  "pd.related": "Instruments associés",
+  "pd.unreachable": "L'API produit est momentanément inaccessible. Veuillez réessayer dans un instant.",
+  "pd.added": "Ajouté ✓",
+  "q.crumb": "Demander un devis",
+  "q.eyebrow": "Demande de devis",
+  "q.title": "Demander un devis.",
+  "q.sub": "Vérifiez votre sélection, ajoutez des références ou une photographie, puis envoyez. Nous répondons sous un jour ouvré.",
+  "q.empty": "Votre liste de devis est vide.",
+  "q.emptyBrowse": "Parcourir le catalogue",
+  "q.emptyOr": "ou décrivez l'instrument ci-dessous — vous pouvez envoyer une demande même sans articles.",
+  "q.yourRequest": "Votre demande",
+  "q.units": "unités",
+  "q.unit": "unité",
+  "q.addMore": "Ajouter des instruments",
+  "q.formTitle": "Demander un devis",
+  "q.formSub": "Aucun paiement en ligne requis. Recevez un devis basé sur vos spécifications.",
+  "q.name": "Nom complet",
+  "q.namePh": "Dr. Jeanne Dupont",
+  "q.email": "E-mail professionnel",
+  "q.emailPh": "nom@hopital.fr",
+  "q.company": "Société / Établissement",
+  "q.companyPh": "Nom de l'hôpital ou du distributeur",
+  "q.country": "Pays",
+  "q.countryPh": "Émirats arabes unis",
+  "q.ref": "Référence produit",
+  "q.refPh": "Numéro d'article fabricant, si connu",
+  "q.specs": "Spécifications",
+  "q.specsPh": "Tailles, matériaux, finitions, quantités…",
+  "q.photo": "Photo du produit",
+  "q.photoNote": "Les photos sont transmises à notre équipe pour identification manuelle — jamais présentées comme une reconnaissance automatisée.",
+  "q.submit": "Demander un devis",
+  "q.whatsapp": "Envoyer via WhatsApp",
+  "q.sending": "Envoi…",
+  "q.deposit": "Acompte remboursable moins les coûts déjà engagés auprès du fournisseur.",
+  "q.finalPrice": "Prix final confirmé par écrit.",
+  "q.remove": "Retirer",
+  "q.dec": "Diminuer",
+  "q.inc": "Augmenter",
+  "q.successT": "Demande reçue.",
+  "q.successD": "Notre équipe répondra sous un jour ouvré.",
+  "q.successDfb": "Notre API est momentanément inaccessible — veuillez confirmer via WhatsApp pour ne rien perdre.",
+  "q.successThanks": "Merci,",
+  "q.waConfirm": "Confirmer via WhatsApp",
+  "q.backCatalog": "Retour au catalogue",
+  "common.loading": "Chargement…",
+  "common.error": "Une erreur est survenue. Veuillez réessayer.",
+  "hero.kicker": "Instruments chirurgicaux de précision",
+  "finder.tabBy1": "Par nom",
+  "finder.tabBy2": "Par référence",
+  "finder.tabBy3": "Par photo",
+  "finder.drop": "Glissez-déposez votre photo ici",
+  "finder.browse": "ou parcourez vos fichiers",
+  "finder.photoReady": "Photo prête",
+  "finder.photoChange": "Changer de photo",
+  "finder.nameHelp": "Tapez tout ou partie du nom de l’instrument.",
+  "finder.refHelp": "Collez la référence fabricant ou le SKU.",
+  "finder.photoHelp": "Notre équipe l’identifie manuellement — jamais de reconnaissance automatisée.",
+  "ch.badge1": "En stock",
+  "ch.badge2": "Sourcé sur spécification",
+  "ch.time1": "Expédié depuis notre stock",
+  "ch.time2": "Sourcing typique 1–3 jours",
+  "ch.rule": "Les articles en stock affichent un badge de stock ; tout le reste est sourcé, avec confirmation écrite de la spécification.",
+  "ch.cta1": "Voir le stock",
+  "ch.cta2": "Lancer un sourcing",
+  "why.stat3n": "1 jour",
+  "why.stat3d": "Délai de réponse maximal. Chaque demande reçoit une réponse sous un jour ouvré.",
+  "why.specT": "Confirmation écrite de la spécification",
+  "why.specD": "Aucun engagement avant confirmation écrite de la spécification. Acompte uniquement après votre approbation.",
+  "trust.certsT": "Certifications et normes",
+  "trust.certsD": "À fournir",
+  "trust.certsN": "Les certifications fournisseurs et qualité seront listées ici une fois confirmées.",
+  "trust.matT": "Matériaux et fabrication",
+  "trust.matD": "À fournir",
+  "trust.matN": "Nuances d’acier, finitions et normes de fabrication seront documentées ici.",
+  "trust.custT": "Ils nous font confiance",
+  "trust.custD": "À fournir",
+  "trust.custN": "Les références clients apparaîtront ici avec leur accord.",
+  "trust.sub": "Les garanties qui comptent pour les acheteurs professionnels — publiées au fur et à mesure de leur confirmation.",
+  "foot.note": "Les délais sont des objectifs opérationnels, pas des garanties inconditionnelles.",
+  "feat.skelA": "Chargement de l’instrument",
+  "feat.errT": "Impossible de charger les instruments en vedette.",
+  "feat.errB": "Parcourir le catalogue",
+  "nav.how": "Comment ça marche",
+  "nav.why": "Pourquoi Surgronic",
+  "hero.scroll": "Défiler",
+  "__specs": [
+   [
+    "Chirurgie générale & laparoscopie",
+    "La gamme la plus large — écarteurs, pinces, clamps"
+   ],
+   [
+    "Orthopédie & traumatologie",
+    "Instruments osseux, fixation, sets de traumatologie"
+   ],
+   [
+    "Chirurgie orale & maxillo-faciale",
+    "Instruments de précision pour la chirurgie faciale"
+   ],
+   [
+    "Chirurgie plastique, reconstructrice & esthétique",
+    "Gamme rhinoplastie et chirurgie esthétique"
+   ],
+   [
+    "Chirurgie cardiovasculaire & thoracique",
+    "Instrumentation cardiaque et thoracique"
+   ],
+   [
+    "Neurochirurgie & rachis",
+    "Micro-instruments pour la neurochirurgie et le rachis"
+   ],
+   [
+    "Ophtalmologie",
+    "Instruments délicats de chirurgie oculaire"
+   ],
+   [
+    "ORL",
+    "Instrumentation oto-rhino-laryngologique"
+   ],
+   [
+    "Gynécologie-obstétrique & urologie",
+    "Outils obstétricaux, gynécologiques et urologiques"
+   ],
+   [
+    "Systèmes énergétiques & motorisés",
+    "Instruments électrochirurgicaux et motorisés"
+   ],
+   [
+    "Chirurgie dentaire & implantaire",
+    "Instruments dentaires et d'implantologie"
+   ]
+  ],
+  "trust.title2": "L’approvisionnement, conçu comme une ingénierie.",
+  "strip.1b": "1 jour ouvré",
+  "strip.1d": "réponse",
+  "strip.2b": "1–3 jours",
+  "strip.2d": "sourcing",
+  "strip.3b": "2–5 jours",
+  "strip.3d": "expédition",
+  "hero.tagFrom": "De notre gamme cataloguée",
+  "hero.tagCat": "8 658 instruments",
+  "trust.sub2": "Un catalogue, deux canaux d’approvisionnement et un workflow axé sur la spécification.",
+  "trust.eyebrow2": "Références",
+  "trust.addrLabel": "Siège"
+ },
+ "ar": {
+  "meta.homeTitle": "سورجرونيك — أدوات جراحية دقيقة، توريد حسب مواصفاتكم",
+  "meta.catTitle": "كتالوج الأدوات — سورجرونيك",
+  "meta.quoteTitle": "طلب عرض سعر — سورجرونيك",
+  "meta.pdTitle": "المنتج — سورجرونيك",
+  "nav.home": "الرئيسية",
+  "nav.catalog": "كتالوج الأدوات",
+  "nav.quote": "طلب عرض سعر",
+  "nav.quoteList": "قائمة عروض الأسعار",
+  "nav.menu": "القائمة",
+  "nav.close": "إغلاق",
+  "footer.tagline": "أدوات جراحية دقيقة، يتم توريدها حسب مواصفاتكم. من المخزون أو مصنوعة حسب الطلب. تُفحص قبل الشحن. نخدم منطقة الشرق الأوسط وشمال أفريقيا.",
+  "footer.catalog": "الكتالوج",
+  "footer.company": "الشركة",
+  "footer.contact": "اتصل بنا",
+  "footer.how": "كيف نعمل",
+  "footer.specialties": "التخصصات",
+  "footer.why": "لماذا سورجرونيك",
+  "footer.rights": "جميع الحقوق محفوظة.",
+  "hero.tagline": "أدوات جراحية دقيقة · مخزون وتوريد",
+  "hero.title": "سمِّ الأداة. وسنجدها.",
+  "hero.subtitle": "لنجد المواصفة الصحيحة.",
+  "hero.lead": "أدوات جراحية متوفرة من المخزون أو يتم توريدها حسب متطلباتك. ابحث باسم الأداة أو مرجع الشركة المصنعة أو التخصص—أو أرسل لنا صورة.",
+  "hero.cta1": "طلب عرض سعر",
+  "hero.cta2": "استكشف الأدوات",
+  "hero.timelines": "الرد خلال يوم عمل واحد · التوريد عادة 1–3 أيام · الشحن عادة 2–5 أيام",
+  "finder.aria": "الباحث عن الأدوات",
+  "finder.tab1": "الاسم",
+  "finder.tab2": "المرجع",
+  "finder.tab3": "صورة",
+  "finder.namePh": "ابحث باسم الأداة…",
+  "finder.goName": "ابحث عن الأدوات",
+  "finder.popular": "شائع:",
+  "finder.refPh": "أدخل مرجع الشركة المصنعة أو رمز SKU…",
+  "finder.goRef": "توريد بالمرجع",
+  "finder.photoNote": "تُرسل الصور إلى فريقنا للتعريف اليدوي — ولا تُعرض أبدًا على أنها تعرّف آلي.",
+  "finder.goPhoto": "إرسال صورة",
+  "promise.eyebrow": "وعدنا",
+  "trust.addr": "شيشلي، إسطنبول، تركيا",
+  "action1.t": "ابحث عن أداة",
+  "action1.d": "ابحث باسم الأداة أو مرجع الشركة المصنعة أو التخصص.",
+  "action1.b": "استكشف الأدوات",
+  "action2.t": "التوريد بالمرجع",
+  "action2.d": "أرسل مرجع الشركة المصنعة أو المواصفات للتوريد.",
+  "action2.b": "طلب توريد",
+  "action3.t": "أرسل صورة",
+  "action3.d": "حمّل صورة المنتج للتعريف ومراجعة التوريد.",
+  "action3.b": "تحميل صورة",
+  "channels.eyebrow": "قنوات التوريد",
+  "channels.title": "قناتان. معيار واحد للدقة.",
+  "channels.sub": "المنتجات المسجلة في الكتالوج ليست هي نفسها المنتجات المتوفرة في المخزون. نحن واضحون بشأن كليهما.",
+  "channel1.t": "متوفر من المخزون",
+  "channel1.d": "الأدوات المتوفرة في المخزون تُشحن من مخزوننا. كل ما عداها يتم توريده حسب مواصفاتك.",
+  "channel1.l": "استكشف الأدوات",
+  "channel2.t": "توريد حسب المواصفات",
+  "channel2.d": "إذا لم يكن الأداة متوفرة في المخزون، نقوم بتوريدها وفقًا لمتطلباتك الدقيقة.",
+  "channel2.l": "ابدأ طلب توريد",
+  "spec.eyebrow": "التخصصات",
+  "spec.title": "استكشف التخصصات الجراحية.",
+  "spec.sub": "أحد عشر تخصصًا. كتالوج واحد. كل تخصص وجهة قابلة للتصفح.",
+  "how.eyebrow": "كيف تعمل سورجرونيك",
+  "how.title": "من الاحتياج إلى التسليم.",
+  "step1.n": "الخطوة 01",
+  "step1.t": "أخبرنا بما تحتاجه",
+  "step1.d": "تصفح الكتالوج أو أرسل مرجعًا أو ارفع صورة.",
+  "step2.n": "الخطوة 02",
+  "step2.t": "نؤكد المواصفات",
+  "step2.d": "تأكيد كتابي للمواصفات قبل أي التزام.",
+  "step3.n": "الخطوة 03",
+  "step3.t": "استلم عرض السعر",
+  "step3.d": "أسعار واضحة خلال يوم عمل واحد. السعر النهائي مؤكد كتابيًا.",
+  "step4.n": "الخطوة 04",
+  "step4.t": "أكّد واستلم",
+  "step4.d": "لا يُشحن شيء حتى تراه وتعتمده.",
+  "feat.eyebrow": "مميز",
+  "feat.title": "الأدوات الأكثر طلبًا.",
+  "feat.sub": "مختارات من الكتالوج المباشر.",
+  "feat.browse": "تصفح جميع الأدوات البالغ عددها 8,658",
+  "feat.loading": "جاري تحميل الأدوات المميزة…",
+  "time.eyebrow": "الجداول الزمنية التشغيلية",
+  "time.title": "توريد دقيق. جداول واضحة.",
+  "time.sub": "أهدافنا التشغيلية القياسية — وليست ضمانات غير مشروطة.",
+  "time1.t": "الرد",
+  "time1.d": "خلال يوم عمل واحد.",
+  "time2.t": "التوريد",
+  "time2.d": "عادة من يوم إلى 3 أيام عند الحاجة إلى التوريد.",
+  "time3.t": "الشحن",
+  "time3.d": "عادة من يومين إلى 5 أيام، حسب الوجهة والخدمات اللوجستية.",
+  "trust.eyebrow": "لماذا سورجرونيك",
+  "trust.title": "مصمم لفرق التوريد.",
+  "trust.1n": "8,658",
+  "trust.1d": "أداة مفهرسة في 11 تخصصًا جراحيًا، قابلة للبحث بالاسم وSKU ومرجع الشركة المصنعة.",
+  "trust.2n": "قناتان",
+  "trust.2d": "متوفر من المخزون أو توريد حسب المواصفات — سير عمل واحد لعروض الأسعار.",
+  "trust.3n": "يوم واحد",
+  "trust.3d": "الرد خلال يوم عمل واحد. تأكيد كتابي للمواصفات قبل أي التزام.",
+  "trust.quote": "“لا يُشحن شيء حتى تراه وتعتمده.”",
+  "trust.quoteSub": "وعدنا بالوقاية بدل الإرجاع — تأكيد المواصفات، العربون، صور الفحص قبل الشحن.",
+  "final.title": "لديك أداة في ذهنك؟<br>لنجد المواصفة المناسبة.",
+  "final.sub": "أرسل مرجعًا أو اسمًا أو صورة. نرد خلال يوم عمل واحد.",
+  "final.cta1": "طلب عرض سعر",
+  "final.cta2": "أرسل مرجع منتج",
+  "card.add": "أضف إلى عرض السعر",
+  "card.adding": "جاري الإضافة…",
+  "card.added": "أُضيفت إلى عرض السعر ✓",
+  "card.details": "عرض التفاصيل",
+  "card.por": "السعر عند الطلب",
+  "card.imgSoon": "الصورة قريبًا",
+  "card.whatsapp": "واتساب",
+  "wa.single": "مرحبًا Surgronic، أرغب في عرض سعر لـ {sku}، {name}، الكمية {qty}. يرجى تأكيد التوفر والسعر.",
+  "wa.multi": "مرحبًا Surgronic، أرغب في عرض سعر للأصناف التالية:",
+  "wa.link": "الرابط",
+  "cat.title": "كتالوج الأدوات.",
+  "cat.sub": "بحث موجّه في 8,658 أداة مفهرسة. صفِّ حسب التخصص والعائلة والشركة المصنعة.",
+  "cat.searchPh": "ابحث بالاسم أو SKU أو مرجع الشركة المصنعة…",
+  "cat.search": "بحث",
+  "cat.allMfr": "كل الشركات المصنعة",
+  "cat.allFam": "كل العائلات",
+  "cat.sortName": "ترتيب: الاسم",
+  "cat.sortSku": "ترتيب: المرجع",
+  "cat.sortBrand": "ترتيب: العلامة",
+  "cat.loading": "جاري تحميل الكتالوج…",
+  "cat.of": "من",
+  "cat.catalogued": "أداة مفهرسة",
+  "cat.page": "صفحة",
+  "cat.prev": "← السابق",
+  "cat.next": "التالي →",
+  "cat.empty.t": "لم تجد أداتك؟",
+  "cat.empty.d": "أرسل لنا مرجع الشركة المصنعة أو صورة — سنوردها ونقدم عرض السعر.",
+  "cat.empty.b": "طلب توريد",
+  "cat.unavailable": "واجهة الكتالوج غير متاحة حاليًا. حاول مجددًا بعد قليل.",
+  "cat.unavailableShort": "الكتالوج غير متاح",
+  "pd.breadcrumb": "الرئيسية",
+  "pd.catalog": "الكتالوج",
+  "pd.noproduct": "لم يتم تقديم مرجع المنتج.",
+  "pd.back": "عودة إلى الكتالوج",
+  "pd.notfound": "المنتج غير موجود.",
+  "pd.loading": "جاري تحميل المنتج…",
+  "pd.ref": "المرجع",
+  "pd.mfr": "الشركة المصنعة",
+  "pd.finishes": "التشطيبات",
+  "pd.price": "السعر",
+  "pd.avail": "التوفر",
+  "pd.availV": "من المخزون أو توريد حسب المواصفات",
+  "pd.disclaimer": "سعر استرشادي، لا يشمل الشحن والرسوم الجمركية. السعر النهائي مؤكد كتابيًا. لا يُشحن شيء حتى تراه وتعتمده.",
+  "pd.related": "أدوات ذات صلة",
+  "pd.unreachable": "واجهة المنتج غير متاحة حاليًا. حاول مجددًا بعد قليل.",
+  "pd.added": "أُضيفت ✓",
+  "q.crumb": "طلب عرض سعر",
+  "q.eyebrow": "طلب عرض سعر",
+  "q.title": "اطلب عرض سعر.",
+  "q.sub": "راجع اختيارك، وأضف أي مراجع أو صورة، ثم أرسل. نرد خلال يوم عمل واحد.",
+  "q.empty": "قائمة عرض السعر فارغة.",
+  "q.emptyBrowse": "تصفح الكتالوج",
+  "q.emptyOr": "أو صف الأداة التي تحتاجها أدناه — يمكنك إرسال طلب توريد دون عناصر.",
+  "q.yourRequest": "طلبك",
+  "q.units": "وحدات",
+  "q.unit": "وحدة",
+  "q.addMore": "أضف المزيد من الأدوات",
+  "q.formTitle": "طلب عرض سعر",
+  "q.formSub": "لا يلزم الدفع عبر الإنترنت. استلم عرض سعر بناءً على مواصفاتك.",
+  "q.name": "الاسم الكامل",
+  "q.namePh": "د. أحمد محمد",
+  "q.email": "البريد الإلكتروني المهني",
+  "q.emailPh": "name@hospital.org",
+  "q.company": "الشركة / المؤسسة",
+  "q.companyPh": "اسم المستشفى أو الموزع",
+  "q.country": "البلد",
+  "q.countryPh": "الإمارات العربية المتحدة",
+  "q.ref": "مرجع المنتج",
+  "q.refPh": "رقم مقال الشركة المصنعة، إن وُجد",
+  "q.specs": "المواصفات",
+  "q.specsPh": "المقاسات، المواد، التشطيبات، الكميات…",
+  "q.photo": "صورة المنتج",
+  "q.photoNote": "تُرسل الصور إلى فريقنا للتحديد اليدوي — ولا تُعرض أبدًا كتعرف آلي.",
+  "q.submit": "طلب عرض سعر",
+  "q.whatsapp": "إرسال عبر واتساب",
+  "q.sending": "جاري الإرسال…",
+  "q.deposit": "العربون قابل للاسترداد مطروحًا منه التكاليف الملتزم بها لدى المورد.",
+  "q.finalPrice": "السعر النهائي مؤكد كتابيًا.",
+  "q.remove": "إزالة",
+  "q.dec": "إنقاص",
+  "q.inc": "زيادة",
+  "q.successT": "تم استلام الطلب.",
+  "q.successD": "سيرد فريقنا خلال يوم عمل واحد.",
+  "q.successDfb": "واجهتنا مشكلة مؤقتة — يرجى التأكيد عبر واتساب حتى لا يُفقد شيء.",
+  "q.successThanks": "شكرًا،",
+  "q.waConfirm": "التأكيد عبر واتساب",
+  "q.backCatalog": "عودة إلى الكتالوج",
+  "common.loading": "جاري التحميل…",
+  "common.error": "حدث خطأ ما. حاول مجددًا.",
+  "hero.kicker": "أدوات جراحية دقيقة",
+  "finder.tabBy1": "بالاسم",
+  "finder.tabBy2": "بالمرجع",
+  "finder.tabBy3": "بالصورة",
+  "finder.drop": "اسحب صورتك وأفلتها هنا",
+  "finder.browse": "أو تصفح الملفات",
+  "finder.photoReady": "الصورة جاهزة",
+  "finder.photoChange": "تغيير الصورة",
+  "finder.nameHelp": "اكتب جزءاً من اسم الأداة.",
+  "finder.refHelp": "الصق المرجع الخاص بالشركة المصنعة أو رمز SKU.",
+  "finder.photoHelp": "فريقنا يحددها يدوياً — دون تخمين آلي.",
+  "ch.badge1": "من المخزون",
+  "ch.badge2": "توريد حسب المواصفات",
+  "ch.time1": "يُشحن من مخزوننا",
+  "ch.time2": "التوريد عادة 1–3 أيام",
+  "ch.rule": "الأصناف المتوفرة في المخزون تحمل شارة مخزون؛ وكل ما عدا ذلك يتم توريده مع تأكيد كتابي للمواصفات.",
+  "ch.cta1": "تصفح المخزون",
+  "ch.cta2": "ابدأ التوريد",
+  "why.stat3n": "يوم واحد",
+  "why.stat3d": "أقصى مدة للرد. كل طلب يحصل على رد خلال يوم عمل واحد.",
+  "why.specT": "تأكيد كتابي للمواصفات",
+  "why.specD": "لا التزام قبل التأكيد الكتابي للمواصفات. الدفعة المقدمة فقط بعد موافقتك.",
+  "trust.certsT": "الشهادات والمعايير",
+  "trust.certsD": "سيتم توفيرها",
+  "trust.certsN": "سيتم إدراج شهادات الموردين ومعايير الجودة هنا فور تأكيدها.",
+  "trust.matT": "المواد والحرفية",
+  "trust.matD": "سيتم توفيرها",
+  "trust.matN": "سيتم توثيق درجات الفولاذ والتشطيبات ومعايير التصنيع هنا.",
+  "trust.custT": "موضع ثقتنا",
+  "trust.custD": "سيتم توفيرها",
+  "trust.custN": "ستظهر مراجع العملاء هنا بموافقتهم.",
+  "trust.sub": "الضمانات التي تهم المشترين المحترفين — تُنشر فور تأكيدها.",
+  "foot.note": "المدد الزمنية أهداف تشغيلية، ليست ضمانات غير مشروطة.",
+  "feat.skelA": "جارِ تحميل الأداة",
+  "feat.errT": "تعذر تحميل الأدوات المميزة.",
+  "feat.errB": "تصفح الكتالوج",
+  "nav.how": "كيف نعمل",
+  "nav.why": "لماذا سورجرونيك",
+  "hero.scroll": "مرر",
+  "__specs": [
+   [
+    "الجراحة العامة والمناظير",
+    "أوسع تشكيلة — مباعدات، ملاقط، مشابك"
+   ],
+   [
+    "جراحة العظام والكسور",
+    "أدوات العظام، التثبيت، أطقم الكسور"
+   ],
+   [
+    "جراحة الفم والوجه والفكين",
+    "أدوات دقيقة لجراحة الوجه"
+   ],
+   [
+    "الجراحة التجميلية والترميمية",
+    "تشكيلة تجميل الأنف والجراحة التجميلية"
+   ],
+   [
+    "جراحة القلب والصدر",
+    "أدوات جراحة القلب والصدر"
+   ],
+   [
+    "جراحة الأعصاب والعمود الفقري",
+    "أدوات دقيقة لجراحة الأعصاب والعمود الفقري"
+   ],
+   [
+    "طب العيون",
+    "أدوات دقيقة لجراحة العيون"
+   ],
+   [
+    "الأنف والأذن والحنجرة",
+    "أدوات الأنف والأذن والحنجرة"
+   ],
+   [
+    "النساء والتوليد والمسالك البولية",
+    "أدوات التوليد وأمراض النساء والمسالك البولية"
+   ],
+   [
+    "أنظمة الطاقة والأدوات الكهربائية",
+    "أدوات الجراحة الكهربائية والكهربائية"
+   ],
+   [
+    "جراحة الأسنان وزراعة الأسنان",
+    "أدوات طب الأسنان وزراعة الأسنان"
+   ]
+  ],
+  "trust.title2": "التوريد، مصمم كهندسة.",
+  "strip.1b": "يوم عمل واحد",
+  "strip.1d": "للرد",
+  "strip.2b": "1–3 أيام",
+  "strip.2d": "للتوريد",
+  "strip.3b": "2–5 أيام",
+  "strip.3d": "للشحن",
+  "hero.tagFrom": "من تشكيلتنا المسجلة",
+  "hero.tagCat": "8,658 أداة",
+  "trust.sub2": "كتالوج واحد وقناتا توريد وسير عمل يركز على المواصفات.",
+  "trust.eyebrow2": "الاعتمادات",
+  "trust.addrLabel": "المقر الرئيسي"
+ }
+};
+/* ---------- Language state ---------- */
+var LANG_KEY="surgronic_lang_v2", lang="en";
+try{lang=localStorage.getItem(LANG_KEY)||"en";}catch(e){}
+if(!STRINGS[lang])lang="en";
+function t(key){
+  var s=STRINGS[lang]||STRINGS.en;
+  if(s&&s[key]!==undefined)return s[key];
+  if(STRINGS.en&&STRINGS.en[key]!==undefined)return STRINGS.en[key];
+  if(typeof console!=="undefined"&&console.warn)console.warn("[i18n] Missing key:",key);
+  return "";
+}
+function productName(p){p=p||{};if(lang==="fr"&&p.nameFr)return p.nameFr;if(lang==="ar"&&p.nameAr)return p.nameAr;return p.name||"";}
+function applyI18n(){
+  var els=document.querySelectorAll("[data-i18n]"),i,k;
+  for(i=0;i<els.length;i++){k=els[i].getAttribute("data-i18n");els[i].innerHTML=t(k);}
+  var phs=document.querySelectorAll("[data-i18n-ph]");
+  for(i=0;i<phs.length;i++){phs[i].setAttribute("placeholder",t(phs[i].getAttribute("data-i18n-ph")));}
+  var btns=document.querySelectorAll(".lang-switch button");
+  for(i=0;i<btns.length;i++){btns[i].classList.toggle("on",btns[i].getAttribute("data-lang")===lang);}
+  document.documentElement.lang=lang;
+  document.documentElement.dir=(lang==="ar")?"rtl":"ltr";
+  var pt=document.querySelector("title");if(pt)document.title=t("meta.homeTitle");
+}
+function setLang(l){
+  if(!STRINGS[l])return;lang=l;
+  try{localStorage.setItem(LANG_KEY,l);}catch(e){}
+  applyI18n();renderSpecs();renderFeatured();
+  var ev;try{ev=new CustomEvent("surgronic:lang",{detail:{lang:lang}});}catch(e){ev=document.createEvent("CustomEvent");ev.initCustomEvent("surgronic:lang",true,true,{lang:lang});}
+  document.dispatchEvent(ev);
+}
 
-  function renderSpecs(){
-    var specs = SG.SPECIALTIES[SG.getLang()] || SG.SPECIALTIES.en;
-    var grid = document.getElementById("specGrid");
-    var idx = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI"];
-    grid.innerHTML = specs.map(function(s,i){
-      return '<a class="spec-card" href="catalogue.html?search='+encodeURIComponent(s[0].split(" ")[0])+'">'+
-        '<span class="spec-ref">'+idx[i]+'</span><h3>'+s[0]+'</h3><span>'+s[1]+'</span></a>';
-    }).join("");
-  }
+/* ---------- API ---------- */
+var API="https://surgronic.pages.dev/actions";
+function api(action,args){
+  return fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:action,args:args||{}})})
+  .then(function(r){if(!r.ok)throw new Error("API "+r.status);return r.json();})
+  .then(function(j){return j.data;});
+}
+function normProduct(p){
+  if(!p)return p;
+  p.nameFr=p.nameFr||p.name_fr||p.name;p.nameAr=p.nameAr||p.name_ar||p.name;
+  p.imageFiles=Array.isArray(p.imageFiles)?p.imageFiles:[];
+  return p;
+}
+function imgUrl(p){var f=(p.imageFiles&&p.imageFiles[0])||"";return f?"assets/"+f:"";}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 
-  /* ---------- Featured: 5s timeout + static fallback (never leave empty) ----------
-     Fallback data is API-verified (getProduct), not invented. */
-  var FEATURED_SKUS = ["SUR-SKL-01146","SUR-SKL-01315","SUR-SKL-01610","SUR-AES-04036",
-                       "SUR-AES-01245","SUR-AES-03379","SUR-AES-00883","SUR-SKL-00238"];
-  var FEATURED_FALLBACK = {
-    "SUR-SKL-01146": {name:"Adlerkreutz Tissue Forceps", brand:"Sklar", img:"sur-skl-01146.jpg"},
-    "SUR-SKL-01315": {name:"Aufricht Facelift Scissors", brand:"Sklar", img:"sur-skl-01315.jpg"},
-    "SUR-SKL-01610": {name:"Cottle Nasal Speculum", brand:"Sklar", img:"sur-skl-01610.jpg"},
-    "SUR-AES-04036": {name:"ADSON Needle Holder", brand:"Aesculap", img:"sur-aes-04036.jpg"},
-    "SUR-AES-01245": {name:"ABRAHAM Tonsil Grasping Forceps", brand:"Aesculap", img:"sur-aes-01245.jpg"},
-    "SUR-AES-03379": {name:"Bandage- and Cloth Scissors", brand:"Aesculap", img:"sur-aes-03379.jpg"},
-    "SUR-AES-00883": {name:"ABEL Tenaculum Forceps", brand:"Aesculap", img:"sur-aes-00883.jpg"},
-    "SUR-SKL-00238": {name:"Bennet Bone Elevator", brand:"Sklar", img:"sur-skl-00238.jpg"}
-  };
-  function featuredFallbackHTML(){
-    return FEATURED_SKUS.map(function(sku){
-      var f = FEATURED_FALLBACK[sku];
-      return SG.cardHTML({sku:sku, name:f.name, nameFr:f.name, nameAr:f.name, brand:f.brand, imageFiles:[f.img]});
-    }).join("");
-  }
-  function renderFeatured(){
-    var grid = document.getElementById("featGrid");
-    grid.innerHTML = '<div class="loading">'+SG.t("feat.loading")+'</div>';
-    var calls = Promise.all(FEATURED_SKUS.map(function(sku){ return SG.api("getProduct",{sku:sku}); }));
-    var timeout = new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("featured-timeout")); }, 5000); });
-    Promise.race([calls, timeout]).then(function(results){
-      var list = results.map(function(r){ return r && (r.product || r); }).filter(function(p){ return p && p.sku; });
-      if(!list.length) throw new Error("empty");
-      grid.innerHTML = list.map(SG.cardHTML).join("");
-      SG.bindAddButtons(grid);
-    }).catch(function(){
-      /* Static fallback with API-verified data — the section is never left empty */
-      grid.innerHTML = featuredFallbackHTML();
-      SG.bindAddButtons(grid);
+/* ---------- Basket ---------- */
+var BASKET_KEY="surgronic_quote_v2";
+function getBasket(){try{return JSON.parse(localStorage.getItem(BASKET_KEY))||[];}catch(e){return[];}}
+function saveBasket(b){try{localStorage.setItem(BASKET_KEY,JSON.stringify(b));}catch(e){}updateBasketUI();}
+function addToQuote(p,qty){
+  var b=getBasket(),found=null,i;
+  for(i=0;i<b.length;i++){if(b[i].sku===p.sku){found=b[i];break;}}
+  if(found){found.qty+=(qty||1);}
+  else{b.push({sku:p.sku,name:p.name,nameFr:p.nameFr,nameAr:p.nameAr,brand:p.brand||"",image:(p.imageFiles&&p.imageFiles[0])||"",qty:(qty||1)});}
+  saveBasket(b);
+}
+function basketCount(){return getBasket().reduce(function(n,i){return n+i.qty;},0);}
+function updateBasketUI(){var els=document.querySelectorAll("[data-basket-count]"),i;for(i=0;i<els.length;i++){els[i].textContent=basketCount();}}
+
+/* ---------- WhatsApp ---------- */
+var WA_NUMBER="905526081432";
+function waProductUrl(p,name,qty){
+  var msg=t("wa.single").replace("{sku}",p.sku||"").replace("{name}",name||"").replace("{qty}",qty||1);
+  var link="";try{link=location.origin+location.pathname.replace(/[^/]*$/,"")+"product.html?sku="+encodeURIComponent(p.sku||"");}catch(e){}
+  if(link)msg+=" "+t("wa.link")+": "+link;
+  return "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(msg);
+}
+
+/* ---------- Product card ---------- */
+var WA_SVG='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88M20.46 3.55A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.48-8.41"/></svg>';
+function cardHTML(p){
+  p=normProduct(p);var nm=productName(p),img=imgUrl(p);
+  var imgTag=img?'<div class="pimg"><img src="'+img+'" alt="'+esc(nm)+'" loading="lazy"></div>'
+    :'<div class="pimg" aria-label="'+esc(t("feat.skelA"))+'"><span style="color:var(--ink-600);font-size:13px">'+esc(t("card.imgSoon")||"")+'</span></div>';
+  return '<article class="product-card">'+imgTag+
+    '<div class="pbody"><div class="psku">'+esc(p.sku)+'</div><h3>'+esc(nm)+'</h3>'+
+    '<div class="pbrand">'+esc(p.brand||"")+'</div><span class="por">'+esc(t("card.por"))+'</span>'+
+    '<div class="pfoot"><button class="btn-add-quote" data-add="'+esc(p.sku)+'">'+esc(t("card.add"))+'</button>'+
+    '<div class="prow"><a class="btn-wa" href="'+waProductUrl(p,nm,1)+'" target="_blank" rel="noopener">'+WA_SVG+esc(t("card.whatsapp"))+'</a>'+
+    '<a class="btn-view" href="product.html?sku='+encodeURIComponent(p.sku)+'">'+esc(t("card.details"))+'</a></div></div></div></article>';
+}
+function bindAddButtons(root){
+  (root||document).querySelectorAll("[data-add]").forEach(function(btn){
+    if(btn.getAttribute("data-bound")==="1")return;btn.setAttribute("data-bound","1");
+    btn.addEventListener("click",function(ev){
+      ev.preventDefault();ev.stopPropagation();if(btn.disabled)return;
+      var sku=btn.getAttribute("data-add"),orig=btn.innerHTML;
+      btn.disabled=true;btn.innerHTML=esc(t("card.adding"));
+      api("getProduct",{sku:sku}).then(function(d){
+        if(d&&d.product){addToQuote(normProduct(d.product),1);btn.innerHTML=esc(t("card.added"));
+          setTimeout(function(){btn.innerHTML=orig;btn.disabled=false;},1600);}
+        else{btn.disabled=false;btn.innerHTML=orig;}
+      }).catch(function(){btn.disabled=false;btn.innerHTML=orig;});
     });
-  }
-  renderSpecs();
-  renderFeatured();
-  document.addEventListener("surgronic:lang", function(){
-    SG.applyI18n();
-    renderSpecs();
-    renderFeatured();
   });
+}
+
+/* ---------- Finder ---------- */
+(function initFinder(){
+  var tabs=document.querySelectorAll(".finder-tab");
+  var panels={name:document.getElementById("fpanel-name"),ref:document.getElementById("fpanel-ref"),photo:document.getElementById("fpanel-photo")};
+  function selectTab(name,focus){
+    tabs.forEach(function(x){var on=x.getAttribute("data-tab")===name;
+      x.classList.toggle("on",on);x.setAttribute("aria-selected",on?"true":"false");x.tabIndex=on?0:-1;if(on&&focus)x.focus();});
+    Object.keys(panels).forEach(function(k){if(panels[k])panels[k].hidden=(k!==name);});
+  }
+  tabs.forEach(function(x){
+    x.addEventListener("click",function(){selectTab(x.getAttribute("data-tab"));});
+    x.addEventListener("keydown",function(e){
+      var order=["name","ref","photo"],i=order.indexOf(x.getAttribute("data-tab")),n=null;
+      if(e.key==="ArrowRight")n=order[(i+1)%3];else if(e.key==="ArrowLeft")n=order[(i+2)%3];
+      else if(e.key==="Home")n=order[0];else if(e.key==="End")n=order[2];
+      if(n){e.preventDefault();selectTab(n,true);}
+    });
+  });
+  function goCatalogue(q){location.href="catalogue.html?q="+encodeURIComponent(q||"");}
+  var inName=document.getElementById("finderName");
+  document.getElementById("finderGoName").addEventListener("click",function(){goCatalogue(inName.value.trim());});
+  inName.addEventListener("keydown",function(e){if(e.key==="Enter")goCatalogue(inName.value.trim());});
+  document.querySelectorAll(".finder-chips .chip").forEach(function(c){
+    c.addEventListener("click",function(){goCatalogue(c.getAttribute("data-chip"));});
+  });
+  var inRef=document.getElementById("finderRef");
+  function goSourcing(){var r=inRef.value.trim();location.href="quote.html"+(r?"?ref="+encodeURIComponent(r):"")+"#sourcing";}
+  document.getElementById("finderGoRef").addEventListener("click",goSourcing);
+  inRef.addEventListener("keydown",function(e){if(e.key==="Enter")goSourcing();});
+  /* photo: drag-drop + preview */
+  var drop=document.getElementById("finderDrop"),fileInput=document.getElementById("finderPhoto"),
+      preview=document.getElementById("finderPreview"),previewImg=document.getElementById("finderPreviewImg"),
+      fileName=document.getElementById("finderFileName");
+  function handleFile(f){
+    if(!f||!f.type||f.type.indexOf("image/")!==0)return;
+    fileName.textContent=f.name;
+    try{var url=URL.createObjectURL(f);previewImg.src=url;previewImg.alt=f.name;}catch(e){}
+    preview.hidden=false;
+  }
+  fileInput.addEventListener("change",function(){if(fileInput.files&&fileInput.files[0])handleFile(fileInput.files[0]);});
+  ["dragenter","dragover"].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.add("over");});});
+  ["dragleave","drop"].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.remove("over");});});
+  drop.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f)handleFile(f);});
+  document.getElementById("finderChange").addEventListener("click",function(e){e.preventDefault();fileInput.click();});
+  document.getElementById("finderGoPhoto").addEventListener("click",function(){location.href="quote.html#photo";});
+})();
+
+/* ---------- Specialties ---------- */
+function renderSpecs(){
+  var specs=(STRINGS[lang]&&STRINGS[lang].__specs)||null;
+  var grid=document.getElementById("specGrid");if(!grid)return;
+  var idx=["I","II","III","IV","V","VI","VII","VIII","IX","X","XI"];
+  grid.innerHTML=specs.map(function(s,i){
+    return '<a class="spec-card rv in" href="catalogue.html?search='+encodeURIComponent(s[0].split(" ")[0])+'">'+
+      '<span class="spec-ref">'+idx[i]+'</span><h3>'+esc(s[0])+'</h3><span>'+esc(s[1])+'</span></a>';
+  }).join("");
+}
+
+/* ---------- Featured ---------- */
+var FEATURED_SKUS=["SUR-SKL-01146","SUR-SKL-01315","SUR-SKL-01610","SUR-AES-04036","SUR-AES-01245","SUR-AES-03379","SUR-AES-00883","SUR-SKL-00238"];
+var FEATURED_FALLBACK={
+  "SUR-SKL-01146":{name:"Adlerkreutz Tissue Forceps",brand:"Sklar",img:"sur-skl-01146.jpg"},
+  "SUR-SKL-01315":{name:"Aufricht Facelift Scissors",brand:"Sklar",img:"sur-skl-01315.jpg"},
+  "SUR-SKL-01610":{name:"Cottle Nasal Speculum",brand:"Sklar",img:"sur-skl-01610.jpg"},
+  "SUR-AES-04036":{name:"ADSON Needle Holder",brand:"Aesculap",img:"sur-aes-04036.jpg"},
+  "SUR-AES-01245":{name:"ABRAHAM Tonsil Grasping Forceps",brand:"Aesculap",img:"sur-aes-01245.jpg"},
+  "SUR-AES-03379":{name:"Bandage- and Cloth Scissors",brand:"Aesculap",img:"sur-aes-03379.jpg"},
+  "SUR-AES-00883":{name:"ABEL Tenaculum Forceps",brand:"Aesculap",img:"sur-aes-00883.jpg"},
+  "SUR-SKL-00238":{name:"Bennet Bone Elevator",brand:"Sklar",img:"sur-skl-00238.jpg"}
+};
+function skeletonHTML(){
+  var h="";for(var i=0;i<8;i++){h+='<div class="skel" aria-hidden="true"><div class="sk-img"></div><div class="sk-body"><div class="sk-l" style="width:40%"></div><div class="sk-l" style="width:90%"></div><div class="sk-l" style="width:60%"></div></div></div>';}
+  return h;
+}
+function featuredFallbackHTML(){
+  return FEATURED_SKUS.map(function(sku){var f=FEATURED_FALLBACK[sku];
+    return cardHTML({sku:sku,name:f.name,nameFr:f.name,nameAr:f.name,brand:f.brand,imageFiles:[f.img]});}).join("");
+}
+function renderFeatured(){
+  var grid=document.getElementById("featGrid");if(!grid)return;
+  grid.innerHTML=skeletonHTML();
+  var calls=Promise.all(FEATURED_SKUS.map(function(sku){return api("getProduct",{sku:sku});}));
+  var timeout=new Promise(function(_,rej){setTimeout(function(){rej(new Error("timeout"));},6000);});
+  Promise.race([calls,timeout]).then(function(results){
+    var list=results.map(function(r){return r&&(r.product||r);}).filter(function(p){return p&&p.sku;});
+    if(!list.length)throw new Error("empty");
+    grid.innerHTML=list.map(cardHTML).join("");bindAddButtons(grid);
+  }).catch(function(){
+    try{grid.innerHTML=featuredFallbackHTML();bindAddButtons(grid);}
+    catch(e){grid.innerHTML='<div class="feat-err"><p><b>'+esc(t("feat.errT"))+'</b></p><p style="margin-top:12px"><a class="btn btn-outline btn-sm" href="catalogue.html">'+esc(t("feat.errB"))+'</a></p></div>';}
+  });
+}
+
+/* ---------- Mobile menu ---------- */
+(function(){
+  var hb=document.getElementById("hamburger"),mn=document.getElementById("mobileNav"),mc=document.getElementById("mobileClose");
+  if(hb&&mn)hb.addEventListener("click",function(){mn.classList.add("open");});
+  if(mc&&mn)mc.addEventListener("click",function(){mn.classList.remove("open");});
+  if(mn)mn.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){mn.classList.remove("open");});});
+})();
+
+/* ---------- Language switch ---------- */
+document.querySelectorAll(".lang-switch button").forEach(function(b){
+  b.addEventListener("click",function(){setLang(b.getAttribute("data-lang"));});
+});
+
+/* ---------- Reveal on scroll ---------- */
+(function(){
+  if(!("IntersectionObserver" in window)){document.querySelectorAll(".rv").forEach(function(e){e.classList.add("in");});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll(".rv").forEach(function(e){io.observe(e);});
+})();
+
+/* ---------- Count-up ---------- */
+(function(){
+  var el=document.querySelector("[data-count]");if(!el)return;
+  var target=parseInt(el.getAttribute("data-count"),10)||0;
+  function fmt(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+  if(!("IntersectionObserver" in window)||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){el.textContent=fmt(target);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;io.disconnect();
+    var t0=null,dur=1400;
+    function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/dur),v=Math.round(target*(1-Math.pow(1-p,3)));el.textContent=fmt(v);if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  });},{threshold:.4});
+  io.observe(el);
+})();
+
+/* ---------- init ---------- */
+document.documentElement.lang=lang;
+document.documentElement.dir=(lang==="ar")?"rtl":"ltr";
+applyI18n();updateBasketUI();renderSpecs();renderFeatured();
 })();
 </script>
-<script>SG.mountChrome("home");SG.applyI18n();</script>
 </body>
 </html>
