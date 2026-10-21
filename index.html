@@ -83,7 +83,7 @@
          point when it sees "website" (see Storefront.tsx). -->
     <script>window.__SURGRONIC_PACKAGE__ = "website";</script>
     
-  <link rel="stylesheet" crossorigin href="./assets/index-t8vfydqm.css"><script type="module" crossorigin src="./assets/index-qah0y4z1.js"></script></head>
+  <link rel="stylesheet" crossorigin href="./assets/index-t8vfydqm.css"></head>
   <body>
     <div
       data-generated-space-root=""
@@ -94,10 +94,24 @@
       <p>Surgronic is an international supplier of surgical instruments, based in Sisly, Istanbul, Turkey — selected instruments held in stock, the rest sourced to your exact specification and inspected before shipment. Contact Yusuf — yusuf@surgronic.com · +90 552 608 1432 (also on WhatsApp) — for the catalogue and quotations.</p>
     </noscript>
     <script>
-      // Register service worker for /actions API on GitHub Pages
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').catch(() => {});
-      }
+      // Register service worker FIRST, then load React app
+      // This ensures /actions API is intercepted before the app requests data
+      (async function() {
+        if ('serviceWorker' in navigator) {
+          try {
+            const reg = await navigator.serviceWorker.register('./sw.js');
+            await navigator.serviceWorker.ready;
+            // Force update to ensure latest SW
+            if (reg.waiting) reg.waiting.postMessage({type: 'SKIP_WAITING'});
+          } catch (e) {}
+        }
+        // Now load the React app - SW is ready to intercept /actions
+        const s = document.createElement('script');
+        s.type = 'module';
+        s.crossOrigin = 'anonymous';
+        s.src = './assets/index-qah0y4z1.js';
+        document.body.appendChild(s);
+      })();
     </script>
   </body>
 </html>
