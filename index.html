@@ -94,29 +94,55 @@
       <p>Surgronic is an international supplier of surgical instruments, based in Sisly, Istanbul, Turkey — selected instruments held in stock, the rest sourced to your exact specification and inspected before shipment. Contact Yusuf — yusuf@surgronic.com · +90 552 608 1432 (also on WhatsApp) — for the catalogue and quotations.</p>
     </noscript>
     <script>
-      // Load React app, with service worker for /actions API
-      // SW registration runs in parallel; React loads after 1.5s max
-      // (prevents blank page if SW hangs)
+      // NO SERVICE WORKER — direct API connection to Cloudflare
+      // Unregister any old service workers, then patch fetch to use the real API
       (function() {
-        function loadReact() {
-          if (window.__reactLoaded) return;
-          window.__reactLoaded = true;
-          const s = document.createElement('script');
-          s.type = 'module';
-          s.crossOrigin = 'anonymous';
-          s.src = './assets/index-qah0y4z1.js';
-          document.body.appendChild(s);
-        }
-        // Register SW in background (don't block React)
+        var API_URL = 'https://surgronic.pages.dev/actions';
+        // Remove any stale service workers from previous deployments
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('./sw.js').catch(function(){});
+          navigator.serviceWorker.getRegistrations().then(function(regs) {
+            regs.forEach(function(r) { r.unregister().catch(function(){}); });
+          }).catch(function(){});
         }
-        // Load React after short delay for SW to activate, max 1.5s
-        setTimeout(loadReact, 1500);
-        // Fallback: load immediately if DOM ready and SW already controlling
-        if (document.readyState === 'complete' && navigator.serviceWorker && navigator.serviceWorker.controller) {
-          loadReact();
-        }
+        // Patch fetch: redirect ./actions to the Cloudflare API + normalize products
+        var origFetch = window.fetch;
+        window.fetch = function(url, opts) {
+          var urlStr = typeof url === 'string' ? url : (url && url.url) || '';
+          if (urlStr.indexOf('/actions') !== -1) {
+            var body = (opts && opts.body) || '';
+            return origFetch(API_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: typeof body === 'string' ? body : JSON.stringify(body)
+            }).then(function(res) { return res.json(); }).then(function(json) {
+              // Normalize: ensure fields React cards expect exist
+              if (json && json.data && Array.isArray(json.data.products)) {
+                json.data.products = json.data.products.map(function(p) {
+                  p.finishOptions = p.finishOptions || [];
+                  p.imageFiles = Array.isArray(p.imageFiles) ? p.imageFiles : [];
+                  p.priceCents = p.priceCents || null;
+                  return p;
+                });
+              }
+              if (json && json.data && json.data.product) {
+                var p = json.data.product;
+                p.finishOptions = p.finishOptions || [];
+                p.imageFiles = Array.isArray(p.imageFiles) ? p.imageFiles : [];
+                p.priceCents = p.priceCents || null;
+              }
+              return new Response(JSON.stringify(json), {
+                headers: { 'Content-Type': 'application/json' }
+              });
+            });
+          }
+          return origFetch.apply(this, arguments);
+        };
+        // Load React immediately
+        var s = document.createElement('script');
+        s.type = 'module';
+        s.crossOrigin = 'anonymous';
+        s.src = './assets/index-qah0y4z1.js';
+        document.body.appendChild(s);
       })();
     </script>
   </body>
