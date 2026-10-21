@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instrument Catalog — Surgronic</title>
+<meta name="description" content="Search 8,658 surgical instruments by specialty, name, or manufacturer reference.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script src="app.js"></script>
+<script>SG.mountChrome("catalog");</script>
+
+<div class="catalog-hero">
+  <div class="container">
+    <h1>Instrument catalogue.</h1>
+    <p>Guided search across 8,658 catalogued instruments. Filter by specialty, family, and manufacturer.</p>
+    <div class="search-bar">
+      <input id="q" type="search" placeholder="Search by name, SKU, or manufacturer reference…" aria-label="Search instruments">
+      <button class="btn btn-blue" id="searchBtn">Search</button>
+    </div>
+  </div>
+</div>
+
+<section style="padding-top:36px">
+  <div class="container">
+    <div class="filters">
+      <select id="fBrand" aria-label="Manufacturer">
+        <option value="">All manufacturers</option>
+        <option>Aesculap</option>
+        <option>Sklar</option>
+      </select>
+      <select id="fFamily" aria-label="Instrument family">
+        <option value="">All families</option>
+        <option>Forceps</option>
+        <option>Scissors</option>
+        <option>Retractor</option>
+        <option>Clamp</option>
+        <option>Needle Holder</option>
+        <option>Speculum</option>
+        <option>Elevator</option>
+      </select>
+      <select id="fSort" aria-label="Sort">
+        <option value="name">Sort: Name</option>
+        <option value="sku">Sort: Reference</option>
+        <option value="brand">Sort: Brand</option>
+      </select>
+    </div>
+    <div class="catalog-meta">
+      <span id="metaCount">Loading catalogue…</span>
+      <span id="metaPage"></span>
+    </div>
+    <div class="catalog-grid" id="grid"></div>
+    <div class="pagination" id="pager"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var PER = 48, page = 1, total = 0;
+  var grid = document.getElementById("grid"),
+      metaCount = document.getElementById("metaCount"),
+      metaPage = document.getElementById("metaPage"),
+      pager = document.getElementById("pager");
+
+  function params(){
+    var p = new URLSearchParams(location.search);
+    return {
+      q: document.getElementById("q").value.trim() || p.get("search") || "",
+      brand: document.getElementById("fBrand").value,
+      family: document.getElementById("fFamily").value,
+      sort: document.getElementById("fSort").value
+    };
+  }
+  // preselect from URL (?brand= / ?search=)
+  (function(){
+    var p = new URLSearchParams(location.search);
+    if(p.get("brand")) document.getElementById("fBrand").value = p.get("brand");
+    if(p.get("search")) document.getElementById("q").value = p.get("search");
+  })();
+
+  function load(){
+    var f = params();
+    var search = f.q;
+    if(f.family) search = (search ? search+" " : "") + f.family;
+    grid.innerHTML = '<div class="loading">Loading instruments…</div>';
+    metaCount.textContent = "Loading catalogue…";
+    SG.api("listProducts",{
+      limit: PER, offset:(page-1)*PER,
+      search: search || undefined,
+      manufacturer: f.brand || undefined,
+      sort: f.sort, storefront:true
+    }).then(function(d){
+      total = d.total||0;
+      var list = d.products||[];
+      metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> of <b>8,658</b> catalogued instruments";
+      var pages = Math.max(1, Math.ceil(total/PER));
+      metaPage.textContent = "Page "+page+" of "+pages;
+      if(!list.length){
+        grid.innerHTML = '<div class="error-box" style="grid-column:1/-1">No catalogued instruments match your filters yet. Try broadening the search.</div>';
+      } else {
+        grid.innerHTML = list.map(SG.cardHTML).join("");
+        SG.bindAddButtons(grid);
+      }
+      renderPager(pages);
+      window.scrollTo({top:0,behavior:"smooth"});
+    }).catch(function(){
+      grid.innerHTML = '<div class="error-box" style="grid-column:1/-1">The catalogue API is unreachable right now. Please try again in a moment.</div>';
+      metaCount.textContent = "Catalogue unavailable";
+    });
+  }
+  function renderPager(pages){
+    var h = '<button id="pgPrev" '+(page<=1?"disabled":"")+'>← Prev</button>'+
+            '<span class="pg-info">Page '+page+' of '+pages+'</span>'+
+            '<button id="pgNext" '+(page>=pages?"disabled":"")+'>Next →</button>';
+    pager.innerHTML = h;
+    document.getElementById("pgPrev").addEventListener("click",function(){ if(page>1){page--;load();} });
+    document.getElementById("pgNext").addEventListener("click",function(){ if(page<pages){page++;load();} });
+  }
+  var deb=null;
+  document.getElementById("q").addEventListener("input",function(){
+    clearTimeout(deb); deb=setTimeout(function(){page=1;load();},450);
+  });
+  document.getElementById("searchBtn").addEventListener("click",function(){page=1;load();});
+  ["fBrand","fFamily","fSort"].forEach(function(id){
+    document.getElementById(id).addEventListener("change",function(){page=1;load();});
+  });
+  load();
+})();
+</script>
+</body>
+</html>

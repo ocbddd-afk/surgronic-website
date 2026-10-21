@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Quote — Surgronic</title>
+<meta name="description" content="Build your instrument quote list and request a quotation. Response within one business day.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script src="app.js"></script>
+<script>SG.mountChrome("quote");</script>
+
+<div class="container" style="padding-bottom:80px">
+  <div class="breadcrumb"><a href="index.html">Home</a> → Request a Quote</div>
+  <span class="eyebrow">Quotation request</span>
+  <h2 class="section-title">Request a quote.</h2>
+  <p class="section-sub">Review your list, add references or a photograph, and send. We respond within one business day.</p>
+
+  <div id="quoteApp"></div>
+</div>
+
+<script>
+(function(){
+  var app = document.getElementById("quoteApp");
+  var WA = "905526081432";
+
+  function render(){
+    var b = SG.getBasket();
+    if(!b.length){
+      app.innerHTML =
+        '<div class="error-box" style="margin-top:28px">Your quote list is empty. '+
+        '<a href="catalogue.html" style="font-weight:700;color:var(--blue-dark)">Browse the catalog</a> '+
+        'or describe the instrument you need below — you can still send a sourcing request with no items.</div>'
+        + formHTML(true);
+      bindForm();
+      return;
+    }
+    var items = b.map(function(i,idx){
+      var img = i.image ? '<img src="./assets/'+SG.esc(i.image)+'" alt="">' : '<div style="width:84px;height:64px;background:var(--bg-soft);border-radius:8px"></div>';
+      return '<div class="qitem">'+img+
+        '<div class="qi-body"><b>'+SG.esc(i.name)+'</b><small>'+SG.esc(i.sku)+(i.brand?" · "+SG.esc(i.brand):"")+'</small></div>'+
+        '<div class="qty"><button data-dec="'+idx+'">−</button><b>'+i.qty+'</b><button data-inc="'+idx+'">+</button></div>'+
+        '<button class="mini-btn" data-rm="'+idx+'" style="background:#fee2e2;color:#991b1b">Remove</button>'+
+      '</div>';
+    }).join("");
+    app.innerHTML = '<div class="quote-layout"><div><h3 style="font-family:var(--font-display);font-size:22px;margin:26px 0 16px;color:var(--navy)">Your list ('+SG.basketCount()+' units)</h3>'+items+'</div><div>'+formHTML(false)+'</div></div>';
+    bindItems(); bindForm();
+  }
+
+  function formHTML(allowEmpty){
+    return '<form class="qform" id="qform">'+
+      '<h3>Your details</h3>'+
+      '<label for="qn">Full name *</label><input id="qn" required autocomplete="name">'+
+      '<label for="qe">Work email *</label><input id="qe" type="email" required autocomplete="email">'+
+      '<label for="qc">Company / hospital</label><input id="qc" autocomplete="organization">'+
+      '<label for="qp">Phone / WhatsApp</label><input id="qp" type="tel" autocomplete="tel">'+
+      '<label for="qco">Country</label><input id="qco" autocomplete="country-name">'+
+      '<label for="qref">Product reference (if not in list)</label><input id="qref" placeholder="e.g. manufacturer article number">'+
+      '<label for="qnotes">Specifications / notes</label><textarea id="qnotes" rows="4" placeholder="Sizes, materials, finishes, quantities…"></textarea>'+
+      '<label for="qphoto">Product photo (optional)</label><input id="qphoto" type="file" accept="image/*">'+
+      '<p style="font-size:12.5px;color:var(--muted);margin-top:10px">Photos are sent to our team for manual identification — never presented as automated recognition.</p>'+
+      '<button class="btn btn-blue" type="submit">Send Quotation Request <span class="arr">→</span></button>'+
+      '<button class="btn btn-ghost" type="button" id="waBtn" style="margin-top:10px">Send via WhatsApp</button>'+
+      '<p style="font-size:12.5px;color:var(--muted);margin-top:12px">Deposit refundable minus costs already committed to the supplier. Final price confirmed in writing.</p>'+
+    '</form>';
+  }
+
+  function bindItems(){
+    app.querySelectorAll("[data-inc]").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        var b=SG.getBasket(); b[+btn.getAttribute("data-inc")].qty++; SG.saveBasket(b); render();
+      });
+    });
+    app.querySelectorAll("[data-dec]").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        var b=SG.getBasket(), i=+btn.getAttribute("data-dec");
+        b[i].qty=Math.max(1,b[i].qty-1); SG.saveBasket(b); render();
+      });
+    });
+    app.querySelectorAll("[data-rm]").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        var b=SG.getBasket(); b.splice(+btn.getAttribute("data-rm"),1); SG.saveBasket(b); render();
+      });
+    });
+  }
+
+  function collect(){
+    var b = SG.getBasket();
+    return {
+      items: b.map(function(i){return {sku:i.sku,name:i.name,brand:i.brand,qty:i.qty};}),
+      contact: {
+        name: document.getElementById("qn").value.trim(),
+        email: document.getElementById("qe").value.trim(),
+        company: document.getElementById("qc").value.trim(),
+        phone: document.getElementById("qp").value.trim(),
+        country: document.getElementById("qco").value.trim()
+      },
+      reference: document.getElementById("qref").value.trim(),
+      notes: document.getElementById("qnotes").value.trim()
+    };
+  }
+  function waLink(q){
+    var lines = q.items.map(function(i){return "• "+i.sku+" — "+i.name+" × "+i.qty;});
+    var msg = "Surgronic quotation request%0A%0A"+encodeURIComponent(lines.join("\n")+"%0A%0A")+
+      (q.reference? "Reference: "+encodeURIComponent(q.reference)+"%0A":"")+
+      (q.notes? "Notes: "+encodeURIComponent(q.notes)+"%0A":"")+
+      "%0A"+encodeURIComponent(q.contact.name+" ("+q.contact.company+", "+q.contact.country+") "+q.contact.email+" "+q.contact.phone);
+    return "https://wa.me/"+WA+"?text="+msg;
+  }
+
+  function bindForm(){
+    var f = document.getElementById("qform");
+    if(!f) return;
+    document.getElementById("waBtn").addEventListener("click",function(){
+      var q = collect();
+      if(!q.contact.name || !q.contact.email){ alert("Please add your name and email first."); return; }
+      window.open(waLink(q),"_blank");
+    });
+    f.addEventListener("submit",function(ev){
+      ev.preventDefault();
+      var q = collect();
+      var btn = f.querySelector('[type="submit"]');
+      btn.disabled = true; btn.textContent = "Sending…";
+      SG.api("submitRfq",q).then(function(){
+        done();
+      }).catch(function(){
+        /* API unreachable — offer WhatsApp fallback, still record locally */
+        done(true);
+      });
+      function done(fallback){
+        try{ localStorage.removeItem("surgronic_quote_v2"); }catch(e){}
+        SG.updateBasketUI();
+        app.innerHTML = '<div class="qsuccess" style="margin-top:28px">'+
+          '<h2>Request received.</h2>'+
+          '<p>Thank you, '+SG.esc(q.contact.name.split(" ")[0])+'. '+
+          (fallback
+            ? 'Our API is temporarily unreachable — please tap below to send your list via WhatsApp so nothing is lost.'
+            : 'Our team will respond within one business day.')+
+          '</p>'+
+          '<div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">'+
+            '<a class="btn btn-blue" target="_blank" rel="noopener" href="'+waLink(q)+'">Confirm via WhatsApp</a>'+
+            '<a class="btn btn-ghost" href="catalogue.html">Back to catalog</a>'+
+          '</div></div>';
+        window.scrollTo({top:0,behavior:"smooth"});
+      }
+    });
+    /* photo upload anchor */
+    if(location.hash === "#photo"){
+      var ph = document.getElementById("qphoto");
+      if(ph){ ph.scrollIntoView({behavior:"smooth",block:"center"}); ph.focus(); }
+    }
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>
