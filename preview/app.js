@@ -197,7 +197,58 @@ en: {
   "q.waConfirm": "Confirm via WhatsApp",
   "q.backCatalog": "Back to catalog",
   "common.loading": "Loading…",
-  "common.error": "Something went wrong. Please try again."
+  "common.error": "Something went wrong. Please try again.",
+  "hero.kicker": "Precision surgical instruments",
+  "finder.tabBy1": "By name",
+  "finder.tabBy2": "By reference",
+  "finder.tabBy3": "By photograph",
+  "finder.drop": "Drag & drop your photo here",
+  "finder.browse": "or browse files",
+  "finder.photoReady": "Photo ready",
+  "finder.photoChange": "Change photo",
+  "finder.nameHelp": "Type any part of the instrument name.",
+  "finder.refHelp": "Paste the manufacturer article number or SKU.",
+  "finder.photoHelp": "Our team identifies it manually — never automated guesswork.",
+  "ch.badge1": "From stock",
+  "ch.badge2": "Sourced to specification",
+  "ch.time1": "Ships from inventory",
+  "ch.time2": "Typically 1–3 days sourcing",
+  "ch.rule": "Stocked items show a stock badge; everything else is sourced, with written specification confirmation.",
+  "ch.cta1": "Browse stock",
+  "ch.cta2": "Start sourcing",
+  "why.stat3n": "1 day",
+  "why.stat3d": "Maximum response time. Every enquiry answered within one business day.",
+  "why.specT": "Written specification confirmation",
+  "why.specD": "No commitment until the specification is confirmed in writing. Deposit only after your approval.",
+  "trust.certsT": "Certifications & standards",
+  "trust.certsD": "To be provided",
+  "trust.certsN": "Supplier and quality certifications will be listed here once confirmed.",
+  "trust.matT": "Materials & craftsmanship",
+  "trust.matD": "To be provided",
+  "trust.matN": "Steel grades, finishes and manufacturing standards will be documented here.",
+  "trust.custT": "Trusted by",
+  "trust.custD": "To be provided",
+  "trust.custN": "Customer references will appear here with their permission.",
+  "trust.sub": "The credentials that matter to professional buyers — published as they are confirmed.",
+  "foot.note": "Timelines are operational targets, not unconditional guarantees.",
+  "feat.skelA": "Loading instrument",
+  "feat.errT": "Could not load featured instruments.",
+  "feat.errB": "Browse the catalogue",
+  "nav.how": "How it works",
+  "nav.why": "Why Surgronic",
+  "hero.scroll": "Scroll",
+  "trust.title2": "Procurement, engineered.",
+  "strip.1b": "1 business day",
+  "strip.1d": "response",
+  "strip.2b": "1–3 days",
+  "strip.2d": "sourcing",
+  "strip.3b": "2–5 days",
+  "strip.3d": "shipping",
+  "hero.tagFrom": "From our catalogued range",
+  "hero.tagCat": "8,658 instruments",
+  "trust.sub2": "One catalogue, two supply channels, and a specification-first workflow.",
+  "trust.eyebrow2": "Credentials",
+  "trust.addrLabel": "Head office",
 },
 fr: {
   "meta.homeTitle": "Surgronic — Instruments chirurgicaux de précision, sourcés selon vos spécifications",
@@ -389,7 +440,58 @@ fr: {
   "q.waConfirm": "Confirmer via WhatsApp",
   "q.backCatalog": "Retour au catalogue",
   "common.loading": "Chargement…",
-  "common.error": "Une erreur est survenue. Veuillez réessayer."
+  "common.error": "Une erreur est survenue. Veuillez réessayer.",
+  "hero.kicker": "Instruments chirurgicaux de précision",
+  "finder.tabBy1": "Par nom",
+  "finder.tabBy2": "Par référence",
+  "finder.tabBy3": "Par photo",
+  "finder.drop": "Glissez-déposez votre photo ici",
+  "finder.browse": "ou parcourez vos fichiers",
+  "finder.photoReady": "Photo prête",
+  "finder.photoChange": "Changer de photo",
+  "finder.nameHelp": "Tapez tout ou partie du nom de l’instrument.",
+  "finder.refHelp": "Collez la référence fabricant ou le SKU.",
+  "finder.photoHelp": "Notre équipe l’identifie manuellement — jamais de reconnaissance automatisée.",
+  "ch.badge1": "En stock",
+  "ch.badge2": "Sourcé sur spécification",
+  "ch.time1": "Expédié depuis notre stock",
+  "ch.time2": "Sourcing typique 1–3 jours",
+  "ch.rule": "Les articles en stock affichent un badge de stock ; tout le reste est sourcé, avec confirmation écrite de la spécification.",
+  "ch.cta1": "Voir le stock",
+  "ch.cta2": "Lancer un sourcing",
+  "why.stat3n": "1 jour",
+  "why.stat3d": "Délai de réponse maximal. Chaque demande reçoit une réponse sous un jour ouvré.",
+  "why.specT": "Confirmation écrite de la spécification",
+  "why.specD": "Aucun engagement avant confirmation écrite de la spécification. Acompte uniquement après votre approbation.",
+  "trust.certsT": "Certifications et normes",
+  "trust.certsD": "À fournir",
+  "trust.certsN": "Les certifications fournisseurs et qualité seront listées ici une fois confirmées.",
+  "trust.matT": "Matériaux et fabrication",
+  "trust.matD": "À fournir",
+  "trust.matN": "Nuances d’acier, finitions et normes de fabrication seront documentées ici.",
+  "trust.custT": "Ils nous font confiance",
+  "trust.custD": "À fournir",
+  "trust.custN": "Les références clients apparaîtront ici avec leur accord.",
+  "trust.sub": "Les garanties qui comptent pour les acheteurs professionnels — publiées au fur et à mesure de leur confirmation.",
+  "foot.note": "Les délais sont des objectifs opérationnels, pas des garanties inconditionnelles.",
+  "feat.skelA": "Chargement de l’instrument",
+  "feat.errT": "Impossible de charger les instruments en vedette.",
+  "feat.errB": "Parcourir le catalogue",
+  "nav.how": "Comment ça marche",
+  "nav.why": "Pourquoi Surgronic",
+  "hero.scroll": "Défiler",
+  "trust.title2": "L’approvisionnement, conçu comme une ingénierie.",
+  "strip.1b": "1 jour ouvré",
+  "strip.1d": "réponse",
+  "strip.2b": "1–3 jours",
+  "strip.2d": "sourcing",
+  "strip.3b": "2–5 jours",
+  "strip.3d": "expédition",
+  "hero.tagFrom": "De notre gamme cataloguée",
+  "hero.tagCat": "8 658 instruments",
+  "trust.sub2": "Un catalogue, deux canaux d’approvisionnement et un workflow axé sur la spécification.",
+  "trust.eyebrow2": "Références",
+  "trust.addrLabel": "Siège",
 },
 ar: {
   "meta.homeTitle": "سورجرونيك — أدوات جراحية دقيقة، توريد حسب مواصفاتكم",
@@ -581,7 +683,58 @@ ar: {
   "q.waConfirm": "التأكيد عبر واتساب",
   "q.backCatalog": "عودة إلى الكتالوج",
   "common.loading": "جاري التحميل…",
-  "common.error": "حدث خطأ ما. حاول مجددًا."
+  "common.error": "حدث خطأ ما. حاول مجددًا.",
+  "hero.kicker": "أدوات جراحية دقيقة",
+  "finder.tabBy1": "بالاسم",
+  "finder.tabBy2": "بالمرجع",
+  "finder.tabBy3": "بالصورة",
+  "finder.drop": "اسحب صورتك وأفلتها هنا",
+  "finder.browse": "أو تصفح الملفات",
+  "finder.photoReady": "الصورة جاهزة",
+  "finder.photoChange": "تغيير الصورة",
+  "finder.nameHelp": "اكتب جزءاً من اسم الأداة.",
+  "finder.refHelp": "الصق المرجع الخاص بالشركة المصنعة أو رمز SKU.",
+  "finder.photoHelp": "فريقنا يحددها يدوياً — دون تخمين آلي.",
+  "ch.badge1": "من المخزون",
+  "ch.badge2": "توريد حسب المواصفات",
+  "ch.time1": "يُشحن من مخزوننا",
+  "ch.time2": "التوريد عادة 1–3 أيام",
+  "ch.rule": "الأصناف المتوفرة في المخزون تحمل شارة مخزون؛ وكل ما عدا ذلك يتم توريده مع تأكيد كتابي للمواصفات.",
+  "ch.cta1": "تصفح المخزون",
+  "ch.cta2": "ابدأ التوريد",
+  "why.stat3n": "يوم واحد",
+  "why.stat3d": "أقصى مدة للرد. كل طلب يحصل على رد خلال يوم عمل واحد.",
+  "why.specT": "تأكيد كتابي للمواصفات",
+  "why.specD": "لا التزام قبل التأكيد الكتابي للمواصفات. الدفعة المقدمة فقط بعد موافقتك.",
+  "trust.certsT": "الشهادات والمعايير",
+  "trust.certsD": "سيتم توفيرها",
+  "trust.certsN": "سيتم إدراج شهادات الموردين ومعايير الجودة هنا فور تأكيدها.",
+  "trust.matT": "المواد والحرفية",
+  "trust.matD": "سيتم توفيرها",
+  "trust.matN": "سيتم توثيق درجات الفولاذ والتشطيبات ومعايير التصنيع هنا.",
+  "trust.custT": "موضع ثقتنا",
+  "trust.custD": "سيتم توفيرها",
+  "trust.custN": "ستظهر مراجع العملاء هنا بموافقتهم.",
+  "trust.sub": "الضمانات التي تهم المشترين المحترفين — تُنشر فور تأكيدها.",
+  "foot.note": "المدد الزمنية أهداف تشغيلية، ليست ضمانات غير مشروطة.",
+  "feat.skelA": "جارِ تحميل الأداة",
+  "feat.errT": "تعذر تحميل الأدوات المميزة.",
+  "feat.errB": "تصفح الكتالوج",
+  "nav.how": "كيف نعمل",
+  "nav.why": "لماذا سورجرونيك",
+  "hero.scroll": "مرر",
+  "trust.title2": "التوريد، مصمم كهندسة.",
+  "strip.1b": "يوم عمل واحد",
+  "strip.1d": "للرد",
+  "strip.2b": "1–3 أيام",
+  "strip.2d": "للتوريد",
+  "strip.3b": "2–5 أيام",
+  "strip.3d": "للشحن",
+  "hero.tagFrom": "من تشكيلتنا المسجلة",
+  "hero.tagCat": "8,658 أداة",
+  "trust.sub2": "كتالوج واحد وقناتا توريد وسير عمل يركز على المواصفات.",
+  "trust.eyebrow2": "الاعتمادات",
+  "trust.addrLabel": "المقر الرئيسي",
 }
 };
 
@@ -802,9 +955,9 @@ function headerHTML(active){
   '<header class="site-header"><div class="container header-inner">'+
     '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
     '<nav class="main-nav">'+
-      '<a href="index.html"'+(active==="home"?' class="active"':'')+' data-i18n="nav.home">'+t("nav.home")+'</a>'+
       '<a href="catalogue.html"'+(active==="catalog"?' class="active"':'')+' data-i18n="nav.catalog">'+t("nav.catalog")+'</a>'+
-      '<a href="quote.html"'+(active==="quote"?' class="active"':'')+' data-i18n="nav.quote">'+t("nav.quote")+'</a>'+
+      '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
+      '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
     '</nav>'+
     '<div class="header-actions">'+
       '<div class="lang-switch" role="group" aria-label="Language">'+
@@ -821,14 +974,15 @@ function headerHTML(active){
   '</div></header>'+
   '<div class="mobile-nav" id="mobileNav">'+
     '<button class="close" id="mobileClose" aria-label="'+t("nav.close")+'">&times;</button>'+
-    '<a href="index.html" data-i18n="nav.home">'+t("nav.home")+'</a>'+
     '<a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a>'+
+    '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
+    '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
     '<a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a>'+
   '</div>';
 }
 function footerHTML(){
   return ''+
-  '<footer><div class="container">'+
+  '<footer class="footer"><div class="container">'+
     '<div class="footer-grid">'+
       '<div class="footer-brand">'+
         '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo-reversed.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
@@ -853,7 +1007,7 @@ function footerHTML(){
     '</div>'+
     '<div class="footer-bottom">'+
       '<span>\u00A9 2026 Surgronic. <span data-i18n="footer.rights">'+t("footer.rights")+'</span></span>'+
-      '<span>Surgronic \u00B7 Sisli, Istanbul, Turkey</span>'+
+      '<span data-i18n="foot.note">'+t("foot.note")+'</span>'+
     '</div>'+
   '</div></footer>';
 }
