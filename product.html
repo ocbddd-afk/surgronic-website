@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product — Surgronic</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="./">SURGRONIC<span>.</span></a>
+<nav>
+<a href="./">Home</a>
+<a href="./catalogue.html">Catalogue</a>
+<a href="./brands.html">Brands</a>
+<a href="./quote.html">Get a Quote</a>
+<a href="./about.html">About</a>
+<a href="./contact.html">Contact</a>
+</nav>
+<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
+</header>
+
+<div class="container">
+<div class="breadcrumb"><a href="./">Home</a> / <a href="./catalogue.html">Catalogue</a> / <span id="crumb-sku">Product</span></div>
+<div id="detail"></div>
+<div class="loading" id="loading">Loading product...</div>
+</div>
+
+<footer class="site-footer">
+<div class="inner">
+<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
+<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
+</div>
+<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
+</footer>
+
+<script src="./app.js"></script>
+<script>
+async function init() {
+  const sku = getQueryParam('sku');
+  if (!sku) { document.getElementById('loading').innerHTML = '<div class="error">No product specified.</div>'; return; }
+  try {
+    const products = await loadProducts();
+    const p = products.find(x => (x.sku||'').toLowerCase() === sku.toLowerCase());
+    document.getElementById('loading').style.display = 'none';
+    if (!p) { document.getElementById('detail').innerHTML = '<div class="error">Product not found.</div>'; return; }
+    document.getElementById('crumb-sku').textContent = p.sku;
+    document.title = (p.name||p.sku) + ' — Surgronic';
+    const img = productImage(p);
+    const waText = encodeURIComponent('Hello, I am interested in ' + (p.sku||'') + ' - ' + (p.name||''));
+    // Related products (same brand)
+    const related = products.filter(x => x.brand === p.brand && x.sku !== p.sku).slice(0, 4);
+    document.getElementById('detail').innerHTML =
+    '<div style="display:grid; grid-template-columns: 1fr 1fr; gap:2.5rem; background:white; padding:2.5rem; border-radius:1rem; box-shadow: var(--shadow); margin: 1rem 0 3rem;">' +
+      '<div><img src="' + img + '" alt="" style="width:100%; object-fit:contain; background:#f8fafc; border-radius:0.75rem; padding:1.5rem;" onerror="this.src=\'./assets/placeholder.svg\'"></div>' +
+      '<div>' +
+        '<div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.5px; font-weight:600;">' + (p.sku||'') + '</div>' +
+        '<h1 style="margin:0.5rem 0; font-size:2rem; color:var(--navy); line-height:1.3;">' + (p.name||'') + '</h1>' +
+        '<div style="color:var(--accent); margin-bottom:1rem; font-weight:600; font-size:1.05rem;">' + (p.brand||'') + '</div>' +
+        (p.description && p.description !== p.name ? '<p style="color:var(--muted); margin-bottom:1rem;">' + p.description + '</p>' : '') +
+        '<div style="margin:1.25rem 0; padding:1.25rem; background:#f8fafc; border-radius:0.75rem; border-left:4px solid var(--accent);">' +
+          '<div style="font-weight:700; margin-bottom:0.25rem; font-size:1.1rem;">Price on request</div>' +
+          '<div style="font-size:0.85rem; color:var(--muted);">Indicative price, excl. shipping and duties, valid until ' + new Date(Date.now() + 60*24*3600*1000).toLocaleDateString() + '. Final price confirmed in writing.</div>' +
+        '</div>' +
+        '<div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">' +
+        '<a class="btn btn-whatsapp" href="https://wa.me/905526081432?text=' + waText + '">Request Quote via WhatsApp</a>' +
+        '<a class="btn btn-outline" href="./quote.html?sku=' + encodeURIComponent(p.sku||'') + '">Detailed Quote Form</a>' +
+        '</div>' +
+        '<div style="margin-top:1.5rem; font-size:0.9rem; color:var(--muted);">' +
+          '<p><strong>From stock</strong> / <strong>Sourced to specification</strong> / <strong>Inspected before shipment</strong></p>' +
+          '<p style="margin-top:0.5rem;">Contact: yusuf@surgronic.com · +90 552 608 1432<br>Response within 1 business day. Nothing ships until you\'ve seen it and approved it.</p>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+    (related.length ? '<div class="section"><h2>Related Instruments</h2><div class="product-grid">' + related.map(productCard).join('') + '</div></div>' : '');
+  } catch(e) {
+    document.getElementById('loading').innerHTML = '<div class="error">Unable to load product. Please try again.</div>';
+  }
+}
+init();
+</script>
+</body>
+</html>

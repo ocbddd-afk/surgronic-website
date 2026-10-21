@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalogue — Surgronic</title>
+<meta name="description" content="Browse 8,658 precision surgical instruments from Aesculap and Sklar.">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="./">SURGRONIC<span>.</span></a>
+<nav>
+<a href="./">Home</a>
+<a href="./catalogue.html" class="active">Catalogue</a>
+<a href="./brands.html">Brands</a>
+<a href="./quote.html">Get a Quote</a>
+<a href="./about.html">About</a>
+<a href="./contact.html">Contact</a>
+</nav>
+<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
+</header>
+
+<div class="toolbar">
+<div class="inner">
+<input type="text" id="search" placeholder="Search by name or article number...">
+<select id="brand"><option value="">All Brands</option><option value="aesculap">Aesculap</option><option value="sklar">Sklar</option></select>
+<select id="sort"><option value="name">Sort: Name</option><option value="sku">Sort: Article No.</option><option value="brand">Sort: Brand</option></select>
+</div>
+</div>
+
+<div class="container">
+<div class="breadcrumb"><a href="./">Home</a> / Catalogue</div>
+<div id="stats" style="padding: 1rem 0; color: var(--muted);"></div>
+<div class="product-grid" id="grid"></div>
+<div class="loading" id="loading">Loading 8,658 instruments...</div>
+</div>
+
+<footer class="site-footer">
+<div class="inner">
+<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
+<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
+</div>
+<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
+</footer>
+
+<script src="./app.js"></script>
+<script>
+let all = [];
+async function init() {
+  try {
+    all = await loadProducts();
+    document.getElementById('loading').style.display = 'none';
+    // Pre-fill from URL
+    const b = getQueryParam('brand'); if (b) document.getElementById('brand').value = b;
+    const s = getQueryParam('search'); if (s) document.getElementById('search').value = s;
+    render();
+  } catch(e) {
+    document.getElementById('loading').innerHTML = '<div class="error">Unable to load catalogue. Please refresh.</div>';
+  }
+}
+function render() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const b = document.getElementById('brand').value.toLowerCase();
+  const sort = document.getElementById('sort').value;
+  let f = all.filter(p => {
+    if (q && !(p.name||'').toLowerCase().includes(q) && !(p.sku||'').toLowerCase().includes(q)) return false;
+    if (b && (p.brand||'').toLowerCase() !== b) return false;
+    return true;
+  });
+  f.sort((a,b2) => {
+    if (sort === 'sku') return (a.sku||'').localeCompare(b2.sku||'');
+    if (sort === 'brand') return (a.brand||'').localeCompare(b2.brand||'');
+    return (a.name||'').localeCompare(b2.name||'');
+  });
+  document.getElementById('stats').textContent = f.length.toLocaleString() + ' instruments';
+  const grid = document.getElementById('grid');
+  const show = f.slice(0, 300);
+  grid.innerHTML = show.map(productCard).join('') +
+    (f.length > 300 ? '<div style="grid-column:1/-1; text-align:center; color: var(--muted); padding: 2rem;">Showing 300 of ' + f.length.toLocaleString() + ' — refine your search to see more</div>' : '') +
+    (f.length === 0 ? '<div style="grid-column:1/-1; text-align:center; color: var(--muted); padding: 3rem;">No instruments match your search.</div>' : '');
+}
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('brand').addEventListener('change', render);
+document.getElementById('sort').addEventListener('change', render);
+init();
+</script>
+</body>
+</html>

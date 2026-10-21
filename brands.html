@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brands — Surgronic</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="./">SURGRONIC<span>.</span></a>
+<nav>
+<a href="./">Home</a>
+<a href="./catalogue.html">Catalogue</a>
+<a href="./brands.html" class="active">Brands</a>
+<a href="./quote.html">Get a Quote</a>
+<a href="./about.html">About</a>
+<a href="./contact.html">Contact</a>
+</nav>
+<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
+</header>
+<div class="container">
+<div class="breadcrumb"><a href="./">Home</a> / Brands</div>
+<div class="section">
+<h2>Our Brands</h2>
+<p class="text-center" style="color: var(--muted); max-width: 700px; margin: 0 auto 2rem;">We source precision instruments from world-leading manufacturers, each selected for quality and reliability.</p>
+<div class="cat-grid" id="brands"></div>
+<div class="loading" id="loading">Loading brands...</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="inner">
+<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
+<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
+</div>
+<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
+</footer>
+<script src="./app.js"></script>
+<script>
+loadProducts().then(products => {
+  document.getElementById('loading').style.display = 'none';
+  const brands = {};
+  products.forEach(p => { const b = p.brand || 'Other'; brands[b] = (brands[b]||0)+1; });
+  const descs = {
+    'Aesculap': 'World-leading German manufacturer of surgical instruments. Precision-crafted for reliability in every procedure.',
+    'Sklar': 'Trusted American surgical instrument maker since 1892. Comprehensive range for every specialty.'
+  };
+  document.getElementById('brands').innerHTML = Object.entries(brands).map(([b,c]) =>
+    '<a class="cat-card" href="./catalogue.html?brand=' + encodeURIComponent(b.toLowerCase()) + '"><h3>' + b + '</h3><p>' + (descs[b] || 'Quality surgical instruments.') + '</p><span class="count">' + c.toLocaleString() + ' products</span></a>'
+  ).join('');
+}).catch(() => { document.getElementById('loading').innerHTML = '<div class="error">Unable to load. Please refresh.</div>'; });
+</script>
+</body>
+</html>

@@ -5,71 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Surgronic — Precision Surgical Instruments</title>
 <meta name="description" content="Precision surgical instruments, sourced to your specification. 8,658 products from Aesculap and Sklar. From stock or made to order. Inspected before shipment.">
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --navy: #071426; --blue: #102A43; --accent: #3186F6; --silver: #B7C3D0; --bg: #f8fafc; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: #0f172a; line-height: 1.6; }
-header { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%); color: white; padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 12px rgba(7,20,38,0.3); position: sticky; top: 0; z-index: 100; }
-header .logo { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.5px; }
-header .logo span { color: var(--accent); }
-header .contact { font-size: 0.85rem; opacity: 0.85; text-align: right; }
-header .contact a { color: white; text-decoration: none; }
-.hero { background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #1a3a5c 100%); color: white; padding: 3rem 2rem; text-align: center; }
-.hero h2 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.75rem; letter-spacing: -0.5px; }
-.hero p { font-size: 1.1rem; opacity: 0.85; max-width: 700px; margin: 0 auto; }
-.hero .badges { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
-.hero .badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1.25rem; border-radius: 2rem; font-size: 0.85rem; backdrop-filter: blur(4px); }
-.search-bar { padding: 1.5rem 2rem; background: white; border-bottom: 1px solid #e2e8f0; display: flex; gap: 1rem; max-width: 1200px; margin: 0 auto; }
-.search-bar input { flex: 1; padding: 0.875rem 1.25rem; border: 2px solid #e2e8f0; border-radius: 0.75rem; font-size: 1rem; transition: border-color 0.2s; }
-.search-bar input:focus { outline: none; border-color: var(--accent); }
-.search-bar select { padding: 0.875rem 1rem; border: 2px solid #e2e8f0; border-radius: 0.75rem; font-size: 0.95rem; background: white; cursor: pointer; }
-#stats { padding: 1.25rem 2rem; color: #64748b; max-width: 1200px; margin: 0 auto; font-size: 0.95rem; }
-#grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; padding: 0 2rem 3rem; max-width: 1200px; margin: 0 auto; }
-.card { background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #f1f5f9; }
-.card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(7,20,38,0.12); }
-.card img { width: 100%; height: 220px; object-fit: contain; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1rem; }
-.card-body { padding: 1.25rem; }
-.card-sku { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-.card-name { font-weight: 700; margin: 0.5rem 0; font-size: 1rem; line-height: 1.4; color: var(--navy); }
-.card-brand { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
-.card-price { margin-top: 0.75rem; font-size: 0.85rem; color: #64748b; }
-#loading { text-align: center; padding: 4rem; color: #64748b; font-size: 1.1rem; }
-footer { background: var(--navy); color: white; padding: 3rem 2rem 2rem; margin-top: 2rem; }
-footer .inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-footer h3 { font-size: 1.1rem; margin-bottom: 1rem; }
-footer p, footer a { color: rgba(255,255,255,0.7); font-size: 0.9rem; text-decoration: none; }
-footer a:hover { color: white; }
-footer .bottom { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; opacity: 0.6; }
-a.card-link { text-decoration: none; color: inherit; display: block; }
-</style>
+<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<header>
-<div class="logo">SURGRONIC<span>.</span></div>
-<div class="contact"><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a> · <a href="tel:+905526081432">+90 552 608 1432</a></div>
+<header class="site-header">
+<a class="logo" href="./">SURGRONIC<span>.</span></a>
+<nav>
+<a href="./" class="active">Home</a>
+<a href="./catalogue.html">Catalogue</a>
+<a href="./brands.html">Brands</a>
+<a href="./quote.html">Get a Quote</a>
+<a href="./about.html">About</a>
+<a href="./contact.html">Contact</a>
+</nav>
+<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
 </header>
-<div class="hero" id="hero">
-<h2>Precision Surgical Instruments</h2>
-<p>Sourced to your specification. From stock or made to order — inspected before shipment.</p>
+
+<div class="hero">
+<h1>Precision Surgical Instruments</h1>
+<p>Sourced to your specification. From stock or made to order — every instrument inspected before shipment.</p>
 <div class="badges">
 <span class="badge">✓ From Stock</span>
 <span class="badge">✓ Sourced to Specification</span>
 <span class="badge">✓ Inspected Before Shipment</span>
 </div>
+<br>
+<a class="cta" href="./catalogue.html">Browse 8,658 Instruments</a>
 </div>
-<div class="search-bar" id="searchbar">
-<input type="text" id="search" placeholder="Search 8,658 surgical instruments...">
-<select id="brand">
-<option value="">All Brands</option>
-<option value="aesculap">Aesculap</option>
-<option value="sklar">Sklar</option>
-</select>
+
+<div class="container">
+<div class="section">
+<h2>Shop by Brand</h2>
+<div class="cat-grid" id="brands"></div>
 </div>
-<div id="stats"></div>
-<div id="grid"></div>
-<div id="detail" style="display:none; padding: 2rem; max-width: 1000px; margin: 0 auto;"></div>
-<div id="loading">Loading products...</div>
-<footer id="footer">
+
+<div class="section">
+<h2>Featured Instruments</h2>
+<div class="product-grid" id="featured"></div>
+<div class="text-center mt-2"><a class="btn btn-outline" href="./catalogue.html">View Full Catalogue</a></div>
+</div>
+
+<div class="section" style="background: white; border-radius: 1rem; padding: 3rem 2rem; margin: 2rem 0;">
+<h2>How It Works</h2>
+<div class="cat-grid">
+<div class="cat-card"><h3>1. Browse & Request</h3><p>Search 8,658 instruments by name, article number, or brand. Request a quote via WhatsApp or our form.</p></div>
+<div class="cat-card"><h3>2. Specification Confirmed</h3><p>We confirm every detail in writing — product, size, material, finish, quantity — before you commit.</p></div>
+<div class="cat-card"><h3>3. Inspected Before Shipment</h3><p>Nothing ships until you've seen it and approved it. Pre-shipment photos or video on every order.</p></div>
+</div>
+</div>
+</div>
+
+<footer class="site-footer">
 <div class="inner">
 <div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification. Serving hospitals, clinics and distributors across MENA.</p></div>
 <div><h3>Contact</h3><p>Yusuf Mohamed<br><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a> (WhatsApp)</p></div>
@@ -77,97 +63,22 @@ a.card-link { text-decoration: none; color: inherit; display: block; }
 </div>
 <div class="bottom">© 2026 Surgronic. All rights reserved.</div>
 </footer>
+
+<script src="./app.js"></script>
 <script>
-let allProducts = [];
-const pathMatch = window.location.pathname.match(/\/instrument\/([^\/]+)\/?$/);
-const productSlug = pathMatch ? pathMatch[1] : null;
-async function load() {
-  try {
-    const res = await fetch('./assets/catalog-data-v2.json');
-    if (!res.ok) throw new Error('Failed to load catalogue');
-    allProducts = await res.json();
-    const total = allProducts.length;
-    document.getElementById('loading').style.display = 'none';
-    if (productSlug) {
-      document.getElementById('hero').style.display = 'none';
-      document.getElementById('searchbar').style.display = 'none';
-      document.getElementById('stats').style.display = 'none';
-      document.getElementById('grid').style.display = 'none';
-      document.getElementById('footer').style.display = 'none';
-      renderDetail(productSlug);
-    } else {
-      document.getElementById('stats').textContent = total.toLocaleString() + ' precision instruments';
-      render();
-    }
-  } catch (e) {
-    document.getElementById('loading').innerHTML = '<p style="color:#dc2626;">Unable to load the catalogue. Please refresh the page.</p><p style="font-size:0.85rem; margin-top:0.5rem;">' + e.message + '</p>';
-  }
-}
-function renderDetail(slug) {
-  const p = allProducts.find(x => 
-    (x.slug === slug) || 
-    (x.sku && x.sku.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug) ||
-    (x.sku && x.sku.toLowerCase() === slug.toLowerCase())
-  );
-  const detail = document.getElementById('detail');
-  detail.style.display = 'block';
-  if (!p) {
-    detail.innerHTML = '<a href="./" style="color:#3186F6;">← Back to catalogue</a><p style="margin-top:2rem;">Product not found.</p>';
-    return;
-  }
-  const img = (p.imageFiles && p.imageFiles[0]) || 'placeholder.svg';
-  detail.innerHTML =
-    '<a href="./" style="color:#3186F6; text-decoration:none; font-weight:600;">← Back to catalogue</a>' +
-    '<div style="display:grid; grid-template-columns: 1fr 1fr; gap:2.5rem; margin-top:1.5rem; background:white; padding:2.5rem; border-radius:1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">' +
-      '<div><img src="./assets/' + img + '" alt="" style="width:100%; object-fit:contain; background:#f8fafc; border-radius:0.75rem; padding:1rem;" onerror="this.src=\'./assets/placeholder.svg\'"></div>' +
-      '<div>' +
-        '<div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.5px; font-weight:600;">' + (p.sku||'') + '</div>' +
-        '<h2 style="margin:0.5rem 0; font-size:1.75rem; color:#071426;">' + (p.name||'') + '</h2>' +
-        '<div style="color:#3186F6; margin-bottom:1rem; font-weight:600;">' + (p.brand||'') + '</div>' +
-        '<div style="margin:1.25rem 0; padding:1.25rem; background:#f8fafc; border-radius:0.75rem; border-left: 4px solid #3186F6;">' +
-          '<div style="font-weight:700; margin-bottom:0.25rem;">Price on request</div>' +
-          '<div style="font-size:0.85rem; color:#64748b;">Indicative price, excl. shipping and duties. Final price confirmed in writing.</div>' +
-        '</div>' +
-        '<a href="https://wa.me/905526081432?text=' + encodeURIComponent('Hello, I am interested in ' + (p.sku||'') + ' - ' + (p.name||'')) + '" ' +
-           'style="display:inline-block; background:#25d366; color:white; padding:0.875rem 2rem; border-radius:0.75rem; text-decoration:none; font-weight:700;">Request Quote via WhatsApp</a>' +
-        '<div style="margin-top:1.5rem; font-size:0.85rem; color:#64748b;">Contact: yusuf@surgronic.com · +90 552 608 1432<br>Response within 1 business day.</div>' +
-      '</div>' +
-    '</div>';
-  document.title = (p.name||p.sku) + ' — Surgronic';
-}
-function render() {
-  const search = document.getElementById('search').value.toLowerCase();
-  const brand = document.getElementById('brand').value.toLowerCase();
-  const filtered = allProducts.filter(p => {
-    if (search && !(p.name||'').toLowerCase().includes(search) && !(p.sku||'').toLowerCase().includes(search)) return false;
-    if (brand && (p.brand||'').toLowerCase() !== brand) return false;
-    return true;
-  });
-  const grid = document.getElementById('grid');
-  grid.innerHTML = filtered.slice(0, 200).map(p => {
-    const slug = (p.slug || (p.sku||'').toLowerCase().replace(/[^a-z0-9]+/g, '-')).replace(/^-+|-+$/g, '');
-    const img = (p.imageFiles && p.imageFiles[0]) || 'placeholder.svg';
-    return '<a class="card-link" href="./#instrument/' + slug + '/">' +
-    '<div class="card">' +
-      '<img src="./assets/' + img + '" alt="" loading="lazy" onerror="this.src=\'./assets/placeholder.svg\'">' +
-      '<div class="card-body">' +
-        '<div class="card-sku">' + (p.sku||'') + '</div>' +
-        '<div class="card-name">' + (p.name||'') + '</div>' +
-        '<div class="card-brand">' + (p.brand||'') + '</div>' +
-        '<div class="card-price">Price on request</div>' +
-      '</div>' +
-    '</div></a>';
-  }).join('');
-  if (filtered.length > 200) {
-    grid.innerHTML += '<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 1rem;">Showing 200 of ' + filtered.length.toLocaleString() + ' — refine your search</div>';
-  }
-  if (filtered.length === 0) {
-    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #64748b; padding: 3rem;">No products match your search.</div>';
-  }
-}
-document.getElementById('search').addEventListener('input', render);
-document.getElementById('brand').addEventListener('change', render);
-load();
+loadProducts().then(products => {
+  // Brands
+  const brands = {};
+  products.forEach(p => { const b = p.brand || 'Other'; brands[b] = (brands[b]||0)+1; });
+  document.getElementById('brands').innerHTML = Object.entries(brands).map(([b,c]) =>
+    '<a class="cat-card" href="./catalogue.html?brand=' + encodeURIComponent(b.toLowerCase()) + '"><h3>' + b + '</h3><p>Precision instruments from ' + b + '.</p><span class="count">' + c.toLocaleString() + ' products</span></a>'
+  ).join('');
+  // Featured (first 8 with images)
+  const featured = products.filter(p => p.imageFiles && p.imageFiles[0] && p.imageFiles[0] !== 'placeholder.svg').slice(0, 8);
+  document.getElementById('featured').innerHTML = featured.map(productCard).join('');
+}).catch(e => {
+  document.getElementById('featured').innerHTML = '<div class="error">Unable to load products. Please refresh.</div>';
+});
 </script>
 </body>
 </html>
