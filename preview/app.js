@@ -66,7 +66,7 @@ function updateBasketUI(){
 function headerHTML(active){
   return ''+
   '<header class="site-header"><div class="container header-inner">'+
-    '<a class="logo" href="index.html">Surgronic<span>.</span></a>'+
+    '<a class="logo" href="index.html">Surgronic<span class="dot">.</span></a>'+
     '<nav class="main-nav">'+
       '<a href="index.html"'+(active==="home"?' class="active"':'')+'>Home</a>'+
       '<a href="catalogue.html"'+(active==="catalog"?' class="active"':'')+'>Instrument Catalog</a>'+
@@ -78,10 +78,10 @@ function headerHTML(active){
         '<button data-lang="fr">FR</button>'+
         '<button data-lang="ar">AR</button>'+
       '</div>'+
-      '<a class="quote-pill" href="quote.html" aria-label="Quote basket">'+
+      '<a class="quote-indicator" href="quote.html" aria-label="Quote basket">'+
         'Quote list <span class="count" data-basket-count>0</span>'+
       '</a>'+
-      '<a class="btn btn-blue" href="quote.html" style="padding:11px 22px;font-size:14.5px">Request a Quote</a>'+
+      '<a class="btn btn-primary" href="quote.html" style="padding:11px 22px;font-size:14px">Request a Quote</a>'+
       '<button class="hamburger" id="hamburger" aria-label="Menu">☰</button>'+
     '</div>'+
   '</div></header>'+
@@ -97,7 +97,7 @@ function footerHTML(){
   '<footer><div class="container">'+
     '<div class="footer-grid">'+
       '<div class="footer-brand">'+
-        '<a class="logo" href="index.html" style="color:#fff">Surgronic<span>.</span></a>'+
+        '<a class="logo" href="index.html" style="color:#fff">Surgronic<span class="dot">.</span></a>'+
         '<p>Precision surgical instruments, sourced to specification. From stock or made to order. Inspected before shipment. Serving MENA.</p>'+
       '</div>'+
       '<div><h4>Catalog</h4>'+
@@ -153,11 +153,11 @@ function cardHTML(p){
       '<div class="psku">'+esc(p.sku)+'</div>'+
       '<h3>'+esc(p.name)+'</h3>'+
       '<div class="pbrand">'+esc(p.brand||"")+'</div>'+
-      '<div class="pfoot">'+
+      '<div class="pfoot" style="flex-direction:column;align-items:stretch;gap:10px">'+
         '<span class="por">Price on request</span>'+
-        '<button class="mini-btn" data-add="'+esc(p.sku)+'">Add to quote</button>'+
+        '<button class="btn btn-primary" data-add="'+esc(p.sku)+'" style="width:100%;padding:12px;font-size:14px">Add to Quote</button>'+
+        '<a href="product.html?sku='+encodeURIComponent(p.sku)+'" style="font-size:13px;font-weight:500;color:var(--muted);text-align:center">View details</a>'+
       '</div>'+
-      '<a href="product.html?sku='+encodeURIComponent(p.sku)+'" style="font-size:13.5px;font-weight:700;color:var(--blue-dark);margin-top:6px">View details →</a>'+
     '</div>'+
   '</article>';
 }
@@ -170,12 +170,25 @@ function bindAddButtons(root){
   (root||document).querySelectorAll("[data-add]").forEach(function(btn){
     btn.addEventListener("click",function(ev){
       ev.preventDefault(); ev.stopPropagation();
+      if(btn.disabled) return;
       var sku = btn.getAttribute("data-add");
+      var orig = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = "Adding&hellip;";
       api("getProduct",{sku:sku}).then(function(d){
-        if(d && d.product){ addToQuote(normProduct(d.product),1);
-          btn.textContent="Added ✓"; setTimeout(function(){btn.textContent="Add to quote";},1400);
-        }
-      }).catch(function(){});
+        if(d && d.product){
+          addToQuote(normProduct(d.product),1);
+          btn.innerHTML = "Added to Quote &check;";
+          btn.style.background = "var(--bronze)";
+          btn.style.borderColor = "var(--bronze)";
+          setTimeout(function(){
+            btn.innerHTML = orig;
+            btn.style.background = "";
+            btn.style.borderColor = "";
+            btn.disabled = false;
+          },1600);
+        } else { btn.disabled=false; btn.innerHTML=orig; }
+      }).catch(function(){ btn.disabled=false; btn.innerHTML=orig; });
     });
   });
 }

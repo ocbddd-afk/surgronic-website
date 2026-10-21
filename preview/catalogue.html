@@ -17,7 +17,7 @@
     <p>Guided search across 8,658 catalogued instruments. Filter by specialty, family, and manufacturer.</p>
     <div class="search-bar">
       <input id="q" type="search" placeholder="Search by name, SKU, or manufacturer reference…" aria-label="Search instruments">
-      <button class="btn btn-blue" id="searchBtn">Search</button>
+      <button class="btn btn-primary" id="searchBtn">Search</button>
     </div>
   </div>
 </div>
@@ -97,7 +97,10 @@
       var pages = Math.max(1, Math.ceil(total/PER));
       metaPage.textContent = "Page "+page+" of "+pages;
       if(!list.length){
-        grid.innerHTML = '<div class="error-box" style="grid-column:1/-1">No catalogued instruments match your filters yet. Try broadening the search.</div>';
+        grid.innerHTML = '<div class="error-box" style="grid-column:1/-1;text-align:center;padding:48px 32px">'+
+          '<h3 style="font-size:20px;margin-bottom:10px">Can&rsquo;t find your instrument?</h3>'+
+          '<p style="color:var(--muted);margin-bottom:20px">Send us the manufacturer reference or a photograph &mdash; we&rsquo;ll source it and quote.</p>'+
+          '<a class="btn btn-primary" href="quote.html">Request Sourcing</a></div>';
       } else {
         grid.innerHTML = list.map(SG.cardHTML).join("");
         SG.bindAddButtons(grid);

@@ -11,11 +11,11 @@
 <script src="app.js"></script>
 <script>SG.mountChrome("quote");</script>
 
-<div class="container" style="padding-bottom:80px">
-  <div class="breadcrumb"><a href="index.html">Home</a> → Request a Quote</div>
+<div class="container" style="padding-bottom:96px">
+  <div class="breadcrumb"><a href="index.html">Home</a> &rarr; Request a Quote</div>
   <span class="eyebrow">Quotation request</span>
-  <h2 class="section-title">Request a quote.</h2>
-  <p class="section-sub">Review your list, add references or a photograph, and send. We respond within one business day.</p>
+  <h2 class="section-title">Request a quotation.</h2>
+  <p class="section-sub">Review your selection, add any references or a photograph, and send. We respond within one business day.</p>
 
   <div id="quoteApp"></div>
 </div>
@@ -29,40 +29,47 @@
     var b = SG.getBasket();
     if(!b.length){
       app.innerHTML =
-        '<div class="error-box" style="margin-top:28px">Your quote list is empty. '+
-        '<a href="catalogue.html" style="font-weight:700;color:var(--blue-dark)">Browse the catalog</a> '+
-        'or describe the instrument you need below — you can still send a sourcing request with no items.</div>'
-        + formHTML(true);
+        '<div class="error-box" style="margin-top:32px">Your quote list is empty. '+
+        '<a href="catalogue.html" style="font-weight:600;color:var(--bronze-dark)">Browse the catalog</a> '+
+        'or describe the instrument you need below &mdash; you can still send a sourcing request with no items.</div>'
+        + '<div class="quote-layout" style="grid-template-columns:1fr;max-width:640px"><div>'+formHTML(true)+'</div></div>';
       bindForm();
       return;
     }
     var items = b.map(function(i,idx){
-      var img = i.image ? '<img src="./assets/'+SG.esc(i.image)+'" alt="">' : '<div style="width:84px;height:64px;background:var(--bg-soft);border-radius:8px"></div>';
+      var img = i.image
+        ? '<img src="./assets/'+SG.esc(i.image)+'" alt="">'
+        : '<div style="width:96px;height:72px;background:var(--bg-soft);border-radius:var(--radius-sm)"></div>';
       return '<div class="qitem">'+img+
-        '<div class="qi-body"><b>'+SG.esc(i.name)+'</b><small>'+SG.esc(i.sku)+(i.brand?" · "+SG.esc(i.brand):"")+'</small></div>'+
-        '<div class="qty"><button data-dec="'+idx+'">−</button><b>'+i.qty+'</b><button data-inc="'+idx+'">+</button></div>'+
-        '<button class="mini-btn" data-rm="'+idx+'" style="background:#fee2e2;color:#991b1b">Remove</button>'+
+        '<div class="qi-body"><b>'+SG.esc(i.name)+'</b><small>'+SG.esc(i.sku)+(i.brand?" &middot; "+SG.esc(i.brand):"")+'</small></div>'+
+        '<div class="qty"><button data-dec="'+idx+'" aria-label="Decrease">&minus;</button><b>'+i.qty+'</b><button data-inc="'+idx+'" aria-label="Increase">+</button></div>'+
+        '<button class="qremove" data-rm="'+idx+'">Remove</button>'+
       '</div>';
     }).join("");
-    app.innerHTML = '<div class="quote-layout"><div><h3 style="font-family:var(--font-display);font-size:22px;margin:26px 0 16px;color:var(--navy)">Your list ('+SG.basketCount()+' units)</h3>'+items+'</div><div>'+formHTML(false)+'</div></div>';
+    app.innerHTML =
+      '<div class="quote-layout">'+
+        '<div class="quote-items"><h3>Your Request &mdash; '+SG.basketCount()+' unit'+(SG.basketCount()!==1?"s":"")+'</h3>'+items+
+          '<div style="margin-top:16px"><a class="btn btn-outline" href="catalogue.html">Add More Instruments</a></div>'+
+        '</div>'+
+        '<div>'+formHTML(false)+'</div>'+
+      '</div>';
     bindItems(); bindForm();
   }
 
-  function formHTML(allowEmpty){
+  function formHTML(){
     return '<form class="qform" id="qform">'+
-      '<h3>Your details</h3>'+
-      '<label for="qn">Full name *</label><input id="qn" required autocomplete="name">'+
-      '<label for="qe">Work email *</label><input id="qe" type="email" required autocomplete="email">'+
-      '<label for="qc">Company / hospital</label><input id="qc" autocomplete="organization">'+
-      '<label for="qp">Phone / WhatsApp</label><input id="qp" type="tel" autocomplete="tel">'+
-      '<label for="qco">Country</label><input id="qco" autocomplete="country-name">'+
-      '<label for="qref">Product reference (if not in list)</label><input id="qref" placeholder="e.g. manufacturer article number">'+
-      '<label for="qnotes">Specifications / notes</label><textarea id="qnotes" rows="4" placeholder="Sizes, materials, finishes, quantities…"></textarea>'+
-      '<label for="qphoto">Product photo (optional)</label><input id="qphoto" type="file" accept="image/*">'+
-      '<p style="font-size:12.5px;color:var(--muted);margin-top:10px">Photos are sent to our team for manual identification — never presented as automated recognition.</p>'+
-      '<button class="btn btn-blue" type="submit">Send Quotation Request <span class="arr">→</span></button>'+
-      '<button class="btn btn-ghost" type="button" id="waBtn" style="margin-top:10px">Send via WhatsApp</button>'+
-      '<p style="font-size:12.5px;color:var(--muted);margin-top:12px">Deposit refundable minus costs already committed to the supplier. Final price confirmed in writing.</p>'+
+      '<h3>Request Quotation</h3>'+
+      '<p class="qform-sub">No online payment required. Receive a quotation based on your specifications.</p>'+
+      '<label for="qn">Full name</label><input id="qn" required autocomplete="name" placeholder="Dr. Jane Smith">'+
+      '<label for="qe">Work email</label><input id="qe" type="email" required autocomplete="email" placeholder="name@hospital.org">'+
+      '<label for="qc">Company / Institution</label><input id="qc" autocomplete="organization" placeholder="Hospital or distributor name">'+
+      '<label for="qco">Country</label><input id="qco" autocomplete="country-name" placeholder="United Arab Emirates">'+
+      '<label for="qref">Product reference</label><input id="qref" placeholder="Manufacturer article number, if known">'+
+      '<label for="qnotes">Specifications</label><textarea id="qnotes" rows="4" placeholder="Sizes, materials, finishes, quantities&hellip;"></textarea>'+
+      '<label for="qphoto">Product photo</label><input id="qphoto" type="file" accept="image/*">'+
+      '<p style="font-size:12.5px;color:var(--muted);margin-top:8px">Photos go to our team for manual identification &mdash; never presented as automated recognition.</p>'+
+      '<button class="btn btn-primary" type="submit">Request Quotation <span class="arr">&rarr;</span></button>'+
+      '<p class="qnote">Deposit refundable minus costs already committed to the supplier.<br>Final price confirmed in writing.</p>'+
     '</form>';
   }
 
@@ -93,7 +100,6 @@
         name: document.getElementById("qn").value.trim(),
         email: document.getElementById("qe").value.trim(),
         company: document.getElementById("qc").value.trim(),
-        phone: document.getElementById("qp").value.trim(),
         country: document.getElementById("qco").value.trim()
       },
       reference: document.getElementById("qref").value.trim(),
@@ -101,51 +107,40 @@
     };
   }
   function waLink(q){
-    var lines = q.items.map(function(i){return "• "+i.sku+" — "+i.name+" × "+i.qty;});
-    var msg = "Surgronic quotation request%0A%0A"+encodeURIComponent(lines.join("\n")+"%0A%0A")+
-      (q.reference? "Reference: "+encodeURIComponent(q.reference)+"%0A":"")+
-      (q.notes? "Notes: "+encodeURIComponent(q.notes)+"%0A":"")+
-      "%0A"+encodeURIComponent(q.contact.name+" ("+q.contact.company+", "+q.contact.country+") "+q.contact.email+" "+q.contact.phone);
-    return "https://wa.me/"+WA+"?text="+msg;
+    var lines = q.items.map(function(i){return "- "+i.sku+" / "+i.name+" x"+i.qty;});
+    var msg = "Surgronic quotation request\n\n"+lines.join("\n")+"\n\n"+
+      (q.reference? "Reference: "+q.reference+"\n":"")+
+      (q.notes? "Notes: "+q.notes+"\n":"")+
+      "\n"+q.contact.name+" ("+q.contact.company+", "+q.contact.country+") "+q.contact.email;
+    return "https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
   }
 
   function bindForm(){
     var f = document.getElementById("qform");
     if(!f) return;
-    document.getElementById("waBtn").addEventListener("click",function(){
-      var q = collect();
-      if(!q.contact.name || !q.contact.email){ alert("Please add your name and email first."); return; }
-      window.open(waLink(q),"_blank");
-    });
     f.addEventListener("submit",function(ev){
       ev.preventDefault();
       var q = collect();
       var btn = f.querySelector('[type="submit"]');
-      btn.disabled = true; btn.textContent = "Sending…";
-      SG.api("submitRfq",q).then(function(){
-        done();
-      }).catch(function(){
-        /* API unreachable — offer WhatsApp fallback, still record locally */
-        done(true);
-      });
+      btn.disabled = true; btn.textContent = "Sending\u2026";
+      SG.api("submitRfq",q).then(function(){ done(false); }).catch(function(){ done(true); });
       function done(fallback){
         try{ localStorage.removeItem("surgronic_quote_v2"); }catch(e){}
         SG.updateBasketUI();
-        app.innerHTML = '<div class="qsuccess" style="margin-top:28px">'+
+        app.innerHTML = '<div class="qsuccess" style="margin-top:32px">'+
           '<h2>Request received.</h2>'+
           '<p>Thank you, '+SG.esc(q.contact.name.split(" ")[0])+'. '+
           (fallback
-            ? 'Our API is temporarily unreachable — please tap below to send your list via WhatsApp so nothing is lost.'
+            ? 'Our API is temporarily unreachable &mdash; please confirm via WhatsApp so nothing is lost.'
             : 'Our team will respond within one business day.')+
           '</p>'+
-          '<div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">'+
-            '<a class="btn btn-blue" target="_blank" rel="noopener" href="'+waLink(q)+'">Confirm via WhatsApp</a>'+
-            '<a class="btn btn-ghost" href="catalogue.html">Back to catalog</a>'+
+          '<div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">'+
+            '<a class="btn btn-primary" target="_blank" rel="noopener" href="'+waLink(q)+'">Confirm via WhatsApp</a>'+
+            '<a class="btn btn-outline" href="catalogue.html">Back to catalog</a>'+
           '</div></div>';
         window.scrollTo({top:0,behavior:"smooth"});
       }
     });
-    /* photo upload anchor */
     if(location.hash === "#photo"){
       var ph = document.getElementById("qphoto");
       if(ph){ ph.scrollIntoView({behavior:"smooth",block:"center"}); ph.focus(); }
