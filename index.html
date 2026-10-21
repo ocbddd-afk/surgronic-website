@@ -107,10 +107,28 @@
         }
         // Fix image URLs: rewrite absolute /assets/ to subpath /surgronic-website/assets/
         // (React was built for domain root; GitHub Pages uses a subpath)
+        // Patch HTMLImageElement.src setter to catch ALL image loads (React sets src dynamically)
+        (function() {
+          var desc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+          if (desc && desc.set) {
+            var origSet = desc.set;
+            Object.defineProperty(HTMLImageElement.prototype, 'src', {
+              set: function(v) {
+                if (typeof v === 'string' && v.indexOf('/assets/') === 0 && v.indexOf(BASE + '/assets/') !== 0) {
+                  v = BASE + v;
+                }
+                origSet.call(this, v);
+              },
+              get: desc.get,
+              configurable: true
+            });
+          }
+        })();
         function fixImages(root) {
           var imgs = (root || document).querySelectorAll('img[src^="/assets/"]');
           for (var i = 0; i < imgs.length; i++) {
-            imgs[i].src = BASE + imgs[i].getAttribute('src');
+            var s = imgs[i].getAttribute('src');
+            if (s.indexOf(BASE + '/assets/') !== 0) imgs[i].src = BASE + s;
           }
         }
         // Watch for dynamically added images (React renders them after load)
