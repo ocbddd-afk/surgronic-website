@@ -102,6 +102,10 @@ en: {
   "card.details": "View details",
   "card.por": "Price on request",
   "card.imgSoon": "Image coming soon",
+  "card.whatsapp": "WhatsApp",
+  "wa.single": "Hello Surgronic, I would like a quotation for {sku}, {name}, quantity {qty}. Please confirm availability and pricing.",
+  "wa.multi": "Hello Surgronic, I would like a quotation for the following items:",
+  "wa.link": "Link",
   "cat.title": "Instrument catalogue.",
   "cat.sub": "Guided search across 8,658 catalogued instruments. Filter by specialty, family, and manufacturer.",
   "cat.searchPh": "Search by name, SKU, or manufacturer reference…",
@@ -166,6 +170,7 @@ en: {
   "q.photo": "Product photo",
   "q.photoNote": "Photos go to our team for manual identification — never presented as automated recognition.",
   "q.submit": "Request Quotation",
+  "q.whatsapp": "Send via WhatsApp",
   "q.sending": "Sending…",
   "q.deposit": "Deposit refundable minus costs already committed to the supplier.",
   "q.finalPrice": "Final price confirmed in writing.",
@@ -276,6 +281,10 @@ fr: {
   "card.details": "Voir les détails",
   "card.por": "Prix sur demande",
   "card.imgSoon": "Image bientôt disponible",
+  "card.whatsapp": "WhatsApp",
+  "wa.single": "Bonjour Surgronic, je souhaite un devis pour {sku}, {name}, quantité {qty}. Merci de confirmer la disponibilité et le prix.",
+  "wa.multi": "Bonjour Surgronic, je souhaite un devis pour les articles suivants :",
+  "wa.link": "Lien",
   "cat.title": "Catalogue d'instruments.",
   "cat.sub": "Recherche guidée parmi 8 658 instruments catalogués. Filtrez par spécialité, famille et fabricant.",
   "cat.searchPh": "Rechercher par nom, SKU ou référence fabricant…",
@@ -340,6 +349,7 @@ fr: {
   "q.photo": "Photo du produit",
   "q.photoNote": "Les photos sont transmises à notre équipe pour identification manuelle — jamais présentées comme une reconnaissance automatisée.",
   "q.submit": "Demander un devis",
+  "q.whatsapp": "Envoyer via WhatsApp",
   "q.sending": "Envoi…",
   "q.deposit": "Acompte remboursable moins les coûts déjà engagés auprès du fournisseur.",
   "q.finalPrice": "Prix final confirmé par écrit.",
@@ -450,6 +460,10 @@ ar: {
   "card.details": "عرض التفاصيل",
   "card.por": "السعر عند الطلب",
   "card.imgSoon": "الصورة قريبًا",
+  "card.whatsapp": "واتساب",
+  "wa.single": "مرحبًا Surgronic، أرغب في عرض سعر لـ {sku}، {name}، الكمية {qty}. يرجى تأكيد التوفر والسعر.",
+  "wa.multi": "مرحبًا Surgronic، أرغب في عرض سعر للأصناف التالية:",
+  "wa.link": "الرابط",
   "cat.title": "كتالوج الأدوات.",
   "cat.sub": "بحث موجّه في 8,658 أداة مفهرسة. صفِّ حسب التخصص والعائلة والشركة المصنعة.",
   "cat.searchPh": "ابحث بالاسم أو SKU أو مرجع الشركة المصنعة…",
@@ -514,6 +528,7 @@ ar: {
   "q.photo": "صورة المنتج",
   "q.photoNote": "تُرسل الصور إلى فريقنا للتحديد اليدوي — ولا تُعرض أبدًا كتعرف آلي.",
   "q.submit": "طلب عرض سعر",
+  "q.whatsapp": "إرسال عبر واتساب",
   "q.sending": "جاري الإرسال…",
   "q.deposit": "العربون قابل للاسترداد مطروحًا منه التكاليف الملتزم بها لدى المورد.",
   "q.finalPrice": "السعر النهائي مؤكد كتابيًا.",
@@ -715,12 +730,38 @@ function updateBasketUI(){
 }
 
 /* ============================================================
+   WhatsApp integration — prepopulated procurement inquiries
+   ============================================================ */
+var WA_NUMBER = "905526081432";
+function waProductUrl(p, name, qty){
+  var msg = t("wa.single")
+    .replace("{sku}", p.sku||"")
+    .replace("{name}", name||"")
+    .replace("{qty}", qty||1);
+  var link = "";
+  try{ link = location.origin + location.pathname.replace(/[^/]*$/, "") + "product.html?sku=" + encodeURIComponent(p.sku||""); }
+  catch(e){}
+  if(link) msg += " " + t("wa.link") + ": " + link;
+  return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+}
+function waBasketUrl(){
+  var b = getBasket();
+  if(!b.length) return "https://wa.me/" + WA_NUMBER;
+  var lines = b.map(function(i){
+    var nm = (lang==="fr"&&i.nameFr)?i.nameFr:((lang==="ar"&&i.nameAr)?i.nameAr:i.name);
+    return "- " + i.sku + ", " + nm + " x" + i.qty;
+  });
+  var msg = t("wa.multi") + "\n" + lines.join("\n");
+  return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+}
+
+/* ============================================================
    Header / nav / footer (i18n-aware)
    ============================================================ */
 function headerHTML(active){
   return ''+
   '<header class="site-header"><div class="container header-inner">'+
-    '<a class="logo" href="index.html">Surgronic<span class="dot">.</span></a>'+
+    '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
     '<nav class="main-nav">'+
       '<a href="index.html"'+(active==="home"?' class="active"':'')+' data-i18n="nav.home">'+t("nav.home")+'</a>'+
       '<a href="catalogue.html"'+(active==="catalog"?' class="active"':'')+' data-i18n="nav.catalog">'+t("nav.catalog")+'</a>'+
@@ -751,7 +792,7 @@ function footerHTML(){
   '<footer><div class="container">'+
     '<div class="footer-grid">'+
       '<div class="footer-brand">'+
-        '<a class="logo" href="index.html" style="color:#fff">Surgronic<span class="dot">.</span></a>'+
+        '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo-reversed.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
         '<p data-i18n="footer.tagline">'+t("footer.tagline")+'</p>'+
       '</div>'+
       '<div><h4 data-i18n="footer.catalog">'+t("footer.catalog")+'</h4>'+
@@ -835,16 +876,20 @@ function cardHTML(p){
   var imgTag = img
     ? '<div class="pimg"><img src="'+img+'" alt="'+esc(nm)+'" loading="lazy"></div>'
     : '<div class="pimg" style="display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px">'+t("card.imgSoon")+'</div>';
+  var waUrl = waProductUrl(p, nm, 1);
   return ''+
   '<article class="product-card">'+imgTag+
     '<div class="pbody">'+
       '<div class="psku">'+esc(p.sku)+'</div>'+
       '<h3>'+esc(nm)+'</h3>'+
       '<div class="pbrand">'+esc(p.brand||"")+'</div>'+
-      '<div class="pfoot" style="flex-direction:column;align-items:stretch;gap:10px">'+
-        '<span class="por">'+t("card.por")+'</span>'+
-        '<button class="btn btn-primary" data-add="'+esc(p.sku)+'" style="width:100%;padding:12px;font-size:14px">'+t("card.add")+'</button>'+
-        '<a href="product.html?sku='+encodeURIComponent(p.sku)+'" style="font-size:13px;font-weight:500;color:var(--muted);text-align:center">'+t("card.details")+'</a>'+
+      '<span class="por">'+t("card.por")+'</span>'+
+      '<div class="pfoot">'+
+        '<button class="btn-add-quote" data-add="'+esc(p.sku)+'">'+t("card.add")+'</button>'+
+        '<a class="btn-wa" href="'+waUrl+'" target="_blank" rel="noopener" aria-label="WhatsApp">'+
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88M20.46 3.55A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.48-8.41"/></svg>'+
+          t("card.whatsapp")+'</a>'+
+        '<a class="btn-view" href="product.html?sku='+encodeURIComponent(p.sku)+'">'+t("card.details")+'</a>'+
       '</div>'+
     '</div>'+
   '</article>';
@@ -898,6 +943,7 @@ window.SG = {
   removeFromQuote:removeFromQuote, setQty:setQty, basketCount:basketCount,
   updateBasketUI:updateBasketUI, mountChrome:mountChrome,
   cardHTML:cardHTML, esc:esc, bindAddButtons:bindAddButtons,
+  waProductUrl:waProductUrl, waBasketUrl:waBasketUrl,
   t:t, setLang:setLang, getLang:getLang, applyI18n:applyI18n,
   productName:productName, productDesc:productDesc,
   SPECIALTIES:SPECIALTIES
