@@ -94,23 +94,29 @@
       <p>Surgronic is an international supplier of surgical instruments, based in Sisly, Istanbul, Turkey — selected instruments held in stock, the rest sourced to your exact specification and inspected before shipment. Contact Yusuf — yusuf@surgronic.com · +90 552 608 1432 (also on WhatsApp) — for the catalogue and quotations.</p>
     </noscript>
     <script>
-      // Register service worker FIRST, then load React app
-      // This ensures /actions API is intercepted before the app requests data
-      (async function() {
-        if ('serviceWorker' in navigator) {
-          try {
-            const reg = await navigator.serviceWorker.register('./sw.js');
-            await navigator.serviceWorker.ready;
-            // Force update to ensure latest SW
-            if (reg.waiting) reg.waiting.postMessage({type: 'SKIP_WAITING'});
-          } catch (e) {}
+      // Load React app, with service worker for /actions API
+      // SW registration runs in parallel; React loads after 1.5s max
+      // (prevents blank page if SW hangs)
+      (function() {
+        function loadReact() {
+          if (window.__reactLoaded) return;
+          window.__reactLoaded = true;
+          const s = document.createElement('script');
+          s.type = 'module';
+          s.crossOrigin = 'anonymous';
+          s.src = './assets/index-qah0y4z1.js';
+          document.body.appendChild(s);
         }
-        // Now load the React app - SW is ready to intercept /actions
-        const s = document.createElement('script');
-        s.type = 'module';
-        s.crossOrigin = 'anonymous';
-        s.src = './assets/index-qah0y4z1.js';
-        document.body.appendChild(s);
+        // Register SW in background (don't block React)
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./sw.js').catch(function(){});
+        }
+        // Load React after short delay for SW to activate, max 1.5s
+        setTimeout(loadReact, 1500);
+        // Fallback: load immediately if DOM ready and SW already controlling
+        if (document.readyState === 'complete' && navigator.serviceWorker && navigator.serviceWorker.controller) {
+          loadReact();
+        }
       })();
     </script>
   </body>
