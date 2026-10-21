@@ -54,12 +54,16 @@ en: {
   "spec.sub": "Eleven disciplines. One catalogue. Each specialty is a navigable destination.",
   "how.eyebrow": "How Surgronic works",
   "how.title": "From requirement to delivery.",
+  "step1.n": "Step 01",
   "step1.t": "Tell us what you need",
   "step1.d": "Browse the catalog, send a reference, or upload a photograph.",
+  "step2.n": "Step 02",
   "step2.t": "We confirm the specification",
   "step2.d": "Written specification confirmation before anything is committed.",
+  "step3.n": "Step 03",
   "step3.t": "Receive a quotation",
   "step3.d": "Clear pricing within one business day. Final price confirmed in writing.",
+  "step4.n": "Step 04",
   "step4.t": "Confirm and receive",
   "step4.d": "Nothing ships until you have seen it and approved it.",
   "feat.eyebrow": "Featured",
@@ -213,12 +217,16 @@ fr: {
   "spec.sub": "Onze disciplines. Un seul catalogue. Chaque spécialité est une destination navigable.",
   "how.eyebrow": "Fonctionnement de Surgronic",
   "how.title": "Du besoin à la livraison.",
+  "step1.n": "Étape 01",
   "step1.t": "Dites-nous ce qu'il vous faut",
   "step1.d": "Parcourez le catalogue, envoyez une référence ou téléversez une photographie.",
+  "step2.n": "Étape 02",
   "step2.t": "Nous confirmons la spécification",
   "step2.d": "Confirmation écrite des spécifications avant tout engagement.",
+  "step3.n": "Étape 03",
   "step3.t": "Recevez un devis",
   "step3.d": "Tarification claire sous un jour ouvré. Prix final confirmé par écrit.",
+  "step4.n": "Étape 04",
   "step4.t": "Confirmez et recevez",
   "step4.d": "Rien n'est expédié avant que vous l'ayez vu et approuvé.",
   "feat.eyebrow": "En vedette",
@@ -372,12 +380,16 @@ ar: {
   "spec.sub": "أحد عشر تخصصًا. كتالوج واحد. كل تخصص وجهة قابلة للتصفح.",
   "how.eyebrow": "كيف تعمل سورجرونيك",
   "how.title": "من الاحتياج إلى التسليم.",
+  "step1.n": "الخطوة 01",
   "step1.t": "أخبرنا بما تحتاجه",
   "step1.d": "تصفح الكتالوج أو أرسل مرجعًا أو ارفع صورة.",
+  "step2.n": "الخطوة 02",
   "step2.t": "نؤكد المواصفات",
   "step2.d": "تأكيد كتابي للمواصفات قبل أي التزام.",
+  "step3.n": "الخطوة 03",
   "step3.t": "استلم عرض السعر",
   "step3.d": "أسعار واضحة خلال يوم عمل واحد. السعر النهائي مؤكد كتابيًا.",
+  "step4.n": "الخطوة 04",
   "step4.t": "أكّد واستلم",
   "step4.d": "لا يُشحن شيء حتى تراه وتعتمده.",
   "feat.eyebrow": "مميز",
@@ -720,7 +732,7 @@ function footerHTML(){
       '</div>'+
       '<div><h4 data-i18n="footer.contact">'+t("footer.contact")+'</h4>'+
         '<a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a>'+
-        '<a href="tel:+905526081432">+90 552 608 1432</a>'+
+        '<a href="tel:+905526081432"><bdi>+90 552 608 1432</bdi></a>'+
         '<a href="https://wa.me/905526081432" target="_blank" rel="noopener">WhatsApp</a>'+
       '</div>'+
     '</div>'+
@@ -835,6 +847,13 @@ function bindAddButtons(root){
       }).catch(function(){ btn.disabled=false; btn.innerHTML=orig; });
     });
   });
+}
+
+/* Auto-apply i18n once DOM is ready (fixes early-script timing issue) */
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", function(){ applyI18n(); });
+} else {
+  applyI18n();
 }
 
 /* expose */
