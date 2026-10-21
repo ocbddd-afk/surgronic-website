@@ -156,6 +156,19 @@
       var ph = document.getElementById("qphoto");
       if(ph){ ph.scrollIntoView({behavior:"smooth",block:"center"}); ph.focus(); }
     }
+    /* Prefill reference from ?ref= (finder "Reference" tab); #sourcing scrolls to it */
+    try{
+      var qp = new URLSearchParams(location.search);
+      var prefill = qp.get("ref");
+      if(prefill){
+        var rf = document.getElementById("qref");
+        if(rf && !rf.value) rf.value = prefill;
+      }
+    }catch(e){}
+    if(location.hash === "#sourcing"){
+      var rf2 = document.getElementById("qref");
+      if(rf2){ rf2.scrollIntoView({behavior:"smooth",block:"center"}); rf2.focus(); }
+    }
   }
 
   render();

@@ -66,7 +66,7 @@
   function params(){
     var p = new URLSearchParams(location.search);
     return {
-      q: document.getElementById("q").value.trim() || p.get("search") || "",
+      q: document.getElementById("q").value.trim() || p.get("q") || p.get("search") || "",
       brand: document.getElementById("fBrand").value,
       family: document.getElementById("fFamily").value,
       sort: document.getElementById("fSort").value
@@ -75,7 +75,7 @@
   (function(){
     var p = new URLSearchParams(location.search);
     if(p.get("brand")) document.getElementById("fBrand").value = p.get("brand");
-    if(p.get("search")) document.getElementById("q").value = p.get("search");
+    if(p.get("q") || p.get("search")) document.getElementById("q").value = p.get("q") || p.get("search");
   })();
 
   function load(){

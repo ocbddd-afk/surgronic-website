@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n-title="meta.homeTitle">Surgronic — Precision Surgical Instruments, Sourced to Your Specification</title>
-<meta name="description" content="Have an instrument in mind? Let's find the right specification. From stock or sourced to your specification. We respond within one business day.">
+<meta name="description" content="Name the instrument. We'll find it. Surgical instruments available from stock or sourced to your requirements. We respond within one business day.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,40 +16,49 @@
   <div class="container hero-grid">
     <div>
       <div class="hero-brand"><strong>SURGRONIC</strong><span data-i18n="hero.tagline">Precision surgical instruments · Stock &amp; sourcing</span></div>
-      <h1 data-i18n="hero.title">Have an instrument in mind?</h1>
-      <div class="sub-head" data-i18n="hero.subtitle">Let's find the right specification.</div>
-      <p class="lead" data-i18n="hero.lead">Surgical instruments available from stock or sourced to your requirements. Search by instrument name, manufacturer reference, or specialty—or send us a photograph.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="quote.html"><span data-i18n="hero.cta1">Request a Quote</span> <span class="arr">&rarr;</span></a>
-        <a class="btn btn-outline" href="catalogue.html" data-i18n="hero.cta2">Explore Instruments</a>
+      <h1 data-i18n="hero.title">Name the instrument. We&#8217;ll find it.</h1>
+
+      <!-- Instrument finder: one finder replaces three cards -->
+      <div class="finder" role="region" data-i18n-aria="finder.aria" aria-label="Instrument finder">
+        <div class="finder-tabs" role="tablist" aria-label="Finder">
+          <button class="finder-tab on" role="tab" id="ftab-name" aria-selected="true" aria-controls="fpanel-name" data-tab="name"><span data-i18n="finder.tab1">Name</span></button>
+          <button class="finder-tab" role="tab" id="ftab-ref" aria-selected="false" aria-controls="fpanel-ref" data-tab="ref" tabindex="-1"><span data-i18n="finder.tab2">Reference</span></button>
+          <button class="finder-tab" role="tab" id="ftab-photo" aria-selected="false" aria-controls="fpanel-photo" data-tab="photo" tabindex="-1"><span data-i18n="finder.tab3">Photograph</span></button>
+        </div>
+        <div class="finder-panel" role="tabpanel" id="fpanel-name" aria-labelledby="ftab-name">
+          <div class="finder-row">
+            <input type="text" id="finderName" data-i18n-ph="finder.namePh" placeholder="Search by instrument name&hellip;">
+            <button class="btn btn-primary" id="finderGoName"><span data-i18n="finder.goName">Find Instruments</span></button>
+          </div>
+          <div class="finder-chips">
+            <span class="chips-label" data-i18n="finder.popular">Popular:</span>
+            <button class="chip" data-chip="Forceps">Forceps</button>
+            <button class="chip" data-chip="Scissors">Scissors</button>
+            <button class="chip" data-chip="Retractor">Retractor</button>
+            <button class="chip" data-chip="Speculum">Speculum</button>
+            <button class="chip" data-chip="Needle Holder">Needle Holder</button>
+          </div>
+        </div>
+        <div class="finder-panel" role="tabpanel" id="fpanel-ref" aria-labelledby="ftab-ref" hidden>
+          <div class="finder-row">
+            <input type="text" id="finderRef" data-i18n-ph="finder.refPh" placeholder="Enter manufacturer reference or SKU&hellip;">
+            <button class="btn btn-primary" id="finderGoRef"><span data-i18n="finder.goRef">Source by Reference</span></button>
+          </div>
+        </div>
+        <div class="finder-panel" role="tabpanel" id="fpanel-photo" aria-labelledby="ftab-photo" hidden>
+          <div class="finder-row">
+            <input type="file" id="finderPhoto" accept="image/*" data-i18n-aria="q.photo" aria-label="Product photo">
+            <button class="btn btn-primary" id="finderGoPhoto"><span data-i18n="finder.goPhoto">Send Photograph</span></button>
+          </div>
+          <p class="finder-note" data-i18n="finder.photoNote">Photos go to our team for manual identification &mdash; never presented as automated recognition.</p>
+          <span class="finder-file" id="finderFileName" aria-live="polite"></span>
+        </div>
       </div>
+
       <div class="hero-timelines" data-i18n="hero.timelines">Response within 1 business day · Sourcing typically 1–3 days · Shipping typically 2–5 days</div>
     </div>
     <div class="hero-image">
       <img src="assets/sur-skl-01146.jpg" alt="Adlerkreutz Tissue Forceps — precision surgical instrument">
-    </div>
-  </div>
-</section>
-
-<!-- ============ DIRECT SOURCING / QUOTE ACTIONS ============ -->
-<section style="background:var(--bg-soft);border-bottom:1px solid var(--line)">
-  <div class="container">
-    <div class="sourcing-actions">
-      <div class="action-card">
-        <h3 data-i18n="action1.t">Find an Instrument</h3>
-        <p data-i18n="action1.d">Search by instrument name, manufacturer reference, or specialty.</p>
-        <a class="btn btn-white" href="catalogue.html"><span data-i18n="action1.b">Explore Instruments</span></a>
-      </div>
-      <div class="action-card">
-        <h3 data-i18n="action2.t">Source by Reference</h3>
-        <p data-i18n="action2.d">Submit a manufacturer reference or specification for sourcing.</p>
-        <a class="btn btn-white" href="quote.html#sourcing"><span data-i18n="action2.b">Request Sourcing</span></a>
-      </div>
-      <div class="action-card">
-        <h3 data-i18n="action3.t">Send a Photograph</h3>
-        <p data-i18n="action3.d">Upload a product photo for identification and sourcing review.</p>
-        <a class="btn btn-white" href="quote.html#sourcing"><span data-i18n="action3.b">Upload Photo</span></a>
-      </div>
     </div>
   </div>
 </section>
@@ -77,6 +86,17 @@
   </div>
 </section>
 
+<!-- ============ TRUST ANCHORS ============ -->
+<section class="trust-strip" aria-label="Contact">
+  <div class="container">
+    <span data-i18n="trust.addr">Sisli, Istanbul, Turkey</span>
+    <span class="dot">&middot;</span>
+    <a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a>
+    <span class="dot">&middot;</span>
+    <a href="tel:+905526081432"><bdi>+90 552 608 1432</bdi></a>
+  </div>
+</section>
+
 <!-- ============ SPECIALTIES ============ -->
 <section class="specialties" id="specialties" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="container">
@@ -100,6 +120,15 @@
   </div>
 </section>
 
+<!-- ============ OUR PROMISE ============ -->
+<section class="promise">
+  <div class="container">
+    <span class="eyebrow" data-i18n="promise.eyebrow">Our promise</span>
+    <p class="promise-quote" data-i18n="trust.quote">&ldquo;Nothing ships until you&rsquo;ve seen it and approved it.&rdquo;</p>
+    <small data-i18n="trust.quoteSub">Our prevention-over-returns promise &mdash; spec confirmation, deposit, pre-shipment inspection photos.</small>
+  </div>
+</section>
+
 <!-- ============ HOW SURGRONIC WORKS ============ -->
 <section id="how" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="container">
@@ -114,20 +143,6 @@
   </div>
 </section>
 
-<!-- ============ TIMELINES ============ -->
-<section id="timelines">
-  <div class="container">
-    <span class="eyebrow" data-i18n="time.eyebrow">Operational timelines</span>
-    <h2 class="section-title" data-i18n="time.title">Precision sourcing. Clear timelines.</h2>
-    <p class="section-sub" data-i18n="time.sub">Our standard operational targets &mdash; not unconditional guarantees.</p>
-    <div class="process-steps steps-3">
-      <div class="step"><div class="step-no">01</div><h3 data-i18n="time1.t">Response</h3><p data-i18n="time1.d">Within 1 business day.</p></div>
-      <div class="step"><div class="step-no">02</div><h3 data-i18n="time2.t">Sourcing</h3><p data-i18n="time2.d">Typically 1&ndash;3 days when sourcing is required.</p></div>
-      <div class="step"><div class="step-no">03</div><h3 data-i18n="time3.t">Shipping</h3><p data-i18n="time3.d">Typically 2&ndash;5 days, depending on destination and logistics.</p></div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ WHY SURGRONIC ============ -->
 <section class="trust" id="trust" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="container">
@@ -136,11 +151,6 @@
     <div class="trust-grid">
       <div class="trust-item"><b data-i18n="trust.1n">8,658</b><span data-i18n="trust.1d">Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.</span></div>
       <div class="trust-item"><b data-i18n="trust.2n">2 channels</b><span data-i18n="trust.2d">Available from stock or sourced to specification &mdash; one quotation workflow.</span></div>
-      <div class="trust-item"><b data-i18n="trust.3n">1 day</b><span data-i18n="trust.3d">Response within one business day. Written specification confirmation before any commitment.</span></div>
-    </div>
-    <div class="trust-quote">
-      <p data-i18n="trust.quote">&ldquo;Nothing ships until you&rsquo;ve seen it and approved it.&rdquo;</p>
-      <small data-i18n="trust.quoteSub">Our prevention-over-returns promise &mdash; spec confirmation, deposit, pre-shipment inspection photos.</small>
     </div>
   </div>
 </section>
@@ -159,6 +169,65 @@
 
 <script>
 (function(){
+  /* ---------- Finder: one finder replaces three cards ---------- */
+  (function initFinder(){
+    var tabs = document.querySelectorAll(".finder-tab");
+    var panels = {
+      name: document.getElementById("fpanel-name"),
+      ref: document.getElementById("fpanel-ref"),
+      photo: document.getElementById("fpanel-photo")
+    };
+    function selectTab(name, focus){
+      tabs.forEach(function(t){
+        var on = t.getAttribute("data-tab")===name;
+        t.classList.toggle("on", on);
+        t.setAttribute("aria-selected", on?"true":"false");
+        t.tabIndex = on?0:-1;
+        if(on && focus) t.focus();
+      });
+      Object.keys(panels).forEach(function(k){ if(panels[k]) panels[k].hidden = (k!==name); });
+    }
+    tabs.forEach(function(t){
+      t.addEventListener("click", function(){ selectTab(t.getAttribute("data-tab")); });
+      t.addEventListener("keydown", function(e){
+        var order=["name","ref","photo"], i=order.indexOf(t.getAttribute("data-tab")), n=null;
+        if(e.key==="ArrowRight") n=order[(i+1)%3];
+        else if(e.key==="ArrowLeft") n=order[(i+2)%3];
+        else if(e.key==="Home") n=order[0];
+        else if(e.key==="End") n=order[2];
+        if(n){ e.preventDefault(); selectTab(n, true); }
+      });
+    });
+    /* Name tab -> catalogue search */
+    var goName = document.getElementById("finderGoName");
+    var inName = document.getElementById("finderName");
+    function goCatalogue(q){ location.href = "catalogue.html?q="+encodeURIComponent(q||""); }
+    goName.addEventListener("click", function(){ goCatalogue(inName.value.trim()); });
+    inName.addEventListener("keydown", function(e){ if(e.key==="Enter") goCatalogue(inName.value.trim()); });
+    document.querySelectorAll(".finder-chips .chip").forEach(function(c){
+      c.addEventListener("click", function(){ goCatalogue(c.getAttribute("data-chip")); });
+    });
+    /* Reference tab -> quote form with ref prefilled */
+    var goRef = document.getElementById("finderGoRef");
+    var inRef = document.getElementById("finderRef");
+    function goSourcing(){
+      var r = inRef.value.trim();
+      location.href = "quote.html" + (r ? "?ref="+encodeURIComponent(r) : "") + "#sourcing";
+    }
+    goRef.addEventListener("click", goSourcing);
+    inRef.addEventListener("keydown", function(e){ if(e.key==="Enter") goSourcing(); });
+    /* Photo tab -> quote form photo upload */
+    var photoInput = document.getElementById("finderPhoto");
+    var fileName = document.getElementById("finderFileName");
+    photoInput.addEventListener("change", function(){
+      if(fileName) fileName.textContent = (photoInput.files && photoInput.files[0]) ? photoInput.files[0].name : "";
+    });
+    document.getElementById("finderGoPhoto").addEventListener("click", function(){
+      /* Files cannot cross page navigations; the quote form has its own upload. */
+      location.href = "quote.html#photo";
+    });
+  })();
+
   function renderSpecs(){
     var specs = SG.SPECIALTIES[SG.getLang()] || SG.SPECIALTIES.en;
     var grid = document.getElementById("specGrid");
@@ -168,19 +237,41 @@
         '<span class="spec-ref">'+idx[i]+'</span><h3>'+s[0]+'</h3><span>'+s[1]+'</span></a>';
     }).join("");
   }
+
+  /* ---------- Featured: 5s timeout + static fallback (never leave empty) ----------
+     Fallback data is API-verified (getProduct), not invented. */
+  var FEATURED_SKUS = ["SUR-SKL-01146","SUR-SKL-01315","SUR-SKL-01610","SUR-AES-04036",
+                       "SUR-AES-01245","SUR-AES-03379","SUR-AES-00883","SUR-SKL-00238"];
+  var FEATURED_FALLBACK = {
+    "SUR-SKL-01146": {name:"Adlerkreutz Tissue Forceps", brand:"Sklar", img:"sur-skl-01146.jpg"},
+    "SUR-SKL-01315": {name:"Aufricht Facelift Scissors", brand:"Sklar", img:"sur-skl-01315.jpg"},
+    "SUR-SKL-01610": {name:"Cottle Nasal Speculum", brand:"Sklar", img:"sur-skl-01610.jpg"},
+    "SUR-AES-04036": {name:"ADSON Needle Holder", brand:"Aesculap", img:"sur-aes-04036.jpg"},
+    "SUR-AES-01245": {name:"ABRAHAM Tonsil Grasping Forceps", brand:"Aesculap", img:"sur-aes-01245.jpg"},
+    "SUR-AES-03379": {name:"Bandage- and Cloth Scissors", brand:"Aesculap", img:"sur-aes-03379.jpg"},
+    "SUR-AES-00883": {name:"ABEL Tenaculum Forceps", brand:"Aesculap", img:"sur-aes-00883.jpg"},
+    "SUR-SKL-00238": {name:"Bennet Bone Elevator", brand:"Sklar", img:"sur-skl-00238.jpg"}
+  };
+  function featuredFallbackHTML(){
+    return FEATURED_SKUS.map(function(sku){
+      var f = FEATURED_FALLBACK[sku];
+      return SG.cardHTML({sku:sku, name:f.name, nameFr:f.name, nameAr:f.name, brand:f.brand, imageFiles:[f.img]});
+    }).join("");
+  }
   function renderFeatured(){
     var grid = document.getElementById("featGrid");
     grid.innerHTML = '<div class="loading">'+SG.t("feat.loading")+'</div>';
-    var skus = ["SUR-SKL-01146","SUR-SKL-01315","SUR-SKL-01610","SUR-AES-04036",
-                "SUR-AES-01245","SUR-AES-03379","SUR-AES-00883","SUR-SKL-00238"];
-    var calls = skus.map(function(sku){ return SG.api("getProduct",{sku:sku}); });
-    Promise.all(calls).then(function(results){
-      var list = results.map(function(r){ return r.product || r; }).filter(function(p){ return p && p.sku; });
+    var calls = Promise.all(FEATURED_SKUS.map(function(sku){ return SG.api("getProduct",{sku:sku}); }));
+    var timeout = new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("featured-timeout")); }, 5000); });
+    Promise.race([calls, timeout]).then(function(results){
+      var list = results.map(function(r){ return r && (r.product || r); }).filter(function(p){ return p && p.sku; });
       if(!list.length) throw new Error("empty");
       grid.innerHTML = list.map(SG.cardHTML).join("");
       SG.bindAddButtons(grid);
     }).catch(function(){
-      grid.innerHTML = '<div class="error-box">'+SG.t("cat.unavailable")+'</div>';
+      /* Static fallback with API-verified data — the section is never left empty */
+      grid.innerHTML = featuredFallbackHTML();
+      SG.bindAddButtons(grid);
     });
   }
   renderSpecs();
