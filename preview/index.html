@@ -9,15 +9,14 @@
 </head>
 <body>
 <script src="app.js"></script>
-<script>SG.mountChrome("home");SG.applyI18n();</script>
 
 <!-- ============ HERO (text left, product image right) ============ -->
 <section class="hero">
   <div class="container hero-grid">
     <div>
       <span class="eyebrow" data-i18n="hero.eyebrow">Precision Sourcing Platform</span>
-      <h1 data-i18n="hero.title">Precision instruments.<br>Precisely sourced.</h1>
-      <p class="lead" data-i18n="hero.lead">Explore surgical instruments across 11 specialties, or send us your exact requirements. We help procurement teams identify and source instruments to specification.</p>
+      <h1 data-i18n="hero.title">Precision instruments.<br>Ready when you need them.</h1>
+      <p class="lead" data-i18n="hero.lead">Surgical instruments available from stock or sourced to your exact specification. Explore our catalog, send a reference, or request a quotation directly.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="catalogue.html"><span data-i18n="hero.cta1">Explore Instruments</span> <span class="arr">&rarr;</span></a>
         <a class="btn btn-outline" href="quote.html" data-i18n="hero.cta2">Request a Quote</a>
@@ -34,31 +33,23 @@
   </div>
 </section>
 
-<!-- ============ PROCUREMENT PATHS ============ -->
+<!-- ============ SUPPLY CHANNELS ============ -->
 <section>
   <div class="container">
-    <span class="eyebrow" data-i18n="paths.eyebrow">Choose your path</span>
-    <h2 class="section-title" data-i18n="paths.title">Three ways to get the right instrument.</h2>
-    <p class="section-sub" data-i18n="paths.sub">Whether you know the reference or only have a photograph, there is a direct route to a quotation.</p>
-    <div class="paths-grid">
-      <a class="path-card" href="catalogue.html">
+    <span class="eyebrow" data-i18n="channels.eyebrow">Supply channels</span>
+    <h2 class="section-title" data-i18n="channels.title">Two channels. One standard of precision.</h2>
+    <p class="section-sub" data-i18n="channels.sub">Catalogued products and stocked products are not the same thing. We are transparent about both.</p>
+    <div class="paths-grid paths-2">
+      <div class="path-card">
         <div class="path-num">01</div>
-        <h3 data-i18n="path1.t">Browse the Catalog</h3>
-        <p data-i18n="path1.d">Find instruments by specialty, name, or manufacturer reference across 8,658 catalogued products.</p>
-        <span class="path-link"><span data-i18n="path1.l">Explore instruments</span> &rarr;</span>
-      </a>
-      <a class="path-card" href="quote.html">
+        <h3 data-i18n="channel1.t">Available from Stock</h3>
+        <p data-i18n="channel1.d">Some instruments may already be available in our inventory.</p>
+      </div>
+      <div class="path-card">
         <div class="path-num">02</div>
-        <h3 data-i18n="path2.t">Source a Specific Instrument</h3>
-        <p data-i18n="path2.d">Submit an instrument name, SKU, manufacturer reference, or full specifications. We confirm and quote.</p>
-        <span class="path-link"><span data-i18n="path2.l">Start a sourcing request</span> &rarr;</span>
-      </a>
-      <a class="path-card" href="quote.html#photo">
-        <div class="path-num">03</div>
-        <h3 data-i18n="path3.t">Send a Photograph</h3>
-        <p data-i18n="path3.d">Upload a product image. Our team identifies it or sources it manually &mdash; no automated guesswork.</p>
-        <span class="path-link"><span data-i18n="path3.l">Upload a photo</span> &rarr;</span>
-      </a>
+        <h3 data-i18n="channel2.t">Sourced to Specification</h3>
+        <p data-i18n="channel2.d">If an instrument is not available from stock, we source it to your exact requirements.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -87,6 +78,20 @@
   </div>
 </section>
 
+<!-- ============ TIMELINES ============ -->
+<section id="timelines" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="container">
+    <span class="eyebrow" data-i18n="time.eyebrow">Operational timelines</span>
+    <h2 class="section-title" data-i18n="time.title">Precision sourcing. Clear timelines.</h2>
+    <p class="section-sub" data-i18n="time.sub">Our standard operational targets &mdash; not unconditional guarantees.</p>
+    <div class="process-steps steps-3">
+      <div class="step"><div class="step-no">01</div><h3 data-i18n="time1.t">Response</h3><p data-i18n="time1.d">Within 1 business day.</p></div>
+      <div class="step"><div class="step-no">02</div><h3 data-i18n="time2.t">Sourcing</h3><p data-i18n="time2.d">Typically 1&ndash;3 days when sourcing is required.</p></div>
+      <div class="step"><div class="step-no">03</div><h3 data-i18n="time3.t">Shipping</h3><p data-i18n="time3.d">Typically 2&ndash;5 days, depending on destination and logistics.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FEATURED ============ -->
 <section style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="container">
@@ -107,7 +112,7 @@
     <h2 class="section-title" data-i18n="trust.title">Built for procurement teams.</h2>
     <div class="trust-grid">
       <div class="trust-item"><b data-i18n="trust.1n">8,658</b><span data-i18n="trust.1d">Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.</span></div>
-      <div class="trust-item"><b data-i18n="trust.2n">3 paths</b><span data-i18n="trust.2d">From stock, sourced to specification, or identified from your photograph &mdash; one quotation workflow.</span></div>
+      <div class="trust-item"><b data-i18n="trust.2n">2 channels</b><span data-i18n="trust.2d">Available from stock or sourced to specification &mdash; one quotation workflow.</span></div>
       <div class="trust-item"><b data-i18n="trust.3n">1 day</b><span data-i18n="trust.3d">Response within one business day. Written specification confirmation before any commitment.</span></div>
     </div>
     <div class="trust-quote">
@@ -143,8 +148,12 @@
   function renderFeatured(){
     var grid = document.getElementById("featGrid");
     grid.innerHTML = '<div class="loading">'+SG.t("feat.loading")+'</div>';
-    SG.api("listProducts",{limit:8,offset:0,storefront:true}).then(function(d){
-      var list = (d.products||[]).slice(0,8);
+    var skus = ["SUR-AES-00883","SUR-SKL-01315","SUR-SKL-01610","SUR-AES-04036",
+                "SUR-SKL-00238","SUR-AES-01245","SUR-AES-03379","SUR-SKL-01146"];
+    var calls = skus.map(function(sku){ return SG.api("getProduct",{sku:sku}); });
+    Promise.all(calls).then(function(results){
+      var list = results.map(function(r){ return r.product || r; }).filter(function(p){ return p && p.sku; });
+      if(!list.length) throw new Error("empty");
       grid.innerHTML = list.map(SG.cardHTML).join("");
       SG.bindAddButtons(grid);
     }).catch(function(){
@@ -160,5 +169,6 @@
   });
 })();
 </script>
+<script>SG.mountChrome("home");SG.applyI18n();</script>
 </body>
 </html>
