@@ -9,10 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=nav001">
+<link rel="stylesheet" href="styles.css?v=promise001">
 </head>
 <body>
-<script src="app.js?v=nav001"></script>
+<script src="app.js?v=photo002"></script>
 
 <div class="container" style="padding-bottom:96px">
   <div class="breadcrumb"><a href="index.html" data-i18n="pd.breadcrumb">Home</a> &rarr; <span data-i18n="q.crumb">Request a Quote</span></div>
@@ -27,6 +27,7 @@
 (function(){
   var app = document.getElementById("quoteApp");
   var WA = "905526081432";
+  var selectedPhotoFile = null; /* shared by bindPhoto() and encodePhoto() */
 
   function basketItemName(i){
     var l = SG.getLang();
@@ -171,7 +172,6 @@
     var f = document.getElementById("qform");
     if(!f) return;
     /* Photo drag-drop with preview + filename confirmation + client resize */
-    var selectedPhotoFile = null;
     var selectedPhotoDataUrl = null;
     (function bindPhoto(){
       var drop = document.getElementById("qphotoDrop"),
@@ -215,18 +215,64 @@
         q.photo = ph;
         // Keep filename for the WhatsApp path even if encoding failed.
         if(!ph && selectedPhotoFile) q.photo = { name: selectedPhotoFile.name, type: "", data: "" };
-        SG.api("submitRfq",q).then(function(res){
+        /* Send photo + RFQ summary straight to yusuf@surgronic.com via FormSubmit
+           (instant, no backend needed). Runs in parallel with the API record. */
+        var emailSent = Promise.resolve(false);
+        if(q.photo && q.photo.data){
+          btn.textContent = SG.t("q.sendingPhoto") || "Sending photo…";
+          emailSent = sendPhotoEmail(q).catch(function(){ return false; });
+        }
+        var apiDone = SG.api("submitRfq",q).then(function(res){
           q.photoReceived = res && res.photoReceived;
-          done(false);
-        }).catch(function(){ done(true); });
+          return false;
+        }).catch(function(){ return true; });
+        Promise.all([emailSent, apiDone]).then(function(r){
+          q.photoEmailed = r[0];
+          done(r[1]);
+        });
       });
+      /* Direct photo email to yusuf@surgronic.com (FormSubmit AJAX, activated address). */
+      function sendPhotoEmail(q){
+        return new Promise(function(resolve){
+          try{
+            var fd = new FormData();
+            fd.append("_subject", "Surgronic RFQ photo — " + (q.contact.name || q.contact.email || "website"));
+            var lines = q.items.map(function(i){return "- "+i.sku+" / "+i.name+" x"+i.qty;});
+            fd.append("message",
+              "New quotation request with photo (surgronic-website)\n\n" +
+              "Items:\n" + lines.join("\n") + "\n\n" +
+              (q.reference ? "Reference: " + q.reference + "\n" : "") +
+              (q.notes ? "Notes: " + q.notes + "\n" : "") +
+              "\nName: " + q.contact.name + "\nEmail: " + q.contact.email +
+              "\nCompany: " + q.contact.company + "\nCountry: " + q.contact.country);
+            fd.append("reply_to", q.contact.email || "");
+            /* data URL -> Blob for the attachment */
+            var du = q.photo.data, blob;
+            try{
+              var parts = du.split(","), mime = (parts[0].match(/data:(.*?);/)||[])[1] || "image/jpeg";
+              var bin = atob(parts[1]), arr = new Uint8Array(bin.length);
+              for(var i=0;i<bin.length;i++) arr[i] = bin.charCodeAt(i);
+              blob = new Blob([arr], {type: mime});
+            }catch(e){ resolve(false); return; }
+            fd.append("photo", blob, q.photo.name || "photo.jpg");
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://formsubmit.co/ajax/yusuf@surgronic.com", true);
+            xhr.timeout = 45000;
+            xhr.onload = function(){ resolve(xhr.status >= 200 && xhr.status < 300); };
+            xhr.onerror = function(){ resolve(false); };
+            xhr.ontimeout = function(){ resolve(false); };
+            xhr.send(fd);
+          }catch(e){ resolve(false); }
+        });
+      }
       function done(fallback){
         try{ localStorage.removeItem("surgronic_quote_v2"); }catch(e){}
         SG.updateBasketUI();
         var photoMsg = "";
         if(q.photo && q.photo.name){
+          var emailed = q.photoEmailed || q.photoReceived;
           photoMsg = '<p style="margin-top:12px">' +
-            (q.photoReceived
+            (emailed
               ? SG.t("q.photoSent") || ("Photo \"" + SG.esc(q.photo.name) + "\" received — our team will identify it.")
               : SG.t("q.photoWaOnly") || ("Photo \"" + SG.esc(q.photo.name) + "\" — please attach it in the WhatsApp chat.")) +
             '</p>';
