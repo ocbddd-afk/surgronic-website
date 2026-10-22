@@ -12,10 +12,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=nav001">
+<link rel="stylesheet" href="styles.css?v=promise001">
 </head>
 <body>
-<script src="app.js?v=photo002"></script>
+<script src="app.js?v=livecount1"></script>
 <main>
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -361,6 +361,17 @@
   }
 
   /* ---------- Count-up ---------- */
+  /* Live catalog count: same database as the admin — never a hardcoded number. */
+  function initLiveCount(){
+    var pill = document.querySelector('[data-i18n="hero.tagCat"]');
+    if(!pill || !SG.api) return;
+    SG.api("listProducts", {limit: 1}).then(function(r){
+      var n = r && r.data && r.data.total;
+      if(!n) return;
+      var fmt = n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      pill.textContent = SG.t("hero.tagCat").replace("{n}", fmt);
+    }).catch(function(){ /* keep the static fallback text */ });
+  }
   function initCount(){
     var el = document.querySelector("[data-count]");
     if (!el) return;
@@ -391,10 +402,12 @@
   renderFeatured();
   initReveal();
   initCount();
+  initLiveCount();
   document.addEventListener("surgronic:lang", function(){
     SG.applyI18n();
     renderSpecs();
     renderFeatured();
+    initLiveCount();
   });
 })();
 </script>
