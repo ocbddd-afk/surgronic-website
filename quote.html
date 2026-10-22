@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="styles.css?v=align001">
 </head>
 <body>
-<script src="app.js?v=promise001"></script>
+<script src="app.js?v=photo001"></script>
 
 <div class="container" style="padding-bottom:96px">
   <div class="breadcrumb"><a href="index.html" data-i18n="pd.breadcrumb">Home</a> &rarr; <span data-i18n="q.crumb">Request a Quote</span></div>
@@ -131,14 +131,38 @@
         country: document.getElementById("qco").value.trim()
       },
       reference: document.getElementById("qref").value.trim(),
-      notes: document.getElementById("qnotes").value.trim()
+      notes: document.getElementById("qnotes").value.trim(),
+      photo: null // filled by encodePhoto() before submit
     };
+  }
+
+  /* Resize photo client-side (max 1600px, JPEG 0.82) -> data URL. Returns null if no photo. */
+  function encodePhoto(){
+    return new Promise(function(resolve){
+      if(!selectedPhotoFile){ resolve(null); return; }
+      var img = new Image();
+      var objUrl = URL.createObjectURL(selectedPhotoFile);
+      img.onload = function(){
+        try{
+          URL.revokeObjectURL(objUrl);
+          var max = 1600, w = img.width, h = img.height;
+          if(w > max || h > max){ var r = max / Math.max(w, h); w = Math.round(w * r); h = Math.round(h * r); }
+          var cv = document.createElement("canvas"); cv.width = w; cv.height = h;
+          cv.getContext("2d").drawImage(img, 0, 0, w, h);
+          var du = cv.toDataURL("image/jpeg", 0.82);
+          resolve({ name: selectedPhotoFile.name, type: "image/jpeg", data: du });
+        }catch(e){ resolve(null); }
+      };
+      img.onerror = function(){ URL.revokeObjectURL(objUrl); resolve(null); };
+      img.src = objUrl;
+    });
   }
   function waLink(q){
     var lines = q.items.map(function(i){return "- "+i.sku+" / "+i.name+" x"+i.qty;});
     var msg = "Surgronic quotation request\n\n"+lines.join("\n")+"\n\n"+
       (q.reference? "Reference: "+q.reference+"\n":"")+
       (q.notes? "Notes: "+q.notes+"\n":"")+
+      (q.photo && q.photo.name ? "Photo to send in chat: "+q.photo.name+"\n(please attach the photo in this chat)\n":"")+
       "\n"+q.contact.name+" ("+q.contact.company+", "+q.contact.country+") "+q.contact.email;
     return "https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
   }
@@ -146,7 +170,9 @@
   function bindForm(){
     var f = document.getElementById("qform");
     if(!f) return;
-    /* Photo drag-drop with preview + filename confirmation */
+    /* Photo drag-drop with preview + filename confirmation + client resize */
+    var selectedPhotoFile = null;
+    var selectedPhotoDataUrl = null;
     (function bindPhoto(){
       var drop = document.getElementById("qphotoDrop"),
           input = document.getElementById("qphoto"),
@@ -156,6 +182,8 @@
       if(!drop || !input) return;
       function handleFile(file){
         if(!file || !file.type || file.type.indexOf("image/") !== 0) return;
+        selectedPhotoFile = file;
+        selectedPhotoDataUrl = null; // re-encode on submit
         nameEl.textContent = file.name;
         try{ prevImg.src = URL.createObjectURL(file); prevImg.alt = file.name; }catch(e){}
         prev.hidden = false;
@@ -181,15 +209,33 @@
       var q = collect();
       var btn = f.querySelector('[type="submit"]');
       btn.disabled = true; btn.textContent = SG.t("q.sending");
-      SG.api("submitRfq",q).then(function(){ done(false); }).catch(function(){ done(true); });
+      // Encode photo (if any) before sending — resized client-side.
+      if(selectedPhotoFile) btn.textContent = SG.t("q.encodingPhoto") || "Preparing photo…";
+      encodePhoto().then(function(ph){
+        q.photo = ph;
+        // Keep filename for the WhatsApp path even if encoding failed.
+        if(!ph && selectedPhotoFile) q.photo = { name: selectedPhotoFile.name, type: "", data: "" };
+        SG.api("submitRfq",q).then(function(res){
+          q.photoReceived = res && res.photoReceived;
+          done(false);
+        }).catch(function(){ done(true); });
+      });
       function done(fallback){
         try{ localStorage.removeItem("surgronic_quote_v2"); }catch(e){}
         SG.updateBasketUI();
+        var photoMsg = "";
+        if(q.photo && q.photo.name){
+          photoMsg = '<p style="margin-top:12px">' +
+            (q.photoReceived
+              ? SG.t("q.photoSent") || ("Photo \"" + SG.esc(q.photo.name) + "\" received — our team will identify it.")
+              : SG.t("q.photoWaOnly") || ("Photo \"" + SG.esc(q.photo.name) + "\" — please attach it in the WhatsApp chat.")) +
+            '</p>';
+        }
         app.innerHTML = '<div class="qsuccess" style="margin-top:32px">'+
           '<h2>'+SG.t("q.successT")+'</h2>'+
           '<p>'+SG.t("q.successThanks")+' '+SG.esc(q.contact.name.split(" ")[0])+'. '+
           (fallback ? SG.t("q.successDfb") : SG.t("q.successD"))+
-          '</p>'+
+          '</p>'+ photoMsg +
           '<div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">'+
             '<a class="btn btn-primary" target="_blank" rel="noopener" href="'+waLink(q)+'">'+SG.t("q.waConfirm")+'</a>'+
             '<a class="btn btn-outline" href="catalogue.html">'+SG.t("q.backCatalog")+'</a>'+
