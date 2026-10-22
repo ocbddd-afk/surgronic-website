@@ -1944,6 +1944,7 @@ function siteHeaderHTML(active){
   '</div></header>'+
   '<div class="mobile-nav" id="mobileNav">'+
     '<button class="close" id="mobileClose" aria-label="'+t("nav.close")+'">&times;</button>'+
+    '<a class="mobile-brand" href="index.html" aria-label="Surgronic"><img src="assets/logo-on-dark.svg" alt="Surgronic" style="height:32px;width:auto;display:block;margin:0 auto 20px"></a>'+
     '<a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a>'+
     '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
     '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
