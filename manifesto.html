@@ -6,10 +6,11 @@
 <title data-i18n-title="meta.maniTitle">Manifesto — Surgronic</title>
 <meta name="description" content="Why Surgronic exists: bringing world-class surgical instruments to the surgeons of the Middle East and North Africa.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=manif002">
+<link rel="stylesheet" href="styles.css?v=ux001">
 </head>
 <body>
-<div id="siteHeader"></div>
+<script src="assets/currency.js"></script>
+<script src="app.js?v=ux001"></script>
 
 <main>
 <!-- ============ MANIFESTO HERO ============ -->
@@ -47,7 +48,7 @@
   </div>
 </section>
 
-<!-- ============ TEAM (moved from homepage) ============ -->
+<!-- ============ TEAM ============ -->
 <section class="team" id="team">
   <div class="wrap">
     <span class="eyebrow rv" data-i18n="team.eyebrow">The team</span>
@@ -91,13 +92,9 @@
 </section>
 </main>
 
-<div id="siteFooter"></div>
-<script src="assets/currency.js"></script>
-<script src="app.js?v=manif003"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  document.getElementById('siteHeader').innerHTML = SG.siteHeaderHTML('');
-  document.getElementById('siteFooter').innerHTML = SG.footerHTML();
+  SG.mountChrome('');
   SG.applyI18n();
   if(window.SurCcy){ SurCcy.init(function(){}); }
 });

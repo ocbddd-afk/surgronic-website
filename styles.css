@@ -448,6 +448,15 @@ section{padding:88px 0}
 .testi-role{color:rgba(255,255,255,.55);font-size:.82rem;margin:4px 0 0}
 @media(max-width:768px){.testi-grid{grid-template-columns:1fr}}
 
+/* ---------- Blog page ---------- */
+.blog-hero{background:var(--navy-950);color:#fff;padding:88px 0 64px;text-align:center}
+.blog-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3rem);font-weight:800;margin:16px 0}
+.blog-hero p{color:rgba(255,255,255,.7);font-size:1.1rem}
+.blog-list{padding:64px 0;background:#fff;min-height:40vh}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-empty{color:var(--ink-600);font-size:1.05rem;text-align:center;grid-column:1/-1;padding:40px 0}
+@media(max-width:768px){.blog-grid{grid-template-columns:1fr}}
+
 /* ---------- Manifesto ---------- */
 .mani-hero{background:var(--navy-950);color:#fff;padding:88px 0 64px;text-align:center}
 .mani-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em;margin:16px 0;max-width:20ch;margin-left:auto;margin-right:auto}

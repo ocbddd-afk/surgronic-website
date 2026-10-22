@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n-title="meta.blogTitle">Blog — Surgronic</title>
+<meta name="description" content="Practical notes on surgical instruments and sourcing, from the Surgronic team.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=ux001">
+</head>
+<body>
+<script src="assets/currency.js"></script>
+<script src="app.js?v=ux001"></script>
+
+<main>
+<section class="blog-hero">
+  <div class="wrap">
+    <span class="eyebrow rv" data-i18n="blog.eyebrow">Insights</span>
+    <h1 class="rv" data-i18n="blog.title">From the field.</h1>
+    <p class="rv" data-i18n="blog.sub">Practical notes on instruments and sourcing.</p>
+  </div>
+</section>
+
+<section class="blog-list">
+  <div class="wrap">
+    <div id="blogGrid" class="blog-grid">
+      <p class="blog-empty rv" data-i18n="blog.empty">Articles coming soon.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome('');
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+});
+</script>
+</body>
+</html>

@@ -358,6 +358,8 @@ en: {
   "nav.how": "How it works",
   "nav.why": "Why Surgronic",
   "nav.manifesto": "Manifesto",
+  "nav.specialties": "Specialties",
+  "nav.blog": "Blog",
   "meta.maniTitle": "Manifesto \u2014 Surgronic",
   "mani.eyebrow": "Our manifesto",
   "mani.title": "Every surgeon deserves the right instrument.",
@@ -744,6 +746,8 @@ fr: {
   "nav.how": "Comment ça marche",
   "nav.why": "Pourquoi Surgronic",
   "nav.manifesto": "Manifeste",
+  "nav.specialties": "Sp\u00e9cialit\u00e9s",
+  "nav.blog": "Blog",
   "cert.eyebrow": "Certified across MENA",
   "cert.title": "Registered in 15 countries.",
   "testi.eyebrow": "Surgeons talk",
@@ -1129,6 +1133,8 @@ ar: {
   "nav.how": "كيف نعمل",
   "nav.why": "لماذا سورجرونيك",
   "nav.manifesto": "البيان",
+  "nav.specialties": "التخصصات",
+  "nav.blog": "المدونة",
   "cert.eyebrow": "Certified across MENA",
   "cert.title": "Registered in 15 countries.",
   "testi.eyebrow": "Surgeons talk",
@@ -1514,6 +1520,8 @@ tr: {
   "nav.how": "Nasıl çalışır",
   "nav.why": "Neden Surgronic",
   "nav.manifesto": "Manifesto",
+  "nav.specialties": "Specialties",
+  "nav.blog": "Blog",
   "cert.eyebrow": "Certified across MENA",
   "cert.title": "Registered in 15 countries.",
   "testi.eyebrow": "Surgeons talk",
@@ -1866,6 +1874,8 @@ function siteHeaderHTML(active){
       '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
       '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
       '<a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a>'+
+      '<a href="index.html#specialties" data-i18n="nav.specialties">'+t("nav.specialties")+'</a>'+
+      '<a href="blog.html" data-i18n="nav.blog">'+t("nav.blog")+'</a>'+
     '</nav>'+
     '<div class="header-actions">'+
       '<div class="lang-switch" role="group" aria-label="Language">'+
@@ -1887,6 +1897,8 @@ function siteHeaderHTML(active){
     '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
     '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
     '<a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a>'+
+    '<a href="index.html#specialties" data-i18n="nav.specialties">'+t("nav.specialties")+'</a>'+
+    '<a href="blog.html" data-i18n="nav.blog">'+t("nav.blog")+'</a>'+
     '<a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a>'+
     '<div class="lang-switch mobile-lang" role="group" aria-label="Language">'+
       '<button data-lang="en"'+(lang==="en"?' class="on"':'')+'>EN</button>'+
