@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n-title="stand.title">We stand with</title>
+<meta name="description" content="Surgronic stands with the people. Join us in supporting trustworthy relief organizations.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=solid001">
+<style>
+.stand-hero{background:var(--navy-950);color:#fff;padding:88px 0 72px;text-align:center}
+.stand-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;margin:0 0 20px;letter-spacing:-.02em}
+.stand-hero p{max-width:640px;margin:0 auto;font-size:1.08rem;line-height:1.75;color:rgba(255,255,255,.82)}
+.stand-orgs{padding:72px 0;background:var(--mist-50)}
+.stand-orgs h2{font-family:var(--font-display);font-size:1.6rem;font-weight:800;text-align:center;margin:0 0 8px;color:var(--navy-950)}
+.stand-orgs .sub{text-align:center;color:var(--ink-600);max-width:560px;margin:0 auto 40px}
+.org-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1020px;margin:0 auto}
+.org-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;gap:12px}
+.org-card h3{font-family:var(--font-display);font-size:1.15rem;font-weight:800;margin:0;color:var(--navy-950)}
+.org-card p{color:var(--ink-600);font-size:.94rem;line-height:1.65;margin:0;flex:1}
+.org-card .btn{align-self:flex-start}
+@media(max-width:860px){.org-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<script src="app.js?v=solid001"></script>
+<main>
+<section class="stand-hero">
+  <div class="container">
+    <h1 data-i18n="stand.title">We stand with [cause]</h1>
+    <p data-i18n="stand.lede">[DRAFT]</p>
+  </div>
+</section>
+<section class="stand-orgs">
+  <div class="container">
+    <h2 data-i18n="stand.actTitle">How you can help</h2>
+    <p class="sub" data-i18n="stand.actSub"></p>
+    <div class="org-grid">
+      <div class="org-card">
+        <h3 data-i18n="stand.org1n">[Organization 1]</h3>
+        <p data-i18n="stand.org1d"></p>
+        <a class="btn btn-primary" href="#" data-i18n="stand.cardCta">Donate</a>
+      </div>
+      <div class="org-card">
+        <h3 data-i18n="stand.org2n">[Organization 2]</h3>
+        <p data-i18n="stand.org2d"></p>
+        <a class="btn btn-primary" href="#" data-i18n="stand.cardCta">Donate</a>
+      </div>
+      <div class="org-card">
+        <h3 data-i18n="stand.org3n">[Organization 3]</h3>
+        <p data-i18n="stand.org3d"></p>
+        <a class="btn btn-primary" href="#" data-i18n="stand.cardCta">Donate</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<script>SG.mountChrome("stand");SG.applyI18n();</script>
+</body>
+</html>

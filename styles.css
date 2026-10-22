@@ -100,6 +100,12 @@ section{padding:88px 0}
 
 :focus-visible{outline:3px solid var(--blue-400);outline-offset:3px;border-radius:6px}
 
+/* ---------- Solidarity banner (Preply pattern) ---------- */
+.solidarity-banner{background:var(--navy-950);color:#fff;font-size:.82rem;text-align:center;padding:9px 16px;border-bottom:1px solid var(--line-dark)}
+.solidarity-banner .container{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.solidarity-banner a{color:var(--blue-400);font-weight:700;text-decoration:none;white-space:nowrap}
+.solidarity-banner a:hover{text-decoration:underline;color:var(--blue-500)}
+
 /* ---------- Sticky glass header ---------- */
 .site-header{
   position:sticky;top:0;z-index:100;
