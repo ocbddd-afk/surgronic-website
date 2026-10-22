@@ -373,6 +373,7 @@ en: {
   "sf.c4d": "We\u2019d rather lose a sale than recommend the wrong instrument. Spec confirmed in writing before any commitment.",
   "nav.specialties": "Specialties",
   "nav.blog": "Blog",
+  "nav.doctor": "Doctor Login",
   "meta.maniTitle": "Manifesto \u2014 Surgronic",
   "mani.eyebrow": "Our manifesto",
   "mani.title": "Every surgeon deserves the right instrument.",
@@ -1159,6 +1160,7 @@ ar: {
   "nav.how": "كيف نعمل",
   "nav.why": "لماذا سورجرونيك",
   "nav.manifesto": "البيان",
+  "nav.doctor": "Doctor Login",
   "cust.slim": "Need custom branding or private-label sets? We offer personalization on select products.",
   "cust.slimL": "Contact our commercial team",
   "sf.eyebrow": "For surgeons",
@@ -1559,6 +1561,7 @@ tr: {
   "nav.how": "Nasıl çalışır",
   "nav.why": "Neden Surgronic",
   "nav.manifesto": "Manifesto",
+  "nav.doctor": "Doctor Login",
   "cust.slim": "Need custom branding or private-label sets? We offer personalization on select products.",
   "cust.slimL": "Contact our commercial team",
   "sf.eyebrow": "For surgeons",
@@ -1927,6 +1930,7 @@ function siteHeaderHTML(active){
       '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
       '<a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a>'+
       '<a href="blog.html" data-i18n="nav.blog">'+t("nav.blog")+'</a>'+
+      '<a href="doctor-login.html" data-i18n="nav.doctor">'+t("nav.doctor")+'</a>'+
     '</nav>'+
     '<div class="header-actions">'+
       '<div class="lang-switch" role="group" aria-label="Language">'+
@@ -1950,6 +1954,7 @@ function siteHeaderHTML(active){
     '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
     '<a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a>'+
     '<a href="blog.html" data-i18n="nav.blog">'+t("nav.blog")+'</a>'+
+    '<a href="doctor-login.html" data-i18n="nav.doctor">'+t("nav.doctor")+'</a>'+
     '<a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a>'+
     '<div class="lang-switch mobile-lang" role="group" aria-label="Language">'+
       '<button data-lang="en"'+(lang==="en"?' class="on"':'')+'>EN</button>'+

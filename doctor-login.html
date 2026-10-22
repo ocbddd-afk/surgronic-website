@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Login — Surgronic</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=doc002">
+</head>
+<body>
+<script src="assets/currency.js"></script>
+<script src="app.js?v=doc002"></script>
+
+<main>
+<section class="doc-hero">
+  <div class="wrap">
+    <span class="eyebrow rv">Doctors</span>
+    <h1 class="rv">Doctor login.</h1>
+  </div>
+</section>
+
+<section class="doc-form-sec">
+  <div class="wrap mani-narrow">
+    <form id="docLoginForm" class="doc-form">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary" id="loginBtn">Log in</button>
+      <p class="form-note" id="loginNote"></p>
+    </form>
+    <p class="doc-login-link">No account yet? <a href="doctor-register.html">Apply as a doctor</a></p>
+  </div>
+</section>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome('');
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+  initReveal();
+  // Already logged in? Go to dashboard
+  if (localStorage.getItem('sur_doc_session')) {
+    window.location.href = 'doctor-dashboard.html';
+    return;
+  }
+  document.getElementById('docLoginForm').addEventListener('submit', handleLogin);
+});
+
+function initReveal(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) { els.forEach(function(e){ e.classList.add("in"); }); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+}
+
+function handleLogin(e){
+  e.preventDefault();
+  var email = document.getElementById('email').value.trim().toLowerCase();
+  var password = document.getElementById('password').value;
+  var note = document.getElementById('loginNote');
+  var hash = btoa(password).split('').reverse().join('');
+
+  // Check approved doctors (in production, team moves pending→approved after verification)
+  // For now, check both pending (show pending message) and approved
+  var approved = JSON.parse(localStorage.getItem('sur_doctors') || '[]');
+  var pending = JSON.parse(localStorage.getItem('sur_doc_pending') || '[]');
+
+  var doc = approved.find(function(d){ return d.email === email && d.passHash === hash; });
+  if (doc) {
+    localStorage.setItem('sur_doc_session', JSON.stringify({ email: doc.email, name: doc.firstName + ' ' + doc.lastName, loginAt: new Date().toISOString() }));
+    window.location.href = 'doctor-dashboard.html';
+    return;
+  }
+
+  var pend = pending.find(function(d){ return d.email === email; });
+  if (pend) {
+    note.style.color = '#b45309';
+    note.textContent = 'Your application is under review. We\'ll email you once verified.';
+    return;
+  }
+
+  note.style.color = 'red';
+  note.textContent = 'Invalid email or password.';
+}
+</script>
+</body>
+</html>

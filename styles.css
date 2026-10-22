@@ -500,6 +500,38 @@ section{padding:88px 0}
 .article-cta h3{font-family:var(--font-display);margin:0 0 16px}
 .article-cta .btn{margin:0 8px}
 
+/* ---------- Doctor pages ---------- */
+.doc-hero{background:var(--navy-950);color:#fff;padding:72px 0 48px;text-align:center}
+.doc-hero h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);margin:14px 0;color:#fff}
+.doc-hero p{color:rgba(255,255,255,.7);max-width:44ch;margin:0 auto}
+.doc-form-sec{padding:48px 0 72px;background:#fff}
+.doc-form{background:var(--mist-50);border-radius:var(--radius);padding:36px;max-width:560px;margin:0 auto}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px;color:var(--ink-900)}
+.form-group input,.form-group select{width:100%;padding:12px;border:1px solid rgba(8,20,42,.15);border-radius:8px;font-size:1rem}
+.form-hint{font-size:.82rem;color:var(--ink-600);margin:6px 0 0}
+.form-note{margin-top:14px;font-size:.92rem}
+.opt{font-weight:400;color:var(--ink-600)}
+.doc-login-link{text-align:center;margin-top:20px;color:var(--ink-600)}
+.doc-dash-hero{background:var(--navy-950);color:#fff;padding:56px 0 32px}
+.doc-dash-hero h1{font-family:var(--font-display);color:#fff;margin:0 0 16px}
+.doc-dash-body{padding:40px 0 72px;background:var(--mist-50)}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.dash-card{background:#fff;border-radius:var(--radius);padding:28px}
+.dash-card h2{font-family:var(--font-display);font-size:1.15rem;margin:0 0 16px}
+.dash-wide{grid-column:1/-1}
+.muted{color:var(--ink-600);font-size:.9rem}
+.order-list,.inv-list{list-style:none;padding:0;margin:0}
+.order-list li,.inv-list li{padding:10px 0;border-bottom:1px solid rgba(8,20,42,.08);font-size:.92rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.order-status{background:#dcfce7;color:#166534;padding:2px 10px;border-radius:20px;font-size:.78rem}
+.inv-add{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.inv-add input{padding:10px;border:1px solid rgba(8,20,42,.15);border-radius:8px}
+.inv-low{color:#b45309}
+.inv-del{background:none;border:none;color:#999;font-size:1.2rem;cursor:pointer}
+.btn-sm{padding:8px 18px;font-size:.88rem}
+@media(max-width:700px){.dash-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
 /* ---------- Manifesto ---------- */
 .mani-hero{background:var(--navy-950);color:#fff;padding:88px 0 64px;text-align:center}
 .mani-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em;margin:16px 0;max-width:20ch;margin-left:auto;margin-right:auto}

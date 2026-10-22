@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Dashboard — Surgronic</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=doc002">
+</head>
+<body>
+<script src="assets/currency.js"></script>
+<script src="app.js?v=doc002"></script>
+
+<main>
+<section class="doc-dash-hero">
+  <div class="wrap">
+    <h1 id="dashTitle">Your practice dashboard.</h1>
+    <p><button class="btn btn-secondary btn-sm" id="logoutBtn">Log out</button></p>
+  </div>
+</section>
+
+<section class="doc-dash-body">
+  <div class="wrap">
+    <div class="dash-grid">
+      <!-- Order history -->
+      <div class="dash-card">
+        <h2>📦 Your orders</h2>
+        <div id="orderHistory"><p class="muted">No orders yet.</p></div>
+      </div>
+      <!-- Frequent items -->
+      <div class="dash-card">
+        <h2>🔁 Order again</h2>
+        <div id="frequentItems"><p class="muted">Items you order often will appear here.</p></div>
+      </div>
+      <!-- Inventory -->
+      <div class="dash-card dash-wide">
+        <h2>📋 Practice inventory</h2>
+        <p class="muted">Track stock levels for your clinic. Add items you keep on hand.</p>
+        <div class="inv-add">
+          <input type="text" id="invName" placeholder="Instrument name or SKU">
+          <input type="number" id="invQty" placeholder="Qty" min="0" style="width:80px">
+          <input type="number" id="invMin" placeholder="Min" min="0" style="width:80px" title="Reorder when below this">
+          <button class="btn btn-primary btn-sm" id="invAddBtn">Add</button>
+        </div>
+        <div id="invList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome('');
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+  initReveal();
+
+  var session = JSON.parse(localStorage.getItem('sur_doc_session') || 'null');
+  if (!session) { window.location.href = 'doctor-login.html'; return; }
+  document.getElementById('dashTitle').textContent = 'Welcome, Dr. ' + session.name.split(' ').pop() + '.';
+
+  document.getElementById('logoutBtn').addEventListener('click', function(){
+    localStorage.removeItem('sur_doc_session');
+    window.location.href = 'index.html';
+  });
+
+  renderOrders(session.email);
+  renderInventory(session.email);
+  document.getElementById('invAddBtn').addEventListener('click', function(){ addInventory(session.email); });
+});
+
+function initReveal(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) { els.forEach(function(e){ e.classList.add("in"); }); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+}
+
+function renderOrders(email){
+  var orders = JSON.parse(localStorage.getItem('sur_doc_orders_' + email) || '[]');
+  var el = document.getElementById('orderHistory');
+  if (!orders.length) return;
+  var html = '<ul class="order-list">';
+  // Most recent first
+  orders.slice().reverse().forEach(function(o){
+    html += '<li><strong>' + (o.date || '') + '</strong> — ' + o.items + ' items' +
+      (o.status ? ' <span class="order-status">' + o.status + '</span>' : '') + '</li>';
+  });
+  el.innerHTML = html + '</ul>';
+
+  // Frequent items: count SKUs across orders
+  var counts = {};
+  orders.forEach(function(o){
+    (o.skus || []).forEach(function(s){ counts[s] = (counts[s] || 0) + 1; });
+  });
+  var sorted = Object.keys(counts).sort(function(a,b){ return counts[b] - counts[a]; }).slice(0, 5);
+  if (sorted.length) {
+    var fh = '<ul class="order-list">';
+    sorted.forEach(function(sku){
+      fh += '<li>' + sku + ' <span class="muted">×' + counts[sku] + '</span> ' +
+        '<a href="catalogue.html?q=' + encodeURIComponent(sku) + '">Reorder →</a></li>';
+    });
+    document.getElementById('frequentItems').innerHTML = fh + '</ul>';
+  }
+}
+
+function renderInventory(email){
+  var inv = JSON.parse(localStorage.getItem('sur_doc_inv_' + email) || '[]');
+  var el = document.getElementById('invList');
+  if (!inv.length) { el.innerHTML = '<p class="muted">No items tracked yet.</p>'; return; }
+  var html = '<ul class="inv-list">';
+  inv.forEach(function(item, i){
+    var low = item.qty <= item.min;
+    html += '<li class="' + (low ? 'inv-low' : '') + '">' +
+      '<span>' + item.name + '</span>' +
+      '<span>Qty: <strong>' + item.qty + '</strong>' + (low ? ' ⚠️ low' : '') + '</span>' +
+      '<button data-i="' + i + '" class="inv-del">×</button></li>';
+  });
+  el.innerHTML = html + '</ul>';
+  el.querySelectorAll('.inv-del').forEach(function(b){
+    b.addEventListener('click', function(){
+      inv.splice(parseInt(b.getAttribute('data-i')), 1);
+      localStorage.setItem('sur_doc_inv_' + email, JSON.stringify(inv));
+      renderInventory(email);
+    });
+  });
+}
+
+function addInventory(email){
+  var name = document.getElementById('invName').value.trim();
+  var qty = parseInt(document.getElementById('invQty').value) || 0;
+  var min = parseInt(document.getElementById('invMin').value) || 0;
+  if (!name) return;
+  var inv = JSON.parse(localStorage.getItem('sur_doc_inv_' + email) || '[]');
+  inv.push({ name: name, qty: qty, min: min });
+  localStorage.setItem('sur_doc_inv_' + email, JSON.stringify(inv));
+  document.getElementById('invName').value = '';
+  document.getElementById('invQty').value = '';
+  document.getElementById('invMin').value = '';
+  renderInventory(email);
+}
+</script>
+</body>
+</html>
