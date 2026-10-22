@@ -410,6 +410,11 @@ section{padding:88px 0}
 @media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.team-grid{grid-template-columns:1fr}}
 
+/* ---------- Team teaser ---------- */
+.team-teaser{background:var(--navy-900);padding:28px 0;text-align:center}
+.team-teaser p{color:rgba(255,255,255,.85);margin:0;font-size:1.02rem}
+.team-teaser a{color:var(--blue-400);font-weight:700}
+
 /* ---------- Custom solutions ---------- */
 .custom-sol{padding:72px 0;background:#fff}
 .cust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
@@ -442,6 +447,18 @@ section{padding:88px 0}
 .testi-name{color:var(--blue-400);font-weight:700;font-size:.92rem;margin:0}
 .testi-role{color:rgba(255,255,255,.55);font-size:.82rem;margin:4px 0 0}
 @media(max-width:768px){.testi-grid{grid-template-columns:1fr}}
+
+/* ---------- Manifesto ---------- */
+.mani-hero{background:var(--navy-950);color:#fff;padding:88px 0 64px;text-align:center}
+.mani-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em;margin:16px 0;max-width:20ch;margin-left:auto;margin-right:auto}
+.mani-lede{color:rgba(255,255,255,.7);font-size:1.15rem;max-width:36ch;margin:0 auto}
+.mani-body{padding:64px 0;background:#fff}
+.mani-narrow{max-width:720px}
+.mani-body h2{font-family:var(--font-display);font-size:1.4rem;margin:40px 0 14px;color:var(--ink-900)}
+.mani-body h2:first-child{margin-top:0}
+.mani-body p{color:var(--ink-600);line-height:1.75;font-size:1.02rem;margin:0 0 16px}
+.mani-cta{background:var(--mist-50);padding:64px 0;text-align:center}
+.mani-cta h2{font-family:var(--font-display);font-size:1.6rem;margin:0 0 24px;color:var(--ink-900)}
 
 /* ---------- Why Surgronic (dark) ---------- */
 .why{background:var(--navy-950);color:var(--navy-text);position:relative;overflow:hidden}

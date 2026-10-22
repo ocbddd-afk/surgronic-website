@@ -357,6 +357,27 @@ en: {
   "feat.errB": "Browse the catalogue",
   "nav.how": "How it works",
   "nav.why": "Why Surgronic",
+  "nav.manifesto": "Manifesto",
+  "meta.maniTitle": "Manifesto \u2014 Surgronic",
+  "mani.eyebrow": "Our manifesto",
+  "mani.title": "Every surgeon deserves the right instrument.",
+  "mani.lede": "No matter where they operate \u2014 Riyadh or Casablanca, Cairo or Istanbul.",
+  "mani.s1t": "The problem we saw",
+  "mani.s1d1": "Across the Middle East and North Africa, talented surgeons work with one hand tied behind their back. Not for lack of skill \u2014 for lack of access.",
+  "mani.s1d2": "Procurement departments order from catalogs. Distributors add their margins. And the surgeon is the last to be consulted and the first to compromise.",
+  "mani.s2t": "What we\u2019re building",
+  "mani.s2d1": "Surgronic exists to put the surgeon back at the center. We source precision instruments directly from manufacturers and deliver across MENA.",
+  "mani.s2d2": "Name the instrument. We\u2019ll find it. That\u2019s not a slogan \u2014 it\u2019s the entire business model.",
+  "mani.s3t": "Why the Arab world",
+  "mani.s3d1": "Because this is where we come from, and this is where the gap is widest. MENA surgeons perform world-class procedures with second-tier supply chains.",
+  "mani.s3d2": "We started in Istanbul to serve this region. Our team speaks your language \u2014 Arabic, French, Turkish, and English.",
+  "mani.s4t": "How we work",
+  "mani.s4d1": "Surgeon first, always. Written confirmation before commitment. No middlemen between you and the person sourcing your tools.",
+  "mani.s4d2": "We\u2019re not a marketplace. We\u2019re the partner who picks up the phone.",
+  "mani.ctaT": "Work with people who answer.",
+  "mani.ctaB": "Request a quote",
+  "home.teamT": "Meet the people behind Surgronic.",
+  "home.teamL": "Read our manifesto",
   "hero.scroll": "Scroll",
   "trust.title2": "Procurement, engineered.",
   "strip.1b": "1 business day",
@@ -722,6 +743,7 @@ fr: {
   "feat.errB": "Parcourir le catalogue",
   "nav.how": "Comment ça marche",
   "nav.why": "Pourquoi Surgronic",
+  "nav.manifesto": "Manifeste",
   "hero.scroll": "Défiler",
   "trust.title2": "L’approvisionnement, conçu comme une ingénierie.",
   "strip.1b": "1 jour ouvré",
@@ -1033,6 +1055,7 @@ ar: {
   "feat.errB": "تصفح الكتالوج",
   "nav.how": "كيف نعمل",
   "nav.why": "لماذا سورجرونيك",
+  "nav.manifesto": "البيان",
   "hero.scroll": "مرر",
   "trust.title2": "التوريد، مصمم كهندسة.",
   "strip.1b": "يوم عمل واحد",
@@ -1344,6 +1367,7 @@ tr: {
   "feat.errB": "Kataloğa göz atın",
   "nav.how": "Nasıl çalışır",
   "nav.why": "Neden Surgronic",
+  "nav.manifesto": "Manifesto",
   "hero.scroll": "Kaydırın",
   "trust.title2": "Satın alma, mühendislikle.",
   "strip.1b": "1 iş günü",
@@ -1622,6 +1646,7 @@ function siteHeaderHTML(active){
       '<a href="catalogue.html"'+(active==="catalog"?' class="active"':'')+' data-i18n="nav.catalog">'+t("nav.catalog")+'</a>'+
       '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
       '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
+      '<a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a>'+
     '</nav>'+
     '<div class="header-actions">'+
       '<div class="lang-switch" role="group" aria-label="Language">'+
@@ -1642,6 +1667,7 @@ function siteHeaderHTML(active){
     '<a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a>'+
     '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
     '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
+    '<a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a>'+
     '<a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a>'+
     '<div class="lang-switch mobile-lang" role="group" aria-label="Language">'+
       '<button data-lang="en"'+(lang==="en"?' class="on"':'')+'>EN</button>'+
@@ -1668,6 +1694,7 @@ function footerHTML(){
       '<div><h4 data-i18n="footer.company">'+t("footer.company")+'</h4><ul>'+
         '<li><a href="index.html#how" data-i18n="footer.how">'+t("footer.how")+'</a></li>'+
         '<li><a href="index.html#specialties" data-i18n="footer.specialties">'+t("footer.specialties")+'</a></li>'+
+        '<li><a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a></li>'+
         '<li><a href="index.html#trust" data-i18n="footer.why">'+t("footer.why")+'</a></li>'+
       '</ul></div>'+
       '<div><h4 data-i18n="footer.contact">'+t("footer.contact")+'</h4><ul>'+
