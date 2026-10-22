@@ -148,7 +148,7 @@ section{padding:88px 0}
 
 /* ---------- Footer ---------- */
 .footer{background:var(--navy-950);color:var(--navy-text-dim);padding:72px 0 0;border-top:1px solid var(--line-dark)}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:52px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:52px}
 .footer-brand p{font-size:.94rem;max-width:340px;margin-top:16px}
 .footer h4{font-family:var(--font-display);color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
 .footer ul{list-style:none;display:grid;gap:10px}

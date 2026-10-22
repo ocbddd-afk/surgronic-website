@@ -1137,22 +1137,22 @@ function footerHTML(){
         '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo-on-dark.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
         '<p data-i18n="footer.tagline">'+t("footer.tagline")+'</p>'+
       '</div>'+
-      '<div><h4 data-i18n="footer.catalog">'+t("footer.catalog")+'</h4>'+
-        '<a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a>'+
-        '<a href="catalogue.html?brand=Aesculap">Aesculap</a>'+
-        '<a href="catalogue.html?brand=Sklar">Sklar</a>'+
-        '<a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a>'+
-      '</div>'+
-      '<div><h4 data-i18n="footer.company">'+t("footer.company")+'</h4>'+
-        '<a href="index.html#how" data-i18n="footer.how">'+t("footer.how")+'</a>'+
-        '<a href="index.html#specialties" data-i18n="footer.specialties">'+t("footer.specialties")+'</a>'+
-        '<a href="index.html#trust" data-i18n="footer.why">'+t("footer.why")+'</a>'+
-      '</div>'+
-      '<div><h4 data-i18n="footer.contact">'+t("footer.contact")+'</h4>'+
-        '<a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a>'+
-        '<a href="tel:+905526081432"><bdi>+90 552 608 1432</bdi></a>'+
-        '<a href="https://wa.me/905526081432" target="_blank" rel="noopener">WhatsApp</a>'+
-      '</div>'+
+      '<div><h4 data-i18n="footer.catalog">'+t("footer.catalog")+'</h4><ul>'+
+        '<li><a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a></li>'+
+        '<li><a href="catalogue.html?brand=Aesculap">Aesculap</a></li>'+
+        '<li><a href="catalogue.html?brand=Sklar">Sklar</a></li>'+
+        '<li><a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a></li>'+
+      '</ul></div>'+
+      '<div><h4 data-i18n="footer.company">'+t("footer.company")+'</h4><ul>'+
+        '<li><a href="index.html#how" data-i18n="footer.how">'+t("footer.how")+'</a></li>'+
+        '<li><a href="index.html#specialties" data-i18n="footer.specialties">'+t("footer.specialties")+'</a></li>'+
+        '<li><a href="index.html#trust" data-i18n="footer.why">'+t("footer.why")+'</a></li>'+
+      '</ul></div>'+
+      '<div><h4 data-i18n="footer.contact">'+t("footer.contact")+'</h4><ul>'+
+        '<li><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a></li>'+
+        '<li><a href="tel:+905526081432"><bdi>+90 552 608 1432</bdi></a></li>'+
+        '<li><a href="https://wa.me/905526081432" target="_blank" rel="noopener">WhatsApp</a></li>'+
+      '</ul></div>'+
     '</div>'+
     '<div class="footer-bottom">'+
       '<span>\u00A9 2026 Surgronic. <span data-i18n="footer.rights">'+t("footer.rights")+'</span></span>'+
