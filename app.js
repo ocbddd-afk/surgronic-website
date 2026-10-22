@@ -906,7 +906,7 @@ ar: {
   "trust.sub2": "كتالوج واحد وقناتا توريد وسير عمل يركز على المواصفات.",
   "trust.eyebrow2": "الاعتمادات",
   "trust.addrLabel": "المقر الرئيسي",
-}
+},
 tr: {
 "meta.homeTitle": "Surgronic — Hassas Cerrahi Aletler, Spesifikasyonunuza Göre Tedarik",
   "meta.catTitle": "Alet Kataloğu — Surgronic",
