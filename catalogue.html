@@ -9,11 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=blog002">
+<link rel="stylesheet" href="styles.css?v=promise001">
 </head>
 <body>
 <script src="assets/currency.js"></script>
-<script src="app.js?v=blog002"></script>
+<script src="app.js?v=brand001"></script>
 
 <div class="catalog-hero">
   <div class="container">
@@ -33,6 +33,10 @@
         <option value="" data-i18n="cat.allMfr">All manufacturers</option>
         <option>Aesculap</option>
         <option>Sklar</option>
+        <option>DOĞSAN</option>
+        <option>FADEN MEDIKAL</option>
+        <option>ERFECEN</option>
+        <option>ADOSN</option>
       </select>
       <select id="fFamily" data-i18n-aria="cat.allFam" aria-label="Instrument family">
         <option value="" data-i18n="cat.allFam">All families</option>
@@ -87,20 +91,41 @@
     if(p.get("q") || p.get("search")) document.getElementById("q").value = p.get("q") || p.get("search");
   })();
 
+  var BRAND_SKU = {
+    "Aesculap": ["SUR-AES"],
+    "Sklar": ["SUR-SKL", "SUR-ART"],
+    "DO\u011eSAN": ["SUR-DOG"],
+    "FADEN MEDIKAL": ["SUR-FAD"],
+    "ERFECEN": ["SUR-NSP"],
+    "ADOSN": ["SUR-INS"]
+  };
   function load(){
     var f = params();
     var search = f.q;
     if(f.family) search = (search ? search+" " : "") + f.family;
     grid.innerHTML = '<div class="loading">'+SG.t("cat.loading")+'</div>';
     metaCount.textContent = SG.t("cat.loading");
+    // Brand filter via SKU prefix (API manufacturer param is ignored)
+    var brandPrefixes = f.brand && BRAND_SKU[f.brand] ? BRAND_SKU[f.brand] : null;
+    var fetchLimit = brandPrefixes ? 2000 : PER;
+    var fetchOffset = brandPrefixes ? 0 : (page-1)*PER;
     SG.api("listProducts",{
-      limit: PER, offset:(page-1)*PER,
+      limit: fetchLimit, offset: fetchOffset,
       search: search || undefined,
-      manufacturer: f.brand || undefined,
       sort: f.sort, storefront:true
     }).then(function(d){
-      total = d.total||0;
       var list = d.products||[];
+      if(brandPrefixes){
+        list = list.filter(function(p){
+          return p.sku && brandPrefixes.some(function(pre){ return p.sku.indexOf(pre) === 0; });
+        });
+        total = list.length;
+        // Paginate client-side
+        var start = (page-1)*PER;
+        list = list.slice(start, start+PER);
+      } else {
+        total = d.total||0;
+      }
       metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>8,658</b> "+SG.t("cat.catalogued");
       var pages = Math.max(1, Math.ceil(total/PER));
       metaPage.textContent = SG.t("cat.page")+" "+page+" "+SG.t("cat.of")+" "+pages;

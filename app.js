@@ -1918,6 +1918,10 @@ function footerHTML(){
         '<li><a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a></li>'+
         '<li><a href="catalogue.html?brand=Aesculap">Aesculap</a></li>'+
         '<li><a href="catalogue.html?brand=Sklar">Sklar</a></li>'+
+        '<li><a href="catalogue.html?brand=DO%C4%9ESAN">DO\u011eSAN</a></li>'+
+        '<li><a href="catalogue.html?brand=FADEN%20MEDIKAL">FADEN MEDIKAL</a></li>'+
+        '<li><a href="catalogue.html?brand=ERFECEN">ERFECEN</a></li>'+
+        '<li><a href="catalogue.html?brand=ADOSN">ADOSN</a></li>'+
         '<li><a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a></li>'+
       '</ul></div>'+
       '<div><h4 data-i18n="footer.company">'+t("footer.company")+'</h4><ul>'+
