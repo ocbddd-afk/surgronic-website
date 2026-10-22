@@ -159,6 +159,8 @@ en: {
   "cust.c3t": "Your sets",
   "cust.c3d": "Procedure sets to your exact list.",
   "cust.cta": "Discuss a custom project",
+  "cust.slim": "Need custom branding or private-label sets? We offer personalization on select products.",
+  "cust.slimL": "Contact our commercial team",
   "blog.eyebrow": "Insights",
   "blog.title": "From the field.",
   "blog.sub": "Practical notes on instruments and sourcing.",
