@@ -6,11 +6,11 @@
 <title data-i18n-title="meta.maniTitle">Manifesto — Surgronic</title>
 <meta name="description" content="Why Surgronic exists: bringing world-class surgical instruments to the surgeons of the Middle East and North Africa.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=merge001">
+<link rel="stylesheet" href="styles.css?v=fix001">
 </head>
 <body>
 <script src="assets/currency.js"></script>
-<script src="app.js?v=merge001"></script>
+<script src="app.js?v=fix001"></script>
 
 <main>
 <!-- ============ MANIFESTO HERO ============ -->
@@ -98,6 +98,20 @@ document.addEventListener("DOMContentLoaded", function(){
   SG.applyI18n();
   if(window.SurCcy){ SurCcy.init(function(){}); }
 });
+</script>
+
+<script>
+(function(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(function(e){ e.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+})();
 </script>
 </body>
 </html>
