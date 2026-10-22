@@ -581,6 +581,9 @@ section{padding:88px 0}
   .mobile-nav.open{display:flex}
   .mobile-nav a{color:var(--navy-text);text-decoration:none;font-weight:600;padding:13px 8px;border-bottom:1px solid var(--line-dark);min-height:48px;display:flex;align-items:center}
   .mobile-nav .close{align-self:flex-end;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer;padding:8px;min-height:44px;min-width:44px}
+  .mobile-nav .mobile-lang{display:flex;gap:8px;padding:16px 8px 8px}
+  .mobile-nav .mobile-lang button{flex:1;padding:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;min-height:48px}
+  .mobile-nav .mobile-lang button.on{background:var(--blue-500);border-color:var(--blue-500)}
   .hero{padding:72px 0 64px}
   .finder-row{flex-direction:column}
   .finder-row .btn{width:100%}

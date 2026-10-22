@@ -928,7 +928,12 @@ ar: [
 /* ---------- Language state ---------- */
 var LANG_KEY = "surgronic_lang_v2";
 var lang = "en";
-try{ lang = localStorage.getItem(LANG_KEY) || "en"; }catch(e){}
+try{
+  /* URL param ?lang=fr|ar|en takes precedence (shareable language links) */
+  var _lm = (location.search||"").match(/[?&]lang=(en|fr|ar)\b/);
+  if(_lm){ lang = _lm[1]; try{ localStorage.setItem(LANG_KEY, lang); }catch(e){} }
+  else { lang = localStorage.getItem(LANG_KEY) || "en"; }
+}catch(e){ try{ lang = localStorage.getItem(LANG_KEY) || "en"; }catch(e2){} }
 if(!STRINGS[lang]) lang = "en";
 
 function t(key){
@@ -986,6 +991,12 @@ function setLang(l){
   if(!STRINGS[l]) return;
   lang = l;
   try{ localStorage.setItem(LANG_KEY, l); }catch(e){}
+  /* keep the URL shareable: ?lang= reflects the current language */
+  try{
+    var u = new URL(location.href);
+    u.searchParams.set("lang", l);
+    history.replaceState(null, "", u.toString());
+  }catch(e){}
   applyI18n();
   /* notify page scripts to re-render dynamic content */
   var ev;
@@ -1130,6 +1141,11 @@ function siteHeaderHTML(active){
     '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
     '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
     '<a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a>'+
+    '<div class="lang-switch mobile-lang" role="group" aria-label="Language">'+
+      '<button data-lang="en"'+(lang==="en"?' class="on"':'')+'>EN</button>'+
+      '<button data-lang="fr"'+(lang==="fr"?' class="on"':'')+'>FR</button>'+
+      '<button data-lang="ar"'+(lang==="ar"?' class="on"':'')+'>AR</button>'+
+    '</div>'+
   '</div>';
 }
 function footerHTML(){
