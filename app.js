@@ -882,43 +882,43 @@ ar: {
 /* Specialty names + descriptions per language */
 var SPECIALTIES = {
 en: [
-  ["General Surgery & Laparoscopy","The broadest range — retractors, forceps, clamps"],
-  ["Orthopedics & Trauma","Bone instruments, fixation, trauma sets"],
-  ["Oral & Maxillofacial","Precision instruments for facial surgery"],
-  ["Plastic, Reconstructive & Aesthetic","Rhinoplasty and aesthetic surgery range"],
-  ["Cardiovascular & Thoracic","Cardiac and thoracic instrumentation"],
-  ["Neurosurgery & Spine","Micro-instruments for neuro and spinal work"],
-  ["Ophthalmology","Delicate eye-surgery instruments"],
-  ["ENT","Ear, nose and throat instrumentation"],
-  ["OB/GYN & Urology","Obstetric, gynecologic and urologic tools"],
-  ["Energy & Powered Systems","Electrosurgical and powered instruments"],
-  ["Dental & Implant Surgery","Dental and implantology instruments"]
+["General Surgery & Laparoscopy","The broadest range — retractors, forceps, clamps","🔪"],
+  ["Orthopedics & Trauma","Bone instruments, fixation, trauma sets","🦴"],
+  ["Oral & Maxillofacial","Precision instruments for facial surgery","😷"],
+  ["Plastic, Reconstructive & Aesthetic","Rhinoplasty and aesthetic surgery range","✨"],
+  ["Cardiovascular & Thoracic","Cardiac and thoracic instrumentation","🫀"],
+  ["Neurosurgery & Spine","Micro-instruments for neuro and spinal work","🧠"],
+  ["Ophthalmology","Delicate eye-surgery instruments","👁️"],
+  ["ENT","Ear, nose and throat instrumentation","👂"],
+  ["OB/GYN & Urology","Obstetric, gynecologic and urologic tools","🤰"],
+  ["Energy & Powered Systems","Electrosurgical and powered instruments","⚡"],
+  ["Dental & Implant Surgery","Dental and implantology instruments","🦷"]
 ],
 fr: [
-  ["Chirurgie générale & laparoscopie","La gamme la plus large — écarteurs, pinces, clamps"],
-  ["Orthopédie & traumatologie","Instruments osseux, fixation, sets de traumatologie"],
-  ["Chirurgie orale & maxillo-faciale","Instruments de précision pour la chirurgie faciale"],
-  ["Chirurgie plastique, reconstructrice & esthétique","Gamme rhinoplastie et chirurgie esthétique"],
-  ["Chirurgie cardiovasculaire & thoracique","Instrumentation cardiaque et thoracique"],
-  ["Neurochirurgie & rachis","Micro-instruments pour la neurochirurgie et le rachis"],
-  ["Ophtalmologie","Instruments délicats de chirurgie oculaire"],
-  ["ORL","Instrumentation oto-rhino-laryngologique"],
-  ["Gynécologie-obstétrique & urologie","Outils obstétricaux, gynécologiques et urologiques"],
-  ["Systèmes énergétiques & motorisés","Instruments électrochirurgicaux et motorisés"],
-  ["Chirurgie dentaire & implantaire","Instruments dentaires et d'implantologie"]
+["Chirurgie générale & laparoscopie","La gamme la plus large — écarteurs, pinces, clamps","🔪"],
+  ["Orthopédie & traumatologie","Instruments osseux, fixation, sets de traumatologie","🦴"],
+  ["Chirurgie orale & maxillo-faciale","Instruments de précision pour la chirurgie faciale","😷"],
+  ["Chirurgie plastique, reconstructrice & esthétique","Gamme rhinoplastie et chirurgie esthétique","✨"],
+  ["Chirurgie cardiovasculaire & thoracique","Instrumentation cardiaque et thoracique","🫀"],
+  ["Neurochirurgie & rachis","Micro-instruments pour la neurochirurgie et le rachis","🧠"],
+  ["Ophtalmologie","Instruments délicats de chirurgie oculaire","👁️"],
+  ["ORL","Instrumentation oto-rhino-laryngologique","👂"],
+  ["Gynécologie-obstétrique & urologie","Outils obstétricaux, gynécologiques et urologiques","🤰"],
+  ["Systèmes énergétiques & motorisés","Instruments électrochirurgicaux et motorisés","⚡"],
+  ["Chirurgie dentaire & implantaire","Instruments dentaires et d'implantologie","🦷"]
 ],
 ar: [
-  ["الجراحة العامة والمناظير","أوسع تشكيلة — مباعدات، ملاقط، مشابك"],
-  ["جراحة العظام والكسور","أدوات العظام، التثبيت، أطقم الكسور"],
-  ["جراحة الفم والوجه والفكين","أدوات دقيقة لجراحة الوجه"],
-  ["الجراحة التجميلية والترميمية","تشكيلة تجميل الأنف والجراحة التجميلية"],
-  ["جراحة القلب والصدر","أدوات جراحة القلب والصدر"],
-  ["جراحة الأعصاب والعمود الفقري","أدوات دقيقة لجراحة الأعصاب والعمود الفقري"],
-  ["طب العيون","أدوات دقيقة لجراحة العيون"],
-  ["الأنف والأذن والحنجرة","أدوات الأنف والأذن والحنجرة"],
-  ["النساء والتوليد والمسالك البولية","أدوات التوليد وأمراض النساء والمسالك البولية"],
-  ["أنظمة الطاقة والأدوات الكهربائية","أدوات الجراحة الكهربائية والكهربائية"],
-  ["جراحة الأسنان وزراعة الأسنان","أدوات طب الأسنان وزراعة الأسنان"]
+  ["الجراحة العامة والمناظير","أوسع تشكيلة — مباعدات، ملاقط، مشابك","🔪"],
+  ["جراحة العظام والكسور","أدوات العظام، التثبيت، أطقم الكسور","🦴"],
+  ["جراحة الفم والوجه والفكين","أدوات دقيقة لجراحة الوجه","😷"],
+  ["الجراحة التجميلية والترميمية","تشكيلة تجميل الأنف والجراحة التجميلية","✨"],
+  ["جراحة القلب والصدر","أدوات جراحة القلب والصدر","🫀"],
+  ["جراحة الأعصاب والعمود الفقري","أدوات دقيقة لجراحة الأعصاب والعمود الفقري","🧠"],
+  ["طب العيون","أدوات دقيقة لجراحة العيون","👁️"],
+  ["الأنف والأذن والحنجرة","أدوات الأنف والأذن والحنجرة","👂"],
+  ["النساء والتوليد والمسالك البولية","أدوات التوليد وأمراض النساء والمسالك البولية","🤰"],
+  ["أنظمة الطاقة والأدوات الكهربائية","أدوات الجراحة الكهربائية والكهربائية","⚡"],
+  ["جراحة الأسنان وزراعة الأسنان","أدوات طب الأسنان وزراعة الأسنان","🦷"]
 ]
 };
 

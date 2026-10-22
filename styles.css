@@ -299,6 +299,7 @@ section{padding:88px 0}
 }
 .spec-card:hover{background:rgba(47,134,246,.12);border-color:rgba(47,134,246,.5);transform:translateY(-3px)}
 .spec-card h3{font-size:1.02rem;font-weight:700}
+.spec-card .spec-ico{font-size:1.7rem;line-height:1;display:block;margin-bottom:2px;filter:saturate(1.1)}
 .spec-card .spec-ref{font-size:.82rem;color:var(--navy-text-dim);margin-top:auto;font-family:var(--font-display);font-weight:600;letter-spacing:.06em}
 
 /* ---------- Featured products ---------- */
