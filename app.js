@@ -1170,6 +1170,7 @@ function mountChrome(active){
   var hb=document.getElementById("hamburger"), mn=document.getElementById("mobileNav"), mc=document.getElementById("mobileClose");
   if(hb&&mn){ hb.addEventListener("click",function(){mn.classList.add("open");}); }
   if(mc&&mn){ mc.addEventListener("click",function(){mn.classList.remove("open");}); }
+  if(mn){ var mlinks=mn.querySelectorAll("a"); for(var mi=0;mi<mlinks.length;mi++){ mlinks[mi].addEventListener("click",function(){mn.classList.remove("open");}); } }
   var langBtns=document.querySelectorAll(".lang-switch button");
   for(var i=0;i<langBtns.length;i++){
     langBtns[i].addEventListener("click",function(){
@@ -1194,6 +1195,7 @@ function mountChrome(active){
       var hb2=document.getElementById("hamburger"), mn2=document.getElementById("mobileNav"), mc2=document.getElementById("mobileClose");
       if(hb2&&mn2){ hb2.addEventListener("click",function(){mn2.classList.add("open");}); }
       if(mc2&&mn2){ mc2.addEventListener("click",function(){mn2.classList.remove("open");}); }
+      if(mn2){ var ml2=mn2.querySelectorAll("a"); for(var mj=0;mj<ml2.length;mj++){ ml2[mj].addEventListener("click",function(){mn2.classList.remove("open");}); } }
       var lb2=document.querySelectorAll(".lang-switch button");
       for(var k=0;k<lb2.length;k++){
         lb2[k].addEventListener("click",function(){

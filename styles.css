@@ -574,8 +574,9 @@ section{padding:88px 0}
   .hamburger{display:block}
   .quote-indicator span.lbl{display:none}
   .mobile-nav{
-    display:none;position:absolute;top:72px;left:0;right:0;background:var(--navy-950);
-    border-bottom:1px solid var(--line-dark);padding:12px 24px 24px;flex-direction:column;gap:4px;
+    display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;
+    background:var(--navy-950);padding:20px 24px 32px;flex-direction:column;gap:4px;
+    overflow-y:auto;
   }
   .mobile-nav.open{display:flex}
   .mobile-nav a{color:var(--navy-text);text-decoration:none;font-weight:600;padding:13px 8px;border-bottom:1px solid var(--line-dark);min-height:48px;display:flex;align-items:center}
