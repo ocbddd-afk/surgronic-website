@@ -1874,7 +1874,6 @@ function siteHeaderHTML(active){
       '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
       '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
       '<a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a>'+
-      '<a href="index.html#specialties" data-i18n="nav.specialties">'+t("nav.specialties")+'</a>'+
       '<a href="blog.html" data-i18n="nav.blog">'+t("nav.blog")+'</a>'+
     '</nav>'+
     '<div class="header-actions">'+
@@ -1897,7 +1896,6 @@ function siteHeaderHTML(active){
     '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
     '<a href="index.html#why" data-i18n="nav.why">'+t("nav.why")+'</a>'+
     '<a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a>'+
-    '<a href="index.html#specialties" data-i18n="nav.specialties">'+t("nav.specialties")+'</a>'+
     '<a href="blog.html" data-i18n="nav.blog">'+t("nav.blog")+'</a>'+
     '<a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a>'+
     '<div class="lang-switch mobile-lang" role="group" aria-label="Language">'+
