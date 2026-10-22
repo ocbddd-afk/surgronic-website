@@ -1055,7 +1055,7 @@ function waBasketUrl(){
 function headerHTML(active){
   return ''+
   '<header class="site-header"><div class="container header-inner">'+
-    '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
+    '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo-on-dark.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
     '<nav class="main-nav">'+
       '<a href="catalogue.html"'+(active==="catalog"?' class="active"':'')+' data-i18n="nav.catalog">'+t("nav.catalog")+'</a>'+
       '<a href="index.html#how" data-i18n="nav.how">'+t("nav.how")+'</a>'+
@@ -1087,7 +1087,7 @@ function footerHTML(){
   '<footer class="footer"><div class="container">'+
     '<div class="footer-grid">'+
       '<div class="footer-brand">'+
-        '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo-reversed.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
+        '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo-on-dark.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
         '<p data-i18n="footer.tagline">'+t("footer.tagline")+'</p>'+
       '</div>'+
       '<div><h4 data-i18n="footer.catalog">'+t("footer.catalog")+'</h4>'+
