@@ -1249,6 +1249,19 @@ ar: [
   ["النساء والتوليد والمسالك البولية","أدوات التوليد وأمراض النساء والمسالك البولية","🤰"],
   ["أنظمة الطاقة والأدوات الكهربائية","أدوات الجراحة الكهربائية والكهربائية","⚡"],
   ["جراحة الأسنان وزراعة الأسنان","أدوات طب الأسنان وزراعة الأسنان","🦷"]
+],
+tr: [
+  ["Genel Cerrahi & Laparoskopi","En geniş yelpaze — ekartörler, forsepsler, klempler","🔪"],
+  ["Ortopedi & Travma","Kemik aletleri, fiksasyon, travma setleri","🦴"],
+  ["Ağız & Çene-Yüz Cerrahisi","Yüz cerrahisi için hassas aletler","😷"],
+  ["Plastik, Rekonstrüktif & Estetik","Rinoplasti ve estetik cerrahi yelpazesi","👃"],
+  ["Kardiyovasküler & Torasik","Kardiyak ve torasik enstrümantasyon","🫀"],
+  ["Nöroşirürji & Omurga","Nöro ve spinal çalışma için mikro aletler","🧠"],
+  ["Oftalmoloji","Hassas göz cerrahisi aletleri","👁️"],
+  ["KBB","Kulak, burun ve boğaz enstrümantasyonu","👂"],
+  ["Kadın Doğum & Üroloji","Obstetrik, jinekolojik ve ürolojik aletler","🤰"],
+  ["Enerji & Güç Sistemleri","Elektrocerrahi ve güçlü aletler","⚡"],
+  ["Diş & İmplant Cerrahisi","Diş ve implantoloji aletleri","🦷"]
 ]
 };
 
