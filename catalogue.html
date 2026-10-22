@@ -9,18 +9,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=tr001">
+<link rel="stylesheet" href="styles.css?v=promise001">
 </head>
 <body>
 <script src="assets/currency.js"></script>
-<script src="app.js?v=tr003"></script>
+<script src="app.js?v=tr004"></script>
 
 <div class="catalog-hero">
   <div class="container">
     <h1 data-i18n="cat.title">Instrument catalogue.</h1>
     <p data-i18n="cat.sub">Guided search across 8,658 catalogued instruments. Filter by specialty, family, and manufacturer.</p>
     <div class="search-bar">
-      <input id="q" type="search" data-i18n-ph="cat.searchPh" placeholder="Search by name, SKU, or manufacturer reference…" data-i18n-aria="cat.search" aria-label="Search instruments">
+      <input id="q" type="search" data-i18n-ph="cat.searchPh" data-i18n-ph="cat.searchPh" placeholder="Search by name, SKU, or manufacturer reference…" data-i18n-aria="cat.search" aria-label="Search instruments">
       <button class="btn btn-primary" id="searchBtn" data-i18n="cat.search">Search</button>
     </div>
   </div>
@@ -36,13 +36,13 @@
       </select>
       <select id="fFamily" data-i18n-aria="cat.allFam" aria-label="Instrument family">
         <option value="" data-i18n="cat.allFam">All families</option>
-        <option>Forceps</option>
-        <option>Scissors</option>
-        <option>Retractor</option>
-        <option>Clamp</option>
-        <option>Needle Holder</option>
-        <option>Speculum</option>
-        <option>Elevator</option>
+        <option data-i18n="fam.forceps">Forceps</option>
+        <option data-i18n="fam.scissors">Scissors</option>
+        <option data-i18n="fam.retractor">Retractor</option>
+        <option data-i18n="fam.clamp">Clamp</option>
+        <option data-i18n="fam.needleHolder">Needle Holder</option>
+        <option data-i18n="fam.speculum">Speculum</option>
+        <option data-i18n="fam.elevator">Elevator</option>
       </select>
       <select id="fSort" aria-label="Sort">
         <option value="name" data-i18n="cat.sortName">Sort: Name</option>
