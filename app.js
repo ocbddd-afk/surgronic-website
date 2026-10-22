@@ -1091,10 +1091,16 @@ function waBasketUrl(){
 /* ============================================================
    Header / nav / footer (i18n-aware)
    ============================================================ */
-function headerHTML(active){
+function solidarityBannerHTML(){
   var flagPS = '<svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true" style="flex:none;border-radius:2px;overflow:hidden"><rect width="20" height="4.67" fill="#111"/><rect y="4.67" width="20" height="4.67" fill="#fff"/><rect y="9.33" width="20" height="4.67" fill="#007A3D"/><polygon points="0,0 8,7 0,14" fill="#CE1126"/></svg>';
+  return '<div class="solidarity-banner"><div class="container">'+flagPS+'<span>'+t("solidarity.banner")+'</span> <a href="stand-with.html">'+t("solidarity.join")+' &rarr;</a></div></div>';
+}
+function headerHTML(active){
+  /* full top chrome: solidarity banner + sticky header (initial page mount) */
+  return solidarityBannerHTML()+siteHeaderHTML(active);
+}
+function siteHeaderHTML(active){
   return ''+
-  '<div class="solidarity-banner"><div class="container">'+flagPS+'<span>'+t("solidarity.banner")+'</span> <a href="stand-with.html">'+t("solidarity.join")+' &rarr;</a></div></div>'+
   '<header class="site-header"><div class="container header-inner">'+
     '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo-on-dark.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
     '<nav class="main-nav">'+
@@ -1169,10 +1175,12 @@ function mountChrome(active){
     langBtns[i].addEventListener("click",function(){
       setLang(this.getAttribute("data-lang"));
       /* re-mount chrome in the new language */
+      var sban = document.querySelector(".solidarity-banner");
       var hdr = document.querySelector(".site-header");
       var mnav = document.getElementById("mobileNav");
       var ftr = document.querySelector("footer");
-      if(hdr) hdr.outerHTML = headerHTML(active||"");
+      if(sban) sban.outerHTML = solidarityBannerHTML();
+      if(hdr) hdr.outerHTML = siteHeaderHTML(active||"");
       if(mnav) mnav.outerHTML = "";
       if(ftr) ftr.outerHTML = footerHTML();
       /* rebuild mobile nav (it was removed above) */
