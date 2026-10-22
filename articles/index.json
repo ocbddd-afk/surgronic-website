@@ -1,0 +1,34 @@
+{
+  "articles": [
+    {
+      "slug": "essential-rhinoplasty-instrument-set",
+      "title": "The Essential Rhinoplasty Instrument Set: What Every Surgeon Needs",
+      "summary": "Rhinoplasty demands precision, and precision starts with the right instruments. This guide walks through the essential components of a complete rhinoplasty set — from osteotomes and rasps to elevators, forceps, and needle holders — and explains what to look for when selecting each one for your practice.",
+      "date": "2026-10-22"
+    },
+    {
+      "slug": "how-to-specify-surgical-instruments",
+      "title": "How to Specify Surgical Instruments: Getting Exactly What You Need",
+      "summary": "What arrives is only as precise as what you ordered. This guide explains how to specify surgical instruments — reference numbers, dimensions, materials, finishes, and jaw and tip details — plus how to use photographs and written confirmation to eliminate surprises.",
+      "date": "2026-10-22"
+    },
+    {
+      "slug": "sourcing-surgical-instruments-mena-guide",
+      "title": "Sourcing Surgical Instruments in MENA: A Procurement Guide for Clinics",
+      "summary": "Sourcing surgical instruments in MENA means navigating distributor markups, long lead times, and inconsistent quality. This procurement guide for clinics and hospitals covers how to verify suppliers, write precise specifications, plan logistics, and build supply relationships that actually serve your surgeons.",
+      "date": "2026-10-22"
+    },
+    {
+      "slug": "surgical-instrument-care-guide",
+      "title": "Surgical Instrument Care: Extending the Life of Your Precision Tools",
+      "summary": "A precision instrument is an investment — and routine care is what protects it. This guide covers the practical essentials of surgical instrument care: prompt cleaning, material-aware sterilization, pre-use inspection, protective storage, and the handling habits that keep cutting edges sharp for years.",
+      "date": "2026-10-22"
+    },
+    {
+      "slug": "understanding-suture-materials-reference",
+      "title": "Understanding Suture Materials: A Surgeon's Quick Reference",
+      "summary": "Absorbable or non-absorbable? Monofilament or braided? This quick reference breaks down suture material families — how they behave, where each excels, and a practical four-question framework for choosing the right suture for every tissue and every patient.",
+      "date": "2026-10-22"
+    }
+  ]
+}

@@ -457,6 +457,32 @@ section{padding:88px 0}
 .blog-empty{color:var(--ink-600);font-size:1.05rem;text-align:center;grid-column:1/-1;padding:40px 0}
 @media(max-width:768px){.blog-grid{grid-template-columns:1fr}}
 
+/* ---------- Blog page ---------- */
+.blog-hero{background:var(--navy-950);color:#fff;padding:88px 0 64px;text-align:center}
+.blog-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3rem);font-weight:800;margin:16px 0}
+.blog-hero p{color:rgba(255,255,255,.7);font-size:1.1rem}
+.blog-list{padding:64px 0;background:#fff;min-height:40vh}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-card{background:var(--mist-50);border-radius:var(--radius);padding:28px 24px}
+.blog-card h3{font-family:var(--font-display);font-size:1.15rem;margin:8px 0 12px}
+.blog-card h3 a{color:var(--ink-900);text-decoration:none}
+.blog-card h3 a:hover{color:var(--blue-500)}
+.blog-date{color:var(--ink-600);font-size:.82rem;margin:0}
+.blog-summary{color:var(--ink-600);font-size:.92rem;line-height:1.6}
+.blog-read{color:var(--blue-500);font-weight:700;font-size:.9rem}
+.blog-empty{color:var(--ink-600);font-size:1.05rem;text-align:center;grid-column:1/-1;padding:40px 0}
+@media(max-width:768px){.blog-grid{grid-template-columns:1fr}}
+/* ---------- Article page ---------- */
+.article-page{padding:56px 0 72px;background:#fff}
+.article-back{color:var(--blue-500);font-weight:600;font-size:.9rem}
+.article-page h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);margin:12px 0 28px;color:var(--ink-900);line-height:1.2}
+.article-body{color:var(--ink-600);line-height:1.8;font-size:1.02rem}
+.article-body h2{font-family:var(--font-display);font-size:1.35rem;color:var(--ink-900);margin:36px 0 14px}
+.article-body p{margin:0 0 18px}
+.article-cta{background:var(--mist-50);border-radius:var(--radius);padding:32px;margin-top:48px;text-align:center}
+.article-cta h3{font-family:var(--font-display);margin:0 0 16px}
+.article-cta .btn{margin:0 8px}
+
 /* ---------- Manifesto ---------- */
 .mani-hero{background:var(--navy-950);color:#fff;padding:88px 0 64px;text-align:center}
 .mani-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em;margin:16px 0;max-width:20ch;margin-left:auto;margin-right:auto}

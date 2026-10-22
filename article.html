@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="artTitle">Article — Surgronic</title>
+<meta name="description" id="artMeta" content="">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=blog002">
+</head>
+<body>
+<script src="assets/currency.js"></script>
+<script src="app.js?v=blog002"></script>
+
+<main>
+<article class="article-page">
+  <div class="wrap mani-narrow">
+    <p><a href="blog.html" class="article-back">← Back to blog</a></p>
+    <p class="blog-date" id="artDate"></p>
+    <h1 id="artH1"></h1>
+    <div class="article-body" id="artBody"></div>
+    <div class="article-cta">
+      <h3>Need this instrument?</h3>
+      <p><a class="btn btn-primary" href="quote.html">Request a quote</a>
+      <a class="btn btn-secondary" href="catalogue.html">Browse catalog</a></p>
+    </div>
+  </div>
+</article>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome('');
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+  loadArticle();
+});
+
+function loadArticle(){
+  var slug = new URLSearchParams(window.location.search).get('slug');
+  if(!slug){ window.location.href = 'blog.html'; return; }
+  fetch('articles/' + slug + '.json')
+    .then(r => r.json())
+    .then(a => {
+      document.getElementById('artTitle').textContent = a.title + ' — Surgronic';
+      document.getElementById('artMeta').setAttribute('content', a.meta || a.summary);
+      document.getElementById('artDate').textContent = a.date;
+      document.getElementById('artH1').textContent = a.title;
+      document.getElementById('artBody').innerHTML = a.body;
+    })
+    .catch(function(){ window.location.href = 'blog.html'; });
+}
+</script>
+</body>
+</html>
