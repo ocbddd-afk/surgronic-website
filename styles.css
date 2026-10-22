@@ -133,7 +133,7 @@ section{padding:88px 0}
 }
 .lang-switch button.on{background:var(--blue-500);color:#fff}
 .quote-indicator{
-  position:relative;display:inline-flex;align-items:center;gap:9px;
+  position:relative;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;
   color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;font-family:var(--font-display);
   border:1px solid rgba(255,255,255,.24);padding:11px 20px;border-radius:var(--radius-pill);
   background:rgba(255,255,255,.05);transition:border-color .2s,background .2s;min-height:48px;
