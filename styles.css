@@ -597,7 +597,13 @@ section{padding:88px 0}
   .hero-tag{flex-direction:column;align-items:stretch;gap:10px}
   .hero-tag .pill{align-self:flex-start}
 }
+.btn-add-quote .ico-quote{display:none;flex:none}
 @media(max-width:480px){
+  /* --- Icon-only card buttons: no truncated text --- */
+  .btn-add-quote .ico-quote{display:block}
+  .btn-add-quote .btn-txt,.btn-wa .btn-txt{display:none}
+  .btn-add-quote,.btn-wa{padding:11px 8px;min-height:48px}
+  .btn-wa svg{width:20px;height:20px}
   .container{padding:0 18px}
   .feat-grid,.catalog-grid,.loading{grid-template-columns:1fr 1fr;gap:12px}
   .product-card .pbody{padding:14px 12px}
@@ -782,8 +788,8 @@ section .wrap > .sec-sub{margin-bottom:44px}
   .steps{grid-template-columns:1fr;gap:32px}
   .steps::before{left:19px;right:auto;top:3%;bottom:3%;width:2px;height:auto}
   [dir="rtl"] .steps::before{left:auto;right:19px}
-  .step{padding-inline-start:52px}
-  .step small{position:absolute;inset-inline-start:0;top:0;margin:0;box-shadow:none}
+  .step{padding-inline-start:0}
+  .step small{position:static;margin:0 0 14px;box-shadow:none}
   .hero-tag{left:12px;right:12px;bottom:12px;padding:12px 16px}
   .final{border-radius:24px}
 }
