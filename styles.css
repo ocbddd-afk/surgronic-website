@@ -422,6 +422,25 @@ section{padding:88px 0}
 .blog-grid{margin-top:30px}
 .blog-empty{color:var(--ink-600);text-align:center;padding:40px 0}
 
+/* ---------- Certifications marquee ---------- */
+.certs{padding:64px 0 0;background:#fff;overflow:hidden}
+.certs .wrap{text-align:center;margin-bottom:28px}
+.cert-marquee{overflow:hidden;white-space:nowrap;padding:12px 0 48px}
+.cert-track{display:inline-flex;gap:14px;animation:certslide 30s linear infinite}
+.cert-badge{display:inline-flex;align-items:center;gap:8px;background:var(--mist-50);border:1px solid rgba(8,20,42,.08);border-radius:var(--radius-pill);padding:10px 20px;font-weight:600;font-size:.9rem;color:var(--ink-900);white-space:nowrap}
+@keyframes certslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- Testimonials ---------- */
+.testimonials{padding:72px 0;background:var(--navy-950)}
+.testimonials .sec-title{color:#fff}
+.testimonials .eyebrow{color:var(--blue-400)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.testi-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:28px 24px}
+.testi-quote{color:#fff;font-size:.95rem;line-height:1.65;font-style:italic;margin:0 0 18px}
+.testi-name{color:var(--blue-400);font-weight:700;font-size:.92rem;margin:0}
+.testi-role{color:rgba(255,255,255,.55);font-size:.82rem;margin:4px 0 0}
+@media(max-width:768px){.testi-grid{grid-template-columns:1fr}}
+
 /* ---------- Why Surgronic (dark) ---------- */
 .why{background:var(--navy-950);color:var(--navy-text);position:relative;overflow:hidden}
 .why::before{
