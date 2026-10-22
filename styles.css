@@ -316,8 +316,10 @@ section{padding:88px 0}
 .product-card .psku{font-size:.76rem;color:var(--ink-400);font-weight:600;letter-spacing:.05em;font-family:var(--font-display)}
 .product-card h3{font-size:.99rem;font-weight:700;line-height:1.35}
 .product-card .pbrand{font-size:.83rem;color:var(--ink-600)}
+.product-card .plink-view{font-size:.78rem;color:var(--blue-500);text-decoration:none;margin-left:6px;white-space:nowrap}
+.product-card .plink-view:hover{text-decoration:underline}
 .product-card .pfoot{margin-top:auto;padding-top:12px;display:flex;gap:8px;justify-content:center;align-items:stretch;width:100%;box-sizing:border-box}
-.btn-add-quote,.btn-wa,.btn-view{
+.btn-add-quote,.btn-wa{
   flex:1 1 0;min-width:0;border-radius:12px;font-family:var(--font-display);font-weight:700;font-size:.82rem;
   padding:11px 6px;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink-900);
   transition:background .2s,border-color .2s,color .2s;min-height:44px;text-align:center;text-decoration:none;
@@ -326,7 +328,6 @@ section{padding:88px 0}
 .btn-add-quote{background:var(--navy-950);border-color:var(--navy-950);color:#fff}
 .btn-add-quote:hover{background:var(--blue-500);border-color:var(--blue-500)}
 .btn-wa:hover{border-color:var(--blue-500);color:var(--blue-500)}
-.btn-view:hover{border-color:var(--blue-500);color:var(--blue-500)}
 
 /* Skeleton — never bare "Loading…" */
 .loading{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
