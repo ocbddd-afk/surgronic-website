@@ -593,6 +593,8 @@ section{padding:88px 0}
   .footer-grid{grid-template-columns:1fr}
   .qitem{grid-template-columns:56px 1fr}
   .qitem img{width:56px;height:56px}
+  .hero-tag{flex-direction:column;align-items:stretch;gap:10px}
+  .hero-tag .pill{align-self:flex-start}
 }
 @media(max-width:480px){
   .container{padding:0 18px}
@@ -601,6 +603,26 @@ section{padding:88px 0}
   .header-actions .lang-switch{display:none}
   .trust-grid{grid-template-columns:1fr}
   .channel-card{padding:30px 24px}
+  /* --- Mobile header: compact, no crowding --- */
+  .header-inner{height:64px;gap:10px}
+  .header-actions{gap:8px}
+  .header-actions .btn{display:none} /* Request a Quote lives in the hamburger menu */
+  .quote-indicator{padding:9px 12px;min-height:44px}
+  .quote-indicator span:first-child{display:none} /* icon+count only */
+  .logo img{height:24px}
+  /* --- Hero tag: stack, never overlap --- */
+  .hero-tag{flex-direction:column;align-items:stretch;gap:10px;left:12px;right:12px;bottom:12px;padding:14px 16px}
+  .hero-tag .pill{align-self:flex-start}
+  /* --- Finder tabs: fit without truncation --- */
+  .finder-tab{font-size:.8rem;padding:11px 4px;gap:6px}
+  .finder-tab .tab-ico{width:15px;height:15px}
+  /* --- Solidarity banner: tidy wrap --- */
+  .solidarity-banner{font-size:.78rem;padding:8px 12px}
+  /* --- No horizontal overflow anywhere --- */
+  html,body{overflow-x:hidden}
+  img{max-width:100%}
+  .hero{padding:56px 0 48px}
+  h1{font-size:2rem}
 }
 
 .logo img{display:block;height:30px;width:auto}
