@@ -9,11 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=doc002">
+<link rel="stylesheet" href="styles.css?v=promise001">
 </head>
 <body>
 <script src="assets/currency.js"></script>
-<script src="app.js?v=doc002"></script>
+<script src="app.js?v=promise001"></script>
 
 <div class="catalog-hero">
   <div class="container">
@@ -105,6 +105,33 @@
     if(f.family) search = (search ? search+" " : "") + f.family;
     grid.innerHTML = '<div class="loading">'+SG.t("cat.loading")+'</div>';
     metaCount.textContent = SG.t("cat.loading");
+    // Brand filter: try static data first for new brands (API doesn't return them)
+    var STATIC_BRANDS = {"DO\u011eSAN": "do-san", "FADEN MEDIKAL": "faden-medikal", "ERFECEN": "erfecen"};
+    var staticFile = f.brand && STATIC_BRANDS[f.brand] ? STATIC_BRANDS[f.brand] : null;
+    if (staticFile) {
+      // Load from static JSON
+      fetch('data/brand-' + staticFile + '.json')
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          var list = d.products || [];
+          total = list.length;
+          var start = (page-1)*PER;
+          list = list.slice(start, start+PER);
+          var pages = Math.max(1, Math.ceil(total/PER));
+          metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>"+total.toLocaleString()+"</b> "+SG.t("cat.catalogued");
+          metaPage.textContent = SG.t("cat.page")+" "+page+" "+SG.t("cat.of")+" "+pages;
+          if(!list.length){
+            grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px">No products found.</p>';
+          } else {
+            grid.innerHTML = list.map(SG.cardHTML).join("");
+            SG.bindAddButtons(grid);
+          }
+          renderPager(pages);
+          window.scrollTo({top:0,behavior:"smooth"});
+        })
+        .catch(function(){ grid.innerHTML = '<p>No products found.</p>'; });
+      return;
+    }
     // Brand filter via SKU prefix (API manufacturer param is ignored)
     var brandPrefixes = f.brand && BRAND_SKU[f.brand] ? BRAND_SKU[f.brand] : null;
     var fetchLimit = brandPrefixes ? 2000 : PER;
