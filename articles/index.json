@@ -29,6 +29,12 @@
       "title": "Understanding Suture Materials: A Surgeon's Quick Reference",
       "summary": "Absorbable or non-absorbable? Monofilament or braided? This quick reference breaks down suture material families — how they behave, where each excels, and a practical four-question framework for choosing the right suture for every tissue and every patient.",
       "date": "2026-10-22"
+    },
+    {
+      "slug": "steam-sterilization-cycles-explained",
+      "title": "Steam Sterilization Cycles Explained: 121°C vs 134°C for Surgical Instruments",
+      "summary": "The sterilization cycle your CSSD runs shapes how fast instruments turn around — and how long they last. This explainer breaks down the two standard steam windows, 121°C and 134°C, how gravity and pre-vacuum cycles differ, and what each choice means for instrument longevity.",
+      "date": "2026-10-23"
     }
   ]
 }
