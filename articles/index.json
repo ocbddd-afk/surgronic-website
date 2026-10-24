@@ -35,6 +35,12 @@
       "title": "Steam Sterilization Cycles Explained: 121°C vs 134°C for Surgical Instruments",
       "summary": "The sterilization cycle your CSSD runs shapes how fast instruments turn around — and how long they last. This explainer breaks down the two standard steam windows, 121°C and 134°C, how gravity and pre-vacuum cycles differ, and what each choice means for instrument longevity.",
       "date": "2026-10-23"
+    },
+    {
+      "slug": "minimally-invasive-surgery-mena-explainer",
+      "title": "The Minimally Invasive Shift: How Laparoscopic Surgery Is Reshaping Instrument Needs Across MENA",
+      "summary": "Minimally invasive surgery is expanding rapidly across MENA — analysts estimate the Middle East market at USD 7.37 billion in 2024, on track for USD 13.41 billion by 2033. This explainer walks through the instruments behind laparoscopic procedures, the reusable vs. single-use cost question, the reprocessing challenges long-shaft instruments create, and the procurement questions every facility should answer before building its inventory.",
+      "date": "2026-10-24"
     }
   ]
 }
