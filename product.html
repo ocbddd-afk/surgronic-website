@@ -42,6 +42,21 @@
   var wrap = document.getElementById("pd");
   document.getElementById("crumbSku").textContent = sku;
 
+  /* Brand from SKU prefix (same mapping as the catalogue's BRAND_SKU, plus
+     Rhinoplasty for SUR-RHI / SUR-SET). Used when a product comes from the
+     live D1 row, which carries no brand field. */
+  function brandFromSku(s){
+    if(!s) return "";
+    if(s.indexOf("SUR-AES")===0) return "Aesculap";
+    if(s.indexOf("SUR-SKL")===0 || s.indexOf("SUR-ART")===0) return "Sklar";
+    if(s.indexOf("SUR-DOG")===0) return "DOĞSAN";
+    if(s.indexOf("SUR-FAD")===0) return "FADEN MEDIKAL";
+    if(s.indexOf("SUR-NSP")===0) return "ERFECEN";
+    if(s.indexOf("SUR-INS")===0) return "ADOSN";
+    if(s.indexOf("SUR-RHI")===0 || s.indexOf("SUR-SET")===0) return "Rhinoplasty";
+    return "";
+  }
+
   function render(){
     if(!sku){
       wrap.innerHTML = '<div class="error-box">'+SG.t("pd.noproduct")+' <a href="catalogue.html">'+SG.t("pd.back")+'</a>.</div>';
@@ -57,6 +72,21 @@
     ]).then(function(res){
       var d = res[0];
       var p = SG.normProduct(d && d.product);
+      /* D1 row (for spec fields AND as fallback when the snapshot lacks the product) */
+      var dl = res[1];
+      var d1row = null;
+      if(dl && dl.products){
+        for(var i=0;i<dl.products.length;i++){ if(dl.products[i].sku === sku){ d1row = dl.products[i]; break; } }
+        if(!d1row && dl.products.length === 1) d1row = dl.products[0];
+      }
+      if(!p && d1row){
+        /* Not in the static snapshot (newer brands: RHI/SET/DOG/FAD/NSP/INS —
+           1,319 of 9,975 products). Use the live D1 row as the product source. */
+        p = SG.normProduct(d1row);
+        if(!p.brand) p.brand = brandFromSku(p.sku);
+        /* D1 rows carry priceCents, not price — normalise so SEO offers work. */
+        if(p.price == null && p.priceCents != null) p.price = p.priceCents / 100;
+      }
       if(!p){
         wrap.innerHTML = '<div class="error-box">'+SG.t("pd.notfound")+' <a href="catalogue.html">'+SG.t("pd.back")+'</a>.</div>';
         return;
@@ -64,16 +94,10 @@
       /* D1 spec fields (manufacturerRef / family / category). The snapshot
          getProduct does not carry them. */
       var spec = {manufacturerRef:null, family:null, category:null};
-      var dl = res[1];
-      if(dl && dl.products){
-        var row = null;
-        for(var i=0;i<dl.products.length;i++){ if(dl.products[i].sku === p.sku){ row = dl.products[i]; break; } }
-        if(!row && dl.products.length === 1) row = dl.products[0];
-        if(row){
-          spec.manufacturerRef = row.manufacturerRef || row.manufacturer_ref || null;
-          spec.family = row.family || null;
-          spec.category = row.category || null;
-        }
+      if(d1row){
+        spec.manufacturerRef = d1row.manufacturerRef || d1row.manufacturer_ref || null;
+        spec.family = d1row.family || null;
+        spec.category = d1row.category || null;
       }
       var nm = SG.productName(p);
       var ds = SG.productDesc(p);
