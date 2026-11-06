@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=doc004">
+<link rel="stylesheet" href="styles.css?v=doc005">
 </head>
 <body>
 <script src="assets/currency.js?v=ccy002"></script>
@@ -81,7 +81,7 @@
       <img src="assets/sur-skl-01146.jpg" alt="Adlerkreutz Tissue Forceps — precision surgical instrument">
       <div class="hero-tag">
         <div><b>Adlerkreutz Tissue Forceps</b><span>SUR-SKL-01146 &middot; <span data-i18n="hero.tagFrom">From our catalogued range</span></span></div>
-        <span class="pill" data-i18n="hero.tagCat">8,658 instruments</span>
+        <span class="pill" id="heroCountPill">8,658 instruments</span>
       </div>
     </a>
   </div>
@@ -468,10 +468,11 @@
   /* ---------- Count-up ---------- */
   /* Live catalog count: same database as the admin — never a hardcoded number. */
   function initLiveCount(){
-    var pill = document.querySelector('[data-i18n="hero.tagCat"]');
+    var pill = document.getElementById("heroCountPill");
     if(!pill || !SG.api) return;
     SG.api("listProducts", {limit: 1}).then(function(r){
-      var n = r && r.data && r.data.total;
+      /* SG.api already unwraps the {data:{...}} envelope: total is r.total */
+      var n = r && (r.total || (r.data && r.data.total));
       if(!n) return;
       var fmt = n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       pill.textContent = SG.t("hero.tagCat").replace("{n}", fmt);
