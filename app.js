@@ -1851,8 +1851,8 @@ function normProduct(p){
 function imgUrl(p, base){
   base = base || "./assets/";
   var f = (p.imageFiles && p.imageFiles[0]) || "";
-  // ?v=img002 busts browsers that cached a 404 for these files before the image fix
-  return f ? base + f + "?v=img002" : "";
+  // ?v=img003 busts browsers that cached a 404 for these files before the image fix
+  return f ? base + f + "?v=img003" : "";
 }
 
 /* ============================================================
