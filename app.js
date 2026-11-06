@@ -39,6 +39,9 @@ en: {
   "footer.specialties": "Specialties",
   "footer.why": "Why Surgronic",
   "footer.rights": "All rights reserved.",
+  "partners.eyebrow": "Our partners",
+  "partners.title": "The brands we source for you.",
+  "footer.follow": "Follow us",
   "hero.tagline": "Precision surgical instruments · Stock & sourcing",
   "hero.title": "Name the instrument. We\u2019ll find it.",
   "hero.subtitle": "Let's find the right specification.",
@@ -441,6 +444,9 @@ fr: {
   "footer.specialties": "Spécialités",
   "footer.why": "Pourquoi Surgronic",
   "footer.rights": "Tous droits réservés.",
+  "partners.eyebrow": "Nos partenaires",
+  "partners.title": "Les marques que nous sourçons pour vous.",
+  "footer.follow": "Suivez-nous",
   "hero.tagline": "Instruments chirurgicaux de précision · Stock & sourcing",
   "hero.title": "Nommez l\u2019instrument. Nous le trouverons.",
   "hero.subtitle": "Trouvons la bonne spécification.",
@@ -895,6 +901,9 @@ ar: {
   "footer.specialties": "التخصصات",
   "footer.why": "لماذا سورجرونيك",
   "footer.rights": "جميع الحقوق محفوظة.",
+  "partners.eyebrow": "شركاؤنا",
+  "partners.title": "العلامات التجارية التي نوفّرها لكم.",
+  "footer.follow": "تابعونا",
   "hero.tagline": "أدوات جراحية دقيقة · مخزون وتوريد",
   "hero.title": "سمِّ الأداة. وسنجدها.",
   "hero.subtitle": "لنجد المواصفة الصحيحة.",
@@ -1296,6 +1305,9 @@ tr: {
   "footer.specialties": "Branşlar",
   "footer.why": "Neden Surgronic",
   "footer.rights": "Tüm hakları saklıdır.",
+  "partners.eyebrow": "Ortaklarımız",
+  "partners.title": "Sizin için tedarik ettiğimiz markalar.",
+  "footer.follow": "Bizi takip edin",
   "hero.tagline": "Hassas cerrahi aletler · Stok ve tedarik",
   "hero.title": "Aleti adlandırın. Biz bulalım.",
   "hero.subtitle": "Doğru spesifikasyonu birlikte bulalım.",
@@ -1971,6 +1983,10 @@ function footerHTML(){
       '<div class="footer-brand">'+
         '<a class="logo" href="index.html" aria-label="Surgronic"><img src="assets/logo-on-dark.svg" alt="Surgronic" style="height:28px;width:auto;display:block"></a>'+
         '<p data-i18n="footer.tagline">'+t("footer.tagline")+'</p>'+
+'<div class="footer-social"><span data-i18n="footer.follow">'+t("footer.follow")+'</span>'+
+      '<a href="https://www.instagram.com/surgronic/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>'+
+      '<a href="https://www.linkedin.com/company/surgronic/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>'+
+    '</div>'+
       '</div>'+
       '<div><h4 data-i18n="footer.catalog">'+t("footer.catalog")+'</h4><ul>'+
         '<li><a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a></li>'+
