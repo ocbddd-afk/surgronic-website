@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pgTitle">Sample inspection report — Surgronic</title>
+<meta name="description" id="pgMeta" content="A sample of the pre-shipment inspection report every Surgronic buyer receives. Nothing ships until you have seen it and approved it.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=doc008">
+<style>
+.insp-page{padding:56px 0 72px;background:#fff}
+.insp-page h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);margin:12px 0 14px;color:var(--ink-900);line-height:1.2}
+.insp-lede{color:var(--ink-600);line-height:1.8;font-size:1.02rem;margin:0 0 28px;max-width:780px}
+.insp-card{border:1px solid #dde5ef;border-radius:14px;overflow:hidden;background:#fff;margin:0 0 32px}
+.insp-card-head{background:var(--navy-950);color:#fff;padding:20px 24px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline}
+.insp-card-head b{font-family:var(--font-display);font-size:1.15rem}
+.insp-card-head span{color:rgba(255,255,255,.75);font-size:.92rem}
+.insp-card-head .tag{margin-left:auto;background:var(--blue-500);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:6px 12px}
+.insp-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:24px}
+.insp-photos figure{margin:0}
+.insp-photos img{width:100%;aspect-ratio:1/.92;object-fit:contain;background:var(--mist-50);border-radius:10px;display:block}
+.insp-photos figcaption{font-size:.85rem;color:var(--ink-600);margin-top:8px}
+.insp-table{width:100%;border-collapse:collapse;margin:0 24px 24px;width:calc(100% - 48px)}
+.insp-table th,.insp-table td{text-align:left;padding:12px 14px;border-bottom:1px solid #e3e8f0;font-size:.95rem;vertical-align:top}
+.insp-table th{width:38%;color:var(--ink-600);font-weight:600}
+.insp-table td{color:var(--ink-900)}
+.insp-check{list-style:none;margin:0 24px 24px;padding:0}
+.insp-check li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #eef2f7;line-height:1.6}
+.insp-check li:last-child{border-bottom:none}
+.insp-check .ok{flex:none;width:24px;height:24px;border-radius:50%;background:#e6f4ea;color:#137333;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem}
+.insp-check b{color:var(--ink-900)}
+.insp-check span{color:var(--ink-600);display:block;font-size:.92rem}
+.insp-promise{border:1px solid #e3e8f0;border-left:4px solid var(--blue-500);border-radius:8px;padding:16px 20px;color:var(--ink-600);line-height:1.7;margin:0 0 32px;background:#fff}
+.insp-cta{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:640px){.insp-photos{grid-template-columns:1fr}.insp-card-head .tag{margin-left:0}}
+</style>
+</head>
+<body>
+<script src="assets/currency.js?v=ccy002"></script>
+<script src="app.js?v=doc013"></script>
+<main>
+<section class="insp-page">
+  <div class="wrap">
+    <p><a href="index.html#why" class="article-back" id="inspBack">← Home</a></p>
+    <p class="eyebrow" id="inspEyebrow">Sample inspection report</p>
+    <h1 id="inspH1">See it before it ships.</h1>
+    <p class="insp-lede" id="inspLede"></p>
+    <div class="insp-card">
+      <div class="insp-card-head">
+        <b id="inspInst">Cottle Nasal Speculum</b>
+        <span id="inspSku">SUR-RHI-024 · Nasal Speculums</span>
+        <span class="tag" id="inspTag">Sample</span>
+      </div>
+      <div class="insp-photos">
+        <figure><img src="assets/cottle-nasal-speculum-1.jpg" alt="Cottle Nasal Speculum — inspection photo 1" onerror="this.onerror=null;this.src='assets/img-placeholder.svg'"><figcaption id="inspCap1">Inspection photo 1 — overall view</figcaption></figure>
+        <figure><img src="assets/cottle-nasal-speculum-2.jpg" alt="Cottle Nasal Speculum — inspection photo 2" onerror="this.onerror=null;this.src='assets/img-placeholder.svg'"><figcaption id="inspCap2">Inspection photo 2 — detail view</figcaption></figure>
+      </div>
+      <table class="insp-table" id="inspTable"></table>
+      <ul class="insp-check" id="inspChecks"></ul>
+    </div>
+    <p class="insp-promise" id="inspPromise"></p>
+    <div class="insp-cta">
+      <a class="btn btn-primary" href="quote.html" id="inspQuote">Request a quote</a>
+      <a class="btn btn-wa" href="https://wa.me/905526081432" target="_blank" rel="noopener" id="inspWa">WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+var INSP = {
+  en:{eyebrow:"Sample inspection report", back:"← Home", title:"See it before it ships.", lede:"This is a sample of the pre-shipment inspection report every buyer receives before anything is shipped. Your report shows your actual instruments, photographed before shipment — never stock photos. The instrument below is a real catalogued Surgronic instrument, shown as an example.", tag:"Sample — illustrative", cap1:"Inspection photo 1 — overall view", cap2:"Inspection photo 2 — detail view", rows:[["Instrument","Cottle Nasal Speculum"],["Reference","SUR-RHI-024"],["Family","Nasal Speculums"],["Report","SAMPLE-001 — November 2026"]], checks:[["Visual inspection","Finish, joints and edges checked — no defects found.","Pass"],["Function test","Movement and action checked — opens and closes smoothly.","Pass"],["Specification match","Instrument compared against the confirmed specification.","Pass"],["Packaging check","Protected and labelled for shipment.","Pass"]], promise:"Nothing ships until you have seen it and approved it. If anything in your inspection report does not match the confirmed specification, we resolve it before shipment — we do not ship and hope.", quote:"Request a quote", wa:"WhatsApp"},
+  fr:{eyebrow:"Exemple de rapport d'inspection", back:"← Accueil", title:"Voyez avant l'expédition.", lede:"Voici un exemple du rapport d'inspection avant expédition que chaque acheteur reçoit avant toute expédition. Votre rapport montre vos instruments réels, photographiés avant l'expédition — jamais des photos de stock. L'instrument ci-dessous est un véritable instrument catalogué Surgronic, présenté à titre d'exemple.", tag:"Exemple — illustratif", cap1:"Photo d'inspection 1 — vue d'ensemble", cap2:"Photo d'inspection 2 — vue détaillée", rows:[["Instrument","Spéculum nasal de Cottle"],["Référence","SUR-RHI-024"],["Famille","Spéculums nasaux"],["Rapport","SAMPLE-001 — novembre 2026"]], checks:[["Inspection visuelle","Finition, articulations et bords vérifiés — aucun défaut constaté.","Réussi"],["Test de fonctionnement","Mouvement et mécanisme vérifiés — s'ouvre et se ferme sans à-coup.","Réussi"],["Conformité aux spécifications","Instrument comparé à la spécification confirmée.","Réussi"],["Contrôle de l'emballage","Protégé et étiqueté pour l'expédition.","Réussi"]], promise:"Rien n'est expédié avant que vous l'ayez vu et approuvé. Si un élément de votre rapport d'inspection ne correspond pas à la spécification confirmée, nous le résolvons avant l'expédition — nous n'expédions pas en espérant.", quote:"Demander un devis", wa:"WhatsApp"},
+  ar:{eyebrow:"نموذج تقرير فحص", back:"← الرئيسية", title:"شاهد قبل الشحن.", lede:"هذا نموذج من تقرير الفحص قبل الشحن الذي يتلقاه كل مشترٍ قبل شحن أي شيء. ويُظهر تقريرك أدواتك الفعلية، مصوَّرة قبل الشحن — وليست صوراً من المخزون. والأداة أدناه أداة حقيقية مسجلة في كتالوج Surgronic، معروضة كمثال.", tag:"نموذج — توضيحي", cap1:"صورة الفحص 1 — نظرة عامة", cap2:"صورة الفحص 2 — نظرة تفصيلية", rows:[["الأداة","منظار كوتل الأنفي"],["المرجع","SUR-RHI-024"],["العائلة","مناظير أنفية"],["التقرير","SAMPLE-001 — نوفمبر 2026"]], checks:[["الفحص البصري","تم فحص التشطيب والمفاصل والحواف — لا عيوب.","ناجح"],["اختبار الأداء","تم فحص الحركة والآلية — يفتح ويغلق بسلاسة.","ناجح"],["مطابقة المواصفات","تمت مقارنة الأداة بالمواصفات المؤكدة.","ناجح"],["فحص التغليف","محمي وموسوم للشحن.","ناجح"]], promise:"لا يُشحن أي شيء حتى تراه وتعتمده. وإذا لم يطابق أي عنصر في تقرير الفحص المواصفات المؤكدة، فإننا نعالجه قبل الشحن — لا نشحن على أمل.", quote:"طلب عرض سعر", wa:"واتساب"},
+  tr:{eyebrow:"Örnek kontrol raporu", back:"← Ana sayfa", title:"Gönderilmeden önce görün.", lede:"Bu, her alıcının sevkiyattan önce aldığı sevkiyat öncesi kontrol raporunun bir örneğidir. Raporunuz, stok fotoğrafları değil, sevkiyattan önce fotoğraflanmış gerçek aletlerinizi gösterir. Aşağıdaki alet, örnek olarak sunulan, Surgronic kataloğunda kayıtlı gerçek bir alettir.", tag:"Örnek — açıklayıcı", cap1:"Kontrol fotoğrafı 1 — genel görünüm", cap2:"Kontrol fotoğrafı 2 — detay görünüm", rows:[["Alet","Cottle Nazal Spekulum"],["Referans","SUR-RHI-024"],["Aile","Nazal Spekulumlar"],["Rapor","SAMPLE-001 — Kasım 2026"]], checks:[["Görsel kontrol","Kaplama, eklemler ve kenarlar kontrol edildi — kusur bulunmadı.","Geçti"],["İşlev testi","Hareket ve mekanizma kontrol edildi — sorunsuz açılıp kapanıyor.","Geçti"],["Spesifikasyon uyumu","Alet, onaylanmış spesifikasyonla karşılaştırıldı.","Geçti"],["Ambalaj kontrolü","Sevkiyat için korumalı ve etiketli.","Geçti"]], promise:"Görüp onaylamadan hiçbir şey gönderilmez. Kontrol raporunuzdaki herhangi bir unsur onaylanmış spesifikasyona uymuyorsa, sevkiyattan önce çözeriz — gönderip umut etmeyiz.", quote:"Teklif İsteyin", wa:"WhatsApp"}
+};
+function curLang(){ return (window.SG && SG.getLang) ? SG.getLang() : 'en'; }
+function renderInsp(){
+  var l = curLang();
+  var c = INSP[l] || INSP.en;
+  document.getElementById('inspEyebrow').textContent = c.eyebrow;
+  document.getElementById('inspBack').textContent = c.back;
+  document.getElementById('inspH1').textContent = c.title;
+  document.getElementById('inspLede').textContent = c.lede;
+  document.getElementById('inspTag').textContent = c.tag;
+  document.getElementById('inspCap1').textContent = c.cap1;
+  document.getElementById('inspCap2').textContent = c.cap2;
+  document.getElementById('inspPromise').textContent = c.promise;
+  document.getElementById('inspQuote').textContent = c.quote;
+  document.getElementById('inspWa').textContent = c.wa;
+  document.getElementById('pgTitle').textContent = c.title + ' — Surgronic';
+  var tbl = document.getElementById('inspTable');
+  tbl.innerHTML = c.rows.map(function(r){ return '<tr><th>' + SG.esc(r[0]) + '</th><td>' + SG.esc(r[1]) + '</td></tr>'; }).join('');
+  var ul = document.getElementById('inspChecks');
+  ul.innerHTML = c.checks.map(function(ch){ return '<li><span class="ok">✓</span><div><b>' + SG.esc(ch[0]) + ' — ' + SG.esc(ch[2]) + '</b><span>' + SG.esc(ch[1]) + '</span></div></li>'; }).join('');
+}
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome('');
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+  renderInsp();
+});
+document.addEventListener('surgronic:lang', function(){ SG.applyI18n(); renderInsp(); });
+</script>
+<script>
+(function(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) { els.forEach(function(e){ e.classList.add("in"); }); return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>

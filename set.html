@@ -6,7 +6,7 @@
 <title id="setTitle">Instrument set — Surgronic</title>
 <meta name="description" id="setMeta" content="A complete instrument set for your procedure, quoted as one set.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=doc007">
+<link rel="stylesheet" href="styles.css?v=doc008">
 <style>
 .set-page{padding:56px 0 72px;background:#fff}
 .set-page h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);margin:12px 0 14px;color:var(--ink-900);line-height:1.2}
@@ -24,6 +24,11 @@
 .set-families{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;padding:0;list-style:none}
 .set-families li{background:var(--mist-50);border-radius:999px;padding:8px 16px;font-size:.9rem;color:var(--ink-600);font-weight:600}
 .set-grid{margin-top:8px}
+.set-var-btns{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 20px}
+.set-var-btn{border:1px solid #d5dde8;background:#fff;border-radius:999px;padding:10px 18px;font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--navy-950);cursor:pointer}
+.set-var-btn.on{background:var(--navy-950);color:#fff;border-color:var(--navy-950)}
+.set-var-btn:hover{border-color:var(--blue-500)}
+.set-comp-note{font-size:.9rem;color:var(--ink-600);line-height:1.7;margin:0 0 20px;max-width:780px}
 .set-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .set-card{border:1px solid #e3e8f0;border-radius:12px;padding:22px;background:#fff}
 .set-card h3{font-family:var(--font-display);font-size:1.15rem;color:var(--navy-950);margin:0 0 8px}
@@ -34,7 +39,7 @@
 </head>
 <body>
 <script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc012"></script>
+<script src="app.js?v=doc013"></script>
 
 <main>
 <section class="set-page">
@@ -58,6 +63,11 @@
     <div class="feat-grid set-grid" id="setGrid"></div>
     <h2 class="set-sec" id="setCompTitle" style="display:none">What is in the set</h2>
     <ul class="set-families" id="setFamilies"></ul>
+    <div id="setCompWrap" style="display:none">
+      <div class="set-var-btns" id="setVarBtns"></div>
+      <p class="set-comp-note" id="setCompNote"></p>
+      <div class="feat-grid set-grid" id="setCompGrid"></div>
+    </div>
     <div id="setListWrap" style="display:none">
       <h2 class="set-sec" id="setListTitle">Browse all sets</h2>
       <div class="set-list" id="setList"></div>
@@ -121,6 +131,45 @@ function renderSetList(sets, ui, l){
   });
 }
 
+/* Product lookup: the rhinoplasty range (SUR-RHI + SUR-SET) is not served by
+   the live API's getProduct (static snapshot only), so it ships as a static
+   JSON (data/brand-rhinoplasty.json, built from D1). Resolve SKUs from that
+   map first, fall back to the API for anything else. */
+var RHI_BY_SKU = null;
+function rhiLookup(){
+  if(RHI_BY_SKU) return Promise.resolve(RHI_BY_SKU);
+  return fetch('data/brand-rhinoplasty.json').then(function(r){ return r.json(); }).then(function(d){
+    var map = {};
+    (d.products || []).forEach(function(p){ map[p.sku] = p; });
+    RHI_BY_SKU = map;
+    return map;
+  }).catch(function(){ RHI_BY_SKU = {}; return RHI_BY_SKU; });
+}
+function resolveProduct(sku){
+  return rhiLookup().then(function(map){
+    if(map[sku]) return map[sku];
+    return SG.api('getProduct', {sku:sku}).then(function(r){ return r && r.product ? r.product : null; }).catch(function(){ return null; });
+  });
+}
+function resolveMany(skus){
+  return Promise.all(skus.map(function(s){ return resolveProduct(s); }));
+}
+/* Bundle price for one variant's components (sum of sales prices less 5%;
+   Price on request if any component has no sales price). */
+function variantPrice(comps, priceVal){
+  var prices = [], missing = false;
+  comps.forEach(function(p){
+    var np = p ? SG.normProduct(p) : null;
+    if(!np || np.price == null){ missing = true; } else { prices.push(np.price); }
+  });
+  if(missing || !prices.length){
+    priceVal.textContent = SG.t('card.por');
+  } else {
+    var sum = prices.reduce(function(a,b){ return a+b; }, 0) * 0.95;
+    priceVal.textContent = (window.SurCcy && SurCcy.priceHTML) ? (SurCcy.priceHTML(Math.round(sum), 'USD') || SG.t('card.por')) : (Math.round(sum) + ' USD');
+  }
+}
+
 function renderSetPage(){
   var l = curLang();
   var ui = SETS_UI[l] || SETS_UI.en;
@@ -159,22 +208,23 @@ function renderSetPage(){
       return;
     }
 
-    /* Live set: show variants as product cards + family composition */
+    /* Live set: variants as product cards (resolved from the rhinoplasty
+       JSON — the API snapshot does not carry SUR-SET products). */
     document.getElementById('setHero').style.display = 'flex';
     var variants = set.variants || [];
+    var priceVal = document.getElementById('setPriceVal');
     if(variants.length){
       document.getElementById('setVariantsTitle').textContent = ui.variantsTitle;
       document.getElementById('setVariantsTitle').style.display = 'block';
       var grid = document.getElementById('setGrid');
       grid.innerHTML = '<div class="loading">Loading…</div>';
-      var jobs = variants.map(function(v){ return SG.api('getProduct', {sku:v.sku}).catch(function(){ return null; }); });
-      Promise.all(jobs).then(function(results){
-        var products = results.filter(function(r){ return r && r.product; }).map(function(r){ return r.product; });
-        grid.innerHTML = products.map(function(p){ return SG.cardHTML(p); }).join('');
+      resolveMany(variants.map(function(v){ return v.sku; })).then(function(products){
+        var list = products.filter(function(p){ return p; });
+        grid.innerHTML = list.map(function(p){ return SG.cardHTML(p); }).join('');
         SG.bindAddButtons(grid);
         /* hero image from the first variant that has one */
-        for(var k=0;k<products.length;k++){
-          var img = SG.imgUrl(products[k]);
+        for(var k=0;k<list.length;k++){
+          var img = SG.imgUrl(list[k]);
           if(img){
             document.getElementById('setHeroImg').innerHTML = '<img src="' + img + '" alt="' + SG.esc(title) + '" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'">';
             break;
@@ -183,30 +233,8 @@ function renderSetPage(){
       });
     }
 
-    /* Set price: bundle rule over components when a component list exists;
-       otherwise Price on request (no component SKU list is established yet). */
-    var priceVal = document.getElementById('setPriceVal');
-    if(set.components && set.components.length){
-      var cjobs = set.components.map(function(sku){ return SG.api('getProduct', {sku:sku}).catch(function(){ return null; }); });
-      Promise.all(cjobs).then(function(results){
-        var prices = [];
-        var missing = false;
-        results.forEach(function(r){
-          var p = r && r.product ? SG.normProduct(r.product) : null;
-          if(!p || p.price == null){ missing = true; } else { prices.push(p.price); }
-        });
-        if(missing || !prices.length){
-          priceVal.textContent = SG.t('card.por');
-        } else {
-          var sum = prices.reduce(function(a,b){ return a+b; }, 0) * 0.95;
-          priceVal.textContent = (window.SurCcy && SurCcy.priceHTML) ? (SurCcy.priceHTML(Math.round(sum), 'USD') || SG.t('card.por')) : (Math.round(sum) + ' USD');
-        }
-      });
-    } else {
-      priceVal.textContent = SG.t('card.por');
-    }
-
-    /* Composition: families from the set record; exact SKUs not established */
+    /* Composition viewer: one button per variant; shows that variant's exact
+       components (real catalogued SKUs) and its bundle price. */
     if(set.compositionFamilies && set.compositionFamilies.length){
       document.getElementById('setCompTitle').textContent = ui.compTitle;
       document.getElementById('setCompTitle').style.display = 'block';
@@ -218,7 +246,40 @@ function renderSetPage(){
         ul.appendChild(li);
       });
     }
-    if(!set.components){
+    var withComps = variants.filter(function(v){ return v.components && v.components.length; });
+    if(withComps.length){
+      var wrap = document.getElementById('setCompWrap');
+      wrap.style.display = 'block';
+      var btns = document.getElementById('setVarBtns');
+      btns.innerHTML = '';
+      var compGrid = document.getElementById('setCompGrid');
+      var compNote = document.getElementById('setCompNote');
+      var sel = 0;
+      function showVariant(i){
+        sel = i;
+        var v = withComps[i];
+        var all = btns.querySelectorAll('.set-var-btn');
+        for(var b=0;b<all.length;b++){ all[b].classList.toggle('on', b === i); }
+        compNote.textContent = v.name + ' — ' + v.pieces + ' ' + ui.pieces + '.';
+        compGrid.innerHTML = '<div class="loading">Loading…</div>';
+        resolveMany(v.components).then(function(products){
+          var list = products.filter(function(p){ return p; });
+          compGrid.innerHTML = list.map(function(p){ return SG.cardHTML(p); }).join('');
+          SG.bindAddButtons(compGrid);
+          variantPrice(list, priceVal);
+        });
+      }
+      withComps.forEach(function(v, i){
+        var btn = document.createElement('button');
+        btn.className = 'set-var-btn' + (i === 0 ? ' on' : '');
+        btn.type = 'button';
+        btn.textContent = v.name + ' (' + v.pieces + ')';
+        btn.addEventListener('click', function(){ showVariant(i); });
+        btns.appendChild(btn);
+      });
+      showVariant(0);
+    } else {
+      priceVal.textContent = SG.t('card.por');
       var note2 = document.getElementById('setNote');
       note2.textContent = ui.compPending;
       note2.style.display = 'block';
