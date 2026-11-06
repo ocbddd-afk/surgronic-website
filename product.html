@@ -4,19 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n-title="meta.pdTitle">Product — Surgronic</title>
-<meta name="description" content="Surgical instrument details, specifications, and quotation.">
+<meta name="description" id="metaDesc" content="Surgical instrument details, specifications, and quotation.">
+<link rel="canonical" id="canonicalLink" href="https://surgronic.pages.dev/product.html">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="Surgronic">
+<meta property="og:title" id="ogTitle" content="Product — Surgronic">
+<meta property="og:description" id="ogDesc" content="Surgical instrument details, specifications, and quotation.">
+<meta property="og:url" id="ogUrl" content="https://surgronic.pages.dev/product.html">
+<meta property="og:image" id="ogImage" content="https://surgronic.pages.dev/assets/logo-on-light.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="twTitle" content="Product — Surgronic">
+<meta name="twitter:description" id="twDesc" content="Surgical instrument details, specifications, and quotation.">
+<meta name="twitter:image" id="twImage" content="https://surgronic.pages.dev/assets/logo-on-light.svg">
+<script type="application/ld+json" id="productJsonLd">{"@context":"https://schema.org","@type":"Product","name":"Surgronic surgical instrument"}</script>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=doc005">
+<link rel="stylesheet" href="styles.css?v=doc006">
 </head>
 <body>
 <script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc007"></script>
+<script src="app.js?v=doc008"></script>
 
 <div class="container">
-  <div class="breadcrumb"><a href="index.html" data-i18n="pd.breadcrumb">Home</a> → <a href="catalogue.html" data-i18n="pd.catalog">Catalog</a> → <span id="crumbSku">Product</span></div>
+  <div class="breadcrumb"><a href="index.html" data-i18n="pd.breadcrumb">Home</a> → <a href="catalogue.html" data-i18n="pd.catalog">Catalog</a> → <span id="crumbSku" data-i18n="pd.crumb">Product</span></div>
   <div id="pd"></div>
   <div id="relatedWrap" style="margin:70px 0 30px;display:none">
     <h2 class="section-title" style="font-size:32px" data-i18n="pd.related">Related instruments</h2>
@@ -45,6 +57,25 @@
       var nm = SG.productName(p);
       var ds = SG.productDesc(p);
       document.title = nm + " (" + p.sku + ") — Surgronic";
+      /* ---- SEO: per-product title, description, OG/Twitter, canonical, JSON-LD ---- */
+      (function setProductSeo(){
+        var pageUrl = location.href.split("#")[0];
+        var desc = (ds || (nm + " — surgical instrument from Surgronic. Request a quotation.")).replace(/\s+/g, " ").trim();
+        if(desc.length > 155) desc = desc.slice(0, 152).replace(/\s+\S*$/, "") + "…";
+        var imgAbs = (p.imageFiles && p.imageFiles[0])
+          ? location.origin + "/assets/" + p.imageFiles[0]
+          : location.origin + "/assets/logo-on-light.svg";
+        function setMeta(sel, val){ var el = document.querySelector(sel); if(el) el.setAttribute("content", val); }
+        setMeta("#metaDesc", desc);
+        setMeta("#ogTitle", document.title); setMeta("#ogDesc", desc); setMeta("#ogUrl", pageUrl); setMeta("#ogImage", imgAbs);
+        setMeta("#twTitle", document.title); setMeta("#twDesc", desc); setMeta("#twImage", imgAbs);
+        var can = document.getElementById("canonicalLink"); if(can) can.setAttribute("href", pageUrl);
+        var ld = {"@context":"https://schema.org","@type":"Product","name":nm,"description":desc,"sku":p.sku,"mpn":p.sku,
+          "brand":{"@type":"Brand","name":p.brand||"Surgronic"},"image":[imgAbs],"url":pageUrl};
+        if(p.category) ld.category = p.category;
+        if(p.price != null) ld.offers = {"@type":"Offer","price":p.price,"priceCurrency":p.currency||"USD","url":pageUrl};
+        var ldEl = document.getElementById("productJsonLd"); if(ldEl) ldEl.textContent = JSON.stringify(ld);
+      })();
       var img = SG.imgUrl(p);
       var gallery = img
         ? '<div class="pd-gallery"><img src="'+img+'" alt="'+SG.esc(nm)+'" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'"></div>'
