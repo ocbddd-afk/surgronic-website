@@ -20,12 +20,12 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=doc010">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=doc011">
 </head>
-<body>
+<body class="pd-page">
 <script src="assets/currency.js?v=ccy003"></script>
-<script src="app.js?v=doc017"></script>
+<script src="app.js?v=doc018"></script>
 
 <div class="container">
   <div class="breadcrumb"><a href="index.html" data-i18n="pd.breadcrumb">Home</a> → <a href="catalogue.html" data-i18n="pd.catalog">Catalog</a> → <span id="crumbSku" data-i18n="pd.crumb">Product</span></div>
@@ -48,11 +48,32 @@
       return;
     }
     wrap.innerHTML = '<div class="loading">'+SG.t("pd.loading")+'</div>';
-    SG.api("getProduct",{sku:sku}).then(function(d){
-      var p = SG.normProduct(d.product);
+    /* getProduct (snapshot: name/image/price) + D1 row (manufacturer ref, family,
+       category) in parallel. The D1 call is best-effort — the page renders from
+       the snapshot alone if it fails. */
+    Promise.all([
+      SG.api("getProduct",{sku:sku}),
+      SG.api("listProducts",{search:sku,limit:10}).catch(function(){ return null; })
+    ]).then(function(res){
+      var d = res[0];
+      var p = SG.normProduct(d && d.product);
       if(!p){
         wrap.innerHTML = '<div class="error-box">'+SG.t("pd.notfound")+' <a href="catalogue.html">'+SG.t("pd.back")+'</a>.</div>';
         return;
+      }
+      /* D1 spec fields (manufacturerRef / family / category). The snapshot
+         getProduct does not carry them. */
+      var spec = {manufacturerRef:null, family:null, category:null};
+      var dl = res[1];
+      if(dl && dl.products){
+        var row = null;
+        for(var i=0;i<dl.products.length;i++){ if(dl.products[i].sku === p.sku){ row = dl.products[i]; break; } }
+        if(!row && dl.products.length === 1) row = dl.products[0];
+        if(row){
+          spec.manufacturerRef = row.manufacturerRef || row.manufacturer_ref || null;
+          spec.family = row.family || null;
+          spec.category = row.category || null;
+        }
       }
       var nm = SG.productName(p);
       var ds = SG.productDesc(p);
@@ -72,20 +93,51 @@
         var can = document.getElementById("canonicalLink"); if(can) can.setAttribute("href", pageUrl);
         var ld = {"@context":"https://schema.org","@type":"Product","name":nm,"description":desc,"sku":p.sku,"mpn":p.sku,
           "brand":{"@type":"Brand","name":p.brand||"Surgronic"},"image":[imgAbs],"url":pageUrl};
-        if(p.category) ld.category = p.category;
+        if(spec.category) ld.category = spec.category;
         if(p.price != null) ld.offers = {"@type":"Offer","price":p.price,"priceCurrency":p.currency||"USD","url":pageUrl};
         var ldEl = document.getElementById("productJsonLd"); if(ldEl) ldEl.textContent = JSON.stringify(ld);
       })();
-      var img = SG.imgUrl(p);
-      var gallery = img
-        ? '<div class="pd-gallery"><img src="'+img+'" alt="'+SG.esc(nm)+'" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'"></div>'
-        : '<div class="pd-gallery"><span style="color:var(--muted)">'+SG.t("card.imgSoon")+'</span></div>';
+      /* ---- Gallery: main image + thumbnails + lightbox (zoom) ---- */
+      var files = (p.imageFiles && p.imageFiles.length) ? p.imageFiles : [];
+      var mainImg = files.length ? SG.imgUrl(p) : null;
+      var gallery;
+      if(mainImg){
+        var thumbs = files.length > 1
+          ? '<div class="pd-thumbs" role="tablist" aria-label="Product photos">' + files.map(function(f, idx){
+              var u = "./assets/" + f + "?v=img003";
+              return '<button type="button" data-idx="'+idx+'" aria-current="'+(idx===0)+'" aria-label="Photo '+(idx+1)+'"><img src="'+u+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'"></button>';
+            }).join("") + '</div>'
+          : '';
+        gallery = '<div class="pd-gallery" id="pdGallery"><img id="pdMainImg" src="'+mainImg+'" alt="'+SG.esc(nm)+'" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'">'+
+          '<span class="pd-zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>'+SG.t("pd.zoomHint")+'</span></div>' + thumbs;
+      } else {
+        gallery = '<div class="pd-gallery"><span style="color:var(--muted)">'+SG.t("card.imgSoon")+'</span></div>';
+      }
       var finishes = (p.finishOptions&&p.finishOptions.length)
         ? p.finishOptions.map(SG.esc).join(", ") : "—";
+      /* ---- Spec table: only rows with a real value are shown. Material, length
+         and configuration are empty in the database (0 of 9,975 products), so
+         they are never listed — unverified specs read "Specification confirmed
+         with quotation" instead of an invented value. ---- */
+      function specRow(label, val, mono){
+        if(val == null || val === "" || val === "—") return "";
+        return '<div><dt>'+label+'</dt><dd'+(mono?' class="mono"':'')+'>'+SG.esc(val)+'</dd></div>';
+      }
+      var specRows =
+        specRow(SG.t("pd.ref"), p.sku, true) +
+        specRow(SG.t("pd.mfr"), p.brand || null, false) +
+        specRow(SG.t("pd.mfrRef"), spec.manufacturerRef, true) +
+        specRow(SG.t("pd.family"), spec.family, false) +
+        specRow(SG.t("pd.category"), spec.category, false) +
+        specRow(SG.t("pd.finishes"), finishes === "—" ? null : finishes, false) +
+        specRow(SG.t("pd.price"), SG.t("card.por"), false) +
+        specRow(SG.t("pd.avail"), SG.t("pd.availV"), false);
+      var specNote = (!spec.manufacturerRef && !spec.family && !spec.category)
+        ? '<p class="pd-spec-note">'+SG.t("pd.specNote")+'</p>' : '';
       wrap.innerHTML =
       '<div class="pd-grid">'+ gallery +
         '<div class="pd-info">'+
-          '<div class="psku">'+SG.esc(p.sku)+'</div>'+
+          '<div class="psku"><span id="pdSkuText">'+SG.esc(p.sku)+'</span><button type="button" class="pd-copy" id="pdCopy" aria-live="polite">'+SG.t("pd.copy")+'</button></div>'+
           '<h1>'+SG.esc(nm)+'</h1>'+
           '<div class="pd-brand">'+SG.esc(p.brand||"")+'</div>'+
           (ds ? '<p class="pd-desc">'+SG.esc(ds)+'</p>' : '')+
@@ -93,13 +145,8 @@
             '<button class="btn btn-primary" id="pdAdd">'+SG.t("card.add")+' <span class="arr">&rarr;</span></button>'+
             '<a class="btn btn-wa" id="pdWa" target="_blank" rel="noopener">'+SG.t("q.whatsapp")+'</a>'+
           '</div>'+
-          '<div class="pd-meta">'+
-            '<div><dt>'+SG.t("pd.ref")+'</dt><dd>'+SG.esc(p.sku)+'</dd></div>'+
-            '<div><dt>'+SG.t("pd.mfr")+'</dt><dd>'+SG.esc(p.brand||"—")+'</dd></div>'+
-            '<div><dt>'+SG.t("pd.finishes")+'</dt><dd>'+finishes+'</dd></div>'+
-            '<div><dt>'+SG.t("pd.price")+'</dt><dd>'+SG.t("card.por")+'</dd></div>'+
-            '<div><dt>'+SG.t("pd.avail")+'</dt><dd>'+SG.t("pd.availV")+'</dd></div>'+
-          '</div>'+
+          '<div class="pd-meta">'+ specRows +'</div>'+
+          specNote +
           '<p style="margin-top:18px;font-size:14px;color:var(--muted)">'+SG.t("pd.disclaimer")+'</p>'+
         '</div>'+
       '</div>'+
@@ -139,13 +186,75 @@
             '<a class="btn btn-outline" href="quote.html">'+SG.t("pdq.viewQuote")+'</a>'+
           '</div>'+
         '</div>'+
-      '</section>';
+      '</section>'+
+      /* Lightbox (gallery zoom) */
+      '<div class="pd-lightbox" id="pdLightbox" hidden role="dialog" aria-modal="true" aria-label="'+SG.esc(nm)+'">'+
+        '<button type="button" class="lb-close" id="lbClose" aria-label="Close">×</button>'+
+        (files.length > 1 ? '<button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo">‹</button><button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Next photo">›</button>' : '')+
+        '<img id="lbImg" src="" alt="'+SG.esc(nm)+'">'+
+        '<div class="lb-cap" id="lbCap"></div>'+
+      '</div>'+
+      /* Sticky mobile CTA bar */
+      '<div class="pd-sticky-cta" id="pdStickyCta">'+
+        '<button class="btn btn-primary" id="pdStickyAdd">'+SG.t("card.add")+' <span class="arr">&rarr;</span></button>'+
+        '<a class="btn btn-wa" id="pdStickyWa" target="_blank" rel="noopener">'+SG.t("q.whatsapp")+'</a>'+
+      '</div>';
       document.getElementById("pdAdd").addEventListener("click",function(){
         SG.addToQuote(p,1); this.textContent = SG.t("pd.added");
       });
       /* Product WhatsApp (top actions) */
       var waTop = document.getElementById("pdWa");
       if(waTop && SG.waProductUrl) waTop.href = SG.waProductUrl(p, nm, 1);
+      /* Sticky mobile CTA (same actions) */
+      var stAdd = document.getElementById("pdStickyAdd"), stWa = document.getElementById("pdStickyWa");
+      if(stAdd) stAdd.addEventListener("click",function(){ SG.addToQuote(p,1); this.textContent = SG.t("pd.added"); });
+      if(stWa && SG.waProductUrl) stWa.href = SG.waProductUrl(p, nm, 1);
+      /* SKU copy button */
+      var copyBtn = document.getElementById("pdCopy");
+      if(copyBtn) copyBtn.addEventListener("click",function(){
+        var txt = p.sku, btn = this;
+        function done(){ btn.textContent = SG.t("pd.copied"); setTimeout(function(){ btn.textContent = SG.t("pd.copy"); }, 2000); }
+        if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, function(){ fallback(); }); }
+        else fallback();
+        function fallback(){
+          var ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          try{ document.execCommand("copy"); }catch(e){}
+          document.body.removeChild(ta); done();
+        }
+      });
+      /* Gallery: thumbnails + lightbox */
+      (function bindGallery(){
+        var main = document.getElementById("pdMainImg");
+        var lb = document.getElementById("pdLightbox"), lbImg = document.getElementById("lbImg"), lbCap = document.getElementById("lbCap");
+        if(!main || !lb) return;
+        var idx = 0;
+        function show(i){
+          idx = (i + files.length) % files.length;
+          var u = "./assets/" + files[idx] + "?v=img003";
+          main.src = u; lbImg.src = u;
+          lbCap.textContent = p.sku + " — " + (idx+1) + " / " + files.length;
+          var ths = document.querySelectorAll(".pd-thumbs button");
+          ths.forEach(function(b, j){ b.setAttribute("aria-current", j===idx ? "true" : "false"); });
+        }
+        document.querySelectorAll(".pd-thumbs button").forEach(function(b){
+          b.addEventListener("click", function(){ show(parseInt(b.getAttribute("data-idx"),10)||0); });
+        });
+        function openLb(){ if(files.length){ lbImg.src = "./assets/" + files[idx] + "?v=img003"; lbCap.textContent = p.sku + " — " + (idx+1) + " / " + files.length; lb.hidden = false; document.body.style.overflow = "hidden"; } }
+        function closeLb(){ lb.hidden = true; document.body.style.overflow = ""; }
+        main.addEventListener("click", openLb);
+        document.getElementById("lbClose").addEventListener("click", closeLb);
+        lb.addEventListener("click", function(e){ if(e.target === lb) closeLb(); });
+        var prev = document.getElementById("lbPrev"), next = document.getElementById("lbNext");
+        if(prev) prev.addEventListener("click", function(e){ e.stopPropagation(); show(idx-1); });
+        if(next) next.addEventListener("click", function(e){ e.stopPropagation(); show(idx+1); });
+        document.addEventListener("keydown", function(e){
+          if(lb.hidden) return;
+          if(e.key === "Escape") closeLb();
+          if(e.key === "ArrowLeft") show(idx-1);
+          if(e.key === "ArrowRight") show(idx+1);
+        });
+      })();
       /* Per-product quote form */
       (function bindPdq(){
         var form = document.getElementById("pdqForm");
