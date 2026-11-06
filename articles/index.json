@@ -1,118 +1,124 @@
 {
-  "articles": [
-    {
-      "slug": "essential-rhinoplasty-instrument-set",
-      "title": "The Essential Rhinoplasty Instrument Set: What Every Surgeon Needs",
-      "summary": "Rhinoplasty demands precision, and precision starts with the right instruments. This guide walks through the essential components of a complete rhinoplasty set — from osteotomes and rasps to elevators, forceps, and needle holders — and explains what to look for when selecting each one for your practice.",
-      "date": "2026-10-22"
-    },
-    {
-      "slug": "how-to-specify-surgical-instruments",
-      "title": "How to Specify Surgical Instruments: Getting Exactly What You Need",
-      "summary": "What arrives is only as precise as what you ordered. This guide explains how to specify surgical instruments — reference numbers, dimensions, materials, finishes, and jaw and tip details — plus how to use photographs and written confirmation to eliminate surprises.",
-      "date": "2026-10-22"
-    },
-    {
-      "slug": "sourcing-surgical-instruments-mena-guide",
-      "title": "Sourcing Surgical Instruments in MENA: A Procurement Guide for Clinics",
-      "summary": "Sourcing surgical instruments in MENA means navigating distributor markups, long lead times, and inconsistent quality. This procurement guide for clinics and hospitals covers how to verify suppliers, write precise specifications, plan logistics, and build supply relationships that actually serve your surgeons.",
-      "date": "2026-10-22"
-    },
-    {
-      "slug": "surgical-instrument-care-guide",
-      "title": "Surgical Instrument Care: Extending the Life of Your Precision Tools",
-      "summary": "A precision instrument is an investment — and routine care is what protects it. This guide covers the practical essentials of surgical instrument care: prompt cleaning, material-aware sterilization, pre-use inspection, protective storage, and the handling habits that keep cutting edges sharp for years.",
-      "date": "2026-10-22"
-    },
-    {
-      "slug": "understanding-suture-materials-reference",
-      "title": "Understanding Suture Materials: A Surgeon's Quick Reference",
-      "summary": "Absorbable or non-absorbable? Monofilament or braided? This quick reference breaks down suture material families — how they behave, where each excels, and a practical four-question framework for choosing the right suture for every tissue and every patient.",
-      "date": "2026-10-22"
-    },
-    {
-      "slug": "steam-sterilization-cycles-explained",
-      "title": "Steam Sterilization Cycles Explained: 121°C vs 134°C for Surgical Instruments",
-      "summary": "The sterilization cycle your CSSD runs shapes how fast instruments turn around — and how long they last. This explainer breaks down the two standard steam windows, 121°C and 134°C, how gravity and pre-vacuum cycles differ, and what each choice means for instrument longevity.",
-      "date": "2026-10-23"
-    },
-    {
-      "slug": "minimally-invasive-surgery-mena-explainer",
-      "title": "The Minimally Invasive Shift: How Laparoscopic Surgery Is Reshaping Instrument Needs Across MENA",
-      "summary": "Minimally invasive surgery is expanding rapidly across MENA — analysts estimate the Middle East market at USD 7.37 billion in 2024, on track for USD 13.41 billion by 2033. This explainer walks through the instruments behind laparoscopic procedures, the reusable vs. single-use cost question, the reprocessing challenges long-shaft instruments create, and the procurement questions every facility should answer before building its inventory.",
-      "date": "2026-10-24"
-    },
-    {
-      "slug": "surgical-needle-holders-guide",
-      "title": "Surgical Needle Holders Explained: Jaws, Sizes and How to Choose the Right One",
-      "summary": "Every suture passes through a needle holder, and every holder shapes the stitch. This guide explains the main needle holder families, how tungsten carbide and plain jaws differ, how to size a holder to the needle and the working depth, and the five questions to answer before you order.",
-      "date": "2026-10-25"
-    },
-    {
-      "slug": "surgical-forceps-guide",
-      "title": "Surgical Forceps Explained: Tissue, Dressing and the Teeth That Make the Difference",
-      "summary": "Forceps are the most-used instrument in the operating room and the most casually chosen. This guide explains the difference between tissue and dressing forceps, what rat-tooth, Adson, Brown-Adson and DeBakey patterns are built for, how toothed and atraumatic grips differ, and the four questions to answer before you order.",
-      "date": "2026-10-26"
-    },
-    {
-      "slug": "surgical-elevators-guide",
-      "title": "Surgical Elevators Explained: Lifting Tissue Planes Without Tearing Them",
-      "summary": "Before a surgeon cuts bone, tissue must be lifted and separated without tearing it — that is the elevator's job. This guide explains the main elevator families, how blade sharpness, curvature and width suit different tissue planes, and the five questions to answer before you order.",
-      "date": "2026-10-27"
-    },
-    {
-      "slug": "surgical-osteotomes-guide",
-      "title": "Surgical Osteotomes Explained: Cutting and Shaping Bone with Control",
-      "summary": "Where a saw would be too aggressive and a drill too round, an osteotome gives the surgeon a cut that follows exactly the line they intend. This guide explains the main osteotome families, how edge geometry and width suit different bone, mallet technique, edge care, and the five questions to answer before you order.",
-      "date": "2026-10-28"
-    },
-    {
-      "slug": "surgical-rasps-guide",
-      "title": "Surgical Rasps Explained: Smoothing Bone to Its Final Contour",
-      "summary": "An osteotome cuts bone; a rasp finishes it. This guide explains the main rasp families, how coarse and fine tooth patterns shape and finish bone, one-direction technique and clearing clogged teeth, rasp care, and the five questions to answer before you order.",
-      "date": "2026-10-29"
-    },
-    {
-      "slug": "surgical-suction-instruments-guide",
-      "title": "Surgical Suction Instruments Explained: Yankauer, Frazier, Poole and How to Choose",
-      "summary": "A clear field is what makes every other surgical step possible — and the suction tip decides whether that field stays clear. This guide explains the Yankauer, Frazier and Poole patterns, how bore size, tip shape and finger-valve control balance clearance against tissue safety, and the six questions to answer before you order.",
-      "date": "2026-10-30"
-    },
-    {
-      "slug": "surgical-speculums-guide",
-      "title": "Surgical Speculums Explained: Holding the Field Open, Gently and Safely",
-      "summary": "Every operation needs a view, and a speculum is what holds a body cavity open gently and steadily. This guide explains the main speculum families — nasal, ear, vaginal, rectal and eyelid — how blade shape, size and opening mechanism suit different cavities, and the five questions to answer before you order.",
-      "date": "2026-10-31"
-    },
-    {
-      "slug": "surgical-instrument-materials-guide",
-      "title": "Surgical Instrument Materials Explained: Stainless Steel, Tungsten Carbide and Titanium",
-      "summary": "Two instruments can look identical and behave very differently, because the material inside them decides how well they cut, how long they last and how they survive sterilization. This guide explains stainless steel, tungsten carbide and titanium — what each does best, where each falls short, and the questions to answer before you order.",
-      "date": "2026-11-01"
-    },
-    {
-      "slug": "procuring-surgical-instruments-saudi-arabia-guide",
-      "title": "Procuring Surgical Instruments in Saudi Arabia: A Practical Guide for Hospitals and Distributors",
-      "summary": "Buying surgical instruments in Saudi Arabia is a chain of clinical, technical, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: define the clinical need, specify precisely in writing, verify on arrival, plan the full journey, and judge total cost rather than unit price.",
-      "date": "2026-11-02"
-    },
-    {
-      "slug": "procuring-surgical-instruments-uae-guide",
-      "title": "Procuring Surgical Instruments in the UAE: A Practical Guide for Hospitals and Distributors",
-      "summary": "Buying surgical instruments in the UAE is a chain of clinical, regulatory, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: understand the federal and emirate-level landscape, specify precisely in writing, verify on arrival, plan the full import journey, and judge total cost rather than unit price.",
-      "date": "2026-11-03"
-    },
-    {
-      "slug": "procuring-surgical-instruments-kuwait-guide",
-      "title": "Procuring Surgical Instruments in Kuwait: A Practical Guide for Hospitals and Distributors",
-      "summary": "Buying surgical instruments in Kuwait is a chain of clinical, regulatory, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: understand the Ministry of Health landscape, specify precisely in writing, verify on arrival, plan the full import journey, and judge total cost rather than unit price.",
-      "date": "2026-11-04"
-    },
-    {
-      "slug": "surgical-retractors-guide",
-      "title": "Surgical Retractors Explained: Holding the Surgical Field Open, Safely",
-      "summary": "Every operation needs a clear view, and the retractor is what provides it. This guide explains handheld and self-retaining retractors, how blade shape and size suit different tissues, the five questions to answer before ordering, and the inspection habits that keep retractors safe and reliable.",
-      "date": "2026-11-05"
-    }
-  ]
+ "articles": [
+  {
+   "slug": "essential-rhinoplasty-instrument-set",
+   "title": "The Essential Rhinoplasty Instrument Set: What Every Surgeon Needs",
+   "summary": "Rhinoplasty demands precision, and precision starts with the right instruments. This guide walks through the essential components of a complete rhinoplasty set — from osteotomes and rasps to elevators, forceps, and needle holders — and explains what to look for when selecting each one for your practice.",
+   "date": "2026-10-22"
+  },
+  {
+   "slug": "how-to-specify-surgical-instruments",
+   "title": "How to Specify Surgical Instruments: Getting Exactly What You Need",
+   "summary": "What arrives is only as precise as what you ordered. This guide explains how to specify surgical instruments — reference numbers, dimensions, materials, finishes, and jaw and tip details — plus how to use photographs and written confirmation to eliminate surprises.",
+   "date": "2026-10-22"
+  },
+  {
+   "slug": "sourcing-surgical-instruments-mena-guide",
+   "title": "Sourcing Surgical Instruments in MENA: A Procurement Guide for Clinics",
+   "summary": "Sourcing surgical instruments in MENA means navigating distributor markups, long lead times, and inconsistent quality. This procurement guide for clinics and hospitals covers how to verify suppliers, write precise specifications, plan logistics, and build supply relationships that actually serve your surgeons.",
+   "date": "2026-10-22"
+  },
+  {
+   "slug": "surgical-instrument-care-guide",
+   "title": "Surgical Instrument Care: Extending the Life of Your Precision Tools",
+   "summary": "A precision instrument is an investment — and routine care is what protects it. This guide covers the practical essentials of surgical instrument care: prompt cleaning, material-aware sterilization, pre-use inspection, protective storage, and the handling habits that keep cutting edges sharp for years.",
+   "date": "2026-10-22"
+  },
+  {
+   "slug": "understanding-suture-materials-reference",
+   "title": "Understanding Suture Materials: A Surgeon's Quick Reference",
+   "summary": "Absorbable or non-absorbable? Monofilament or braided? This quick reference breaks down suture material families — how they behave, where each excels, and a practical four-question framework for choosing the right suture for every tissue and every patient.",
+   "date": "2026-10-22"
+  },
+  {
+   "slug": "steam-sterilization-cycles-explained",
+   "title": "Steam Sterilization Cycles Explained: 121°C vs 134°C for Surgical Instruments",
+   "summary": "The sterilization cycle your CSSD runs shapes how fast instruments turn around — and how long they last. This explainer breaks down the two standard steam windows, 121°C and 134°C, how gravity and pre-vacuum cycles differ, and what each choice means for instrument longevity.",
+   "date": "2026-10-23"
+  },
+  {
+   "slug": "minimally-invasive-surgery-mena-explainer",
+   "title": "The Minimally Invasive Shift: How Laparoscopic Surgery Is Reshaping Instrument Needs Across MENA",
+   "summary": "Minimally invasive surgery is expanding rapidly across MENA — analysts estimate the Middle East market at USD 7.37 billion in 2024, on track for USD 13.41 billion by 2033. This explainer walks through the instruments behind laparoscopic procedures, the reusable vs. single-use cost question, the reprocessing challenges long-shaft instruments create, and the procurement questions every facility should answer before building its inventory.",
+   "date": "2026-10-24"
+  },
+  {
+   "slug": "surgical-needle-holders-guide",
+   "title": "Surgical Needle Holders Explained: Jaws, Sizes and How to Choose the Right One",
+   "summary": "Every suture passes through a needle holder, and every holder shapes the stitch. This guide explains the main needle holder families, how tungsten carbide and plain jaws differ, how to size a holder to the needle and the working depth, and the five questions to answer before you order.",
+   "date": "2026-10-25"
+  },
+  {
+   "slug": "surgical-forceps-guide",
+   "title": "Surgical Forceps Explained: Tissue, Dressing and the Teeth That Make the Difference",
+   "summary": "Forceps are the most-used instrument in the operating room and the most casually chosen. This guide explains the difference between tissue and dressing forceps, what rat-tooth, Adson, Brown-Adson and DeBakey patterns are built for, how toothed and atraumatic grips differ, and the four questions to answer before you order.",
+   "date": "2026-10-26"
+  },
+  {
+   "slug": "surgical-elevators-guide",
+   "title": "Surgical Elevators Explained: Lifting Tissue Planes Without Tearing Them",
+   "summary": "Before a surgeon cuts bone, tissue must be lifted and separated without tearing it — that is the elevator's job. This guide explains the main elevator families, how blade sharpness, curvature and width suit different tissue planes, and the five questions to answer before you order.",
+   "date": "2026-10-27"
+  },
+  {
+   "slug": "surgical-osteotomes-guide",
+   "title": "Surgical Osteotomes Explained: Cutting and Shaping Bone with Control",
+   "summary": "Where a saw would be too aggressive and a drill too round, an osteotome gives the surgeon a cut that follows exactly the line they intend. This guide explains the main osteotome families, how edge geometry and width suit different bone, mallet technique, edge care, and the five questions to answer before you order.",
+   "date": "2026-10-28"
+  },
+  {
+   "slug": "surgical-rasps-guide",
+   "title": "Surgical Rasps Explained: Smoothing Bone to Its Final Contour",
+   "summary": "An osteotome cuts bone; a rasp finishes it. This guide explains the main rasp families, how coarse and fine tooth patterns shape and finish bone, one-direction technique and clearing clogged teeth, rasp care, and the five questions to answer before you order.",
+   "date": "2026-10-29"
+  },
+  {
+   "slug": "surgical-suction-instruments-guide",
+   "title": "Surgical Suction Instruments Explained: Yankauer, Frazier, Poole and How to Choose",
+   "summary": "A clear field is what makes every other surgical step possible — and the suction tip decides whether that field stays clear. This guide explains the Yankauer, Frazier and Poole patterns, how bore size, tip shape and finger-valve control balance clearance against tissue safety, and the six questions to answer before you order.",
+   "date": "2026-10-30"
+  },
+  {
+   "slug": "surgical-speculums-guide",
+   "title": "Surgical Speculums Explained: Holding the Field Open, Gently and Safely",
+   "summary": "Every operation needs a view, and a speculum is what holds a body cavity open gently and steadily. This guide explains the main speculum families — nasal, ear, vaginal, rectal and eyelid — how blade shape, size and opening mechanism suit different cavities, and the five questions to answer before you order.",
+   "date": "2026-10-31"
+  },
+  {
+   "slug": "surgical-instrument-materials-guide",
+   "title": "Surgical Instrument Materials Explained: Stainless Steel, Tungsten Carbide and Titanium",
+   "summary": "Two instruments can look identical and behave very differently, because the material inside them decides how well they cut, how long they last and how they survive sterilization. This guide explains stainless steel, tungsten carbide and titanium — what each does best, where each falls short, and the questions to answer before you order.",
+   "date": "2026-11-01"
+  },
+  {
+   "slug": "procuring-surgical-instruments-saudi-arabia-guide",
+   "title": "Procuring Surgical Instruments in Saudi Arabia: A Practical Guide for Hospitals and Distributors",
+   "summary": "Buying surgical instruments in Saudi Arabia is a chain of clinical, technical, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: define the clinical need, specify precisely in writing, verify on arrival, plan the full journey, and judge total cost rather than unit price.",
+   "date": "2026-11-02"
+  },
+  {
+   "slug": "procuring-surgical-instruments-uae-guide",
+   "title": "Procuring Surgical Instruments in the UAE: A Practical Guide for Hospitals and Distributors",
+   "summary": "Buying surgical instruments in the UAE is a chain of clinical, regulatory, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: understand the federal and emirate-level landscape, specify precisely in writing, verify on arrival, plan the full import journey, and judge total cost rather than unit price.",
+   "date": "2026-11-03"
+  },
+  {
+   "slug": "procuring-surgical-instruments-kuwait-guide",
+   "title": "Procuring Surgical Instruments in Kuwait: A Practical Guide for Hospitals and Distributors",
+   "summary": "Buying surgical instruments in Kuwait is a chain of clinical, regulatory, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: understand the Ministry of Health landscape, specify precisely in writing, verify on arrival, plan the full import journey, and judge total cost rather than unit price.",
+   "date": "2026-11-04"
+  },
+  {
+   "slug": "surgical-retractors-guide",
+   "title": "Surgical Retractors Explained: Holding the Surgical Field Open, Safely",
+   "summary": "Every operation needs a clear view, and the retractor is what provides it. This guide explains handheld and self-retaining retractors, how blade shape and size suit different tissues, the five questions to answer before ordering, and the inspection habits that keep retractors safe and reliable.",
+   "date": "2026-11-05"
+  },
+  {
+   "slug": "procuring-surgical-instruments-oman-guide",
+   "title": "Procuring Surgical Instruments in Oman: A Practical Guide for Hospitals and Distributors",
+   "summary": "Buying surgical instruments in Oman is a chain of clinical, regulatory, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: understand the Ministry of Health landscape, specify precisely in writing, verify on arrival, plan the full import journey, and judge total cost rather than unit price.",
+   "date": "2026-11-06"
+  }
+ ]
 }
