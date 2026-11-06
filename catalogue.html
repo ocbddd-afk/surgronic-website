@@ -240,12 +240,32 @@
        when the search as-typed returns zero results:
        (1) retry with the query normalised to alphanumeric only ("BF-032R"
            -> "BF032R"); (2) for code-like queries (alphanumeric, 4-12 chars)
-           retry with a "%" wildcard inserted at each position, which catches
-           a single missing, extra or substituted character ("ET05R" ->
-           "ET0%5R" matches "ET005R"). The first variant with results wins
-           and is labelled as a close match — never presented as exact. */
+           fetch candidates sharing the query's first 3 characters and rank
+           them client-side by edit distance (Levenshtein) against each
+           candidate's manufacturer reference and SKU — a single mistyped
+           character ("ET05R" vs "ET005R") is distance 1. The first
+           close matches win and are labelled as such — never presented
+           as exact. (Note: the worker strips "%" from search terms, so
+           wildcard insertion cannot work server-side; the distance check
+           runs client-side instead.) */
     function normCode(q){ return (q||"").replace(/[^A-Za-z0-9]/g, ""); }
     function isCodeLike(q){ var n = normCode(q); return n.length >= 4 && n.length <= 12 && /^[A-Za-z0-9]+$/.test(n); }
+    function levenshtein(a, b){
+      a = String(a).toUpperCase(); b = String(b).toUpperCase();
+      var m = a.length, n = b.length;
+      if(!m) return n; if(!n) return m;
+      var prev = [], cur = [], i, j;
+      for(j=0;j<=n;j++) prev[j]=j;
+      for(i=1;i<=m;i++){
+        cur[0]=i;
+        for(j=1;j<=n;j++){
+          var cost = a[i-1]===b[j-1] ? 0 : 1;
+          cur[j] = Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+cost);
+        }
+        var tmp = prev; prev = cur; cur = tmp;
+      }
+      return prev[n];
+    }
     function apiSearch(q){
       return SG.api("listProducts",{limit: fetchLimit, offset: fetchOffset, search: q || undefined, sort: f.sort, storefront:true});
     }
@@ -262,16 +282,31 @@
         return fuzzySearch(nq || q);
       });
       function fuzzySearch(cq){
-        if(!isCodeLike(cq)) return {d: {products:[], total:0}, fuzzy: null};
-        var variants = [];
-        for(var i=0;i<=cq.length;i++) variants.push(cq.slice(0,i) + "%" + cq.slice(i));
-        return Promise.all(variants.map(function(v){ return apiSearch(v).catch(function(){ return {products:[]}; }); }))
-          .then(function(results){
-            for(var j=0;j<results.length;j++){
-              if((results[j].products||[]).length) return {d: results[j], fuzzy: cq};
-            }
-            return {d: {products:[], total:0}, fuzzy: null};
-          });
+        if(!isCodeLike(cq)) return Promise.resolve({d: {products:[], total:0}, fuzzy: null});
+        var prefix = cq.slice(0,3);
+        return SG.api("listProducts",{limit:100, offset:0, search: prefix, sort: f.sort, storefront:true})
+          .then(function(d){
+            var cands = d.products||[];
+            var maxDist = cq.length <= 6 ? 1 : 2;
+            var scored = [];
+            cands.forEach(function(p){
+              var refs = [];
+              if(p.manufacturerRef) refs.push(p.manufacturerRef);
+              if(p.manufacturer_ref) refs.push(p.manufacturer_ref);
+              if(p.sku) refs.push(p.sku);
+              var best = Infinity;
+              refs.forEach(function(r){
+                var dd = levenshtein(cq, String(r).replace(/[^A-Za-z0-9]/g,""));
+                if(dd < best) best = dd;
+              });
+              if(best <= maxDist) scored.push({p:p, dist:best});
+            });
+            scored.sort(function(a,b){ return a.dist - b.dist; });
+            var list = scored.map(function(s){ return s.p; });
+            if(!list.length) return {d:{products:[], total:0}, fuzzy: null};
+            return {d:{products:list, total:list.length}, fuzzy:cq};
+          })
+          .catch(function(){ return {d:{products:[], total:0}, fuzzy: null}; });
       }
     }
     smartSearch(search).then(function(res){
