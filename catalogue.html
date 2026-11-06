@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n-title="meta.catTitle">Instrument Catalog — Surgronic</title>
-<meta name="description" content="Search 8,658 surgical instruments by specialty, name, or manufacturer reference.">
+<meta name="description" content="Search 9,975 surgical instruments by specialty, name, or manufacturer reference.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,12 +13,12 @@
 </head>
 <body>
 <script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc015"></script>
+<script src="app.js?v=doc016"></script>
 
 <div class="catalog-hero">
   <div class="container">
     <h1 data-i18n="cat.title">Instrument catalogue.</h1>
-    <p data-i18n="cat.sub">Guided search across 8,658 catalogued instruments. Filter by specialty, family, and manufacturer.</p>
+    <p data-i18n="cat.sub">Guided search across 9,975 catalogued instruments. Filter by specialty, family, and manufacturer.</p>
     <div class="search-bar">
       <input id="q" type="search" data-i18n-ph="cat.searchPh" data-i18n-ph="cat.searchPh" placeholder="Search by name, SKU, or manufacturer reference…" data-i18n-aria="cat.search" aria-label="Search instruments">
       <button class="btn btn-primary" id="searchBtn" data-i18n="cat.search">Search</button>
@@ -202,7 +202,7 @@
         if(page>pages) page=pages;
         var start=(page-1)*PER;
         var view=list.slice(start, start+PER);
-        metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>8,658</b> "+SG.t("cat.catalogued");
+        metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>9,975</b> "+SG.t("cat.catalogued");
         metaPage.textContent = SG.t("cat.page")+" "+page+" "+SG.t("cat.of")+" "+pages;
         if(!view.length){
           grid.innerHTML = '<div class="error-box" style="grid-column:1/-1;text-align:center;padding:48px 32px">'+
@@ -242,7 +242,7 @@
       } else {
         total = d.total||0;
       }
-      metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>8,658</b> "+SG.t("cat.catalogued");
+      metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>9,975</b> "+SG.t("cat.catalogued");
       var pages = Math.max(1, Math.ceil(total/PER));
       metaPage.textContent = SG.t("cat.page")+" "+page+" "+SG.t("cat.of")+" "+pages;
       if(!list.length){
