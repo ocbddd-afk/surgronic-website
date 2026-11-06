@@ -76,7 +76,7 @@
   text-decoration:none;display:block;
 }
 .spec-card:hover{background:rgba(47,134,246,.06);border-color:rgba(47,134,246,.5);transform:translateY(-3px)}
-.spec-card h3{font-size:18px;margin:10px 0 6px}
+.spec-card h3{font-size:18px;margin:10px 0 6px;color:var(--navy-950)}
 .spec-card span:last-child{font-size:14px;color:#4a5a75;line-height:1.5}
 .spec-num{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--blue-500);font-weight:600}
 
@@ -166,4 +166,10 @@
   .rd-hero-info{flex-direction:column;align-items:flex-start}
   .rd-hero-info .rd-btn{width:100%}
   .rd-feat-actions{flex-direction:column}
+}
+
+/* Partners: one row at desktop (6 wordmarks fit the 1200px wrap) */
+@media(min-width:1025px){
+  .rd-partners .partner-row{flex-wrap:nowrap}
+  .rd-partners .partner-row a{font-size:1.15rem;padding:12px 26px}
 }

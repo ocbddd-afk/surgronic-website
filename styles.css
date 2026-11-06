@@ -873,6 +873,7 @@ a.hero-visual-link:focus-visible{outline:3px solid var(--blue-400);outline-offse
 .drop:hover,.drop.over{border-color:var(--blue-400);background:rgba(47,134,246,.08);color:#fff}
 .drop small{font-size:.82rem;opacity:.75}
 .drop-preview{display:flex;gap:16px;align-items:center;margin-top:14px;background:rgba(47,134,246,.1);border:1px solid rgba(47,134,246,.35);border-radius:14px;padding:14px 18px;color:var(--navy-text);font-size:.9rem}
+.drop-preview[hidden]{display:none}
 .drop-preview img{width:64px;height:64px;object-fit:cover;border-radius:10px}
 .drop-preview a{color:var(--blue-400);font-weight:600}
 
