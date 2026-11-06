@@ -11,20 +11,21 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=doc007">
+<link rel="stylesheet" href="assets/home-redesign.css?v=rd001">
 </head>
-<body>
+<body class="rd-page">
 <script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc012"></script>
+<script src="app.js?v=doc013"></script>
 <main>
 <!-- ============ HERO ============ -->
-<section class="hero">
+<section class="hero rd-hero">
   <div class="wrap hero-grid">
     <div>
       <span class="hero-kicker" data-i18n="hero.kicker">Precision surgical instruments</span>
       <h1 data-i18n="hero.title">Name the instrument. We&rsquo;ll find it.</h1>
-      <p class="hero-sub" data-i18n="hero.lead">Surgical instruments available from stock or sourced to your requirements. Search by instrument name, manufacturer reference, or specialty&mdash;or send us a photograph.</p>
+      <p class="hero-sub" data-i18n="hero.lead">From stock or sourced to your specification. Search by name or reference, or send a photograph.</p>
       <div class="finder rv" role="region" aria-label="Instrument finder">
         <div class="finder-tabs" role="tablist" aria-label="Finder">
           <button class="finder-tab" role="tab" id="ftab-name" aria-selected="true" aria-controls="fpanel-name" data-tab="name"><span data-i18n="finder.tabBy1">By name</span></button>
@@ -76,71 +77,20 @@
         <span><b data-i18n="strip.2b" dir="ltr">1&ndash;3 days</b>&nbsp;<span data-i18n="strip.2d">sourcing</span></span>
         <span><b data-i18n="strip.3b" dir="ltr">2&ndash;5 days</b>&nbsp;<span data-i18n="strip.3d">shipping</span></span>
       </div>
+      <p class="rd-hero-count"><span id="heroCountLine">8,658 instruments</span> <span>catalogued across 11 specialties.</span></p>
     </div>
-    <a class="hero-visual rv hero-visual-link" href="product.html?sku=SUR-SKL-01146" data-i18n-aria="hero.viewProduct" aria-label="View Adlerkreutz Tissue Forceps">
-      <img src="assets/sur-skl-01146.jpg" alt="Adlerkreutz Tissue Forceps — precision surgical instrument">
-      <div class="hero-tag">
-        <div><b>Adlerkreutz Tissue Forceps</b><span>SUR-SKL-01146 &middot; <span data-i18n="hero.tagFrom">From our catalogued range</span></span></div>
-        <span class="pill" id="heroCountPill">8,658 instruments</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- ============ SURGEON FIRST (merged) ============ -->
-<section class="surgeon-first">
-  <div class="wrap">
-    <span class="eyebrow rv" data-i18n="sf.eyebrow">For surgeons</span>
-    <h2 class="sec-title rv" data-i18n="sf.title">Surgeon first, always.</h2>
-    <p class="sec-sub rv" data-i18n="sf.sub">These aren&rsquo;t slogans. They&rsquo;re how we work, every order, every day.</p>
-    <div class="sf-grid">
-      <div class="sf-card rv">
-        <span class="sf-icon">🩺</span>
-        <h3 data-i18n="sf.c1t">Built around your practice</h3>
-        <p data-i18n="sf.c1d">Individual surgeons order directly &mdash; no hospital procurement chain, no minimum volumes.</p>
-      </div>
-      <div class="sf-card rv">
-        <span class="sf-icon">🔍</span>
-        <h3 data-i18n="sf.c2t">See it before it ships</h3>
-        <p data-i18n="sf.c2d">Pre-shipment inspection photos of your actual instruments. Nothing ships until approved.</p>
-      </div>
-      <div class="sf-card rv">
-        <span class="sf-icon">💬</span>
-        <h3 data-i18n="sf.c3t">Direct, no middlemen</h3>
-        <p data-i18n="sf.c3d">One WhatsApp message reaches the person sourcing your instruments.</p>
-      </div>
-      <div class="sf-card rv">
-        <span class="sf-icon">📋</span>
-        <h3 data-i18n="sf.c4t">The right tool, not the sale</h3>
-        <p data-i18n="sf.c4d">We&rsquo;d rather lose a sale than recommend the wrong instrument. Spec confirmed in writing before any commitment.</p>
+    <div class="rd-hero-card rv" id="heroCard">
+      <a href="product.html?sku=SUR-SKL-01146" class="rd-hero-photo" data-i18n-aria="hero.viewProduct" aria-label="View Adlerkreutz Tissue Forceps">
+        <img src="assets/sur-skl-01146.jpg" alt="Adlerkreutz Tissue Forceps — precision surgical instrument">
+      </a>
+      <div class="rd-hero-info">
+        <div>
+          <div class="rd-hero-name"><a href="product.html?sku=SUR-SKL-01146">Adlerkreutz Tissue Forceps</a></div>
+          <div class="mono rd-hero-sku">SUR-SKL-01146 &middot; Sklar</div>
+        </div>
+        <button class="rd-btn rd-btn-primary rd-btn-sm btn-add-quote" data-add="SUR-SKL-01146"><span data-i18n="card.add">Add to Quote</span></button>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ SUPPLY CHANNELS ============ -->
-<section id="channels">
-  <div class="wrap">
-    <span class="eyebrow rv" data-i18n="channels.eyebrow">Supply channels</span>
-    <h2 class="sec-title rv" data-i18n="channels.title">Two channels. One standard of precision.</h2>
-    <p class="sec-sub rv" data-i18n="channels.sub">Catalogued products and stocked products are not the same thing. We are transparent about both.</p>
-    <div class="channels-grid">
-      <div class="channel-card rv">
-        <span class="channel-badge" data-i18n="ch.badge1">From stock</span>
-        <h3 data-i18n="channel1.t">Available from Stock</h3>
-        <p data-i18n="channel1.d">In-stock instruments ship from our inventory.</p>
-        <div class="channel-time" data-i18n="ch.time1">Ships from inventory</div>
-        <a class="btn btn-outline" href="catalogue.html"><span data-i18n="ch.cta1">Browse stock</span></a>
-      </div>
-      <div class="channel-card rv">
-        <span class="channel-badge blue" data-i18n="ch.badge2">Sourced to specification</span>
-        <h3 data-i18n="channel2.t">Sourced to Specification</h3>
-        <p data-i18n="channel2.d">When the required instrument is unavailable, we source it to your exact requirements.</p>
-        <div class="channel-time" data-i18n="ch.time2">Typically 1&ndash;3 days sourcing</div>
-        <a class="btn btn-primary" href="quote.html"><span data-i18n="ch.cta2">Start sourcing</span></a>
-      </div>
-    </div>
-    <p class="channel-rule rv" data-i18n="ch.rule">Stocked items show a stock badge; everything else is sourced, with written specification confirmation.</p>
   </div>
 </section>
 
@@ -148,21 +98,20 @@
 <section class="specialties" id="specialties">
   <div class="wrap">
     <span class="eyebrow rv" data-i18n="spec.eyebrow">Specialties</span>
-    <h2 class="sec-title rv" data-i18n="spec.title">Explore surgical specialties.</h2>
-    <p class="sec-sub rv" data-i18n="spec.sub">Eleven disciplines. One catalogue. Each specialty is a navigable destination.</p>
+    <h2 class="sec-title rv" data-i18n="spec.title">Eleven disciplines. One catalogue.</h2>
+    <p class="sec-sub rv" data-i18n="spec.sub">Jump straight to your field.</p>
     <div class="spec-grid" id="specGrid"></div>
   </div>
 </section>
 
 <!-- ============ FEATURED ============ -->
-<section id="featured">
+<section id="featured" class="rd-featured">
   <div class="wrap">
     <span class="eyebrow rv" data-i18n="feat.eyebrow">Featured</span>
-    <h2 class="sec-title rv" data-i18n="feat.title">Instruments buyers ask for.</h2>
-    <p class="sec-sub rv" data-i18n="feat.sub">A curated selection from the live catalogue &mdash; diverse specialties, verified imagery.</p>
+    <h2 class="sec-title rv" data-i18n="feat.title">Instruments surgeons ask for.</h2>
     <div class="feat-grid" id="featGrid" aria-live="polite"></div>
     <div style="text-align:center;margin-top:44px">
-      <a class="btn btn-outline" href="catalogue.html"><span data-i18n="feat.browse">Browse all 8,658 instruments</span> &rarr;</a>
+      <a class="rd-btn rd-btn-ghost-dark" href="catalogue.html"><span data-i18n="feat.browse">Browse all 8,658 instruments</span> &rarr;</a>
     </div>
   </div>
 </section>
@@ -170,57 +119,47 @@
 <!-- ============ HOW IT WORKS ============ -->
 <section class="how" id="how">
   <div class="wrap">
-    <span class="eyebrow rv" data-i18n="how.eyebrow">How Surgronic works</span>
+    <span class="eyebrow rv" data-i18n="how.eyebrow">How it works</span>
     <h2 class="sec-title rv" data-i18n="how.title">From requirement to delivery.</h2>
     <div class="steps">
-      <div class="step rv"><small data-i18n="step1.n">Step 01</small><h3 data-i18n="step1.t">Tell us what you need</h3><p data-i18n="step1.d">Search by name, send a reference, or upload a photograph.</p></div>
-      <div class="step rv"><small data-i18n="step2.n">Step 02</small><h3 data-i18n="step2.t">We confirm the specification</h3><p data-i18n="step2.d">Written specification confirmation before anything is committed.</p></div>
-      <div class="step rv"><small data-i18n="step3.n">Step 03</small><h3 data-i18n="step3.t">Receive a quotation</h3><p data-i18n="step3.d">Clear pricing within one business day. Final price confirmed in writing.</p></div>
-      <div class="step rv"><small data-i18n="step4.n">Step 04</small><h3 data-i18n="step4.t">Confirm and receive</h3><p data-i18n="step4.d">Nothing ships until you have seen it and approved it.</p></div>
+      <div class="rd-step rv"><div class="rd-step-num">01</div><h3 data-i18n="step1.t">Tell us what you need</h3><p data-i18n="step1.d">Search, send a reference, or upload a photograph.</p></div>
+      <div class="rd-step rv"><div class="rd-step-num">02</div><h3 data-i18n="step2.t">We confirm the specification</h3><p data-i18n="step2.d">Written confirmation before anything is committed.</p></div>
+      <div class="rd-step rv"><div class="rd-step-num">03</div><h3 data-i18n="step3.t">Receive a quotation</h3><p data-i18n="step3.d">Clear pricing within one business day, confirmed in writing.</p></div>
+      <div class="rd-step rv"><div class="rd-step-num">04</div><h3 data-i18n="step4.t">Approve and receive</h3><p data-i18n="step4.d">Inspection photos first. Nothing ships until you approve.</p></div>
+    </div>
+    <p class="rd-how-note rv"><span data-i18n="how.totalNote">Typical total: 4&ndash;9 days.</span> <span data-i18n="foot.note">Timelines are operational targets, not guarantees.</span></p>
+  </div>
+</section>
+
+<!-- ============ SEE IT BEFORE IT SHIPS ============ -->
+<section class="rd-inspect" id="why">
+  <div class="wrap rd-inspect-grid">
+    <div class="rd-inspect-box rv" role="img" data-i18n-aria="insp.sample" aria-label="Sample inspection photo — coming soon"><span data-i18n="insp.sample">Sample inspection photo &mdash; coming soon</span></div>
+    <div>
+      <span class="eyebrow rv" data-i18n="insp.eyebrow">Your biggest differentiator</span>
+      <h2 class="sec-title rv" data-i18n="sf.c2t">See it before it ships.</h2>
+      <p class="rd-inspect-copy rv"><span data-i18n="sf.c2d">Pre-shipment inspection photos of your actual instruments. Nothing ships until approved.</span><span data-i18n="why.specD">No commitment until the specification is confirmed in writing. Deposit only after your approval.</span></p>
+      <a class="rd-btn rd-btn-primary" href="quote.html"><span data-i18n="final.cta1">Request a Quote</span></a>
     </div>
   </div>
 </section>
 
-<!-- ============ WHY SURGRONIC (dark) ============ -->
-<section class="why" id="why">
+<!-- ============ TESTIMONIALS ============ -->
+<section class="rd-testi" id="testimonials">
   <div class="wrap">
-    <span class="eyebrow rv" data-i18n="trust.eyebrow">Why Surgronic</span>
-    <h2 class="sec-title rv" data-i18n="trust.title">Built for procurement teams.</h2>
-    <p class="sec-sub rv" data-i18n="trust.sub2">One catalogue, two supply channels, and a specification-first workflow.</p>
-    <div class="stats">
-      <div class="stat rv"><b><span data-count="8658">8,658</span></b><p data-i18n="trust.1d">Instruments catalogued across 11 surgical specialties, searchable by name, SKU, and manufacturer reference.</p></div>
-      <div class="stat rv"><b><span data-i18n="trust.2n">2 channels</span></b><p data-i18n="trust.2d">Available from stock or sourced to specification &mdash; one quotation workflow.</p></div>
-      <div class="stat rv"><b><span data-i18n="why.stat3n">1 day</span></b><p data-i18n="why.stat3d">Maximum response time. Every enquiry answered within one business day.</p></div>
-    </div>
-    <div class="promise rv">
-      <blockquote><span class="q">&ldquo;</span><span data-i18n="trust.quote">Nothing ships until you&rsquo;ve seen it and approved it.</span><span class="q">&rdquo;</span></blockquote>
-      <p><b data-i18n="why.specT">Written specification confirmation</b> &mdash; <span data-i18n="why.specD">No commitment until the specification is confirmed in writing. Deposit only after your approval.</span></p>
+    <span class="eyebrow rv" data-i18n="testi.eyebrow">Surgeons talk</span>
+    <h2 class="sec-title rv" data-i18n="testi.title">Trusted in operating rooms.</h2>
+    <div class="testi-grid">
+      <figure class="rd-testi-card rv"><blockquote data-i18n="testi.q1">"I've worked with Yusuf for two years now. The rhinoplasty sets arrive exactly as specified — every time. When I needed a modified Cottle elevator, he sourced it in days, not months."</blockquote><figcaption><b>Dr. Karim El-Sayed</b><br><span data-i18n="testi.r1">Plastic Surgeon, Cairo</span></figcaption></figure>
+      <figure class="rd-testi-card rv"><blockquote data-i18n="testi.q2">"Dounia understands what a busy clinic needs. Clear quotations, honest timelines, and the inspection photos before shipping give me complete confidence."</blockquote><figcaption><b>Dr. Salma Benali</b><br><span data-i18n="testi.r2">ENT Surgeon, Casablanca</span></figcaption></figure>
+      <figure class="rd-testi-card rv"><blockquote data-i18n="testi.q3">"Khalid got me a full FADEN osteotomy set with custom specifications for my practice. Transparent pricing and excellent quality. Highly recommended."</blockquote><figcaption><b>Dr. Ahmed Al-Rashid</b><br><span data-i18n="testi.r3">Rhinoplasty Surgeon, Riyadh</span></figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- ============ STATS BAR ============ -->
-<section class="stats-bar">
-  <div class="wrap stats-bar-grid">
-    <div class="sbar rv"><b data-i18n="stats.n1">10,000+</b><span data-i18n="stats.d1">Instruments catalogued</span></div>
-    <div class="sbar rv"><b data-i18n="stats.n2">11</b><span data-i18n="stats.d2">Surgical specialties</span></div>
-    <div class="sbar rv"><b data-i18n="stats.n3">20</b><span data-i18n="stats.d3">Years of combined experience</span></div>
-    <div class="sbar rv"><b data-i18n="stats.n4">1,000+</b><span data-i18n="stats.d4">Surgeons served</span></div>
-  </div>
-</section>
-
-<!-- ============ CUSTOM SOLUTIONS (slim) ============ -->
-<section class="custom-slim">
+<!-- ============ PARTNERS (slim strip) ============ -->
+<section class="rd-partners">
   <div class="wrap">
-    <p class="rv"><span data-i18n="cust.slim">Need custom branding or private-label sets? We offer personalization on select products.</span> <a href="quote.html" data-i18n="cust.slimL">Contact our commercial team</a></p>
-  </div>
-</section>
-
-<!-- ============ PARTNERS ============ -->
-<section class="partners" id="partners">
-  <div class="wrap">
-    <span class="eyebrow rv" data-i18n="partners.eyebrow">Our partners</span>
-    <h2 class="sec-title rv" data-i18n="partners.title">The brands we source for you.</h2>
     <div class="partner-row rv">
       <a href="catalogue.html?brand=Aesculap">Aesculap</a>
       <a href="catalogue.html?brand=Sklar">Sklar</a>
@@ -232,75 +171,18 @@
   </div>
 </section>
 
-<!-- ============ TESTIMONIALS ============ -->
-<section class="testimonials" id="testimonials">
-  <div class="wrap">
-    <span class="eyebrow rv" data-i18n="testi.eyebrow">Surgeons talk</span>
-    <h2 class="sec-title rv" data-i18n="testi.title">Trusted in operating rooms.</h2>
-    <div class="testi-grid">
-      <div class="testi-card rv">
-        <p class="testi-quote" data-i18n="testi.q1">"I've worked with Yusuf for two years now. The rhinoplasty sets arrive exactly as specified — every time. When I needed a modified Cottle elevator, he sourced it in days, not months."</p>
-        <p class="testi-name">Dr. Karim El-Sayed</p>
-        <p class="testi-role" data-i18n="testi.r1">Plastic Surgeon, Cairo</p>
-      </div>
-      <div class="testi-card rv">
-        <p class="testi-quote" data-i18n="testi.q2">"Dounia understands what a busy clinic needs. Clear quotations, honest timelines, and the inspection photos before shipping give me complete confidence. I order all my sutures through Surgronic."</p>
-        <p class="testi-name">Dr. Salma Benali</p>
-        <p class="testi-role" data-i18n="testi.r2">ENT Surgeon, Casablanca</p>
-      </div>
-      <div class="testi-card rv">
-        <p class="testi-quote" data-i18n="testi.q3">"Khalid got me a full FADEN osteotomy set with custom specifications for my practice. The pricing was transparent and the instruments are excellent quality. Highly recommended."</p>
-        <p class="testi-name">Dr. Ahmed Al-Rashid</p>
-        <p class="testi-role" data-i18n="testi.r3">Rhinoplasty Surgeon, Riyadh</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TRUST ============ -->
-<section id="trust">
-  <div class="wrap">
-    <span class="eyebrow rv" data-i18n="trust.eyebrow2">Credentials</span>
-    <h2 class="sec-title rv" data-i18n="trust.title2">Procurement, engineered.</h2>
-    <p class="sec-sub rv" data-i18n="trust.sub">The credentials that matter to professional buyers &mdash; published as they are confirmed.</p>
-    <div class="trust-grid">
-      <div class="trust-card rv">
-        <span class="tbd" data-i18n="trust.certsD">To be provided</span>
-        <h3 data-i18n="trust.certsT">Certifications &amp; standards</h3>
-        <p data-i18n="trust.certsN">Supplier and quality certifications will be listed here once confirmed.</p>
-      </div>
-      <div class="trust-card rv">
-        <span class="tbd" data-i18n="trust.matD">To be provided</span>
-        <h3 data-i18n="trust.matT">Materials &amp; craftsmanship</h3>
-        <p data-i18n="trust.matN">Steel grades, finishes and manufacturing standards will be documented here.</p>
-      </div>
-      <div class="trust-card rv">
-        <span class="tbd" data-i18n="trust.custD">To be provided</span>
-        <h3 data-i18n="trust.custT">Trusted by</h3>
-        <p data-i18n="trust.custN">Customer references will appear here with their permission.</p>
-      </div>
-    </div>
-    <div class="trust-contact rv">
-      <span><b data-i18n="trust.addrLabel">Head office</b>: <span data-i18n="trust.addr">Sisli, Istanbul, Turkey</span></span>
-      <a href="mailto:yusuf@surgronic.com"><b>yusuf@surgronic.com</b></a>
-      <a href="tel:+905526081432"><bdi><b>+90 552 608 1432</b></bdi></a>
-    </div>
-  </div>
-</section>
-
 <!-- ============ FINAL CTA ============ -->
-<section style="padding-top:0">
-  <div class="final rv">
-    <div class="wrap" style="padding-top:88px;padding-bottom:88px">
-      <h2 data-i18n="final.title">Need an instrument?<br>Let&rsquo;s find it.</h2>
-      <p data-i18n="final.sub">Send a reference, a name, or a photograph. We respond within one business day.</p>
-      <div class="btns">
-        <a class="btn btn-primary" href="quote.html"><span data-i18n="final.cta1">Request a Quote</span> &rarr;</a>
-        <a class="btn btn-ghost-w" href="catalogue.html"><span data-i18n="final.cta2">Explore Instruments</span></a>
-      </div>
+<section class="rd-final-cta">
+  <div class="wrap">
+    <h2 class="rd-final-title rv" data-i18n="final.title">Need an instrument?<br>Let&rsquo;s find it.</h2>
+    <p class="rd-final-sub rv" data-i18n="final.sub">Send a reference, a name, or a photograph. We respond within one business day.</p>
+    <div class="rd-final-btns rv">
+      <a class="rd-btn rd-btn-primary" href="quote.html"><span data-i18n="final.cta1">Request a Quote</span> &rarr;</a>
+      <a class="rd-btn rd-btn-ghost" href="https://wa.me/905526081432" target="_blank" rel="noopener"><span data-i18n="final.ctaWa">Chat on WhatsApp</span></a>
     </div>
   </div>
 </section>
+
 <!-- ============ CERTIFICATIONS ============ -->
 <section class="certs">
   <div class="wrap">
@@ -309,8 +191,8 @@
   </div>
   <div class="cert-marquee rv">
     <div class="cert-track">
-      <span class="cert-badge">🇲🇦 <span data-i18n="country.morocco">Morocco</span></span><span class="cert-badge">🇩🇿 <span data-i18n="country.algeria">Algeria</span></span><span class="cert-badge">🇹🇳 <span data-i18n="country.tunisia">Tunisia</span></span><span class="cert-badge">🇱🇾 <span data-i18n="country.libya">Libya</span></span><span class="cert-badge">🇪🇬 <span data-i18n="country.egypt">Egypt</span></span><span class="cert-badge">🇸🇦 <span data-i18n="country.saudi">Saudi Arabia</span></span><span class="cert-badge">🇦🇪 <span data-i18n="country.uae">UAE</span></span><span class="cert-badge">🇶🇦 <span data-i18n="country.qatar">Qatar</span></span><span class="cert-badge">🇰🇼 <span data-i18n="country.kuwait">Kuwait</span></span><span class="cert-badge">🇾🇪 <span data-i18n="country.yemen">Yemen</span></span><span class="cert-badge">🇴🇲 <span data-i18n="country.oman">Oman</span></span><span class="cert-badge">🇯🇴 <span data-i18n="country.jordan">Jordan</span></span><span class="cert-badge">🇸🇾 <span data-i18n="country.syria">Syria</span></span><span class="cert-badge">🇱🇧 <span data-i18n="country.lebanon">Lebanon</span></span><span class="cert-badge">🇹🇷 <span data-i18n="country.turkey">Turkey</span></span>
-      <span class="cert-badge">🇲🇦 <span data-i18n="country.morocco">Morocco</span></span><span class="cert-badge">🇩🇿 <span data-i18n="country.algeria">Algeria</span></span><span class="cert-badge">🇹🇳 <span data-i18n="country.tunisia">Tunisia</span></span><span class="cert-badge">🇱🇾 <span data-i18n="country.libya">Libya</span></span><span class="cert-badge">🇪🇬 <span data-i18n="country.egypt">Egypt</span></span><span class="cert-badge">🇸🇦 <span data-i18n="country.saudi">Saudi Arabia</span></span><span class="cert-badge">🇦🇪 <span data-i18n="country.uae">UAE</span></span><span class="cert-badge">🇶🇦 <span data-i18n="country.qatar">Qatar</span></span><span class="cert-badge">🇰🇼 <span data-i18n="country.kuwait">Kuwait</span></span><span class="cert-badge">🇾🇪 <span data-i18n="country.yemen">Yemen</span></span><span class="cert-badge">🇴🇲 <span data-i18n="country.oman">Oman</span></span><span class="cert-badge">🇯🇴 <span data-i18n="country.jordan">Jordan</span></span><span class="cert-badge">🇸🇾 <span data-i18n="country.syria">Syria</span></span><span class="cert-badge">🇱🇧 <span data-i18n="country.lebanon">Lebanon</span></span><span class="cert-badge">🇹🇷 <span data-i18n="country.turkey">Turkey</span></span>
+      <span class="cert-badge"><span data-i18n="country.morocco">Morocco</span></span><span class="cert-badge"><span data-i18n="country.algeria">Algeria</span></span><span class="cert-badge"><span data-i18n="country.tunisia">Tunisia</span></span><span class="cert-badge"><span data-i18n="country.libya">Libya</span></span><span class="cert-badge"><span data-i18n="country.egypt">Egypt</span></span><span class="cert-badge"><span data-i18n="country.saudi">Saudi Arabia</span></span><span class="cert-badge"><span data-i18n="country.uae">UAE</span></span><span class="cert-badge"><span data-i18n="country.qatar">Qatar</span></span><span class="cert-badge"><span data-i18n="country.kuwait">Kuwait</span></span><span class="cert-badge"><span data-i18n="country.yemen">Yemen</span></span><span class="cert-badge"><span data-i18n="country.oman">Oman</span></span><span class="cert-badge"><span data-i18n="country.jordan">Jordan</span></span><span class="cert-badge"><span data-i18n="country.syria">Syria</span></span><span class="cert-badge"><span data-i18n="country.lebanon">Lebanon</span></span><span class="cert-badge"><span data-i18n="country.turkey">Turkey</span></span>
+      <span class="cert-badge"><span data-i18n="country.morocco">Morocco</span></span><span class="cert-badge"><span data-i18n="country.algeria">Algeria</span></span><span class="cert-badge"><span data-i18n="country.tunisia">Tunisia</span></span><span class="cert-badge"><span data-i18n="country.libya">Libya</span></span><span class="cert-badge"><span data-i18n="country.egypt">Egypt</span></span><span class="cert-badge"><span data-i18n="country.saudi">Saudi Arabia</span></span><span class="cert-badge"><span data-i18n="country.uae">UAE</span></span><span class="cert-badge"><span data-i18n="country.qatar">Qatar</span></span><span class="cert-badge"><span data-i18n="country.kuwait">Kuwait</span></span><span class="cert-badge"><span data-i18n="country.yemen">Yemen</span></span><span class="cert-badge"><span data-i18n="country.oman">Oman</span></span><span class="cert-badge"><span data-i18n="country.jordan">Jordan</span></span><span class="cert-badge"><span data-i18n="country.syria">Syria</span></span><span class="cert-badge"><span data-i18n="country.lebanon">Lebanon</span></span><span class="cert-badge"><span data-i18n="country.turkey">Turkey</span></span>
     </div>
   </div>
 </section>
@@ -319,7 +201,7 @@
 <script>
 (function(){
   "use strict";
-  /* ---------- Unified finder: 3 tabs, ARIA-correct ---------- */
+  /* ---------- Unified finder: 3 tabs, ARIA-correct (unchanged logic) ---------- */
   (function initFinder(){
     var tabs = document.querySelectorAll(".finder-tab");
     var panels = {
@@ -385,16 +267,16 @@
     document.getElementById("finderGoPhoto").addEventListener("click", function(){ location.href = "quote.html#photo"; });
   })();
 
-  /* ---------- Specialties: 11, from live SG.SPECIALTIES ---------- */
+  /* ---------- Specialties: 11, from live SG.SPECIALTIES, mono numbers ---------- */
   function renderSpecs(){
     var grid = document.getElementById("specGrid");
     if (!grid) return;
     var specs = (SG.SPECIALTIES && (SG.SPECIALTIES[SG.getLang()] || SG.SPECIALTIES.en)) || [];
     grid.innerHTML = specs.map(function(s, i){
-      var icon = s[2] || "";
       var enName = (SG.SPECIALTIES.en && SG.SPECIALTIES.en[i]) ? SG.SPECIALTIES.en[i][0] : s[0];
+      var num = ("0" + (i + 1)).slice(-2);
       return '<a class="spec-card rv in" href="catalogue.html?cat=' + encodeURIComponent(enName) + '">' +
-        '<span class="spec-ico" aria-hidden="true">' + icon + '</span><h3>' + SG.esc(s[0]) + '</h3><span>' + SG.esc(s[1]) + '</span></a>';
+        '<span class="spec-num" aria-hidden="true">' + num + '</span><h3>' + SG.esc(s[0]) + '</h3><span>' + SG.esc(s[1]) + '</span></a>';
     }).join("");
   }
 
@@ -420,10 +302,36 @@
     }
     return h;
   }
+  /* Availability badge: no product record carries a reliable in-stock signal
+     (normProduct / the API expose no availability field), so every featured
+     card honestly shows the sourced badge. Composed from existing i18n keys. */
+  function sourcedBadge(){
+    return SG.esc(SG.t("feat.badgeSourced"));
+  }
+  function featuredCardHTML(p){
+    p = SG.normProduct(p);
+    var nm = SG.productName(p);
+    var img = SG.imgUrl(p);
+    var url = "product.html?sku=" + encodeURIComponent(p.sku);
+    var imgHtml = img
+      ? '<a class="rd-feat-photo" href="' + url + '"><img src="' + img + '" alt="' + SG.esc(nm) + '" loading="lazy" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'"></a>'
+      : '<a class="rd-feat-photo" href="' + url + '"><span>' + SG.esc(SG.t("card.imgSoon")) + '</span></a>';
+    var waUrl = SG.waProductUrl(p, nm, 1);
+    return '<article class="rd-feat-card">' + imgHtml +
+      '<div class="rd-feat-body">' +
+        '<span class="rd-badge">' + sourcedBadge() + '</span>' +
+        '<h3><a href="' + url + '">' + SG.esc(nm) + '</a></h3>' +
+        '<div class="mono rd-feat-sku">' + SG.esc(p.sku) + ' \u00b7 ' + SG.esc(p.brand || "") + '</div>' +
+        '<div class="rd-feat-actions">' +
+          '<button class="rd-btn rd-btn-primary rd-btn-sm btn-add-quote" data-add="' + SG.esc(p.sku) + '">' + SG.esc(SG.t("card.add")) + '</button>' +
+          '<a class="rd-btn rd-btn-ghost rd-btn-sm rd-btn-wa" href="' + waUrl + '" target="_blank" rel="noopener">' + SG.esc(SG.t("card.whatsapp")) + '</a>' +
+        '</div>' +
+      '</div></article>';
+  }
   function featuredFallbackHTML(){
     return FEATURED_SKUS.map(function(sku){
       var f = FEATURED_FALLBACK[sku];
-      return SG.cardHTML({sku:sku, name:f.name, nameFr:f.name, nameAr:f.name, brand:f.brand, imageFiles:[f.img]});
+      return featuredCardHTML({sku:sku, name:f.name, nameFr:f.name, nameAr:f.name, brand:f.brand, imageFiles:[f.img]});
     }).join("");
   }
   function renderFeatured(){
@@ -436,7 +344,7 @@
     Promise.race([calls, timeout]).then(function(results){
       var list = results.map(function(r){ return r && (r.product || r); }).filter(function(p){ return p && p.sku; });
       if (!list.length) throw new Error("empty");
-      grid.innerHTML = list.map(SG.cardHTML).join("");
+      grid.innerHTML = list.map(featuredCardHTML).join("");
       SG.bindAddButtons(grid);
       grid.setAttribute("aria-busy", "false");
     }).catch(function(){
@@ -465,50 +373,29 @@
     els.forEach(function(e){ io.observe(e); });
   }
 
-  /* ---------- Count-up ---------- */
-  /* Live catalog count: same database as the admin — never a hardcoded number. */
+  /* ---------- Live catalog count: same database as the admin ---------- */
   function initLiveCount(){
-    var pill = document.getElementById("heroCountPill");
-    if(!pill || !SG.api) return;
+    var line = document.getElementById("heroCountLine");
+    if(!line || !SG.api) return;
     SG.api("listProducts", {limit: 1}).then(function(r){
       /* SG.api already unwraps the {data:{...}} envelope: total is r.total */
       var n = r && (r.total || (r.data && r.data.total));
       if(!n) return;
       var fmt = n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      pill.textContent = SG.t("hero.tagCat").replace("{n}", fmt);
+      line.textContent = SG.t("hero.tagCat").replace("{n}", fmt);
     }).catch(function(){ /* keep the static fallback text */ });
-  }
-  function initCount(){
-    var el = document.querySelector("[data-count]");
-    if (!el) return;
-    var target = parseInt(el.getAttribute("data-count"), 10) || 0;
-    function fmt(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
-    if (!("IntersectionObserver" in window) ||
-        (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)){
-      el.textContent = fmt(target); return;
-    }
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if (!e.isIntersecting) return;
-        io.disconnect();
-        var t0 = null, dur = 1400;
-        function step(ts){
-          if (!t0) t0 = ts;
-          var p = Math.min(1, (ts - t0) / dur), v = Math.round(target * (1 - Math.pow(1 - p, 3)));
-          el.textContent = fmt(v);
-          if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      });
-    }, {threshold:.4});
-    io.observe(el);
   }
 
   renderSpecs();
   renderFeatured();
   initReveal();
-  initCount();
   initLiveCount();
+  /* Hero card "Add to quote": bind after applyI18n so the button's captured
+     label matches the active language (mountChrome runs in the next script). */
+  document.addEventListener("DOMContentLoaded", function(){
+    var heroCard = document.getElementById("heroCard");
+    if (heroCard) SG.bindAddButtons(heroCard);
+  });
   document.addEventListener("surgronic:lang", function(){
     SG.applyI18n();
     renderSpecs();
