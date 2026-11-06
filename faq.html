@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="faqTitle">Frequently asked questions — Surgronic</title>
+<meta name="description" id="faqMeta" content="Straight answers about quoting, payment, shipping, customs and inspection at Surgronic.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=doc007">
+<style>
+.faq-page{padding:56px 0 72px;background:#fff}
+.faq-page h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);margin:12px 0 14px;color:var(--ink-900);line-height:1.2}
+.faq-sub{color:var(--ink-600);line-height:1.7;font-size:1.02rem;margin:0 0 36px;max-width:720px}
+.faq-item{border:1px solid #e3e8f0;border-radius:12px;margin:0 0 12px;background:#fff;overflow:hidden}
+.faq-item summary{cursor:pointer;padding:18px 22px;font-family:var(--font-display);font-weight:700;font-size:1.02rem;color:var(--navy-950);list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:var(--blue-500);font-size:1.3rem;line-height:1;flex:none}
+.faq-item[open ] summary::after{content:"–"}
+.faq-item summary:hover{color:var(--blue-500)}
+.faq-item p{margin:0;padding:0 22px 20px;color:var(--ink-600);line-height:1.8;font-size:.98rem}
+.faq-contact{margin:36px 0 0;padding:20px 22px;background:var(--mist-50);border-radius:12px;color:var(--ink-600);line-height:1.7}
+.faq-contact a{color:var(--blue-500);text-decoration:none;font-weight:600}
+.faq-cta{margin-top:28px}
+.faq-cta .btn{margin-right:12px}
+</style>
+</head>
+<body>
+<script src="assets/currency.js?v=ccy002"></script>
+<script src="app.js?v=doc009"></script>
+
+<main>
+<section class="faq-page">
+  <div class="wrap mani-narrow">
+    <p><a href="index.html" class="article-back" id="faqBack">← Home</a></p>
+    <h1 id="faqH1">Frequently asked questions</h1>
+    <p class="faq-sub" id="faqSub">Straight answers about quoting, payment, shipping and inspection. If your question is not here, ask us on WhatsApp or by email — we reply within one business day.</p>
+    <div id="faqList"></div>
+    <p class="faq-contact" id="faqContact">Still unsure? WhatsApp <a href="https://wa.me/905526081432" target="_blank" rel="noopener">+90 552 608 1432</a> or email <a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a>.</p>
+    <div class="faq-cta">
+      <a class="btn btn-primary" href="quote.html" data-i18n="article.cta.quote">Request a quote</a>
+      <a class="btn btn-secondary" href="catalogue.html" data-i18n="article.cta.browse">Browse catalog</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+var FAQ_UI = {
+  en: {title:"Frequently asked questions — Surgronic", meta:"Straight answers about quoting, payment, shipping, customs and inspection at Surgronic.", h1:"Frequently asked questions", sub:"Straight answers about quoting, payment, shipping and inspection. If your question is not here, ask us on WhatsApp or by email — we reply within one business day.", back:"← Home", contact:"Still unsure? WhatsApp +90 552 608 1432 or email yusuf@surgronic.com."},
+  fr: {title:"Questions fréquentes — Surgronic", meta:"Des réponses directes sur les devis, le paiement, la livraison, la douane et l'inspection chez Surgronic.", h1:"Questions fréquentes", sub:"Des réponses directes sur les devis, le paiement, la livraison et l'inspection. Si votre question ne figure pas ici, posez-la-nous sur WhatsApp ou par e-mail — nous répondons sous un jour ouvré.", back:"← Accueil", contact:"Encore un doute ? WhatsApp +90 552 608 1432 ou e-mail yusuf@surgronic.com."},
+  ar: {title:"الأسئلة الشائعة — Surgronic", meta:"إجابات مباشرة عن عروض الأسعار والدفع والشحن والجمارك والفحص لدى Surgronic.", h1:"الأسئلة الشائعة", sub:"إجابات مباشرة عن عروض الأسعار والدفع والشحن والفحص. وإذا لم يكن سؤالك هنا، فاسألنا على واتساب أو بالبريد الإلكتروني — نرد خلال يوم عمل واحد.", back:"← الرئيسية", contact:"ما زلت غير متأكد؟ واتساب +90 552 608 1432 أو البريد الإلكتروني yusuf@surgronic.com."},
+  tr: {title:"Sıkça sorulan sorular — Surgronic", meta:"Surgronic'te teklif, ödeme, nakliye, gümrük ve kontrol hakkında net yanıtlar.", h1:"Sıkça sorulan sorular", sub:"Teklif, ödeme, nakliye ve kontrol hakkında net yanıtlar. Sorunuz burada yoksa bize WhatsApp veya e-posta ile sorun — bir iş günü içinde yanıt veririz.", back:"← Ana sayfa", contact:"Hâlâ emin değil misiniz? WhatsApp +90 552 608 1432 veya e-posta yusuf@surgronic.com."}
+};
+
+var POLICY_FAQ = {
+en: [
+{q:"How do I request a quotation?", a:"Send us the instrument name, manufacturer reference, or a photograph — through the quote form, by email, or on WhatsApp. Tell us the quantity you need. We confirm the exact specification with you in writing before any deposit is requested, and we reply within one business day."},
+{q:"How quickly will I hear back?", a:"Within one business day. If your request needs a specification check with a supplier, we tell you so in that first reply rather than leaving you waiting."},
+{q:"What happens after I request a quote?", a:"First we confirm the exact specification with you in writing — model, size, material and finish. Then we send your quotation, including the deposit amount. Once the deposit is paid, we source the instruments and send you inspection photos or video. Nothing ships until you have seen them and approved them."},
+{q:"How long do sourcing and shipping take?", a:"Sourcing typically takes 1–3 days and shipping typically 2–5 days. These are typical timeframes, not guarantees — the exact timing for your order is confirmed in your quotation, and we tell you promptly if anything changes."},
+{q:"What does the deposit cover, and can I get it back?", a:"The deposit commits your order so we can source and prepare your instruments. The exact percentage is stated in your quotation. If you cancel, the deposit is refundable minus any costs already committed to the supplier for your order."},
+{q:"How do import and customs work for my country?", a:"Import rules, duties and clearance times differ by country. We ship with the documentation your shipment needs, and your quotation states what is included. If you are unsure about duties or clearance in your country, ask us before you confirm — we will tell you what we know and what to check with your local customs broker."},
+{q:"How do I know the instruments are genuine?", a:"We source instruments from the manufacturers and supply partners we work with, and every order is inspected before shipment. You receive inspection photos or video of your actual instruments and approve them before anything ships — if what you see is not what you specified, it does not leave."},
+{q:"What happens if something arrives damaged or not as specified?", a:"Inspect your instruments within 7 days of delivery and tell us straight away, with photographs of the issue. Because every order is inspected and approved by you before shipment, problems are rare — but if the instruments are not what was confirmed in writing, contact us and we will put it right."},
+{q:"Can I return an instrument?", a:"Our process is designed to prevent returns: the specification is confirmed with you in writing before any deposit, and you approve inspection photos or video before anything ships. If an instrument arrives not as specified, tell us within the 7-day inspection window and we will resolve it. Change-of-mind returns are handled case by case, and any costs already committed to the supplier are not refundable."},
+{q:"How are the instruments packed for shipping?", a:"Instruments are packed to travel safely — protected against knocks and moisture in transit. If you have a specific packaging requirement, for example for sterile-barrier presentation or a particular case, state it when you confirm the specification and we will include it in your quotation."}
+],
+fr: [
+{q:"Comment demander un devis ?", a:"Envoyez-nous le nom de l'instrument, la référence du fabricant ou une photographie — via le formulaire de devis, par e-mail ou sur WhatsApp. Indiquez la quantité souhaitée. Nous confirmons la spécification exacte avec vous par écrit avant de demander un acompte, et nous répondons sous un jour ouvré."},
+{q:"Dans quel délai recevrai-je une réponse ?", a:"Sous un jour ouvré. Si votre demande nécessite une vérification de spécification auprès d'un fournisseur, nous vous le signalons dans cette première réponse au lieu de vous faire attendre."},
+{q:"Que se passe-t-il après ma demande de devis ?", a:"Nous confirmons d'abord la spécification exacte avec vous par écrit — modèle, taille, matériau et finition. Puis nous vous envoyons votre devis, avec le montant de l'acompte. Une fois l'acompte payé, nous sourçons les instruments et vous envoyons des photos ou une vidéo d'inspection. Rien n'est expédié tant que vous ne les avez pas vus et approuvés."},
+{q:"Combien de temps prennent le sourcing et la livraison ?", a:"Le sourcing prend généralement 1 à 3 jours et la livraison 2 à 5 jours. Ce sont des délais habituels, pas des garanties — le délai exact de votre commande est confirmé dans votre devis, et nous vous informons rapidement en cas de changement."},
+{q:"À quoi sert l'acompte, et puis-je le récupérer ?", a:"L'acompte engage votre commande afin que nous puissions sourcer et préparer vos instruments. Le pourcentage exact est indiqué dans votre devis. En cas d'annulation, l'acompte est remboursable, déduction faite des coûts déjà engagés auprès du fournisseur pour votre commande."},
+{q:"Comment fonctionnent l'importation et la douane dans mon pays ?", a:"Les règles d'importation, les droits de douane et les délais de dédouanement varient selon le pays. Nous expédions avec la documentation nécessaire à votre envoi, et votre devis précise ce qui est inclus. Si vous avez un doute sur les droits ou le dédouanement dans votre pays, demandez-nous avant de confirmer — nous vous dirons ce que nous savons et ce qu'il faut vérifier auprès de votre transitaire."},
+{q:"Comment savoir si les instruments sont authentiques ?", a:"Nous sourçons les instruments auprès des fabricants et des partenaires fournisseurs avec lesquels nous travaillons, et chaque commande est inspectée avant expédition. Vous recevez des photos ou une vidéo d'inspection de vos instruments et vous les approuvez avant tout envoi — si ce que vous voyez ne correspond pas à ce que vous avez spécifié, rien ne part."},
+{q:"Que se passe-t-il si un article arrive endommagé ou non conforme ?", a:"Inspectez vos instruments dans les 7 jours suivant la livraison et signalez-nous immédiatement tout problème, avec des photographies. Comme chaque commande est inspectée et approuvée par vous avant expédition, les problèmes sont rares — mais si les instruments ne correspondent pas à ce qui a été confirmé par écrit, contactez-nous et nous réglerons le problème."},
+{q:"Puis-je retourner un instrument ?", a:"Notre processus est conçu pour éviter les retours : la spécification est confirmée avec vous par écrit avant tout acompte, et vous approuvez les photos ou la vidéo d'inspection avant tout envoi. Si un instrument arrive non conforme à la spécification, signalez-le-nous dans le délai d'inspection de 7 jours et nous réglerons le problème. Les retours pour changement d'avis sont traités au cas par cas, et les coûts déjà engagés auprès du fournisseur ne sont pas remboursables."},
+{q:"Comment les instruments sont-ils emballés pour l'expédition ?", a:"Les instruments sont emballés pour voyager en sécurité — protégés contre les chocs et l'humidité pendant le transport. Si vous avez une exigence d'emballage particulière, par exemple une présentation en barrière stérile ou un étui spécifique, indiquez-la lors de la confirmation de la spécification et nous l'inclurons dans votre devis."}
+],
+ar: [
+{q:"كيف أطلب عرض أسعار؟", a:"أرسل لنا اسم الأداة أو مرجع الشركة المصنّعة أو صورة فوتوغرافية — عبر نموذج طلب عرض الأسعار أو البريد الإلكتروني أو واتساب. وحدّد الكمية التي تحتاجها. نؤكد معك المواصفات الدقيقة كتابياً قبل طلب أي دفعة مقدمة، ونرد خلال يوم عمل واحد."},
+{q:"كم يستغرق الرد عليّ؟", a:"خلال يوم عمل واحد. وإذا كان طلبك يتطلب التحقق من المواصفات مع أحد المورّدين، نخبرك بذلك في ردّنا الأول بدلاً من تركك في الانتظار."},
+{q:"ماذا يحدث بعد طلب عرض الأسعار؟", a:"أولاً نؤكد معك المواصفات الدقيقة كتابياً — الطراز والمقاس والمادة والتشطيب. ثم نرسل لك عرض الأسعار، بما فيه مبلغ الدفعة المقدمة. وبعد دفع الدفعة المقدّمة، نوفّر الأدوات ونرسل لك صوراً أو فيديو للفحص. ولا يُشحن أي شيء حتى تراها وتوافق عليها."},
+{q:"كم تستغرق عمليتا التوفير والشحن؟", a:"يستغرق التوفير عادة من يوم إلى 3 أيام، والشحن من يومين إلى 5 أيام. هذه مدد معتادة وليست ضمانات — ويُؤكَّد التوقيت الدقيق لطلبك في عرض الأسعار، ونُعلمك فوراً بأي تغيير."},
+{q:"ما الغرض من الدفعة المقدمة، وهل يمكنني استردادها؟", a:"تلتزم الدفعة المقدّمة بطلبك حتى نتمكن من توفير أدواتك وتجهيزها. وتُذكر النسبة الدقيقة في عرض الأسعار. وفي حال الإلغاء، تُسترد الدفعة المقدّمة بعد خصم أي تكاليف تم الالتزام بها لدى المورّد لطلبك."},
+{q:"كيف تتم إجراءات الاستيراد والجمارك في بلدي؟", a:"تختلف قواعد الاستيراد والرسوم الجمركية ومدد التخليص من بلد إلى آخر. نُرفق مع الشحنة المستندات اللازمة، ويوضح عرض الأسعار ما هو مشمول. وإذا كنت غير متأكد من الرسوم أو التخليص في بلدك، اسألنا قبل التأكيد — وسنخبرك بما نعرفه وما يجب التحقق منه لدى وكيل التخليص الجمركي المحلي."},
+{q:"كيف أعرف أن الأدوات أصلية؟", a:"نوفّر الأدوات من المصنّعين وشركاء التوريد الذين نتعامل معهم، ويُفحص كل طلب قبل الشحن. وتتلقى صوراً أو فيديو لفحص أدواتك الفعلية وتوافق عليها قبل شحن أي شيء — وإذا لم يكن ما تراه مطابقاً لما حددته، فلن يُشحن."},
+{q:"ماذا يحدث إذا وصل شيء تالفاً أو غير مطابق للمواصفات؟", a:"افحص أدواتك خلال 7 أيام من التسليم وأخبرنا فوراً بأي مشكلة، مع صور لها. وبما أن كل طلب يُفحص وتوافق عليه قبل الشحن، فإن المشاكل نادرة — لكن إذا لم تكن الأدوات مطابقة لما تم تأكيده كتابياً، فاتصل بنا وسنصحح الأمر."},
+{q:"هل يمكنني إرجاع أداة؟", a:"صُممت عمليتنا لمنع الإرجاع: تُؤكَّد المواصفات معك كتابياً قبل أي دفعة مقدمة، وتوافق على صور أو فيديو الفحص قبل شحن أي شيء. وإذا وصلت أداة غير مطابقة للمواصفات، أخبرنا خلال فترة الفحص البالغة 7 أيام وسنحل المشكلة. أما الإرجاع بسبب تغيير الرأي فيُعالَج كل حالة على حدة، ولا تُسترد التكاليف التي تم الالتزام بها لدى المورّد."},
+{q:"كيف تُغلَّف الأدوات للشحن؟", a:"تُغلَّف الأدوات لتسافر بأمان — محمية من الصدمات والرطوبة أثناء النقل. وإذا كان لديك متطلب تغليف محدد، مثل عرض بحاجز معقّم أو علبة معينة، فاذكره عند تأكيد المواصفات وسنُدرجه في عرض الأسعار."}
+],
+tr: [
+{q:"Nasıl fiyat teklifi isteyebilirim?", a:"Bize aletin adını, üretici referansını veya bir fotoğrafını gönderin — teklif formu, e-posta ya da WhatsApp üzerinden. İhtiyacınız olan miktarı belirtin. Herhangi bir kapora istemeden önce tam spesifikasyonu sizinle yazılı olarak teyit ederiz ve bir iş günü içinde yanıt veririz."},
+{q:"Ne kadar sürede dönüş alırım?", a:"Bir iş günü içinde. Talebiniz tedarikçiyle spesifikasyon kontrolü gerektiriyorsa, sizi bekletmek yerine bunu ilk yanıtımızda belirtiriz."},
+{q:"Teklif istedikten sonra ne olur?", a:"Önce tam spesifikasyonu sizinle yazılı olarak teyit ederiz — model, boyut, malzeme ve kaplama. Ardından kapora tutarını içeren teklifinizi göndeririz. Kapora ödendikten sonra aletleri tedarik eder ve size kontrol fotoğrafları veya videosu göndeririz. Siz görüp onaylamadan hiçbir şey gönderilmez."},
+{q:"Tedarik ve nakliye ne kadar sürer?", a:"Tedarik genellikle 1–3 gün, nakliye genellikle 2–5 gün sürer. Bunlar tipik sürelerdir, garanti değildir — siparişinizin kesin süresi teklifinizde teyit edilir ve herhangi bir değişiklikte sizi derhal bilgilendiririz."},
+{q:"Kapora ne işe yarar ve iade alabilir miyim?", a:"Kapora, aletlerinizi tedarik edip hazırlayabilmemiz için siparişinizi bağlar. Kesin yüzde teklifinizde belirtilir. İptal durumunda kapora, siparişiniz için tedarikçiye zaten taahhüt edilmiş maliyetler düşüldükten sonra iade edilir."},
+{q:"Ülkem için ithalat ve gümrük işlemleri nasıl işliyor?", a:"İthalat kuralları, gümrük vergileri ve gümrük işlem süreleri ülkeye göre değişir. Sevkiyatınız için gerekli belgelerle birlikte gönderim yaparız ve teklifiniz nelerin dahil olduğunu belirtir. Ülkenizdeki vergi veya gümrük işlemlerinden emin değilseniz, onaylamadan önce bize sorun — bildiklerimizi ve yerel gümrük müşavirinizle neyi kontrol etmeniz gerektiğini söyleriz."},
+{q:"Aletlerin orijinal olduğunu nasıl anlarım?", a:"Aletleri birlikte çalıştığımız üreticilerden ve tedarik ortaklarından temin ederiz ve her sipariş sevkiyattan önce kontrol edilir. Gerçek aletlerinizin kontrol fotoğraflarını veya videosunu alır ve sevkiyattan önce onaylarsınız — gördüğünüz şey belirttiğinizle uyuşmuyorsa gönderilmez."},
+{q:"Bir şey hasarlı veya belirtilenden farklı gelirse ne olur?", a:"Aletlerinizi teslimattan sonraki 7 gün içinde kontrol edin ve bir sorun varsa fotoğraflarıyla birlikte bize hemen bildirin. Her sipariş sevkiyattan önce kontrol edilip tarafınızdan onaylandığı için sorunlar nadirdir — ancak aletler yazılı olarak teyit edilenle uyuşmuyorsa bize ulaşın, durumu düzeltelim."},
+{q:"Bir aleti iade edebilir miyim?", a:"Sürecimiz iadeleri önlemek için tasarlanmıştır: spesifikasyon herhangi bir kaporadan önce sizinle yazılı olarak teyit edilir ve sevkiyattan önce kontrol fotoğraflarını veya videosunu onaylarsınız. Bir alet belirtilenlere uygun gelmezse 7 günlük kontrol süresi içinde bize bildirin, durumu çözeriz. Fikir değişikliğine dayalı iadeler vaka bazında değerlendirilir ve tedarikçiye zaten taahhüt edilmiş maliyetler iade edilmez."},
+{q:"Aletler nakliye için nasıl paketleniyor?", a:"Aletler güvenli yolculuk için paketlenir — nakliye sırasında darbelere ve neme karşı korunur. Steril bariyer sunumu veya belirli bir kutu gibi özel bir ambalaj gereksiniminiz varsa, spesifikasyonu teyit ederken belirtin; teklifinize dahil ederiz."}
+]
+};
+
+function renderFaq(){
+  var l = (window.SG && SG.getLang) ? SG.getLang() : 'en';
+  var ui = FAQ_UI[l] || FAQ_UI.en;
+  var list = POLICY_FAQ[l] || POLICY_FAQ.en;
+  document.getElementById('faqTitle').textContent = ui.title;
+  document.getElementById('faqMeta').setAttribute('content', ui.meta);
+  document.getElementById('faqH1').textContent = ui.h1;
+  document.getElementById('faqSub').textContent = ui.sub;
+  document.getElementById('faqBack').textContent = ui.back;
+  document.getElementById('faqContact').textContent = ui.contact;
+  var wrap = document.getElementById('faqList');
+  wrap.innerHTML = '';
+  list.forEach(function(item){
+    var d = document.createElement('details');
+    d.className = 'faq-item';
+    var s = document.createElement('summary');
+    s.textContent = item.q;
+    var p = document.createElement('p');
+    p.textContent = item.a;
+    d.appendChild(s); d.appendChild(p);
+    wrap.appendChild(d);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome('');
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+  renderFaq();
+});
+document.addEventListener('surgronic:lang', function(){ SG.applyI18n(); renderFaq(); });
+</script>
+
+<script>
+(function(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(function(e){ e.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>

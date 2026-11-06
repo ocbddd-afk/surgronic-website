@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="setTitle">Instrument set — Surgronic</title>
+<meta name="description" id="setMeta" content="A complete instrument set for your procedure, quoted as one set.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=doc007">
+<style>
+.set-page{padding:56px 0 72px;background:#fff}
+.set-page h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);margin:12px 0 14px;color:var(--ink-900);line-height:1.2}
+.set-desc{color:var(--ink-600);line-height:1.8;font-size:1.02rem;margin:0 0 28px;max-width:780px}
+.set-hero{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;margin:0 0 36px}
+.set-hero-img{flex:0 0 320px;max-width:100%;background:var(--mist-50);border-radius:12px;overflow:hidden}
+.set-hero-img img{width:100%;height:100%;object-fit:contain;display:block;aspect-ratio:1/.92}
+.set-price{flex:1;min-width:260px;background:var(--mist-50);border-radius:12px;padding:24px}
+.set-price .lbl{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-400);margin-bottom:8px}
+.set-price .val{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--navy-950)}
+.set-price .rule{font-size:.88rem;color:var(--ink-600);line-height:1.6;margin:10px 0 16px}
+.set-price .btn{margin-right:10px;margin-bottom:8px}
+.set-note{border:1px solid #e3e8f0;border-left:4px solid var(--blue-500);border-radius:8px;padding:16px 20px;color:var(--ink-600);line-height:1.7;margin:0 0 36px;background:#fff}
+.set-sec{font-family:var(--font-display);font-size:1.35rem;color:var(--ink-900);margin:36px 0 18px}
+.set-families{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;padding:0;list-style:none}
+.set-families li{background:var(--mist-50);border-radius:999px;padding:8px 16px;font-size:.9rem;color:var(--ink-600);font-weight:600}
+.set-grid{margin-top:8px}
+.set-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.set-card{border:1px solid #e3e8f0;border-radius:12px;padding:22px;background:#fff}
+.set-card h3{font-family:var(--font-display);font-size:1.15rem;color:var(--navy-950);margin:0 0 8px}
+.set-card p{color:var(--ink-600);line-height:1.7;margin:0 0 16px;font-size:.95rem}
+@media (max-width:900px){.set-list{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.set-list{grid-template-columns:1fr}.set-hero-img{flex-basis:100%}}
+</style>
+</head>
+<body>
+<script src="assets/currency.js?v=ccy002"></script>
+<script src="app.js?v=doc009"></script>
+
+<main>
+<section class="set-page">
+  <div class="wrap">
+    <p><a href="catalogue.html" class="article-back" id="setBack">← Catalog</a></p>
+    <p class="eyebrow" id="setEyebrow">Instrument sets</p>
+    <h1 id="setH1">Instrument set</h1>
+    <p class="set-desc" id="setDesc"></p>
+    <div class="set-hero" id="setHero" style="display:none">
+      <div class="set-hero-img" id="setHeroImg"></div>
+      <div class="set-price">
+        <div class="lbl" id="setPriceLbl">Set price</div>
+        <div class="val" id="setPriceVal">Price on request</div>
+        <p class="rule" id="setPriceRule"></p>
+        <a class="btn btn-primary" href="quote.html" data-i18n="article.cta.quote">Request a quote</a>
+        <a class="btn btn-wa" id="setWa" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="set-note" id="setNote" style="display:none"></div>
+    <h2 class="set-sec" id="setVariantsTitle" style="display:none">Set options</h2>
+    <div class="feat-grid set-grid" id="setGrid"></div>
+    <h2 class="set-sec" id="setCompTitle" style="display:none">What is in the set</h2>
+    <ul class="set-families" id="setFamilies"></ul>
+    <div id="setListWrap" style="display:none">
+      <h2 class="set-sec" id="setListTitle">Browse all sets</h2>
+      <div class="set-list" id="setList"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+var SETS_UI = {
+  en: {eyebrow:"Instrument sets", back:"← Catalog", priceLbl:"Set price", priceRule:"Set price is the sum of the component sales prices less 5%. If any component has no sales price, the set is quoted on request.", variantsTitle:"Set options", compTitle:"What is in the set", compPending:"The exact component list for this set is being confirmed. The set is described by instrument family below; every component is a catalogued Surgronic instrument and can be quoted individually.", proposedNote:"This set is proposed — its composition is still being defined. No instrument list has been confirmed yet. Ask us on WhatsApp or by email and we will confirm the composition with you.", listTitle:"Browse all sets", notFound:"Set not found.", pieces:"pieces", wa:"WhatsApp"},
+  fr: {eyebrow:"Sets d'instruments", back:"← Catalogue", priceLbl:"Prix du set", priceRule:"Le prix du set est la somme des prix de vente des composants moins 5 %. Si un composant n'a pas de prix de vente, le set est chiffré sur demande.", variantsTitle:"Versions du set", compTitle:"Contenu du set", compPending:"La liste exacte des composants de ce set est en cours de confirmation. Le set est décrit par famille d'instruments ci-dessous ; chaque composant est un instrument catalogué Surgronic et peut être chiffré individuellement.", proposedNote:"Ce set est proposé — sa composition est encore en cours de définition. Aucune liste d'instruments n'a encore été confirmée. Contactez-nous sur WhatsApp ou par e-mail et nous confirmerons la composition avec vous.", listTitle:"Voir tous les sets", notFound:"Set introuvable.", pieces:"pièces", wa:"WhatsApp"},
+  ar: {eyebrow:"أطقم الأدوات", back:"← الكتالوج", priceLbl:"سعر الطقم", priceRule:"سعر الطقم هو مجموع أسعار مبيعات المكونات ناقص 5٪. وإذا لم يكن لأي مكوّن سعر بيع، يُسعَّر الطقم عند الطلب.", variantsTitle:"خيارات الطقم", compTitle:"محتويات الطقم", compPending:"يجري تأكيد القائمة الدقيقة لمكونات هذا الطقم. ويُوصف الطقم حسب عائلة الأدوات أدناه؛ وكل مكوّن أداة مسجلة في كتالوج Surgronic ويمكن تسعيره منفرداً.", proposedNote:"هذا الطقم مقترح — وما زال تكوينه قيد التحديد. ولم تُؤكَّد بعد أي قائمة أدوات. تواصل معنا على واتساب أو بالبريد الإلكتروني وسنؤكد معك التكوين.", listTitle:"تصفح كل الأطقم", notFound:"الطقم غير موجود.", pieces:"قطعة", wa:"واتساب"},
+  tr: {eyebrow:"Alet setleri", back:"← Katalog", priceLbl:"Set fiyatı", priceRule:"Set fiyatı, bileşen satış fiyatlarının toplamından %5 düşülmüş hâlidir. Herhangi bir bileşenin satış fiyatı yoksa set talebe bağlı olarak fiyatlandırılır.", variantsTitle:"Set seçenekleri", compTitle:"Setin içeriği", compPending:"Bu setin kesin bileşen listesi teyit aşamasındadır. Set aşağıda alet ailesine göre açıklanmıştır; her bileşen Surgronic kataloğunda kayıtlı bir alettir ve ayrı ayrı fiyatlandırılabilir.", proposedNote:"Bu set öneri aşamasındadır — bileşimi henüz belirlenmektedir. Henüz hiçbir alet listesi teyit edilmedi. WhatsApp veya e-posta ile bize ulaşın, bileşimi sizinle teyit edelim.", listTitle:"Tüm setlere göz at", notFound:"Set bulunamadı.", pieces:"parça", wa:"WhatsApp"}
+};
+
+var SETS_COPY = {
+  rhinoplasty: {
+    title:{en:"Primary Rhinoplasty Set", fr:"Set de rhinoplastie primaire", ar:"طقم تجميل الأنف الأولي", tr:"Primer Rinoplasti Seti"},
+    desc:{en:"The core instrument set for primary rhinoplasty: 24 pieces across forceps, scissors, elevators, osteotomes, rasps and scrapers, retractors and hooks, a nasal speculum, needle holders and a knife. Every component is a catalogued Surgronic instrument and can also be quoted individually.", fr:"Le set d'instruments de base pour la rhinoplastie primaire : 24 pièces — pinces, ciseaux, élévateurs, ostéotomes, râpes et grattoirs, écarteurs et crochets, un spéculum nasal, des porte-aiguilles et un bistouri. Chaque composant est un instrument catalogué Surgronic et peut aussi être chiffré individuellement.", ar:"طقم الأدوات الأساسي لجراحة تجميل الأنف الأولية: 24 قطعة تشمل الملاقط والمقصات والرافعات ومشارط العظم والمبارد والكاشطات والمبعدات والخطافات ومنظاراً أنفياً وحاملات الإبر ومشرطاً. وكل مكوّن أداة مسجلة في كتالوج Surgronic ويمكن تسعيره منفرداً.", tr:"Primer rinoplasti için temel alet seti: forseps, makas, elevatör, osteotom, rasp ve skraper, retraktör ve kanca, nazal spekulum, portegü ve bistüri olmak üzere 24 parça. Her bileşen Surgronic kataloğunda kayıtlı bir alettir ve ayrı ayrı fiyatlandırılabilir."}
+  },
+  osteotomy: {
+    title:{en:"Osteotomy Set", fr:"Set d'ostéotomie", ar:"طقم قطع العظم", tr:"Osteotomi Seti"},
+    desc:{en:"A dedicated osteotomy set — composition to be confirmed.", fr:"Un set dédié aux ostéotomies — composition à confirmer.", ar:"طقم مخصص لجراحات قطع العظم — التكوين قيد التأكيد.", tr:"Osteotomiye özel bir set — bileşimi teyit edilecek."}
+  },
+  blepharoplasty: {
+    title:{en:"Blepharoplasty Set", fr:"Set de blépharoplastie", ar:"طقم تجميل الجفون", tr:"Blefaroplasti Seti"},
+    desc:{en:"A dedicated blepharoplasty set — composition to be confirmed.", fr:"Un set dédié aux blépharoplasties — composition à confirmer.", ar:"طقم مخصص لجراحات تجميل الجفون — التكوين قيد التأكيد.", tr:"Blefaroplastiye özel bir set — bileşimi teyit edilecek."}
+  }
+};
+
+var WA_MSG = {
+  en:"Hello Surgronic, I would like a quote for the ",
+  fr:"Bonjour Surgronic, je souhaite un devis pour le ",
+  ar:"مرحباً Surgronic، أود عرض أسعار لـ ",
+  tr:"Merhaba Surgronic, şu set için fiyat teklifi istiyorum: "
+};
+
+function curLang(){ return (window.SG && SG.getLang) ? SG.getLang() : 'en'; }
+function pick(map, l){ return (map && (map[l] || map.en)) || ''; }
+
+function renderSetList(sets, ui, l){
+  document.getElementById('setListWrap').style.display = 'block';
+  document.getElementById('setListTitle').textContent = ui.listTitle;
+  var wrap = document.getElementById('setList');
+  wrap.innerHTML = '';
+  sets.forEach(function(s){
+    var copy = SETS_COPY[s.id] || {title:{en:s.id}, desc:{en:''}};
+    var card = document.createElement('div');
+    card.className = 'set-card';
+    var h = document.createElement('h3');
+    h.textContent = pick(copy.title, l);
+    var p = document.createElement('p');
+    p.textContent = pick(copy.desc, l) + (s.status === 'proposed' ? ' (' + ui.proposedNote.split('—')[0].trim() + ')' : '');
+    var a = document.createElement('a');
+    a.className = 'btn btn-primary';
+    a.href = 'set.html?set=' + encodeURIComponent(s.id);
+    a.textContent = pick(copy.title, l);
+    card.appendChild(h); card.appendChild(p); card.appendChild(a);
+    wrap.appendChild(card);
+  });
+}
+
+function renderSetPage(){
+  var l = curLang();
+  var ui = SETS_UI[l] || SETS_UI.en;
+  var id = new URLSearchParams(location.search).get('set') || '';
+  document.getElementById('setEyebrow').textContent = ui.eyebrow;
+  document.getElementById('setBack').textContent = ui.back;
+  document.getElementById('setPriceLbl').textContent = ui.priceLbl;
+  document.getElementById('setPriceRule').textContent = ui.priceRule;
+  document.getElementById('setWa').textContent = ui.wa;
+
+  fetch('data/sets.json').then(function(r){ return r.json(); }).then(function(data){
+    var sets = data.sets || [];
+    var set = null;
+    for(var i=0;i<sets.length;i++){ if(sets[i].id === id){ set = sets[i]; break; } }
+    if(!set){
+      document.getElementById('setH1').textContent = ui.listTitle;
+      document.getElementById('setDesc').textContent = '';
+      document.getElementById('setTitle').textContent = ui.listTitle + ' — Surgronic';
+      renderSetList(sets, ui, l);
+      return;
+    }
+    var copy = SETS_COPY[set.id] || {title:{en:set.id}, desc:{en:''}};
+    var title = pick(copy.title, l);
+    document.getElementById('setH1').textContent = title;
+    document.getElementById('setDesc').textContent = pick(copy.desc, l);
+    document.getElementById('setTitle').textContent = title + ' — Surgronic';
+    document.getElementById('setMeta').setAttribute('content', pick(copy.desc, l).slice(0, 155));
+    document.getElementById('setWa').href = 'https://wa.me/905526081432?text=' + encodeURIComponent((WA_MSG[l] || WA_MSG.en) + title + '.');
+
+    if(set.status === 'proposed'){
+      var note = document.getElementById('setNote');
+      note.textContent = ui.proposedNote;
+      note.style.display = 'block';
+      document.getElementById('setPriceVal').textContent = SG.t('card.por');
+      document.getElementById('setHero').style.display = 'flex';
+      return;
+    }
+
+    /* Live set: show variants as product cards + family composition */
+    document.getElementById('setHero').style.display = 'flex';
+    var variants = set.variants || [];
+    if(variants.length){
+      document.getElementById('setVariantsTitle').textContent = ui.variantsTitle;
+      document.getElementById('setVariantsTitle').style.display = 'block';
+      var grid = document.getElementById('setGrid');
+      grid.innerHTML = '<div class="loading">Loading…</div>';
+      var jobs = variants.map(function(v){ return SG.api('getProduct', {sku:v.sku}).catch(function(){ return null; }); });
+      Promise.all(jobs).then(function(results){
+        var products = results.filter(function(r){ return r && r.product; }).map(function(r){ return r.product; });
+        grid.innerHTML = products.map(function(p){ return SG.cardHTML(p); }).join('');
+        SG.bindAddButtons(grid);
+        /* hero image from the first variant that has one */
+        for(var k=0;k<products.length;k++){
+          var img = SG.imgUrl(products[k]);
+          if(img){
+            document.getElementById('setHeroImg').innerHTML = '<img src="' + img + '" alt="' + SG.esc(title) + '" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'">';
+            break;
+          }
+        }
+      });
+    }
+
+    /* Set price: bundle rule over components when a component list exists;
+       otherwise Price on request (no component SKU list is established yet). */
+    var priceVal = document.getElementById('setPriceVal');
+    if(set.components && set.components.length){
+      var cjobs = set.components.map(function(sku){ return SG.api('getProduct', {sku:sku}).catch(function(){ return null; }); });
+      Promise.all(cjobs).then(function(results){
+        var prices = [];
+        var missing = false;
+        results.forEach(function(r){
+          var p = r && r.product ? SG.normProduct(r.product) : null;
+          if(!p || p.price == null){ missing = true; } else { prices.push(p.price); }
+        });
+        if(missing || !prices.length){
+          priceVal.textContent = SG.t('card.por');
+        } else {
+          var sum = prices.reduce(function(a,b){ return a+b; }, 0) * 0.95;
+          priceVal.textContent = (window.SurCcy && SurCcy.priceHTML) ? (SurCcy.priceHTML(Math.round(sum), 'USD') || SG.t('card.por')) : (Math.round(sum) + ' USD');
+        }
+      });
+    } else {
+      priceVal.textContent = SG.t('card.por');
+    }
+
+    /* Composition: families from the set record; exact SKUs not established */
+    if(set.compositionFamilies && set.compositionFamilies.length){
+      document.getElementById('setCompTitle').textContent = ui.compTitle;
+      document.getElementById('setCompTitle').style.display = 'block';
+      var ul = document.getElementById('setFamilies');
+      ul.innerHTML = '';
+      set.compositionFamilies.forEach(function(f){
+        var li = document.createElement('li');
+        li.textContent = f;
+        ul.appendChild(li);
+      });
+    }
+    if(!set.components){
+      var note2 = document.getElementById('setNote');
+      note2.textContent = ui.compPending;
+      note2.style.display = 'block';
+    }
+  }).catch(function(){
+    document.getElementById('setH1').textContent = ui.notFound;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome('');
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+  renderSetPage();
+});
+document.addEventListener('surgronic:lang', function(){ SG.applyI18n(); renderSetPage(); });
+</script>
+
+<script>
+(function(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(function(e){ e.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>

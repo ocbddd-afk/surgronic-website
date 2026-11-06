@@ -34,6 +34,8 @@ en: {
   "nav.close": "Close",
   "footer.tagline": "Precision surgical instruments, sourced to specification. From stock or made to order. Inspected before shipment. Serving MENA.",
   "footer.catalog": "Catalog",
+  "footer.sets": "Instrument sets",
+  "footer.faq": "FAQ",
   "footer.company": "Company",
   "footer.contact": "Contact",
   "footer.how": "How it works",
@@ -526,6 +528,8 @@ fr: {
   "nav.close": "Fermer",
   "footer.tagline": "Instruments chirurgicaux de précision, sourcés selon vos spécifications. En stock ou fabriqués sur commande. Inspectés avant expédition. Au service de la région MENA.",
   "footer.catalog": "Catalogue",
+  "footer.sets": "Coffrets d'instruments",
+  "footer.faq": "FAQ",
   "footer.company": "Entreprise",
   "footer.contact": "Contact",
   "footer.how": "Fonctionnement",
@@ -1017,6 +1021,8 @@ ar: {
   "nav.close": "إغلاق",
   "footer.tagline": "أدوات جراحية دقيقة، يتم توريدها حسب مواصفاتكم. من المخزون أو مصنوعة حسب الطلب. تُفحص قبل الشحن. نخدم منطقة الشرق الأوسط وشمال أفريقيا.",
   "footer.catalog": "الكتالوج",
+  "footer.sets": "أطقم الأدوات",
+  "footer.faq": "الأسئلة الشائعة",
   "footer.company": "الشركة",
   "footer.contact": "اتصل بنا",
   "footer.how": "كيف نعمل",
@@ -1508,6 +1514,8 @@ tr: {
   "nav.close": "Kapat",
   "footer.tagline": "Hassas cerrahi aletler, spesifikasyona göre tedarik. Stoktan veya sipariş üzerine. Sevkiyat öncesi denetimli. MENA'ya hizmet.",
   "footer.catalog": "Katalog",
+  "footer.sets": "Enstrüman setleri",
+  "footer.faq": "SSS",
   "footer.company": "Şirket",
   "footer.contact": "İletişim",
   "footer.how": "Nasıl Çalışır",
@@ -2340,12 +2348,14 @@ function footerHTML(){
         '<li><a href="catalogue.html?brand=FADEN%20MEDIKAL">FADEN MEDIKAL</a></li>'+
         '<li><a href="catalogue.html?brand=ERFECEN">ERFECEN</a></li>'+
         '<li><a href="catalogue.html?brand=ADOSN">ADOSN</a></li>'+
+        '<li><a href="set.html" data-i18n="footer.sets">'+t("footer.sets")+'</a></li>'+
         '<li><a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a></li>'+
       '</ul></div>'+
       '<div><h4 data-i18n="footer.company">'+t("footer.company")+'</h4><ul>'+
         '<li><a href="index.html#how" data-i18n="footer.how">'+t("footer.how")+'</a></li>'+
         '<li><a href="index.html#specialties" data-i18n="footer.specialties">'+t("footer.specialties")+'</a></li>'+
         '<li><a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a></li>'+
+        '<li><a href="faq.html" data-i18n="footer.faq">'+t("footer.faq")+'</a></li>'+
         '<li><a href="index.html#trust" data-i18n="footer.why">'+t("footer.why")+'</a></li>'+
       '</ul></div>'+
       '<div><h4 data-i18n="footer.contact">'+t("footer.contact")+'</h4><ul>'+
