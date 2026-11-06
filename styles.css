@@ -173,14 +173,18 @@ section{padding:88px 0}
 .mobile-nav .mobile-lang button.on{background:var(--blue-500);border-color:var(--blue-500)}
 
 /* ---------- Footer ---------- */
-.footer{background:var(--navy-950);color:var(--navy-text-dim);padding:72px 0 0;border-top:1px solid var(--line-dark)}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:52px}
+.footer{background:var(--navy-950);color:var(--navy-text-dim);padding:48px 0 0;border-top:1px solid var(--line-dark)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:32px}
 .footer-brand p{font-size:.94rem;max-width:340px;margin-top:16px}
-.footer h4{font-family:var(--font-display);color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
-.footer ul{list-style:none;display:grid;gap:10px}
+.footer h4{font-family:var(--font-display);color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.footer ul{list-style:none;display:grid;gap:8px}
 .footer ul a{color:var(--navy-text-dim);text-decoration:none;font-size:.94rem;transition:color .2s}
 .footer ul a:hover{color:var(--blue-400)}
-.footer-bottom{border-top:1px solid var(--line-dark);padding:22px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.84rem}
+.footer-bottom{border-top:1px solid var(--line-dark)}
+.footer-legal{display:flex;flex-wrap:wrap;gap:6px 24px;padding:18px 0 0}
+.footer-legal a{color:var(--navy-text-dim);text-decoration:none;font-size:.86rem}
+.footer-legal a:hover{color:var(--blue-400)}
+.footer-meta{display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap;font-size:.84rem;padding:16px 0 24px}
 
 /* ==========================================================================
    HERO — dark navy world, one instrument, one glow

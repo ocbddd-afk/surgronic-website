@@ -2406,12 +2406,6 @@ function footerHTML(){
       '</div>'+
       '<div><h4 data-i18n="footer.catalog">'+t("footer.catalog")+'</h4><ul>'+
         '<li><a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a></li>'+
-        '<li><a href="catalogue.html?brand=Aesculap">Aesculap</a></li>'+
-        '<li><a href="catalogue.html?brand=Sklar">Sklar</a></li>'+
-        '<li><a href="catalogue.html?brand=DO%C4%9ESAN">DO\u011eSAN</a></li>'+
-        '<li><a href="catalogue.html?brand=FADEN%20MEDIKAL">FADEN MEDIKAL</a></li>'+
-        '<li><a href="catalogue.html?brand=ERFECEN">ERFECEN</a></li>'+
-        '<li><a href="catalogue.html?brand=ADOSN">ADOSN</a></li>'+
         '<li><a href="set.html" data-i18n="footer.sets">'+t("footer.sets")+'</a></li>'+
         '<li><a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a></li>'+
       '</ul></div>'+
@@ -2420,12 +2414,6 @@ function footerHTML(){
         '<li><a href="index.html#specialties" data-i18n="footer.specialties">'+t("footer.specialties")+'</a></li>'+
         '<li><a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a></li>'+
         '<li><a href="faq.html" data-i18n="footer.faq">'+t("footer.faq")+'</a></li>'+
-        '<li><a href="privacy.html" data-i18n="footer.privacy">'+t("footer.privacy")+'</a></li>'+
-        '<li><a href="terms.html" data-i18n="footer.terms">'+t("footer.terms")+'</a></li>'+
-        '<li><a href="payment.html" data-i18n="footer.payment">'+t("footer.payment")+'</a></li>'+
-        '<li><a href="returns.html" data-i18n="footer.returns">'+t("footer.returns")+'</a></li>'+
-        '<li><a href="shipping.html" data-i18n="footer.shipping">'+t("footer.shipping")+'</a></li>'+
-        '<li><a href="index.html#why" data-i18n="footer.why">'+t("footer.why")+'</a></li>'+
       '</ul></div>'+
       '<div><h4 data-i18n="footer.contact">'+t("footer.contact")+'</h4><ul>'+
         '<li><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a></li>'+
@@ -2434,9 +2422,18 @@ function footerHTML(){
       '</ul></div>'+
     '</div>'+
     '<div class="footer-bottom">'+
-      '<span>\u00A9 2026 Surgronic. <span data-i18n="footer.rights">'+t("footer.rights")+'</span></span>'+
-      '<span>Surgronic &middot; Sisli, Istanbul, Turkey</span>'+
-      '<span data-i18n="foot.note">'+t("foot.note")+'</span>'+
+      '<nav class="footer-legal" aria-label="Legal">'+
+        '<a href="privacy.html" data-i18n="footer.privacy">'+t("footer.privacy")+'</a>'+
+        '<a href="terms.html" data-i18n="footer.terms">'+t("footer.terms")+'</a>'+
+        '<a href="payment.html" data-i18n="footer.payment">'+t("footer.payment")+'</a>'+
+        '<a href="returns.html" data-i18n="footer.returns">'+t("footer.returns")+'</a>'+
+        '<a href="shipping.html" data-i18n="footer.shipping">'+t("footer.shipping")+'</a>'+
+      '</nav>'+
+      '<div class="footer-meta">'+
+        '<span>\u00A9 2026 Surgronic. <span data-i18n="footer.rights">'+t("footer.rights")+'</span></span>'+
+        '<span>Surgronic &middot; Sisli, Istanbul, Turkey</span>'+
+        '<span data-i18n="foot.note">'+t("foot.note")+'</span>'+
+      '</div>'+
     '</div>'+
   '</div></footer>';
 }
