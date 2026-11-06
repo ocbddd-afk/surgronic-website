@@ -2090,7 +2090,7 @@ function cardHTML(p){
   var nm = productName(p);
   var img = imgUrl(p);
   var imgTag = img
-    ? '<div class="pimg"><img src="'+img+'" alt="'+esc(nm)+'" loading="lazy"></div>'
+    ? '<div class="pimg"><img src="'+img+'" alt="'+esc(nm)+'" loading="lazy" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'"></div>'
     : '<div class="pimg" style="display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px">'+t("card.imgSoon")+'</div>';
   var waUrl = waProductUrl(p, nm, 1);
   return ''+

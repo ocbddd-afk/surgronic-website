@@ -47,7 +47,7 @@
       document.title = nm + " (" + p.sku + ") — Surgronic";
       var img = SG.imgUrl(p);
       var gallery = img
-        ? '<div class="pd-gallery"><img src="'+img+'" alt="'+SG.esc(nm)+'"></div>'
+        ? '<div class="pd-gallery"><img src="'+img+'" alt="'+SG.esc(nm)+'" onerror="this.onerror=null;this.src=\'assets/img-placeholder.svg\'"></div>'
         : '<div class="pd-gallery"><span style="color:var(--muted)">'+SG.t("card.imgSoon")+'</span></div>';
       var finishes = (p.finishOptions&&p.finishOptions.length)
         ? p.finishOptions.map(SG.esc).join(", ") : "—";
