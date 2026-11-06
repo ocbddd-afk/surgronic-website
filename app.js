@@ -1932,6 +1932,18 @@ function headerHTML(active){
   /* full top chrome: solidarity banner + sticky header (initial page mount) */
   return solidarityBannerHTML()+siteHeaderHTML(active);
 }
+function ccySwitchHTML(extraClass){
+  var opts = ["USD","EUR","GBP","AED","SAR","QAR","KWD","BHD","OMR","MAD","EGP","TND","DZD","TRY","INR"];
+  var h = '<select class="ccy-switch'+(extraClass?' '+extraClass:'')+'" aria-label="Currency">';
+  for(var i=0;i<opts.length;i++){ h += '<option value="'+opts[i]+'">'+opts[i]+'</option>'; }
+  return h + '</select>';
+}
+function syncCcySwitches(){
+  if(!window.SurCcy) return;
+  var cur = SurCcy.get();
+  var sels = document.querySelectorAll(".ccy-switch");
+  for(var i=0;i<sels.length;i++){ sels[i].value = cur; }
+}
 function siteHeaderHTML(active){
   return ''+
   '<header class="site-header"><div class="container header-inner">'+
@@ -1951,6 +1963,7 @@ function siteHeaderHTML(active){
         '<button data-lang="ar"'+(lang==="ar"?' class="on"':'')+'>AR</button>'+
         '<button data-lang="tr"'+(lang==="tr"?' class="on"':'')+'>TR</button>'+
       '</div>'+
+      ccySwitchHTML()+
       '<a class="quote-indicator" href="quote.html" aria-label="'+t("nav.quoteList")+'">'+
         '<span data-i18n="nav.quoteList">'+t("nav.quoteList")+'</span> <span class="count" data-basket-count>0</span>'+
       '</a>'+
@@ -1974,6 +1987,7 @@ function siteHeaderHTML(active){
       '<button data-lang="ar"'+(lang==="ar"?' class="on"':'')+'>AR</button>'+
       '<button data-lang="tr"'+(lang==="tr"?' class="on"':'')+'>TR</button>'+
     '</div>'+
+    ccySwitchHTML("mobile-ccy")+
   '</div>';
 }
 function footerHTML(){
@@ -2136,8 +2150,17 @@ function bindAddButtons(root){
 if(document.readyState === "loading"){
   document.addEventListener("DOMContentLoaded", function(){
     applyI18n();
+    // Currency switcher: explicit pick wins over IP, re-renders all prices
+    document.addEventListener("change", function(e){
+      var el = e.target;
+      if(el && el.classList && el.classList.contains("ccy-switch")){
+        if(window.SurCcy){ SurCcy.set(el.value); }
+        syncCcySwitches();
+        if(typeof refreshPrices==='function') refreshPrices();
+      }
+    });
     // Init local currency, then re-render prices once rates+country are ready
-    if(window.SurCcy){ SurCcy.init(function(){ if(typeof refreshPrices==='function') refreshPrices(); }); }
+    if(window.SurCcy){ SurCcy.init(function(){ syncCcySwitches(); if(typeof refreshPrices==='function') refreshPrices(); }); }
   });
 } else {
   applyI18n();

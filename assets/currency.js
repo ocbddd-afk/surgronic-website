@@ -15,22 +15,37 @@
   var state = { ccy:'USD', rates:null, ready:false };
 
   function detectCountry(cb){
-    // 1. explicit ?ccy= override (shareable links)
+    // 1. explicit ?ccy= override (shareable links) — counts as a manual pick
     var m = /[?&]ccy=([A-Z]{3})/.exec(location.search);
-    if(m){ state.ccy = m[1]; cb(); return; }
-    // 2. saved preference
-    try{ var s = localStorage.getItem('sur_ccy'); if(s){ state.ccy = s; cb(); return; } }catch(e){}
-    // 3. IP geolocation via cloudflare trace
+    if(m){ setManual(m[1]); cb(); return; }
+    // 2. the visitor's own explicit pick (currency switcher) wins over IP
+    try{
+      var manual = localStorage.getItem('sur_ccy_manual');
+      if(manual){ state.ccy = manual; cb(); return; }
+      // drop the old auto-saved key: it froze the first-detected currency forever
+      localStorage.removeItem('sur_ccy');
+    }catch(e){}
+    // 3. IP geolocation via cloudflare trace — re-checked on EVERY visit,
+    // so a traveller / VPN user always sees their current country's currency
     fetch('https://www.cloudflare.com/cdn-cgi/trace', {cache:'no-store'})
       .then(function(r){ return r.text(); })
       .then(function(t){
         var loc = /loc=([A-Z]{2})/.exec(t);
         var ccy = (loc && COUNTRY_CCY[loc[1]]) || 'USD';
         state.ccy = ccy;
-        try{ localStorage.setItem('sur_ccy', ccy); }catch(e){}
+        try{ localStorage.setItem('sur_ccy_auto', ccy); }catch(e){}
         cb();
       })
-      .catch(function(){ cb(); });
+      .catch(function(){
+        // trace unreachable: last auto-detected currency, else USD
+        try{ var auto = localStorage.getItem('sur_ccy_auto'); if(auto) state.ccy = auto; }catch(e){}
+        cb();
+      });
+  }
+
+  function setManual(ccy){
+    state.ccy = ccy;
+    try{ localStorage.setItem('sur_ccy_manual', ccy); }catch(e){}
   }
 
   function loadRates(cb){
@@ -74,6 +89,7 @@
       return f ? '<span class="loc-price">' + f + '</span>' : null;
     },
     get: function(){ return state.ccy; },
-    set: function(ccy){ state.ccy = ccy; try{ localStorage.setItem('sur_ccy', ccy); }catch(e){} }
+    set: function(ccy){ setManual(ccy); },
+    resetToIP: function(cb){ try{ localStorage.removeItem('sur_ccy_manual'); }catch(e){} detectCountry(cb || function(){}); }
   };
 })();
