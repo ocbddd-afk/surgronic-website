@@ -14,8 +14,8 @@
 <main>
 <section class="doc-hero">
   <div class="wrap">
-    <span class="eyebrow rv">Doctors</span>
-    <h1 class="rv">Doctor login.</h1>
+    <span class="eyebrow rv" data-i18n="doc.eyebrow">Doctors</span>
+    <h1 class="rv" data-i18n="doc.loginTitle">Doctor login.</h1>
   </div>
 </section>
 
@@ -23,17 +23,17 @@
   <div class="wrap mani-narrow">
     <form id="docLoginForm" class="doc-form">
       <div class="form-group">
-        <label for="email">Email address</label>
+        <label for="email" data-i18n="doc.email">Email address</label>
         <input type="email" id="email" required>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password" data-i18n="doc.passwordLogin">Password</label>
         <input type="password" id="password" required>
       </div>
-      <button type="submit" class="btn btn-primary" id="loginBtn">Log in</button>
+      <button type="submit" class="btn btn-primary" id="loginBtn" data-i18n="doc.loginBtn">Log in</button>
       <p class="form-note" id="loginNote"></p>
     </form>
-    <p class="doc-login-link">No account yet? <a href="doctor-register.html">Apply as a doctor</a></p>
+    <p class="doc-login-link"><span data-i18n="doc.noAccount">No account yet? </span><a href="doctor-register.html" data-i18n="doc.applyLink">Apply as a doctor</a></p>
   </div>
 </section>
 </main>
@@ -83,12 +83,12 @@ function handleLogin(e){
   var pend = pending.find(function(d){ return d.email === email; });
   if (pend) {
     note.style.color = '#b45309';
-    note.textContent = 'Your application is under review. We\'ll email you once verified.';
+    note.textContent = SG.t("doc.pendingMsg");
     return;
   }
 
   note.style.color = 'red';
-  note.textContent = 'Invalid email or password.';
+  note.textContent = SG.t("doc.invalidMsg");
 }
 </script>
 </body>

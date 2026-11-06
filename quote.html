@@ -161,10 +161,10 @@
   }
   function waLink(q){
     var lines = q.items.map(function(i){return "- "+i.sku+" / "+i.name+" x"+i.qty;});
-    var msg = "Surgronic quotation request\n\n"+lines.join("\n")+"\n\n"+
-      (q.reference? "Reference: "+q.reference+"\n":"")+
-      (q.notes? "Notes: "+q.notes+"\n":"")+
-      (q.photo && q.photo.name ? "Photo to send in chat: "+q.photo.name+"\n(please attach the photo in this chat)\n":"")+
+    var msg = SG.t("q.waHeader")+"\n\n"+lines.join("\n")+"\n\n"+
+      (q.reference? SG.t("q.waRef")+q.reference+"\n":"")+
+      (q.notes? SG.t("q.waNotes")+q.notes+"\n":"")+
+      (q.photo && q.photo.name ? SG.t("q.waPhoto")+q.photo.name+"\n"+SG.t("q.waPhotoNote")+"\n":"")+
       "\n"+q.contact.name+" ("+q.contact.company+", "+q.contact.country+") "+q.contact.email;
     return "https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
   }

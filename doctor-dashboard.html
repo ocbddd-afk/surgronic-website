@@ -14,8 +14,8 @@
 <main>
 <section class="doc-dash-hero">
   <div class="wrap">
-    <h1 id="dashTitle">Your practice dashboard.</h1>
-    <p><button class="btn btn-secondary btn-sm" id="logoutBtn">Log out</button></p>
+    <h1 id="dashTitle" data-i18n="doc.dashTitle">Your practice dashboard.</h1>
+    <p><button class="btn btn-secondary btn-sm" id="logoutBtn" data-i18n="doc.logout">Log out</button></p>
   </div>
 </section>
 
@@ -24,23 +24,23 @@
     <div class="dash-grid">
       <!-- Order history -->
       <div class="dash-card">
-        <h2>📦 Your orders</h2>
-        <div id="orderHistory"><p class="muted">No orders yet.</p></div>
+        <h2>📦 <span data-i18n="doc.orders">Your orders</span></h2>
+        <div id="orderHistory"><p class="muted" data-i18n="doc.noOrders">No orders yet.</p></div>
       </div>
       <!-- Frequent items -->
       <div class="dash-card">
-        <h2>🔁 Order again</h2>
-        <div id="frequentItems"><p class="muted">Items you order often will appear here.</p></div>
+        <h2>🔁 <span data-i18n="doc.orderAgain">Order again</span></h2>
+        <div id="frequentItems"><p class="muted" data-i18n="doc.frequentHint">Items you order often will appear here.</p></div>
       </div>
       <!-- Inventory -->
       <div class="dash-card dash-wide">
-        <h2>📋 Practice inventory</h2>
-        <p class="muted">Track stock levels for your clinic. Add items you keep on hand.</p>
+        <h2>📋 <span data-i18n="doc.inventory">Practice inventory</span></h2>
+        <p class="muted" data-i18n="doc.invHint">Track stock levels for your clinic. Add items you keep on hand.</p>
         <div class="inv-add">
-          <input type="text" id="invName" placeholder="Instrument name or SKU">
-          <input type="number" id="invQty" placeholder="Qty" min="0" style="width:80px">
-          <input type="number" id="invMin" placeholder="Min" min="0" style="width:80px" title="Reorder when below this">
-          <button class="btn btn-primary btn-sm" id="invAddBtn">Add</button>
+          <input type="text" id="invName" placeholder="Instrument name or SKU" data-i18n-ph="doc.invNamePh">
+          <input type="number" id="invQty" placeholder="Qty" data-i18n-ph="doc.invQtyPh" min="0" style="width:80px">
+          <input type="number" id="invMin" placeholder="Min" data-i18n-ph="doc.invMinPh" min="0" style="width:80px" title="Reorder when below this">
+          <button class="btn btn-primary btn-sm" id="invAddBtn" data-i18n="doc.invAdd">Add</button>
         </div>
         <div id="invList"></div>
       </div>
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   var session = JSON.parse(localStorage.getItem('sur_doc_session') || 'null');
   if (!session) { window.location.href = 'doctor-login.html'; return; }
-  document.getElementById('dashTitle').textContent = 'Welcome, Dr. ' + session.name.split(' ').pop() + '.';
+  document.getElementById('dashTitle').textContent = SG.t("doc.welcome").replace("{name}", session.name.split(' ').pop());
 
   document.getElementById('logoutBtn').addEventListener('click', function(){
     localStorage.removeItem('sur_doc_session');
@@ -86,7 +86,7 @@ function renderOrders(email){
   var html = '<ul class="order-list">';
   // Most recent first
   orders.slice().reverse().forEach(function(o){
-    html += '<li><strong>' + (o.date || '') + '</strong> — ' + o.items + ' items' +
+    html += '<li><strong>' + (o.date || '') + '</strong> — ' + o.items + SG.t("doc.itemsSuffix") +
       (o.status ? ' <span class="order-status">' + o.status + '</span>' : '') + '</li>';
   });
   el.innerHTML = html + '</ul>';
@@ -101,7 +101,7 @@ function renderOrders(email){
     var fh = '<ul class="order-list">';
     sorted.forEach(function(sku){
       fh += '<li>' + sku + ' <span class="muted">×' + counts[sku] + '</span> ' +
-        '<a href="catalogue.html?q=' + encodeURIComponent(sku) + '">Reorder →</a></li>';
+        '<a href="catalogue.html?q=' + encodeURIComponent(sku) + '">' + SG.t("doc.reorder") + '</a></li>';
     });
     document.getElementById('frequentItems').innerHTML = fh + '</ul>';
   }
@@ -110,13 +110,13 @@ function renderOrders(email){
 function renderInventory(email){
   var inv = JSON.parse(localStorage.getItem('sur_doc_inv_' + email) || '[]');
   var el = document.getElementById('invList');
-  if (!inv.length) { el.innerHTML = '<p class="muted">No items tracked yet.</p>'; return; }
+  if (!inv.length) { el.innerHTML = '<p class="muted">' + SG.t("doc.noInv") + '</p>'; return; }
   var html = '<ul class="inv-list">';
   inv.forEach(function(item, i){
     var low = item.qty <= item.min;
     html += '<li class="' + (low ? 'inv-low' : '') + '">' +
       '<span>' + item.name + '</span>' +
-      '<span>Qty: <strong>' + item.qty + '</strong>' + (low ? ' ⚠️ low' : '') + '</span>' +
+      '<span>' + SG.t("doc.qtyLabel") + '<strong>' + item.qty + '</strong>' + (low ? SG.t("doc.lowLabel") : '') + '</span>' +
       '<button data-i="' + i + '" class="inv-del">×</button></li>';
   });
   el.innerHTML = html + '</ul>';

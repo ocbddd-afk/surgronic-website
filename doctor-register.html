@@ -15,9 +15,9 @@
 <main>
 <section class="doc-hero">
   <div class="wrap">
-    <span class="eyebrow rv">Doctors</span>
-    <h1 class="rv">Open your doctor account.</h1>
-    <p class="rv">Verified doctors get faster quotations, order history, and inventory tools for their practice.</p>
+    <span class="eyebrow rv" data-i18n="doc.eyebrow">Doctors</span>
+    <h1 class="rv" data-i18n="doc.regTitle">Open your doctor account.</h1>
+    <p class="rv" data-i18n="doc.regLede">Verified doctors get faster quotations, order history, and inventory tools for their practice.</p>
   </div>
 </section>
 
@@ -26,52 +26,52 @@
     <form id="docRegForm" class="doc-form">
       <div class="form-row">
         <div class="form-group">
-          <label for="firstName">First name *</label>
+          <label for="firstName" data-i18n="doc.firstName">First name *</label>
           <input type="text" id="firstName" required>
         </div>
         <div class="form-group">
-          <label for="lastName">Family name *</label>
+          <label for="lastName" data-i18n="doc.lastName">Family name *</label>
           <input type="text" id="lastName" required>
         </div>
       </div>
       <div class="form-group">
-        <label for="email">Email address *</label>
+        <label for="email" data-i18n="doc.emailReq">Email address *</label>
         <input type="email" id="email" required>
       </div>
       <div class="form-group">
-        <label for="phone">Phone number <span class="opt">(optional)</span></label>
+        <label for="phone"><span data-i18n="doc.phone">Phone number</span> <span class="opt" data-i18n="doc.optional">(optional)</span></label>
         <input type="tel" id="phone">
       </div>
       <div class="form-group">
-        <label for="specialty">Medical specialty *</label>
+        <label for="specialty" data-i18n="doc.specialty">Medical specialty *</label>
         <select id="specialty" required>
-          <option value="">Select specialty…</option>
-          <option>General Surgery</option>
-          <option>Orthopedics & Trauma</option>
-          <option>Oral & Maxillofacial</option>
-          <option>Plastic / Reconstructive / Aesthetic</option>
-          <option>Cardiovascular & Thoracic</option>
-          <option>Neurosurgery & Spine</option>
-          <option>Ophthalmology</option>
-          <option>ENT</option>
-          <option>OB/GYN & Urology</option>
-          <option>Dental & Implant</option>
-          <option>Other</option>
+          <option value="" data-i18n="doc.selectSpec">Select specialty…</option>
+          <option data-i18n="doc.spec0">General Surgery</option>
+          <option data-i18n="doc.spec1">Orthopedics &amp; Trauma</option>
+          <option data-i18n="doc.spec2">Oral &amp; Maxillofacial</option>
+          <option data-i18n="doc.spec3">Plastic / Reconstructive / Aesthetic</option>
+          <option data-i18n="doc.spec4">Cardiovascular &amp; Thoracic</option>
+          <option data-i18n="doc.spec5">Neurosurgery &amp; Spine</option>
+          <option data-i18n="doc.spec6">Ophthalmology</option>
+          <option data-i18n="doc.spec7">ENT</option>
+          <option data-i18n="doc.spec8">OB/GYN &amp; Urology</option>
+          <option data-i18n="doc.spec9">Dental &amp; Implant</option>
+          <option data-i18n="doc.spec10">Other</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="license">Medical license / certificate (PDF or photo) *</label>
+        <label for="license" data-i18n="doc.license">Medical license / certificate (PDF or photo) *</label>
         <input type="file" id="license" accept=".pdf,image/*" required>
-        <p class="form-hint">Upload your doctor license or certification. Our team verifies every application manually.</p>
+        <p class="form-hint" data-i18n="doc.licenseHint">Upload your doctor license or certification. Our team verifies every application manually.</p>
       </div>
       <div class="form-group">
-        <label for="password">Create password *</label>
+        <label for="password" data-i18n="doc.password">Create password *</label>
         <input type="password" id="password" required minlength="8">
       </div>
-      <button type="submit" class="btn btn-primary" id="submitBtn">Submit application</button>
+      <button type="submit" class="btn btn-primary" id="submitBtn" data-i18n="doc.submit">Submit application</button>
       <p class="form-note" id="formNote"></p>
     </form>
-    <p class="doc-login-link">Already have an account? <a href="doctor-login.html">Log in as doctor</a></p>
+    <p class="doc-login-link"><span data-i18n="doc.haveAccount">Already have an account? </span><a href="doctor-login.html" data-i18n="doc.loginLink">Log in as doctor</a></p>
   </div>
 </section>
 </main>
@@ -99,7 +99,7 @@ async function handleRegister(e){
   var btn = document.getElementById('submitBtn');
   var note = document.getElementById('formNote');
   btn.disabled = true;
-  btn.textContent = 'Submitting…';
+  btn.textContent = SG.t("doc.submitting");
 
   var data = {
     firstName: document.getElementById('firstName').value.trim(),
@@ -116,11 +116,11 @@ async function handleRegister(e){
     var formData = new FormData();
     formData.append('name', data.firstName + ' ' + data.lastName);
     formData.append('email', data.email);
-    formData.append('phone', data.phone || 'Not provided');
+    formData.append('phone', data.phone || SG.t("doc.notProvided"));
     formData.append('specialty', data.specialty);
     formData.append('message', 'New doctor account application. Please verify the attached license.');
     if (licenseFile) formData.append('license', licenseFile, licenseFile.name);
-    formData.append('_subject', 'Doctor Application: ' + data.firstName + ' ' + data.lastName);
+    formData.append('_subject', SG.t("doc.appSubject") + data.firstName + ' ' + data.lastName);
     formData.append('_template', 'table');
 
     await fetch('https://formsubmit.co/ajax/yusuf@surgronic.com', {
@@ -145,14 +145,14 @@ async function handleRegister(e){
     localStorage.setItem('sur_doc_pending', JSON.stringify(pending));
 
     note.style.color = 'green';
-    note.textContent = 'Application received! Our team will verify your license and email you when your account is live.';
+    note.textContent = SG.t("doc.received");
     document.getElementById('docRegForm').reset();
   } catch(err) {
     note.style.color = 'red';
-    note.textContent = 'Something went wrong. Please try again or contact us on WhatsApp.';
+    note.textContent = SG.t("doc.error");
   }
   btn.disabled = false;
-  btn.textContent = 'Submit application';
+  btn.textContent = SG.t("doc.submit");
 }
 </script>
 </body>
