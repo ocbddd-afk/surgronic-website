@@ -1,43 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shipping & Documentation — Surgronic</title>
-<link rel="stylesheet" href="./styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pgTitle">Shipping &amp; Documentation — Surgronic</title>
+<meta name="description" id="pgMeta" content="">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=doc007">
 </head>
 <body>
-<header class="site-header">
-<a class="logo" href="./">SURGRONIC<span>.</span></a>
-<button class="hamburger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')">☰</button>
-<nav><a href="./">Home</a><a href="./catalogue.html">Catalogue</a><a href="./brands.html">Brands</a><a href="./quote.html">Get a Quote</a><a href="./about.html">About</a><a href="./contact.html">Contact</a></nav>
-<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
-</header>
-<div class="drawer-overlay" id="overlay" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
-<div class="drawer" id="drawer">
-<button class="close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')">✕</button>
-<nav><a href="./">Home</a><a href="./catalogue.html">Catalogue</a><a href="./brands.html">Brands</a><a href="./quote.html">Get a Quote</a><a href="./about.html">About</a><a href="./contact.html">Contact</a></nav>
-<div class="contact">yusuf@surgronic.com<br>+90 552 608 1432</div>
-</div>
-<div class="container">
-<div class="breadcrumb"><a href="./">Home</a> / Shipping & Documentation</div>
-<div class="section" style="max-width: 800px; margin: 0 auto;">
-<h2>Shipping & Documentation</h2>
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Delivery</h3>
-<p>We ship worldwide via trusted couriers. Shipping costs and timelines are confirmed in your quotation. Typical lead time: 4–7 days for stocked items; sourced items per quotation.</p>
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Documentation</h3>
-<p>Every shipment includes: commercial invoice, packing list, and certificate of conformity where applicable. Additional certifications available on request.</p>
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Pre-Shipment Inspection</h3>
-<p>Nothing ships until you've seen it and approved it — photos or video provided before dispatch.</p>
-</div>
-</div>
-<footer class="site-footer">
-<div class="inner">
-<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
-<div><h3>Policies</h3><p><a href="./payment.html">Payment & Deposit</a><br><a href="./returns.html">Returns & Claims</a><br><a href="./shipping.html">Shipping & Documentation</a><br><a href="./privacy.html">Privacy</a><br><a href="./terms.html">Terms of Sale</a></p></div>
-<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
-</div>
-<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
-</footer>
+<script src="assets/currency.js?v=ccy002"></script>
+<script src="app.js?v=doc011"></script>
+
+<main>
+<article class="article-page">
+  <div class="wrap mani-narrow">
+    <p><a href="index.html" class="article-back" id="pgBack">← Back to home</a></p>
+    <h1 id="pgH1"></h1>
+    <p class="article-body" id="pgIntro" style="font-size:1.08rem"></p>
+    <div class="article-body" id="pgBody"></div>
+    <div class="article-body" id="pgFoot" style="margin-top:40px;padding-top:20px;border-top:1px solid var(--mist-50)"></div>
+  </div>
+</article>
+</main>
+
+<script>
+var POLICY = {
+en: {
+  title: "Shipping & Documentation",
+  intro: "This page explains how your order reaches you: sourcing, inspection, packing and delivery, and the documents that travel with it.",
+  back: "← Back to home",
+  updated: "Last updated: November 2026",
+  contact: "Questions: ",
+  sections: [
+    {h: "Sourcing first", p: ["Items in stock ship from stock. Everything else is sourced to specification — sourcing typically takes 1–3 days."]},
+    {h: "Inspection before shipment", p: ["We send inspection photographs or video before shipment. Nothing ships until you have seen it and approved it."]},
+    {h: "Shipping time", p: ["Shipping typically takes 2–5 days. This is a typical time, not a guarantee — the exact time depends on the destination."]},
+    {h: "Where we deliver", p: ["We deliver to surgeons, clinics and hospitals in the Middle East, North Africa and beyond. The delivery terms for your order are stated in your quotation."]},
+    {h: "Documentation", p: ["Your shipment travels with the documentation required for customs clearance. If you need a particular document, tell us when you request your quotation."]},
+    {h: "Customs and import", p: ["Customs duties and import requirements depend on the destination country. Your quotation states the delivery terms for your order."]},
+    {h: "Tracking", p: ["We share tracking details when your order ships. Questions: yusuf@surgronic.com · +90 552 608 1432."]}
+  ]
+},
+fr: {
+  title: "Expédition et documents",
+  intro: "Cette page explique comment votre commande vous parvient : sourcing, inspection, emballage et livraison, ainsi que les documents qui l'accompagnent.",
+  back: "← Retour à l'accueil",
+  updated: "Dernière mise à jour : novembre 2026",
+  contact: "Questions : ",
+  sections: [
+    {h: "D'abord le sourcing", p: ["Les articles en stock sont expédiés depuis le stock. Tout le reste est sourcé sur spécification — le sourcing prend généralement 1 à 3 jours."]},
+    {h: "Inspection avant expédition", p: ["Nous envoyons des photographies ou une vidéo d'inspection avant l'expédition. Rien n'est expédié avant que vous l'ayez vu et approuvé."]},
+    {h: "Délai de livraison", p: ["La livraison prend généralement 2 à 5 jours. C'est un délai habituel, non une garantie — le délai exact dépend de la destination."]},
+    {h: "Où nous livrons", p: ["Nous livrons aux chirurgiens, cliniques et hôpitaux du Moyen-Orient, d'Afrique du Nord et au-delà. Les conditions de livraison de votre commande sont indiquées dans votre devis."]},
+    {h: "Documents", p: ["Votre envoi voyage avec les documents requis pour le dédouanement. Si vous avez besoin d'un document particulier, dites-le-nous lorsque vous demandez votre devis."]},
+    {h: "Douane et importation", p: ["Les droits de douane et les exigences d'importation dépendent du pays de destination. Votre devis indique les conditions de livraison de votre commande."]},
+    {h: "Suivi", p: ["Nous partageons les informations de suivi lorsque votre commande est expédiée. Questions : yusuf@surgronic.com · +90 552 608 1432."]}
+  ]
+},
+ar: {
+  title: "الشحن والمستندات",
+  intro: "توضح هذه الصفحة كيف يصلك طلبك: التوفير والفحص والتغليف والتسليم، والمستندات المرافقة له.",
+  back: "← العودة إلى الرئيسية",
+  updated: "آخر تحديث: نوفمبر 2026",
+  contact: "للأسئلة: ",
+  sections: [
+    {h: "التوفير أولًا", p: ["تُشحن المنتجات المخزنة من المخزون. أما غير ذلك فيُوفَّر حسب المواصفات — ويستغرق التوفير عادة من يوم إلى 3 أيام."]},
+    {h: "الفحص قبل الشحن", p: ["نرسل صور أو فيديو الفحص قبل الشحن. ولا يُشحن أي شيء حتى تراه وتوافق عليه."]},
+    {h: "مدة الشحن", p: ["يستغرق الشحن عادة من يومين إلى 5 أيام. وهذه مدة معتادة وليست ضمانًا — فالمدة الدقيقة تعتمد على الوجهة."]},
+    {h: "أين نوصل", p: ["نوصل إلى الجراحين والعيادات والمستشفيات في الشرق الأوسط وشمال أفريقيا وغيرها. وتُذكر شروط التسليم الخاصة بطلبك في عرض السعر."]},
+    {h: "المستندات", p: ["تسافر شحنتك مع المستندات المطلوبة للتخليص الجمركي. وإذا احتجت مستندًا معينًا، أخبرنا عند طلب عرض السعر."]},
+    {h: "الجمارك والاستيراد", p: ["تعتمد الرسوم الجمركية ومتطلبات الاستيراد على بلد الوجهة. ويذكر عرض السعر شروط التسليم الخاصة بطلبك."]},
+    {h: "التتبع", p: ["نشارك تفاصيل التتبع عند شحن طلبك. للأسئلة: yusuf@surgronic.com · ‎+90 552 608 1432."]}
+  ]
+},
+tr: {
+  title: "Nakliye ve Belgeler",
+  intro: "Bu sayfa, siparişinizin size nasıl ulaştığını açıklar: tedarik, kontrol, paketleme ve teslimat ile birlikte gelen belgeler.",
+  back: "← Ana sayfaya dön",
+  updated: "Son güncelleme: Kasım 2026",
+  contact: "Sorular: ",
+  sections: [
+    {h: "Önce tedarik", p: ["Stoktaki ürünler stoktan gönderilir. Diğer her şey spesifikasyona göre tedarik edilir — tedarik genellikle 1–3 gün sürer."]},
+    {h: "Sevkiyat öncesi kontrol", p: ["Sevkiyattan önce kontrol fotoğrafları veya videosu göndeririz. Siz görüp onaylamadan hiçbir şey gönderilmez."]},
+    {h: "Nakliye süresi", p: ["Nakliye genellikle 2–5 gün sürer. Bu tipik bir süredir, garanti değildir — kesin süre varış noktasına bağlıdır."]},
+    {h: "Teslimat bölgelerimiz", p: ["Orta Doğu, Kuzey Afrika ve ötesindeki cerrahlara, kliniklere ve hastanelere teslimat yapıyoruz. Siparişinizin teslimat koşulları teklifinizde belirtilir."]},
+    {h: "Belgeler", p: ["Sevkiyatınız, gümrük işlemleri için gereken belgelerle birlikte gönderilir. Belirli bir belgeye ihtiyacınız varsa, fiyat teklifi isterken bize söyleyin."]},
+    {h: "Gümrük ve ithalat", p: ["Gümrük vergileri ve ithalat gereklilikleri varış ülkesine bağlıdır. Teklifinizde siparişinizin teslimat koşulları belirtilir."]},
+    {h: "Takip", p: ["Siparişiniz gönderildiğinde takip bilgilerini paylaşırız. Sorular: yusuf@surgronic.com · +90 552 608 1432."]}
+  ]
+}
+};
+
+var EMAIL = "yusuf@surgronic.com";
+var PHONE = "+90 552 608 1432";
+var WA = "https://wa.me/905526081432";
+
+function renderPolicy(){
+  var l = (window.SG && SG.getLang) ? SG.getLang() : "en";
+  var c = POLICY[l] || POLICY.en;
+  document.getElementById("pgTitle").textContent = c.title + " — Surgronic";
+  document.getElementById("pgMeta").setAttribute("content", c.intro);
+  document.getElementById("pgBack").textContent = c.back;
+  document.getElementById("pgH1").textContent = c.title;
+  document.getElementById("pgIntro").textContent = c.intro;
+  var html = "";
+  c.sections.forEach(function(s){
+    html += "<h2>" + s.h.replace(/&/g,"&amp;").replace(/</g,"&lt;") + "</h2>";
+    s.p.forEach(function(par){
+      html += "<p>" + par.replace(/&/g,"&amp;").replace(/</g,"&lt;") + "</p>";
+    });
+  });
+  document.getElementById("pgBody").innerHTML = html;
+  document.getElementById("pgFoot").innerHTML =
+    "<p>" + c.updated + "</p>" +
+    "<p>" + c.contact +
+    '<a href="mailto:' + EMAIL + '">' + EMAIL + "</a> · " +
+    '<a href="tel:+905526081432">' + PHONE + "</a> · " +
+    '<a href="' + WA + '" target="_blank" rel="noopener">WhatsApp</a></p>';
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome("catalog");
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+  renderPolicy();
+});
+document.addEventListener("surgronic:lang", function(){ SG.applyI18n(); renderPolicy(); });
+</script>
+
+<script>
+(function(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(function(e){ e.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
 </body>
 </html>

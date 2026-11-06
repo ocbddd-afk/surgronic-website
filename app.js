@@ -36,6 +36,11 @@ en: {
   "footer.catalog": "Catalog",
   "footer.sets": "Instrument sets",
   "footer.faq": "FAQ",
+  "footer.privacy": "Privacy Policy",
+  "footer.terms": "Terms of Sale",
+  "footer.payment": "Payment & Deposit",
+  "footer.returns": "Returns & Claims",
+  "footer.shipping": "Shipping & Documentation",
   "footer.company": "Company",
   "footer.contact": "Contact",
   "footer.how": "How it works",
@@ -530,6 +535,11 @@ fr: {
   "footer.catalog": "Catalogue",
   "footer.sets": "Coffrets d'instruments",
   "footer.faq": "FAQ",
+  "footer.privacy": "Politique de confidentialité",
+  "footer.terms": "Conditions de vente",
+  "footer.payment": "Paiement et acompte",
+  "footer.returns": "Retours et réclamations",
+  "footer.shipping": "Expédition et documentation",
   "footer.company": "Entreprise",
   "footer.contact": "Contact",
   "footer.how": "Fonctionnement",
@@ -1023,6 +1033,11 @@ ar: {
   "footer.catalog": "الكتالوج",
   "footer.sets": "أطقم الأدوات",
   "footer.faq": "الأسئلة الشائعة",
+  "footer.privacy": "سياسة الخصوصية",
+  "footer.terms": "شروط البيع",
+  "footer.payment": "الدفع والعربون",
+  "footer.returns": "الإرجاع والمطالبات",
+  "footer.shipping": "الشحن والتوثيق",
   "footer.company": "الشركة",
   "footer.contact": "اتصل بنا",
   "footer.how": "كيف نعمل",
@@ -1516,6 +1531,11 @@ tr: {
   "footer.catalog": "Katalog",
   "footer.sets": "Enstrüman setleri",
   "footer.faq": "SSS",
+  "footer.privacy": "Gizlilik Politikası",
+  "footer.terms": "Satış Şartları",
+  "footer.payment": "Ödeme ve Depozito",
+  "footer.returns": "İade ve Talepler",
+  "footer.shipping": "Kargo ve Belgeler",
   "footer.company": "Şirket",
   "footer.contact": "İletişim",
   "footer.how": "Nasıl Çalışır",
@@ -2356,6 +2376,11 @@ function footerHTML(){
         '<li><a href="index.html#specialties" data-i18n="footer.specialties">'+t("footer.specialties")+'</a></li>'+
         '<li><a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a></li>'+
         '<li><a href="faq.html" data-i18n="footer.faq">'+t("footer.faq")+'</a></li>'+
+        '<li><a href="privacy.html" data-i18n="footer.privacy">'+t("footer.privacy")+'</a></li>'+
+        '<li><a href="terms.html" data-i18n="footer.terms">'+t("footer.terms")+'</a></li>'+
+        '<li><a href="payment.html" data-i18n="footer.payment">'+t("footer.payment")+'</a></li>'+
+        '<li><a href="returns.html" data-i18n="footer.returns">'+t("footer.returns")+'</a></li>'+
+        '<li><a href="shipping.html" data-i18n="footer.shipping">'+t("footer.shipping")+'</a></li>'+
         '<li><a href="index.html#trust" data-i18n="footer.why">'+t("footer.why")+'</a></li>'+
       '</ul></div>'+
       '<div><h4 data-i18n="footer.contact">'+t("footer.contact")+'</h4><ul>'+

@@ -1,44 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — Surgronic</title>
-<link rel="stylesheet" href="./styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pgTitle">Privacy Policy — Surgronic</title>
+<meta name="description" id="pgMeta" content="">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=doc007">
 </head>
 <body>
-<header class="site-header">
-<a class="logo" href="./">SURGRONIC<span>.</span></a>
-<button class="hamburger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')">☰</button>
-<nav><a href="./">Home</a><a href="./catalogue.html">Catalogue</a><a href="./brands.html">Brands</a><a href="./quote.html">Get a Quote</a><a href="./about.html">About</a><a href="./contact.html">Contact</a></nav>
-<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
-</header>
-<div class="drawer-overlay" id="overlay" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
-<div class="drawer" id="drawer">
-<button class="close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')">✕</button>
-<nav><a href="./">Home</a><a href="./catalogue.html">Catalogue</a><a href="./brands.html">Brands</a><a href="./quote.html">Get a Quote</a><a href="./about.html">About</a><a href="./contact.html">Contact</a></nav>
-<div class="contact">yusuf@surgronic.com<br>+90 552 608 1432</div>
-</div>
-<div class="container">
-<div class="breadcrumb"><a href="./">Home</a> / Privacy Policy</div>
-<div class="section" style="max-width: 800px; margin: 0 auto;">
-<h2>Privacy Policy</h2>
-<p style="color: var(--muted); margin-bottom: 1.5rem;">Surgronic, Sisly, Istanbul, Turkey</p>
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">What We Collect</h3>
-<p>When you request a quotation, we collect your name, organization, email, phone, country, and product requirements — only what we need to prepare your quote.</p>
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">How We Use It</h3>
-<p>To respond to your inquiry, prepare quotations, and fulfill orders. We never sell your data.</p>
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Your Rights</h3>
-<p>Contact us at yusuf@surgronic.com to access, correct, or delete your personal data.</p>
-</div>
-</div>
-<footer class="site-footer">
-<div class="inner">
-<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
-<div><h3>Policies</h3><p><a href="./payment.html">Payment & Deposit</a><br><a href="./returns.html">Returns & Claims</a><br><a href="./shipping.html">Shipping & Documentation</a><br><a href="./privacy.html">Privacy</a><br><a href="./terms.html">Terms of Sale</a></p></div>
-<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
-</div>
-<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
-</footer>
+<script src="assets/currency.js?v=ccy002"></script>
+<script src="app.js?v=doc011"></script>
+
+<main>
+<article class="article-page">
+  <div class="wrap mani-narrow">
+    <p><a href="index.html" class="article-back" id="pgBack">← Back to home</a></p>
+    <h1 id="pgH1"></h1>
+    <p class="article-body" id="pgIntro" style="font-size:1.08rem"></p>
+    <div class="article-body" id="pgBody"></div>
+    <div class="article-body" id="pgFoot" style="margin-top:40px;padding-top:20px;border-top:1px solid var(--mist-50)"></div>
+  </div>
+</article>
+</main>
+
+<script>
+var POLICY = {
+en: {
+  title: "Privacy Policy",
+  intro: "This policy explains what personal information Surgronic collects when you request a quotation, how we use it, and the choices you have.",
+  back: "← Back to home",
+  updated: "Last updated: November 2026",
+  contact: "Questions about this policy: ",
+  sections: [
+    {h: "What we collect", p: ["We collect only what a quotation needs: your name, your contact details (email address and telephone number), the instruments you are asking about, the quantity, and your country. If you send us a photograph to identify an instrument, we keep it with your request."]},
+    {h: "How we use it", p: ["We use your information to prepare your quotation, confirm the specification with you, arrange inspection and delivery, and reply to your messages. We use it only for the request you made."]},
+    {h: "What we never do", p: ["We do not sell your personal data. We do not share it with advertisers. A photograph you send us is used only to fulfil your request."]},
+    {h: "How long we keep it", p: ["We keep your information while your quotation or order is active, and for a reasonable period afterwards so we can keep our records straight. You can ask us to delete it at any time."]},
+    {h: "Your rights", p: ["You can ask us what information we hold about you, ask us to correct it, or ask us to delete it. Write to yusuf@surgronic.com and we will reply within one business day."]},
+    {h: "Contact", p: ["Questions about this policy: yusuf@surgronic.com · +90 552 608 1432."]}
+  ]
+},
+fr: {
+  title: "Politique de confidentialité",
+  intro: "Cette politique explique quelles informations personnelles Surgronic recueille lorsque vous demandez un devis, comment nous les utilisons et quels choix s'offrent à vous.",
+  back: "← Retour à l'accueil",
+  updated: "Dernière mise à jour : novembre 2026",
+  contact: "Questions sur cette politique : ",
+  sections: [
+    {h: "Ce que nous recueillons", p: ["Nous ne recueillons que ce qu'un devis exige : votre nom, vos coordonnées (adresse e-mail et numéro de téléphone), les instruments demandés, la quantité et votre pays. Si vous nous envoyez une photographie pour identifier un instrument, nous la conservons avec votre demande."]},
+    {h: "Comment nous les utilisons", p: ["Nous utilisons vos informations pour préparer votre devis, confirmer la spécification avec vous, organiser l'inspection et la livraison, et répondre à vos messages. Nous les utilisons uniquement pour la demande que vous avez faite."]},
+    {h: "Ce que nous ne faisons jamais", p: ["Nous ne vendons pas vos données personnelles. Nous ne les partageons pas avec des annonceurs. Une photographie que vous nous envoyez sert uniquement à traiter votre demande."]},
+    {h: "Combien de temps nous les conservons", p: ["Nous conservons vos informations tant que votre devis ou votre commande est en cours, et pendant une durée raisonnable ensuite afin de tenir nos dossiers à jour. Vous pouvez nous demander de les supprimer à tout moment."]},
+    {h: "Vos droits", p: ["Vous pouvez nous demander quelles informations nous détenons à votre sujet, nous demander de les corriger ou de les supprimer. Écrivez à yusuf@surgronic.com et nous vous répondrons sous un jour ouvré."]},
+    {h: "Contact", p: ["Questions sur cette politique : yusuf@surgronic.com · +90 552 608 1432."]}
+  ]
+},
+ar: {
+  title: "سياسة الخصوصية",
+  intro: "توضح هذه السياسة المعلومات الشخصية التي تجمعها Surgronic عندما تطلب عرض سعر، وكيف نستخدمها، والخيارات المتاحة لك.",
+  back: "← العودة إلى الرئيسية",
+  updated: "آخر تحديث: نوفمبر 2026",
+  contact: "أسئلة حول هذه السياسة: ",
+  sections: [
+    {h: "ما الذي نجمعه", p: ["نجمع فقط ما يحتاجه عرض السعر: اسمك، وبيانات الاتصال بك (البريد الإلكتروني ورقم الهاتف)، والأدوات التي تسأل عنها، والكمية، وبلدك. وإذا أرسلت لنا صورة لتحديد أداة ما، نحتفظ بها مع طلبك."]},
+    {h: "كيف نستخدمها", p: ["نستخدم معلوماتك لإعداد عرض السعر، وتأكيد المواصفات معك، وترتيب الفحص والتسليم، والرد على رسائلك. ونستخدمها فقط للطلب الذي قدمته."]},
+    {h: "ما الذي لا نفعله أبدًا", p: ["لا نبيع بياناتك الشخصية. ولا نشاركها مع المعلنين. والصورة التي ترسلها إلينا تُستخدم فقط لتلبية طلبك."]},
+    {h: "مدة الاحتفاظ بها", p: ["نحتفظ بمعلوماتك طالما كان عرض السعر أو الطلب قيد التنفيذ، ولفترة معقولة بعد ذلك للاحتفاظ بسجلاتنا. ويمكنك أن تطلب منا حذفها في أي وقت."]},
+    {h: "حقوقك", p: ["يمكنك أن تسألنا عن المعلومات التي نحتفظ بها عنك، أو أن تطلب تصحيحها أو حذفها. راسلنا على yusuf@surgronic.com وسنرد خلال يوم عمل واحد."]},
+    {h: "اتصل بنا", p: ["أسئلة حول هذه السياسة: yusuf@surgronic.com · ‎+90 552 608 1432."]}
+  ]
+},
+tr: {
+  title: "Gizlilik Politikası",
+  intro: "Bu politika, fiyat teklifi istediğinizde Surgronic'in hangi kişisel bilgileri topladığını, bunları nasıl kullandığını ve size sunulan seçenekleri açıklar.",
+  back: "← Ana sayfaya dön",
+  updated: "Son güncelleme: Kasım 2026",
+  contact: "Bu politika hakkında sorular: ",
+  sections: [
+    {h: "Neleri topluyoruz", p: ["Yalnızca bir fiyat teklifi için gerekenleri topluyoruz: adınız, iletişim bilgileriniz (e-posta adresi ve telefon numarası), sorduğunuz aletler, miktar ve ülkeniz. Bir aleti tanımlamak için bize fotoğraf gönderirseniz, fotoğrafı talebinizle birlikte saklarız."]},
+    {h: "Bunları nasıl kullanıyoruz", p: ["Bilgilerinizi fiyat teklifinizi hazırlamak, spesifikasyonu sizinle teyit etmek, kontrol ve teslimatı düzenlemek ve mesajlarınıza yanıt vermek için kullanıyoruz. Bunları yalnızca yaptığınız talep için kullanıyoruz."]},
+    {h: "Asla yapmadıklarımız", p: ["Kişisel verilerinizi satmıyoruz. Reklam verenlerle paylaşmıyoruz. Bize gönderdiğiniz bir fotoğraf yalnızca talebinizi yerine getirmek için kullanılır."]},
+    {h: "Ne kadar süre saklıyoruz", p: ["Bilgilerinizi fiyat teklifiniz veya siparişiniz devam ederken ve sonrasında kayıtlarımızı tutmak için makul bir süre saklıyoruz. İstediğiniz zaman silmemizi isteyebilirsiniz."]},
+    {h: "Haklarınız", p: ["Hakkınızda hangi bilgileri tuttuğumuzu sorabilir, düzeltilmesini veya silinmesini isteyebilirsiniz. yusuf@surgronic.com adresine yazın; bir iş günü içinde yanıt veririz."]},
+    {h: "İletişim", p: ["Bu politika hakkında sorular: yusuf@surgronic.com · +90 552 608 1432."]}
+  ]
+}
+};
+
+var EMAIL = "yusuf@surgronic.com";
+var PHONE = "+90 552 608 1432";
+var WA = "https://wa.me/905526081432";
+
+function renderPolicy(){
+  var l = (window.SG && SG.getLang) ? SG.getLang() : "en";
+  var c = POLICY[l] || POLICY.en;
+  document.getElementById("pgTitle").textContent = c.title + " — Surgronic";
+  document.getElementById("pgMeta").setAttribute("content", c.intro);
+  document.getElementById("pgBack").textContent = c.back;
+  document.getElementById("pgH1").textContent = c.title;
+  document.getElementById("pgIntro").textContent = c.intro;
+  var html = "";
+  c.sections.forEach(function(s){
+    html += "<h2>" + s.h.replace(/&/g,"&amp;").replace(/</g,"&lt;") + "</h2>";
+    s.p.forEach(function(par){
+      html += "<p>" + par.replace(/&/g,"&amp;").replace(/</g,"&lt;") + "</p>";
+    });
+  });
+  document.getElementById("pgBody").innerHTML = html;
+  document.getElementById("pgFoot").innerHTML =
+    "<p>" + c.updated + "</p>" +
+    "<p>" + c.contact +
+    '<a href="mailto:' + EMAIL + '">' + EMAIL + "</a> · " +
+    '<a href="tel:+905526081432">' + PHONE + "</a> · " +
+    '<a href="' + WA + '" target="_blank" rel="noopener">WhatsApp</a></p>';
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome("catalog");
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+  renderPolicy();
+});
+document.addEventListener("surgronic:lang", function(){ SG.applyI18n(); renderPolicy(); });
+</script>
+
+<script>
+(function(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(function(e){ e.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
 </body>
 </html>

@@ -1,73 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Returns & Claims — Surgronic</title>
-<link rel="stylesheet" href="./styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pgTitle">Returns &amp; Claims — Surgronic</title>
+<meta name="description" id="pgMeta" content="">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=doc007">
 </head>
 <body>
-<header class="site-header">
-<a class="logo" href="./">SURGRONIC<span>.</span></a>
-<button class="hamburger" onclick="document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open')">☰</button>
-<nav>
-<a href="./">Home</a>
-<a href="./catalogue.html">Catalogue</a>
-<a href="./brands.html">Brands</a>
-<a href="./quote.html">Get a Quote</a>
-<a href="./about.html">About</a>
-<a href="./contact.html">Contact</a>
-</nav>
-<div class="contact">yusuf@surgronic.com · +90 552 608 1432</div>
-</header>
-<div class="drawer-overlay" id="overlay" onclick="document.getElementById('drawer').classList.remove('open');this.classList.remove('open')"></div>
-<div class="drawer" id="drawer">
-<button class="close" onclick="document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open')">✕</button>
-<nav>
-<a href="./">Home</a>
-<a href="./catalogue.html">Catalogue</a>
-<a href="./brands.html">Brands</a>
-<a href="./quote.html">Get a Quote</a>
-<a href="./about.html">About</a>
-<a href="./contact.html">Contact</a>
-</nav>
-<div class="contact">yusuf@surgronic.com<br>+90 552 608 1432</div>
-</div>
+<script src="assets/currency.js?v=ccy002"></script>
+<script src="app.js?v=doc011"></script>
 
-<div class="container">
-<div class="breadcrumb"><a href="./">Home</a> / Returns & Claims</div>
-<div class="section" style="max-width: 800px; margin: 0 auto;">
-<h2>Returns & Claims</h2>
-<p style="margin-bottom: 1.5rem; color: var(--muted);">Prevention over returns — we get it right before it ships.</p>
+<main>
+<article class="article-page">
+  <div class="wrap mani-narrow">
+    <p><a href="index.html" class="article-back" id="pgBack">← Back to home</a></p>
+    <h1 id="pgH1"></h1>
+    <p class="article-body" id="pgIntro" style="font-size:1.08rem"></p>
+    <div class="article-body" id="pgBody"></div>
+    <div class="article-body" id="pgFoot" style="margin-top:40px;padding-top:20px;border-top:1px solid var(--mist-50)"></div>
+  </div>
+</article>
+</main>
 
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">7-Day Inspection Window</h3>
-<p>You have 7 days from delivery to inspect your instruments. If anything does not match the confirmed specification, contact us immediately with photos.</p>
+<script>
+var POLICY = {
+en: {
+  title: "Returns & Claims",
+  intro: "We work to prevent problems before they happen: written specification confirmation and inspection photographs or video before shipment. If something is still wrong, this page explains what to do.",
+  back: "← Back to home",
+  updated: "Last updated: November 2026",
+  contact: "Claims and questions: ",
+  sections: [
+    {h: "Prevention first", p: ["Before anything ships, we confirm the specification with you in writing and send inspection photographs or video. Nothing ships until you have seen it and approved it."]},
+    {h: "7-day inspection window", p: ["After delivery you have 7 days to inspect the instruments and report any problem."]},
+    {h: "How to make a claim", p: ["Write to yusuf@surgronic.com within the 7 days. Include your order reference, a description of the problem, and photographs of the instrument concerned."]},
+    {h: "What happens next", p: ["We review each claim individually and agree the remedy with you."]},
+    {h: "What is not covered", p: ["A claim cannot be accepted for an instrument that matches the specification you confirmed in writing, or for a problem caused after delivery."]},
+    {h: "Contact", p: ["Claims and questions: yusuf@surgronic.com · +90 552 608 1432."]}
+  ]
+},
+fr: {
+  title: "Retours et réclamations",
+  intro: "Nous travaillons à prévenir les problèmes avant qu'ils ne surviennent : confirmation écrite de la spécification et photographies ou vidéo d'inspection avant l'expédition. Si un problème subsiste, cette page explique quoi faire.",
+  back: "← Retour à l'accueil",
+  updated: "Dernière mise à jour : novembre 2026",
+  contact: "Réclamations et questions : ",
+  sections: [
+    {h: "La prévention d'abord", p: ["Avant toute expédition, nous confirmons la spécification avec vous par écrit et nous envoyons des photographies ou une vidéo d'inspection. Rien n'est expédié avant que vous l'ayez vu et approuvé."]},
+    {h: "Délai d'inspection de 7 jours", p: ["Après la livraison, vous disposez de 7 jours pour inspecter les instruments et signaler tout problème."]},
+    {h: "Comment faire une réclamation", p: ["Écrivez à yusuf@surgronic.com dans ce délai de 7 jours. Indiquez votre référence de commande, décrivez le problème et joignez des photographies de l'instrument concerné."]},
+    {h: "Ce qui se passe ensuite", p: ["Nous examinons chaque réclamation au cas par cas et convenons de la solution avec vous."]},
+    {h: "Ce qui n'est pas couvert", p: ["Une réclamation ne peut pas être acceptée pour un instrument conforme à la spécification que vous avez confirmée par écrit, ni pour un problème survenu après la livraison."]},
+    {h: "Contact", p: ["Réclamations et questions : yusuf@surgronic.com · +90 552 608 1432."]}
+  ]
+},
+ar: {
+  title: "الإرجاع والمطالبات",
+  intro: "نعمل على منع المشاكل قبل حدوثها: تأكيد كتابي للمواصفات وصور أو فيديو للفحص قبل الشحن. وإذا حدثت مشكلة رغم ذلك، توضح هذه الصفحة ما يجب فعله.",
+  back: "← العودة إلى الرئيسية",
+  updated: "آخر تحديث: نوفمبر 2026",
+  contact: "المطالبات والأسئلة: ",
+  sections: [
+    {h: "الوقاية أولًا", p: ["قبل شحن أي شيء، نؤكد المواصفات معك كتابيًا ونرسل صور أو فيديو الفحص. ولا يُشحن أي شيء حتى تراه وتوافق عليه."]},
+    {h: "فترة فحص مدتها 7 أيام", p: ["بعد التسليم، لديك 7 أيام لفحص الأدوات والإبلاغ عن أي مشكلة."]},
+    {h: "كيفية تقديم مطالبة", p: ["راسلنا على yusuf@surgronic.com خلال الأيام السبعة. وأرفق مرجع الطلب ووصفًا للمشكلة وصورًا للأداة المعنية."]},
+    {h: "ماذا يحدث بعد ذلك", p: ["نراجع كل مطالبة على حدة ونتفق معك على الحل."]},
+    {h: "ما الذي لا يشمله ذلك", p: ["لا يمكن قبول مطالبة بشأن أداة مطابقة للمواصفات التي أكدتها كتابيًا، أو بشأن مشكلة حدثت بعد التسليم."]},
+    {h: "اتصل بنا", p: ["المطالبات والأسئلة: yusuf@surgronic.com · ‎+90 552 608 1432."]}
+  ]
+},
+tr: {
+  title: "İade ve Talepler",
+  intro: "Sorunları oluşmadan önlemeye çalışıyoruz: sevkiyattan önce yazılı spesifikasyon teyidi ve kontrol fotoğrafları veya videosu. Yine de bir sorun olursa, bu sayfa ne yapmanız gerektiğini açıklar.",
+  back: "← Ana sayfaya dön",
+  updated: "Son güncelleme: Kasım 2026",
+  contact: "Talepler ve sorular: ",
+  sections: [
+    {h: "Önce önlem", p: ["Sevkiyattan önce spesifikasyonu sizinle yazılı olarak teyit eder ve kontrol fotoğrafları veya videosu göndeririz. Siz görüp onaylamadan hiçbir şey gönderilmez."]},
+    {h: "7 günlük kontrol süresi", p: ["Teslimattan sonra aletleri kontrol etmek ve herhangi bir sorunu bildirmek için 7 gününüz vardır."]},
+    {h: "Nasıl talepte bulunulur", p: ["7 gün içinde yusuf@surgronic.com adresine yazın. Sipariş referansınızı, sorunun açıklamasını ve ilgili aletin fotoğraflarını ekleyin."]},
+    {h: "Sonrasında ne olur", p: ["Her talebi ayrı ayrı inceler ve çözümü sizinle birlikte kararlaştırırız."]},
+    {h: "Kapsam dışı olanlar", p: ["Yazılı olarak teyit ettiğiniz spesifikasyona uyan bir alet için veya teslimattan sonra ortaya çıkan bir sorun için talep kabul edilemez."]},
+    {h: "İletişim", p: ["Talepler ve sorular: yusuf@surgronic.com · +90 552 608 1432."]}
+  ]
+}
+};
 
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Our Prevention Process</h3>
-<p>Every order follows: written Specification Confirmation (your sign-off) → deposit → pre-shipment inspection photos/video (your approval) → shipment. Nothing ships until you've seen it and approved it.</p>
+var EMAIL = "yusuf@surgronic.com";
+var PHONE = "+90 552 608 1432";
+var WA = "https://wa.me/905526081432";
 
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Claims</h3>
-<p>If an instrument arrives not matching the confirmed specification:</p>
-<ul style="margin: 0.75rem 0 0.75rem 1.5rem; color: var(--muted);">
-<li>Notify us within 7 days with photos</li>
-<li>We arrange return or replacement</li>
-<li>Refund or credit issued upon verification</li>
-</ul>
+function renderPolicy(){
+  var l = (window.SG && SG.getLang) ? SG.getLang() : "en";
+  var c = POLICY[l] || POLICY.en;
+  document.getElementById("pgTitle").textContent = c.title + " — Surgronic";
+  document.getElementById("pgMeta").setAttribute("content", c.intro);
+  document.getElementById("pgBack").textContent = c.back;
+  document.getElementById("pgH1").textContent = c.title;
+  document.getElementById("pgIntro").textContent = c.intro;
+  var html = "";
+  c.sections.forEach(function(s){
+    html += "<h2>" + s.h.replace(/&/g,"&amp;").replace(/</g,"&lt;") + "</h2>";
+    s.p.forEach(function(par){
+      html += "<p>" + par.replace(/&/g,"&amp;").replace(/</g,"&lt;") + "</p>";
+    });
+  });
+  document.getElementById("pgBody").innerHTML = html;
+  document.getElementById("pgFoot").innerHTML =
+    "<p>" + c.updated + "</p>" +
+    "<p>" + c.contact +
+    '<a href="mailto:' + EMAIL + '">' + EMAIL + "</a> · " +
+    '<a href="tel:+905526081432">' + PHONE + "</a> · " +
+    '<a href="' + WA + '" target="_blank" rel="noopener">WhatsApp</a></p>';
+}
 
-<h3 style="color: var(--navy); margin: 1.5rem 0 0.75rem;">Cancellations</h3>
-<p>Deposit refundable minus costs already committed to the supplier, stated plainly in every quotation.</p>
+document.addEventListener("DOMContentLoaded", function(){
+  SG.mountChrome("catalog");
+  SG.applyI18n();
+  if(window.SurCcy){ SurCcy.init(function(){}); }
+  renderPolicy();
+});
+document.addEventListener("surgronic:lang", function(){ SG.applyI18n(); renderPolicy(); });
+</script>
 
-<p style="margin-top: 2rem;"><a class="btn btn-primary" href="./contact.html">Contact Us</a></p>
-</div>
-</div>
-
-<footer class="site-footer">
-<div class="inner">
-<div><h3>Surgronic</h3><p>Precision surgical instruments, sourced to your specification.</p></div>
-<div><h3>Policies</h3><p><a href="./payment.html">Payment & Deposit</a><br><a href="./returns.html">Returns & Claims</a><br><a href="./shipping.html">Shipping & Documentation</a><br><a href="./privacy.html">Privacy</a><br><a href="./terms.html">Terms of Sale</a></p></div>
-<div><h3>Contact</h3><p><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a><br><a href="tel:+905526081432">+90 552 608 1432</a></p></div>
-</div>
-<div class="bottom">© 2026 Surgronic. All rights reserved.</div>
-</footer>
+<script>
+(function(){
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(function(e){ e.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
 </body>
 </html>
