@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="styles.css?v=doc010">
 </head>
 <body>
-<script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc016"></script>
+<script src="assets/currency.js?v=ccy003"></script>
+<script src="app.js?v=doc017"></script>
 
 <div class="catalog-hero">
   <div class="container">
@@ -162,23 +162,32 @@
         .catch(function(){ grid.innerHTML = '<p>No products found.</p>'; });
       return;
     }
-    // Specialty filter: fetch the union (API snapshot + static brand files) and filter client-side
+    // Specialty filter: fetch the union (API snapshot + static brand files) and filter client-side.
+    // The API compact rows carry no `category`, so fill it from the D1 sku->category
+    // map (data/sku-category.json) before applying the specialty rules — otherwise
+    // the category-based rules never fire and counts come out far too low.
+    // No storefront flag here: the snapshot is the catalogue the site already
+    // shows; the flag capped the reachable rows at 5,000 (offsets >=5000 empty).
     if (f.spec && SG.inSpecialty) {
       var pageCalls = [];
       for(var off=0; off<9000; off+=1000){
-        pageCalls.push(SG.api("listProducts",{limit:1000, offset:off, storefront:true}).catch(function(){ return {products:[]}; }));
+        pageCalls.push(SG.api("listProducts",{limit:1000, offset:off}).catch(function(){ return {products:[]}; }));
       }
+      var catMapCall = fetch('data/sku-category.json').then(function(r){ return r.json(); }).catch(function(){ return {}; });
       var staticCalls = ["do-san","faden-medikal","erfecen","smith---nephew","adosn"].map(function(b){
         return fetch('data/brand-'+b+'.json').then(function(r){ return r.json(); }).catch(function(){ return {products:[]}; });
       });
-      Promise.all(pageCalls.concat(staticCalls)).then(function(results){
+      Promise.all(pageCalls.concat([catMapCall]).concat(staticCalls)).then(function(results){
+        var catMap = results[pageCalls.length] || {};
         var all = [];
-        results.forEach(function(r){
+        results.forEach(function(r, idx){
+          if(idx === pageCalls.length) return; // skip the category map itself
           var list = (r && (r.products || (r.data && r.data.products))) || [];
           all = all.concat(list);
         });
         var seen = {};
         all = all.filter(function(p){ if(!p || !p.sku || seen[p.sku]) return false; seen[p.sku]=1; return true; });
+        all.forEach(function(p){ if(!p.category && catMap[p.sku]) p.category = catMap[p.sku]; });
         var list = all.filter(function(p){ return SG.inSpecialty(p, f.spec); });
         if(f.brand && BRAND_SKU[f.brand]){
           var pres = BRAND_SKU[f.brand];

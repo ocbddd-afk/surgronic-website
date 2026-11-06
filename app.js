@@ -2121,7 +2121,7 @@ var SPECIALTY_MAP = {
   "ENT": {cat:["Nasal Speculums","Specula"], kw:[/nasal/i,/tonsil/i,/\bear\b/i,/aural/i,/throat/i,/laryn/i,/pharyng/i,/speculum/i,/specula/i]},
   "OB/GYN & Urology": {cat:["Specula"], kw:[/vaginal/i,/uterine/i,/obstetric/i,/gynecol/i,/cervical/i,/urolog/i,/urethral/i,/bladder/i,/prostate/i,/speculum/i,/specula/i]},
   "Energy & Powered Systems": {cat:["Electrosurgery","HF Instruments","Saws","Drills","Hand Saws"], kw:[/electrosurg/i,/electrode/i,/cautery/i,/diathermy/i,/\bdrill\b/i,/\bsaw\b/i,/ultrasonic/i,/powered/i]},
-  "Dental & Implant Surgery": {cat:["Mouth Gags"], kw:[/dental/i,/tooth/i,/teeth/i,/implant/i,/periodont/i,/endodont/i]},
+  "Dental & Implant Surgery": {cat:["Mouth Gags"], kw:[/dental/i,/\btooth\b/i,/\bteeth\b/i,/implant/i,/periodont/i,/endodont/i]},
   "Sutures & Wound Closure": {cat:["Sutures & Wound Closure","Suturing"], kw:[/suture/i,/ligature/i,/needle/i]}
 };
 function inSpecialty(p, spec){
