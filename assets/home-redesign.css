@@ -75,10 +75,12 @@
   border:1px solid #dde5ef;border-radius:14px;padding:24px;background:#fff;
   text-decoration:none;display:block;
 }
-.spec-card:hover{background:rgba(47,134,246,.06);border-color:rgba(47,134,246,.5);transform:translateY(-3px)}
+.spec-card:hover{background:#eef4fd;border-color:rgba(47,134,246,.5);transform:translateY(-3px)}
 .spec-card h3{font-size:18px;margin:10px 0 6px;color:var(--navy-950)}
 .spec-card span:last-child{font-size:14px;color:#4a5a75;line-height:1.5}
 .spec-num{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--blue-500);font-weight:600}
+.spec-ico{display:block;color:var(--blue-500);margin-bottom:4px}
+.spec-ico svg{width:30px;height:30px;display:block}
 
 /* ---------- Featured (mist) ---------- */
 .rd-featured{background:var(--mist-50)}

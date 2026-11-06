@@ -14,7 +14,7 @@ en: {
   "meta.pdTitle": "Product — Surgronic",
   "meta.blogTitle": "Blog — Surgronic",
   "nav.home": "Home",
-  "nav.catalog": "Instrument Catalog",
+  "nav.catalog": "Catalog",
   "nav.quote": "Request a Quote",
   "solidarity.banner": "Surgronic stands with Palestine and its people.",
   "solidarity.join": "Join us",
@@ -42,6 +42,7 @@ en: {
   "footer.returns": "Returns & Claims",
   "footer.shipping": "Shipping & Documentation",
   "footer.company": "Company",
+  "footer.legal": "Legal",
   "footer.contact": "Contact",
   "footer.how": "How it works",
   "footer.specialties": "Specialties",
@@ -524,7 +525,7 @@ fr: {
   "meta.blogTitle": "Blog — Surgronic",
   "meta.maniTitle": "Manifeste — Surgronic",
   "nav.home": "Accueil",
-  "nav.catalog": "Catalogue d'instruments",
+  "nav.catalog": "Catalogue",
   "nav.quote": "Demander un devis",
   "solidarity.banner": "Surgronic se tient aux c\u00f4t\u00e9s de la Palestine et de son peuple.",
   "solidarity.join": "Rejoignez-nous",
@@ -552,6 +553,7 @@ fr: {
   "footer.returns": "Retours et réclamations",
   "footer.shipping": "Expédition et documentation",
   "footer.company": "Entreprise",
+  "footer.legal": "Légal",
   "footer.contact": "Contact",
   "footer.how": "Fonctionnement",
   "footer.specialties": "Spécialités",
@@ -1033,7 +1035,7 @@ ar: {
   "meta.blogTitle": "المدونة — Surgronic",
   "meta.maniTitle": "البيان — Surgronic",
   "nav.home": "الرئيسية",
-  "nav.catalog": "كتالوج الأدوات",
+  "nav.catalog": "الكتالوج",
   "nav.quote": "طلب عرض سعر",
   "solidarity.banner": "تقف Surgronic إلى جانب فلسطين وشعبها.",
   "solidarity.join": "انضم إلينا",
@@ -1061,6 +1063,7 @@ ar: {
   "footer.returns": "الإرجاع والمطالبات",
   "footer.shipping": "الشحن والتوثيق",
   "footer.company": "الشركة",
+  "footer.legal": "قانوني",
   "footer.contact": "اتصل بنا",
   "footer.how": "كيف نعمل",
   "footer.specialties": "التخصصات",
@@ -1542,7 +1545,7 @@ tr: {
   "meta.blogTitle": "Blog — Surgronic",
   "meta.maniTitle": "Manifesto — Surgronic",
   "nav.home": "Ana Sayfa",
-  "nav.catalog": "Alet Kataloğu",
+  "nav.catalog": "Katalog",
   "nav.quote": "Teklif İsteyin",
   "solidarity.banner": "Surgronic, Filistin'in ve halkının yanındadır.",
   "solidarity.join": "Bize katılın",
@@ -1570,6 +1573,7 @@ tr: {
   "footer.returns": "İade ve Talepler",
   "footer.shipping": "Kargo ve Belgeler",
   "footer.company": "Şirket",
+  "footer.legal": "Yasal",
   "footer.contact": "İletişim",
   "footer.how": "Nasıl Çalışır",
   "footer.specialties": "Branşlar",
@@ -2404,16 +2408,23 @@ function footerHTML(){
       '<a href="https://www.linkedin.com/company/surgronic/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>'+
     '</div>'+
       '</div>'+
-      '<div><h4 data-i18n="footer.catalog">'+t("footer.catalog")+'</h4><ul>'+
-        '<li><a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a></li>'+
-        '<li><a href="set.html" data-i18n="footer.sets">'+t("footer.sets")+'</a></li>'+
-        '<li><a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a></li>'+
-      '</ul></div>'+
       '<div><h4 data-i18n="footer.company">'+t("footer.company")+'</h4><ul>'+
         '<li><a href="index.html#how" data-i18n="footer.how">'+t("footer.how")+'</a></li>'+
         '<li><a href="index.html#specialties" data-i18n="footer.specialties">'+t("footer.specialties")+'</a></li>'+
         '<li><a href="manifesto.html" data-i18n="nav.manifesto">'+t("nav.manifesto")+'</a></li>'+
         '<li><a href="faq.html" data-i18n="footer.faq">'+t("footer.faq")+'</a></li>'+
+      '</ul></div>'+
+      '<div><h4 data-i18n="footer.catalog">'+t("footer.catalog")+'</h4><ul>'+
+        '<li><a href="catalogue.html" data-i18n="nav.catalog">'+t("nav.catalog")+'</a></li>'+
+        '<li><a href="set.html" data-i18n="footer.sets">'+t("footer.sets")+'</a></li>'+
+        '<li><a href="quote.html" data-i18n="nav.quote">'+t("nav.quote")+'</a></li>'+
+      '</ul></div>'+
+      '<div><h4 data-i18n="footer.legal">'+t("footer.legal")+'</h4><ul>'+
+        '<li><a href="privacy.html" data-i18n="footer.privacy">'+t("footer.privacy")+'</a></li>'+
+        '<li><a href="terms.html" data-i18n="footer.terms">'+t("footer.terms")+'</a></li>'+
+        '<li><a href="payment.html" data-i18n="footer.payment">'+t("footer.payment")+'</a></li>'+
+        '<li><a href="returns.html" data-i18n="footer.returns">'+t("footer.returns")+'</a></li>'+
+        '<li><a href="shipping.html" data-i18n="footer.shipping">'+t("footer.shipping")+'</a></li>'+
       '</ul></div>'+
       '<div><h4 data-i18n="footer.contact">'+t("footer.contact")+'</h4><ul>'+
         '<li><a href="mailto:yusuf@surgronic.com">yusuf@surgronic.com</a></li>'+
@@ -2422,13 +2433,6 @@ function footerHTML(){
       '</ul></div>'+
     '</div>'+
     '<div class="footer-bottom">'+
-      '<nav class="footer-legal" aria-label="Legal">'+
-        '<a href="privacy.html" data-i18n="footer.privacy">'+t("footer.privacy")+'</a>'+
-        '<a href="terms.html" data-i18n="footer.terms">'+t("footer.terms")+'</a>'+
-        '<a href="payment.html" data-i18n="footer.payment">'+t("footer.payment")+'</a>'+
-        '<a href="returns.html" data-i18n="footer.returns">'+t("footer.returns")+'</a>'+
-        '<a href="shipping.html" data-i18n="footer.shipping">'+t("footer.shipping")+'</a>'+
-      '</nav>'+
       '<div class="footer-meta">'+
         '<span>\u00A9 2026 Surgronic. <span data-i18n="footer.rights">'+t("footer.rights")+'</span></span>'+
         '<span>Surgronic &middot; Sisli, Istanbul, Turkey</span>'+
