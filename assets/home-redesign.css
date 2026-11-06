@@ -101,6 +101,13 @@
 
 /* ---------- How it works (white) ---------- */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-top:40px}
+/* The old .steps::before timeline line (top:11px, built for the small pill
+   numbers) cut through the large 44px redesign numbers. Move it to the
+   numbers' vertical centre and give each number a section-coloured
+   background, so the line passes BEHIND the digits instead of through them. */
+.steps::before{top:22px}
+.rd-step-num{position:relative;z-index:1;display:inline-block;background:var(--mist-50);padding:0 10px}
+@media(max-width:600px){.steps::before{display:none}}
 .rd-step-num{font:800 44px var(--font-display);color:var(--blue-500);line-height:1}
 .rd-step h3{font-size:19px;margin:8px 0}
 .rd-step p{color:#4a5a75;font-size:15px;line-height:1.6;margin:0}
