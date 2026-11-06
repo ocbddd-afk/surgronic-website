@@ -169,6 +169,7 @@ en: {
   "blog.title": "From the field.",
   "blog.sub": "Practical notes on instruments and sourcing.",
   "blog.empty": "Articles coming soon.",
+  "blog.read": "Read →",
   "surg.eyebrow": "For surgeons",
   "surg.title": "Your instruments, your way.",
   "surg.sub": "You know exactly what you need in your hands. Tell us the instrument \u2014 by name, reference, or photo \u2014 and we source it to your specification, inspect it, and ship it to your clinic.",
@@ -658,6 +659,7 @@ fr: {
   "blog.title": "Du terrain.",
   "blog.sub": "Notes pratiques sur instruments et sourcing.",
   "blog.empty": "Articles à venir.",
+  "blog.read": "Lire →",
   "surg.eyebrow": "Pour les chirurgiens",
   "surg.title": "Vos instruments, \u00e0 votre fa\u00e7on.",
   "surg.sub": "Vous savez exactement ce qu\u2019il vous faut entre les mains. Indiquez-nous l\u2019instrument \u2014 par nom, r\u00e9f\u00e9rence ou photo \u2014 et nous le sour\u00e7ons selon vos sp\u00e9cifications, l\u2019inspectons et l\u2019exp\u00e9dions \u00e0 votre clinique.",
@@ -1360,6 +1362,7 @@ ar: {
   "blog.title": "من الميدان.",
   "blog.sub": "ملاحظات عملية حول الأدوات والتوريد.",
   "blog.empty": "المقالات قادمة قريباً.",
+  "blog.read": "اقرأ ←",
   "mani.eyebrow": "بياننا",
   "mani.title": "كل جرّاح يستحق الأداة الصحيحة.",
   "mani.lede": "أينما يعملون — الرياض أو الدار البيضاء، القاهرة أو إسطنبول.",
@@ -1933,6 +1936,7 @@ tr: {
   "blog.title": "Sahadan.",
   "blog.sub": "Aletler ve tedarik hakkında pratik notlar.",
   "blog.empty": "Makaleler yakında.",
+  "blog.read": "Oku →",
   "mani.eyebrow": "Manifestomuz",
   "mani.title": "Her cerrah doğru aleti hak eder.",
   "mani.lede": "Nerede çalışırlarsa çalışsınlar — Riyad veya Kazablanka, Kahire veya İstanbul.",
@@ -2214,6 +2218,10 @@ function basketCount(){
 function updateBasketUI(){
   var els = document.querySelectorAll("[data-basket-count]");
   for(var i=0;i<els.length;i++){ els[i].textContent = basketCount(); }
+  /* keep the WhatsApp buttons pre-filled with the current quote list */
+  var waUrl = (typeof waBasketUrl === "function") ? waBasketUrl() : "https://wa.me/905526081432";
+  var waEls = document.querySelectorAll("[data-wa-basket]");
+  for(var j=0;j<waEls.length;j++){ waEls[j].setAttribute("href", waUrl); }
 }
 
 /* ============================================================
@@ -2285,6 +2293,7 @@ function siteHeaderHTML(active){
         '<button data-lang="tr"'+(lang==="tr"?' class="on"':'')+'>TR</button>'+
       '</div>'+
       ccySwitchHTML()+
+      '<a class="wa-header" id="waHeaderBtn" data-wa-basket href="https://wa.me/905526081432" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88M20.46 3.55A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.48-8.41"/></svg><span>WhatsApp</span></a>'+
       '<a class="quote-indicator" href="quote.html" aria-label="'+t("nav.quoteList")+'">'+
         '<span data-i18n="nav.quoteList">'+t("nav.quoteList")+'</span> <span class="count" data-basket-count>0</span>'+
       '</a>'+
@@ -2347,6 +2356,7 @@ function footerHTML(){
     '</div>'+
     '<div class="footer-bottom">'+
       '<span>\u00A9 2026 Surgronic. <span data-i18n="footer.rights">'+t("footer.rights")+'</span></span>'+
+      '<span>Surgronic &middot; Sisli, Istanbul, Turkey</span>'+
       '<span data-i18n="foot.note">'+t("foot.note")+'</span>'+
     '</div>'+
   '</div></footer>';
@@ -2354,6 +2364,19 @@ function footerHTML(){
 function mountChrome(active){
   document.body.insertAdjacentHTML("afterbegin", headerHTML(active||""));
   document.body.insertAdjacentHTML("beforeend", footerHTML());
+  /* floating WhatsApp button — every page, pre-filled with the quote list */
+  if(!document.getElementById("waFloat")){
+    var waBtn = document.createElement("a");
+    waBtn.id = "waFloat";
+    waBtn.className = "wa-float";
+    waBtn.setAttribute("data-wa-basket", "");
+    waBtn.href = "https://wa.me/905526081432";
+    waBtn.target = "_blank";
+    waBtn.rel = "noopener";
+    waBtn.setAttribute("aria-label", "WhatsApp");
+    waBtn.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.89 9.88M20.46 3.55A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.48-8.41"/></svg>';
+    document.body.appendChild(waBtn);
+  }
   /* set initial lang/dir before first paint of chrome */
   document.documentElement.lang = lang;
   document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";

@@ -9,11 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=doc006">
+<link rel="stylesheet" href="styles.css?v=doc007">
 </head>
 <body>
 <script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc008"></script>
+<script src="app.js?v=doc009"></script>
 
 <div class="catalog-hero">
   <div class="container">
@@ -122,11 +122,18 @@
     "ERFECEN": ["SUR-NSP"],
     "ADOSN": ["SUR-INS"]
   };
+  function skeletons(n){
+    var h = "";
+    for(var i=0;i<(n||12);i++){
+      h += '<div class="skel" aria-hidden="true"><div class="sk-img"></div><div class="sk-body"><div class="sk-l" style="width:38%"></div><div class="sk-l" style="width:82%"></div><div class="sk-l" style="width:55%"></div></div></div>';
+    }
+    return h;
+  }
   function load(){
     var f = params();
     var search = f.q;
     if(f.family) search = (search ? search+" " : "") + f.family;
-    grid.innerHTML = '<div class="loading">'+SG.t("cat.loading")+'</div>';
+    grid.innerHTML = skeletons(12);
     metaCount.textContent = SG.t("cat.loading");
     // Brand filter: try static data first for new brands (API doesn't return them)
     var STATIC_BRANDS = {"DO\u011eSAN": "do-san", "FADEN MEDIKAL": "faden-medikal", "ERFECEN": "erfecen", "ADOSN": "adosn"};
