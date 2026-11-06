@@ -10,19 +10,19 @@
 </head>
 <body>
 <script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc009"></script>
+<script src="app.js?v=doc010"></script>
 
 <main>
 <article class="article-page">
   <div class="wrap mani-narrow">
-    <p><a href="blog.html" class="article-back">← Back to blog</a></p>
+    <p><a href="blog.html" class="article-back" data-i18n="article.back">← Back to blog</a></p>
     <p class="blog-date" id="artDate"></p>
     <h1 id="artH1"></h1>
     <div class="article-body" id="artBody"></div>
     <div class="article-cta">
-      <h3>Need this instrument?</h3>
-      <p><a class="btn btn-primary" href="quote.html">Request a quote</a>
-      <a class="btn btn-secondary" href="catalogue.html">Browse catalog</a></p>
+      <h3 data-i18n="article.cta.t">Need this instrument?</h3>
+      <p><a class="btn btn-primary" href="quote.html" data-i18n="article.cta.quote">Request a quote</a>
+      <a class="btn btn-secondary" href="catalogue.html" data-i18n="article.cta.browse">Browse catalog</a></p>
     </div>
   </div>
 </article>
@@ -36,20 +36,28 @@ document.addEventListener("DOMContentLoaded", function(){
   loadArticle();
 });
 
+function locField(a, base){
+  var l = (window.SG && SG.getLang) ? SG.getLang() : 'en';
+  var s = l === 'fr' ? 'Fr' : l === 'ar' ? 'Ar' : l === 'tr' ? 'Tr' : '';
+  return (s && a[base + s]) || a[base] || '';
+}
 function loadArticle(){
   var slug = new URLSearchParams(window.location.search).get('slug');
   if(!slug){ window.location.href = 'blog.html'; return; }
   fetch('articles/' + slug + '.json')
     .then(r => r.json())
     .then(a => {
-      document.getElementById('artTitle').textContent = a.title + ' — Surgronic';
-      document.getElementById('artMeta').setAttribute('content', a.meta || a.summary);
+      var title = locField(a, 'title');
+      var body = locField(a, 'body');
+      document.getElementById('artTitle').textContent = title + ' — Surgronic';
+      document.getElementById('artMeta').setAttribute('content', locField(a, 'summary') || a.meta || a.summary);
       document.getElementById('artDate').textContent = a.date;
-      document.getElementById('artH1').textContent = a.title;
-      document.getElementById('artBody').innerHTML = a.body;
+      document.getElementById('artH1').textContent = title;
+      document.getElementById('artBody').innerHTML = body;
     })
     .catch(function(){ window.location.href = 'blog.html'; });
 }
+document.addEventListener('surgronic:lang', function(){ SG.applyI18n(); loadArticle(); });
 </script>
 
 <script>

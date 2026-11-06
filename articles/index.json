@@ -2,123 +2,243 @@
  "articles": [
   {
    "slug": "essential-rhinoplasty-instrument-set",
+   "date": "2026-10-22",
    "title": "The Essential Rhinoplasty Instrument Set: What Every Surgeon Needs",
+   "titleFr": "Le set d'instruments essentiel pour la rhinoplastie : ce dont chaque chirurgien a besoin",
+   "titleAr": "مجموعة أدوات تجميل الأنف الأساسية: ما يحتاجه كل جراح",
+   "titleTr": "Temel Rinoplasti Alet Seti: Her Cerrahın İhtiyacı Olanlar",
    "summary": "Rhinoplasty demands precision, and precision starts with the right instruments. This guide walks through the essential components of a complete rhinoplasty set — from osteotomes and rasps to elevators, forceps, and needle holders — and explains what to look for when selecting each one for your practice.",
-   "date": "2026-10-22"
+   "summaryFr": "La rhinoplastie exige de la précision, et la précision commence par les bons instruments. Ce guide présente les composants essentiels d'un set de rhinoplastie complet — des ostéotomes et râpes aux décolleurs, pinces et porte-aiguilles — et explique comment choisir chacun d'eux pour votre pratique.",
+   "summaryAr": "تتطلب عملية تجميل الأنف دقة عالية، والدقة تبدأ بالأدوات المناسبة. يستعرض هذا الدليل المكونات الأساسية لمجموعة أدوات تجميل الأنف الكاملة — من الأزاميل والمبارد إلى الرافعات والملاقط وحاملات الإبر — ويشرح كيفية اختيار كل منها لممارستك.",
+   "summaryTr": "Rinoplasti yüksek hassasiyet gerektirir ve hassasiyet doğru aletlerle başlar. Bu rehber, eksiksiz bir rinoplasti setinin temel bileşenlerini — osteotomlar ve raspalardan elevatörlere, forsepslere ve portegülere — ele alır ve her birini muayenehaneniz için seçerken nelere dikkat etmeniz gerektiğini açıklar."
   },
   {
    "slug": "how-to-specify-surgical-instruments",
+   "date": "2026-10-22",
    "title": "How to Specify Surgical Instruments: Getting Exactly What You Need",
+   "titleFr": "Comment spécifier les instruments chirurgicaux : obtenir exactement ce qu'il vous faut",
+   "titleAr": "كيفية تحديد مواصفات الأدوات الجراحية: الحصول على ما تحتاجه بالضبط",
+   "titleTr": "Cerrahi Aletleri Nasıl Belirtirsiniz: Tam Olarak İhtiyacınız Olanı Almak",
    "summary": "What arrives is only as precise as what you ordered. This guide explains how to specify surgical instruments — reference numbers, dimensions, materials, finishes, and jaw and tip details — plus how to use photographs and written confirmation to eliminate surprises.",
-   "date": "2026-10-22"
-  },
-  {
-   "slug": "sourcing-surgical-instruments-mena-guide",
-   "title": "Sourcing Surgical Instruments in MENA: A Procurement Guide for Clinics",
-   "summary": "Sourcing surgical instruments in MENA means navigating distributor markups, long lead times, and inconsistent quality. This procurement guide for clinics and hospitals covers how to verify suppliers, write precise specifications, plan logistics, and build supply relationships that actually serve your surgeons.",
-   "date": "2026-10-22"
-  },
-  {
-   "slug": "surgical-instrument-care-guide",
-   "title": "Surgical Instrument Care: Extending the Life of Your Precision Tools",
-   "summary": "A precision instrument is an investment — and routine care is what protects it. This guide covers the practical essentials of surgical instrument care: prompt cleaning, material-aware sterilization, pre-use inspection, protective storage, and the handling habits that keep cutting edges sharp for years.",
-   "date": "2026-10-22"
-  },
-  {
-   "slug": "understanding-suture-materials-reference",
-   "title": "Understanding Suture Materials: A Surgeon's Quick Reference",
-   "summary": "Absorbable or non-absorbable? Monofilament or braided? This quick reference breaks down suture material families — how they behave, where each excels, and a practical four-question framework for choosing the right suture for every tissue and every patient.",
-   "date": "2026-10-22"
-  },
-  {
-   "slug": "steam-sterilization-cycles-explained",
-   "title": "Steam Sterilization Cycles Explained: 121°C vs 134°C for Surgical Instruments",
-   "summary": "The sterilization cycle your CSSD runs shapes how fast instruments turn around — and how long they last. This explainer breaks down the two standard steam windows, 121°C and 134°C, how gravity and pre-vacuum cycles differ, and what each choice means for instrument longevity.",
-   "date": "2026-10-23"
+   "summaryFr": "Ce qui arrive n'est précis que si la commande l'était. Ce guide explique comment spécifier les instruments chirurgicaux — références, dimensions, matériaux, finitions, détails des mors et pointes — et comment utiliser photos et confirmation écrite pour éliminer les surprises.",
+   "summaryAr": "ما يصلك ليس دقيقاً إلا بقدر دقة ما طلبته. يشرح هذا الدليل كيفية تحديد مواصفات الأدوات الجراحية — الأرقام المرجعية والأبعاد والمواد والتشطيبات وتفاصيل الفك والطرف — وكيفية استخدام الصور والتأكيد الكتابي للقضاء على المفاجآت.",
+   "summaryTr": "Gelen şey, sipariş ettiğiniz şey kadar hassastır. Bu rehber, cerrahi aletleri nasıl belirteceğinizi — referans numaraları, ölçüler, malzemeler, finisajlar ve çene ile uç ayrıntıları — ve fotoğraflar ile yazılı doğrulamanın sürprizleri nasıl ortadan kaldırdığını açıklar."
   },
   {
    "slug": "minimally-invasive-surgery-mena-explainer",
+   "date": "2026-10-24",
    "title": "The Minimally Invasive Shift: How Laparoscopic Surgery Is Reshaping Instrument Needs Across MENA",
+   "titleFr": "Le virage mini-invasif : comment la laparoscopie redéfinit les besoins en instruments dans la région MENA",
+   "titleAr": "تحول الجراحة طفيفة التوغل: كيف تعيد جراحة المنظار تشكيل احتياجات الأدوات في منطقة الشرق الأوسط وشمال أفريقيا",
+   "titleTr": "Minimal İnvaziv Dönüşüm: Laparoskopik Cerrahi MENA'da Alet İhtiyaçlarını Nasıl Yeniden Şekillendiriyor",
    "summary": "Minimally invasive surgery is expanding rapidly across MENA — analysts estimate the Middle East market at USD 7.37 billion in 2024, on track for USD 13.41 billion by 2033. This explainer walks through the instruments behind laparoscopic procedures, the reusable vs. single-use cost question, the reprocessing challenges long-shaft instruments create, and the procurement questions every facility should answer before building its inventory.",
-   "date": "2026-10-24"
-  },
-  {
-   "slug": "surgical-needle-holders-guide",
-   "title": "Surgical Needle Holders Explained: Jaws, Sizes and How to Choose the Right One",
-   "summary": "Every suture passes through a needle holder, and every holder shapes the stitch. This guide explains the main needle holder families, how tungsten carbide and plain jaws differ, how to size a holder to the needle and the working depth, and the five questions to answer before you order.",
-   "date": "2026-10-25"
-  },
-  {
-   "slug": "surgical-forceps-guide",
-   "title": "Surgical Forceps Explained: Tissue, Dressing and the Teeth That Make the Difference",
-   "summary": "Forceps are the most-used instrument in the operating room and the most casually chosen. This guide explains the difference between tissue and dressing forceps, what rat-tooth, Adson, Brown-Adson and DeBakey patterns are built for, how toothed and atraumatic grips differ, and the four questions to answer before you order.",
-   "date": "2026-10-26"
-  },
-  {
-   "slug": "surgical-elevators-guide",
-   "title": "Surgical Elevators Explained: Lifting Tissue Planes Without Tearing Them",
-   "summary": "Before a surgeon cuts bone, tissue must be lifted and separated without tearing it — that is the elevator's job. This guide explains the main elevator families, how blade sharpness, curvature and width suit different tissue planes, and the five questions to answer before you order.",
-   "date": "2026-10-27"
-  },
-  {
-   "slug": "surgical-osteotomes-guide",
-   "title": "Surgical Osteotomes Explained: Cutting and Shaping Bone with Control",
-   "summary": "Where a saw would be too aggressive and a drill too round, an osteotome gives the surgeon a cut that follows exactly the line they intend. This guide explains the main osteotome families, how edge geometry and width suit different bone, mallet technique, edge care, and the five questions to answer before you order.",
-   "date": "2026-10-28"
-  },
-  {
-   "slug": "surgical-rasps-guide",
-   "title": "Surgical Rasps Explained: Smoothing Bone to Its Final Contour",
-   "summary": "An osteotome cuts bone; a rasp finishes it. This guide explains the main rasp families, how coarse and fine tooth patterns shape and finish bone, one-direction technique and clearing clogged teeth, rasp care, and the five questions to answer before you order.",
-   "date": "2026-10-29"
-  },
-  {
-   "slug": "surgical-suction-instruments-guide",
-   "title": "Surgical Suction Instruments Explained: Yankauer, Frazier, Poole and How to Choose",
-   "summary": "A clear field is what makes every other surgical step possible — and the suction tip decides whether that field stays clear. This guide explains the Yankauer, Frazier and Poole patterns, how bore size, tip shape and finger-valve control balance clearance against tissue safety, and the six questions to answer before you order.",
-   "date": "2026-10-30"
-  },
-  {
-   "slug": "surgical-speculums-guide",
-   "title": "Surgical Speculums Explained: Holding the Field Open, Gently and Safely",
-   "summary": "Every operation needs a view, and a speculum is what holds a body cavity open gently and steadily. This guide explains the main speculum families — nasal, ear, vaginal, rectal and eyelid — how blade shape, size and opening mechanism suit different cavities, and the five questions to answer before you order.",
-   "date": "2026-10-31"
-  },
-  {
-   "slug": "surgical-instrument-materials-guide",
-   "title": "Surgical Instrument Materials Explained: Stainless Steel, Tungsten Carbide and Titanium",
-   "summary": "Two instruments can look identical and behave very differently, because the material inside them decides how well they cut, how long they last and how they survive sterilization. This guide explains stainless steel, tungsten carbide and titanium — what each does best, where each falls short, and the questions to answer before you order.",
-   "date": "2026-11-01"
-  },
-  {
-   "slug": "procuring-surgical-instruments-saudi-arabia-guide",
-   "title": "Procuring Surgical Instruments in Saudi Arabia: A Practical Guide for Hospitals and Distributors",
-   "summary": "Buying surgical instruments in Saudi Arabia is a chain of clinical, technical, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: define the clinical need, specify precisely in writing, verify on arrival, plan the full journey, and judge total cost rather than unit price.",
-   "date": "2026-11-02"
-  },
-  {
-   "slug": "procuring-surgical-instruments-uae-guide",
-   "title": "Procuring Surgical Instruments in the UAE: A Practical Guide for Hospitals and Distributors",
-   "summary": "Buying surgical instruments in the UAE is a chain of clinical, regulatory, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: understand the federal and emirate-level landscape, specify precisely in writing, verify on arrival, plan the full import journey, and judge total cost rather than unit price.",
-   "date": "2026-11-03"
+   "summaryFr": "La chirurgie mini-invasive se développe rapidement dans la région MENA — les analystes estiment le marché du Moyen-Orient à 7,37 milliards USD en 2024, avec un objectif de 13,41 milliards USD d'ici 2033. Cet article passe en revue les instruments nécessaires aux procédures laparoscopiques, l'équation coût entre réutilisable et usage unique, les défis de retraitement posés par les instruments à tiges longues, et les questions d'achat que chaque établissement doit résoudre avant de constituer son stock.",
+   "summaryAr": "تتوسع الجراحة طفيفة التوغل بسرعة في منطقة الشرق الأوسط وشمال أفريقيا، إذ يقدّر المحللون سوق الشرق الأوسط بـ7.37 مليار دولار في عام 2024 ويتوقعون وصوله إلى 13.41 مليار دولار بحلول 2033. يشرح هذا المقال الأدوات اللازمة لإجراءات المنظار الجراحي، ومعادلة التكلفة بين الأدوات القابلة لإعادة الاستخدام وتلك ذات الاستخدام الواحد، وتحديات إعادة المعالجة، وأسئلة الشراء التي يجب على كل منشأة الإجابة عنها قبل بناء مخزونها.",
+   "summaryTr": "Minimal invaziv cerrahi MENA'da hızla genişliyor — analistler Orta Doğu pazarının 2024'te 7,37 milyar ABD doları olduğunu ve 2033'e kadar 13,41 milyar ABD dolarına ulaşacağını tahmin ediyor. Bu açıklama, laparoskopik prosedürlerin arkasındaki aletleri, yeniden kullanılabilir ve tek kullanımlık maliyet sorusunu, uzun şaftlı aletlerin yarattığı yeniden işleme zorluklarını ve her tesisin envanterini oluşturmadan önce yanıtlaması gereken satın alma sorularını ele alır."
   },
   {
    "slug": "procuring-surgical-instruments-kuwait-guide",
+   "date": "2026-11-04",
    "title": "Procuring Surgical Instruments in Kuwait: A Practical Guide for Hospitals and Distributors",
+   "titleFr": "S’approvisionner en instruments chirurgicaux au Koweït : guide pratique pour les hôpitaux et les distributeurs",
+   "titleAr": "شراء الأدوات الجراحية في الكويت: دليل عملي للمستشفيات والموزعين",
+   "titleTr": "Kuveyt’te Cerrahi Alet Tedariki: Hastaneler ve Distribütörler için Pratik Bir Rehber",
    "summary": "Buying surgical instruments in Kuwait is a chain of clinical, regulatory, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: understand the Ministry of Health landscape, specify precisely in writing, verify on arrival, plan the full import journey, and judge total cost rather than unit price.",
-   "date": "2026-11-04"
-  },
-  {
-   "slug": "surgical-retractors-guide",
-   "title": "Surgical Retractors Explained: Holding the Surgical Field Open, Safely",
-   "summary": "Every operation needs a clear view, and the retractor is what provides it. This guide explains handheld and self-retaining retractors, how blade shape and size suit different tissues, the five questions to answer before ordering, and the inspection habits that keep retractors safe and reliable.",
-   "date": "2026-11-05"
+   "summaryFr": "Acheter des instruments chirurgicaux au Koweït engage une chaîne de décisions cliniques, réglementaires, logistiques et financières, et le moindre maillon faible se révèle ensuite au bloc opératoire ou dans le budget. Ce guide présente la discipline qui prévient la plupart des problèmes : comprendre le cadre du ministère de la Santé, spécifier précisément par écrit, vérifier à la réception, planifier l’ensemble du parcours d’importation et juger le coût total plutôt que le prix unitaire.",
+   "summaryAr": "شراء الأدوات الجراحية في الكويت سلسلة من القرارات السريرية والتنظيمية واللوجستية والمالية، وأي حلقة ضعيفة فيها تظهر لاحقًا في غرفة العمليات أو في الميزانية. يحدد هذا الدليل الانضباط الذي يمنع معظم المشاكل: فهم إطار وزارة الصحة، والتوصيف الدقيق كتابةً، والتحقق عند الاستلام، والتخطيط لرحلة الاستيراد كاملة، وتقييم التكلفة الإجمالية بدل سعر الوحدة.",
+   "summaryTr": "Kuveyt'te cerrahi alet satın almak, klinik, düzenleyici, lojistik ve finansal kararlar zinciridir ve zincirdeki herhangi bir zayıf halka daha sonra ameliyathanede veya bütçede ortaya çıkar. Bu rehber, çoğu sorunu önleyen disiplini ortaya koyar: Sağlık Bakanlığı çerçevesini anlayın, yazılı olarak hassas bir şekilde belirtin, varışta doğrulayın, tüm ithalat yolculuğunu planlayın ve birim fiyat yerine toplam maliyeti değerlendirin."
   },
   {
    "slug": "procuring-surgical-instruments-oman-guide",
+   "date": "2026-11-06",
    "title": "Procuring Surgical Instruments in Oman: A Practical Guide for Hospitals and Distributors",
+   "titleFr": "Se procurer des instruments chirurgicaux à Oman : guide pratique pour les hôpitaux et les distributeurs",
+   "titleAr": "شراء الأدوات الجراحية في عُمان: دليل عملي للمستشفيات والموزعين",
+   "titleTr": "Umman'da Cerrahi Alet Tedariki: Hastaneler ve Distribütörler için Pratik Bir Rehber",
    "summary": "Buying surgical instruments in Oman is a chain of clinical, regulatory, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: understand the Ministry of Health landscape, specify precisely in writing, verify on arrival, plan the full import journey, and judge total cost rather than unit price.",
-   "date": "2026-11-06"
+   "summaryFr": "Acheter des instruments chirurgicaux à Oman engage une chaîne de décisions cliniques, réglementaires, logistiques et financières, et le moindre maillon faible se révèle ensuite au bloc opératoire ou dans le budget. Ce guide présente la discipline qui prévient la plupart des problèmes : comprendre le cadre du ministère de la Santé, spécifier précisément par écrit, vérifier à la réception, planifier l'ensemble du parcours d'importation et juger le coût total plutôt que le prix unitaire.",
+   "summaryAr": "شراء الأدوات الجراحية في عُمان سلسلة من القرارات السريرية والتنظيمية واللوجستية والمالية، وأي حلقة ضعيفة فيها تظهر لاحقًا في غرفة العمليات أو في الميزانية. يحدد هذا الدليل الانضباط الذي يمنع معظم المشاكل: فهم إطار وزارة الصحة، والتوصيف الدقيق كتابةً، والتحقق عند الاستلام، والتخطيط لرحلة الاستيراد كاملة، وتقييم التكلفة الإجمالية بدل سعر الوحدة.",
+   "summaryTr": "Umman'da cerrahi alet satın almak, klinik, düzenleyici, lojistik ve finansal kararlar zinciridir ve zincirdeki herhangi bir zayıf halka daha sonra ameliyathanede veya bütçede ortaya çıkar. Bu rehber, çoğu sorunu önleyen disiplini ortaya koyar: Sağlık Bakanlığı çerçevesini anlayın, yazılı olarak hassas bir şekilde belirtin, varışta doğrulayın, tüm ithalat yolculuğunu planlayın ve birim fiyat yerine toplam maliyeti değerlendirin."
+  },
+  {
+   "slug": "procuring-surgical-instruments-saudi-arabia-guide",
+   "date": "2026-11-02",
+   "title": "Procuring Surgical Instruments in Saudi Arabia: A Practical Guide for Hospitals and Distributors",
+   "titleFr": "S'approvisionner en instruments chirurgicaux en Arabie saoudite : guide pratique pour les hôpitaux et les distributeurs",
+   "titleAr": "شراء الأدوات الجراحية في المملكة العربية السعودية: دليل عملي للمستشفيات والموزعين",
+   "titleTr": "Suudi Arabistan'da Cerrahi Alet Tedariki: Hastaneler ve Distribütörler için Pratik Bir Rehber",
+   "summary": "Buying surgical instruments in Saudi Arabia is a chain of clinical, technical, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: define the clinical need, specify precisely in writing, verify on arrival, plan the full journey, and judge total cost rather than unit price.",
+   "summaryFr": "Acheter des instruments chirurgicaux en Arabie saoudite engage une chaîne de décisions cliniques, techniques, logistiques et financières, et le moindre maillon faible se révèle ensuite au bloc opératoire ou dans le budget. Ce guide présente la discipline qui prévient la plupart des problèmes : définir le besoin clinique, spécifier précisément par écrit, vérifier à la réception, planifier l'ensemble du parcours et juger le coût total plutôt que le prix unitaire.",
+   "summaryAr": "شراء الأدوات الجراحية في السعودية سلسلة من القرارات السريرية والتقنية واللوجستية والمالية، وأي حلقة ضعيفة فيها تظهر لاحقًا في غرفة العمليات أو في الميزانية. يحدد هذا الدليل الانضباط الذي يمنع معظم المشاكل: تحديد الحاجة السريرية، والتوصيف الدقيق كتابةً، والتحقق عند الاستلام، والتخطيط للرحلة كاملة، وتقييم التكلفة الإجمالية بدل سعر الوحدة.",
+   "summaryTr": "Suudi Arabistan'da cerrahi alet satın almak, klinik, teknik, lojistik ve finansal kararlar zinciridir ve zincirdeki herhangi bir zayıf halka daha sonra ameliyathanede veya bütçede ortaya çıkar. Bu rehber, çoğu sorunu önleyen disiplini ortaya koyar: klinik ihtiyacı tanımlayın, yazılı olarak hassas bir şekilde belirtin, varışta doğrulayın, tüm yolculuğu planlayın ve birim fiyat yerine toplam maliyeti değerlendirin."
+  },
+  {
+   "slug": "procuring-surgical-instruments-uae-guide",
+   "date": "2026-11-03",
+   "title": "Procuring Surgical Instruments in the UAE: A Practical Guide for Hospitals and Distributors",
+   "titleFr": "S’approvisionner en instruments chirurgicaux aux Émirats arabes unis : guide pratique pour les hôpitaux et les distributeurs",
+   "titleAr": "شراء الأدوات الجراحية في دولة الإمارات العربية المتحدة: دليل عملي للمستشفيات والموزعين",
+   "titleTr": "Birleşik Arap Emirlikleri’nde Cerrahi Alet Tedariki: Hastaneler ve Distribütörler için Pratik Bir Rehber",
+   "summary": "Buying surgical instruments in the UAE is a chain of clinical, regulatory, logistical and financial decisions, and a weak link anywhere in the chain shows up later in theatre or in the budget. This guide sets out the discipline that prevents most problems: understand the federal and emirate-level landscape, specify precisely in writing, verify on arrival, plan the full import journey, and judge total cost rather than unit price.",
+   "summaryFr": "Acheter des instruments chirurgicaux aux Émirats arabes unis engage une chaîne de décisions cliniques, réglementaires, logistiques et financières, et le moindre maillon faible se révèle ensuite au bloc opératoire ou dans le budget. Ce guide présente la discipline qui prévient la plupart des problèmes : comprendre le cadre fédéral et local, spécifier précisément par écrit, vérifier à la réception, planifier l’ensemble du parcours d’importation et juger le coût total plutôt que le prix unitaire.",
+   "summaryAr": "شراء الأدوات الجراحية في دولة الإمارات سلسلة من القرارات السريرية والتنظيمية واللوجستية والمالية، وأي حلقة ضعيفة فيها تظهر لاحقًا في غرفة العمليات أو في الميزانية. يحدد هذا الدليل الانضباط الذي يمنع معظم المشاكل: فهم المشهد الاتحادي والمحلي، والتوصيف الدقيق كتابةً، والتحقق عند الاستلام، والتخطيط للرحلة الاستيراد كاملة، وتقييم التكلفة الإجمالية بدل سعر الوحدة.",
+   "summaryTr": "BAE'de cerrahi alet satın almak, klinik, düzenleyici, lojistik ve finansal kararlar zinciridir ve zincirdeki herhangi bir zayıf halka daha sonra ameliyathanede veya bütçede ortaya çıkar. Bu rehber, çoğu sorunu önleyen disiplini ortaya koyar: federal ve emirlik düzeyindeki çerçeveyi anlayın, yazılı olarak hassas bir şekilde belirtin, varışta doğrulayın, tüm ithalat yolculuğunu planlayın ve birim fiyat yerine toplam maliyeti değerlendirin."
+  },
+  {
+   "slug": "sourcing-surgical-instruments-mena-guide",
+   "date": "2026-10-22",
+   "title": "Sourcing Surgical Instruments in MENA: A Procurement Guide for Clinics",
+   "titleFr": "S'approvisionner en instruments chirurgicaux dans la région MENA : guide d'achat pour les cliniques",
+   "titleAr": "تأمين الأدوات الجراحية في منطقة الشرق الأوسط وشمال أفريقيا: دليل الشراء للعيادات",
+   "titleTr": "MENA Bölgesinde Cerrahi Alet Tedariki: Klinikler İçin Satın Alma Rehberi",
+   "summary": "Sourcing surgical instruments in MENA means navigating distributor markups, long lead times, and inconsistent quality. This procurement guide for clinics and hospitals covers how to verify suppliers, write precise specifications, plan logistics, and build supply relationships that actually serve your surgeons.",
+   "summaryFr": "S'approvisionner en instruments chirurgicaux dans la région MENA implique de composer avec les marges des distributeurs, des délais longs et une qualité inégale. Ce guide d'achat pour cliniques et hôpitaux explique comment vérifier les fournisseurs, rédiger des spécifications précises, planifier la logistique et bâtir des relations d'approvisionnement au service des chirurgiens.",
+   "summaryAr": "يتطلب تأمين الأدوات الجراحية في منطقة الشرق الأوسط وشمال أفريقيا التعامل مع هوامش الموزعين وفترات التسليم الطويلة وتفاوت الجودة. يقدم دليل الشراء هذا للعيادات والمستشفيات كيفية التحقق من الموردين، وكتابة مواصفات دقيقة، وتخطيط اللوجستيات، وبناء علاقات توريد تخدم الجراحين فعلاً.",
+   "summaryTr": "MENA bölgesinde cerrahi alet tedarik etmek, distribütör kâr marjları, uzun teslim süreleri ve tutarsız kalite arasında yol almak demektir. Klinikler ve hastaneler için bu satın alma rehberi, tedarikçilerin nasıl doğrulanacağını, hassas spesifikasyonların nasıl yazılacağını, lojistiğin nasıl planlanacağını ve cerrahlarınıza gerçekten hizmet eden tedarik ilişkilerinin nasıl kurulacağını kapsar."
+  },
+  {
+   "slug": "steam-sterilization-cycles-explained",
+   "date": "2026-10-23",
+   "title": "Steam Sterilization Cycles Explained: 121°C vs 134°C for Surgical Instruments",
+   "titleFr": "Cycles de stérilisation à la vapeur : 121°C contre 134°C pour les instruments chirurgicaux",
+   "titleAr": "شرح دورات التعقيم بالبخار: 121°م مقابل 134°م للأدوات الجراحية",
+   "titleTr": "Buhar Sterilizasyon Döngüleri Açıklandı: Cerrahi Aletler İçin 121°C ve 134°C",
+   "summary": "The sterilization cycle your CSSD runs shapes how fast instruments turn around — and how long they last. This explainer breaks down the two standard steam windows, 121°C and 134°C, how gravity and pre-vacuum cycles differ, and what each choice means for instrument longevity.",
+   "summaryFr": "Le cycle de stérilisation de votre service détermine la rapidité de rotation des instruments — et leur durée de vie. Cet article décrypte les deux plages standard de la vapeur, 121°C et 134°C, les différences entre les cycles par gravité et pré-vide, et ce que chaque choix implique pour la longévité des instruments.",
+   "summaryAr": "تحدد دورة التعقيم التي يعمل بها قسم التعقيم سرعة دوران الأدوات — وعمرها الافتراضي. يشرح هذا المقال نطاقي البخار القياسيين، 121°م و134°م، والفرق بين دورات الجاذبية ودورات التفريغ المسبق، وما يعنيه كل خيار لعمر الأدوات.",
+   "summaryTr": "CSSD'nizin çalıştırdığı sterilizasyon döngüsü, aletlerin ne kadar hızlı döndüğünü — ve ne kadar dayandığını — şekillendirir. Bu açıklama, iki standart buhar aralığını, 121°C ve 134°C'yi, yerçekimi ve ön vakum döngülerinin nasıl farklılaştığını ve her seçimin alet ömrü için ne anlama geldiğini ele alır."
+  },
+  {
+   "slug": "surgical-elevators-guide",
+   "date": "2026-10-27",
+   "title": "Surgical Elevators Explained: Lifting Tissue Planes Without Tearing Them",
+   "titleFr": "Élévateurs chirurgicaux : soulever les plans tissulaires sans les déchirer",
+   "titleAr": "شرح الرافعات الجراحية: رفع مستويات الأنسجة دون تمزيقها",
+   "titleTr": "Cerrahi Elevatörler Rehberi: Dokuları Yırtmadan Kaldırmak",
+   "summary": "Before a surgeon cuts bone, tissue must be lifted and separated without tearing it — that is the elevator's job. This guide explains the main elevator families, how blade sharpness, curvature and width suit different tissue planes, and the five questions to answer before you order.",
+   "summaryFr": "Avant de couper l'os, le chirurgien doit soulever et séparer les tissus sans les déchirer — c'est le rôle de l'élévateur. Ce guide présente les principales familles d'élévateurs, comment le tranchant, la courbure et la largeur de la lame s'adaptent aux différents plans tissulaires, et les cinq questions à se poser avant de commander.",
+   "summaryAr": "قبل أن يقطع الجراح العظم، يجب رفع الأنسجة وفصلها دون تمزيقها — وهذه هي مهمة الرافعة الجراحية. يشرح هذا الدليل العائلات الرئيسية للرافعات، وكيف تناسب حدة الشفرة وانحناؤها وعرضها مختلف مستويات الأنسجة، والأسئلة الخمسة التي يجب الإجابة عنها قبل الطلب.",
+   "summaryTr": "Bir cerrah kemik kesmeden önce doku yırtılmadan kaldırılmalı ve ayrılmalıdır — bu elevatörün işidir. Bu rehber, ana elevatör ailelerini, bıçak keskinliği, eğriliği ve genişliğinin farklı doku düzlemlerine nasıl uyduğunu ve siparişten önce yanıtlanması gereken beş soruyu açıklar."
+  },
+  {
+   "slug": "surgical-forceps-guide",
+   "date": "2026-10-26",
+   "title": "Surgical Forceps Explained: Tissue, Dressing and the Teeth That Make the Difference",
+   "titleFr": "Pinces chirurgicales : tissus, pansements et le rôle des dents",
+   "titleAr": "شرح الملاقط الجراحية: ملاقط الأنسجة والضمادات ودور الأسنان في القبضة",
+   "titleTr": "Cerrahi Penset Rehberi: Doku, Pansuman ve Dişlerin Rolü",
+   "summary": "Forceps are the most-used instrument in the operating room and the most casually chosen. This guide explains the difference between tissue and dressing forceps, what rat-tooth, Adson, Brown-Adson and DeBakey patterns are built for, how toothed and atraumatic grips differ, and the four questions to answer before you order.",
+   "summaryFr": "Les pinces sont l'instrument le plus utilisé au bloc opératoire et le plus négligé au moment du choix. Ce guide explique la différence entre les pinces à tissus et les pinces à pansements, les usages des modèles à griffes, Adson, Brown-Adson et DeBakey, la différence entre les prises dentées et atraumatiques, et les quatre questions à se poser avant de commander.",
+   "summaryAr": "الملاقط هي أكثر الأدوات استخدامًا في غرفة العمليات وأقلها اختيارًا بعناية. يشرح هذا الدليل الفرق بين ملاقط الأنسجة وملاقط الضمادات، وما صُممت له أنماط الأسنان الفأرية وأدسون وبراون-أدسون وديبيكي، والفرق بين القبضات المسننة وغير الراضة، والأسئلة الأربعة التي يجب الإجابة عنها قبل الطلب.",
+   "summaryTr": "Pensetler, ameliyathanede en çok kullanılan ve en gelişigüzel seçilen alettir. Bu rehber, doku ve pansuman pensetleri arasındaki farkı, fare dişi, Adson, Brown-Adson ve DeBakey desenlerinin ne için tasarlandığını, dişli ve atravmatik kavramaların nasıl farklılaştığını ve siparişten önce yanıtlanması gereken dört soruyu açıklar."
+  },
+  {
+   "slug": "surgical-instrument-care-guide",
+   "date": "2026-10-22",
+   "title": "Surgical Instrument Care: Extending the Life of Your Precision Tools",
+   "titleFr": "Entretien des instruments chirurgicaux : prolonger la vie de vos outils de précision",
+   "titleAr": "العناية بالأدوات الجراحية: إطالة عمر أدواتك الدقيقة",
+   "titleTr": "Cerrahi Alet Bakımı: Hassas Aletlerinizin Ömrünü Uzatın",
+   "summary": "A precision instrument is an investment — and routine care is what protects it. This guide covers the practical essentials of surgical instrument care: prompt cleaning, material-aware sterilization, pre-use inspection, protective storage, and the handling habits that keep cutting edges sharp for years.",
+   "summaryFr": "Un instrument de précision est un investissement — et l'entretien régulier est ce qui le protège. Ce guide couvre l'essentiel de l'entretien des instruments chirurgicaux : nettoyage rapide, stérilisation adaptée au matériau, inspection avant usage, stockage protecteur et les habitudes qui gardent les tranchants affûtés pendant des années.",
+   "summaryAr": "أدوات الجراحة الدقيقة استثمار — والعناية الدورية هي ما يحميها. يغطي هذا الدليل أساسيات العناية العملية بالأدوات الجراحية: التنظيف الفوري، والتعقيم المناسب للمادة، والفحص قبل الاستخدام، والتخزين الوقائي، وعادات التعامل التي تحافظ على حدة الأطراف لسنوات.",
+   "summaryTr": "Hassas bir alet bir yatırımdır — ve rutin bakım onu koruyan şeydir. Bu rehber, cerrahi alet bakımının pratik temellerini kapsar: hızlı temizlik, malzemeye uygun sterilizasyon, kullanımdan önce inceleme, koruyucu depolama ve kesici kenarları yıllarca keskin tutan kullanım alışkanlıkları."
+  },
+  {
+   "slug": "surgical-instrument-materials-guide",
+   "date": "2026-11-01",
+   "title": "Surgical Instrument Materials Explained: Stainless Steel, Tungsten Carbide and Titanium",
+   "titleFr": "Matériaux des instruments chirurgicaux : acier inoxydable, carbure de tungstène et titane",
+   "titleAr": "مواد الأدوات الجراحية: الفولاذ المقاوم للصدأ وكربيد التنغستن والتيتانيوم",
+   "titleTr": "Cerrahi Alet Malzemeleri: Paslanmaz Çelik, Tungsten Karbür ve Titanyum",
+   "summary": "Two instruments can look identical and behave very differently, because the material inside them decides how well they cut, how long they last and how they survive sterilization. This guide explains stainless steel, tungsten carbide and titanium — what each does best, where each falls short, and the questions to answer before you order.",
+   "summaryFr": "Deux instruments d’apparence identique peuvent se comporter très différemment, car le matériau qui les compose détermine la qualité de coupe, la durabilité et la résistance à la stérilisation. Ce guide présente l’acier inoxydable, le carbure de tungstène et le titane — les atouts et les limites de chacun, et les questions à se poser avant de commander.",
+   "summaryAr": "قد تبدو أداتان متطابقتين لكن سلوكهما مختلف تمامًا، لأن المادة المصنوعة منها تحدد جودة القطع وطول العمر ومقاومة التعقيم. يشرح هذا الدليل الفولاذ المقاوم للصدأ وكربيد التنغستن والتيتانيوم — مزايا كل منها وحدودها، والأسئلة التي يجب الإجابة عنها قبل الطلب.",
+   "summaryTr": "İki alet aynı görünebilir ama çok farklı davranabilir, çünkü içlerindeki malzeme ne kadar iyi kestiklerini, ne kadar dayandıklarını ve sterilizasyona nasıl dayandıklarını belirler. Bu rehber, paslanmaz çelik, tungsten karbür ve titanyumu açıklar — her birinin en iyi yaptığı şey, yetersiz kaldığı yerler ve siparişten önce yanıtlanması gereken sorular."
+  },
+  {
+   "slug": "surgical-needle-holders-guide",
+   "date": "2026-10-25",
+   "title": "Surgical Needle Holders Explained: Jaws, Sizes and How to Choose the Right One",
+   "titleFr": "Porte-aiguilles chirurgicaux : mors, tailles et comment choisir le bon modèle",
+   "titleAr": "شرح حاملات الإبر الجراحية: الفكوك والمقاسات وكيفية اختيار النوع المناسب",
+   "titleTr": "Cerrahi Portegü Rehberi: Çeneler, Boyutlar ve Doğru Seçimi Yapmak",
+   "summary": "Every suture passes through a needle holder, and every holder shapes the stitch. This guide explains the main needle holder families, how tungsten carbide and plain jaws differ, how to size a holder to the needle and the working depth, and the five questions to answer before you order.",
+   "summaryFr": "Chaque suture passe par un porte-aiguille, et chaque porte-aiguille façonne le point. Ce guide présente les principales familles de porte-aiguilles, les différences entre les mors en carbure de tungstène et en acier lisse, comment dimensionner l'instrument selon l'aiguille et la profondeur du champ, et les cinq questions à se poser avant de commander.",
+   "summaryAr": "تمر كل غرزة عبر حامل إبر، وكل حامل يشكل الغرزة. يشرح هذا الدليل عائلات حاملات الإبر الرئيسية، والفرق بين الفكوك المصنوعة من كربيد التنجستن والفكوك العادية، وكيفية اختيار المقاس المناسب للإبرة وعمق المجال الجراحي، والأسئلة الخمسة التي يجب الإجابة عنها قبل الطلب.",
+   "summaryTr": "Her dikiş bir portegüden geçer ve her portegü dikişi şekillendirir. Bu rehber, ana portegü ailelerini, tungsten karbür ve düz çenelerin nasıl farklılaştığını, portegüyü iğneye ve çalışma derinliğine göre nasıl boyutlandıracağınızı ve siparişten önce yanıtlanması gereken beş soruyu açıklar."
+  },
+  {
+   "slug": "surgical-osteotomes-guide",
+   "date": "2026-10-28",
+   "title": "Surgical Osteotomes Explained: Cutting and Shaping Bone with Control",
+   "titleFr": "Ostéotomes chirurgicaux : couper et façonner l'os avec précision",
+   "titleAr": "شرح المشارط العظمية الجراحية: قصّ العظم وتشكيله بتحكّم",
+   "titleTr": "Cerrahi Osteotomlar Rehberi: Kemiği Kontrollü Kesmek ve Şekillendirmek",
+   "summary": "Where a saw would be too aggressive and a drill too round, an osteotome gives the surgeon a cut that follows exactly the line they intend. This guide explains the main osteotome families, how edge geometry and width suit different bone, mallet technique, edge care, and the five questions to answer before you order.",
+   "summaryFr": "Là où la scie serait trop agressive et la fraise trop ronde, l'ostéotome offre au chirurgien une coupe qui suit exactement la ligne prévue. Ce guide présente les principales familles d'ostéotomes, comment la géométrie du tranchant et la largeur s'adaptent aux différents os, la technique du maillet, l'entretien du tranchant et les cinq questions à se poser avant de commander.",
+   "summaryAr": "حيث يكون المنشار شديد القسوة والمثقاب شديد الاستدارة، يمنح المشرط العظمي الجراح قطعاً يتبع الخط المقصود بدقة. يشرح هذا الدليل العائلات الرئيسية للمشارط العظمية، وكيف تناسب هندسة الحافة وعرضها مختلف أنواع العظام، وتقنية الطرق بالمطرقة، والعناية بالحافة، والأسئلة الخمسة التي يجب الإجابة عنها قبل الطلب.",
+   "summaryTr": "Testerenin çok agresif ve matkabın çok yuvarlak olacağı durumlarda, osteotom cerraha tam olarak amaçlanan çizgiyi izleyen bir kesim sağlar. Bu rehber, ana osteotom ailelerini, kenar geometrisi ve genişliğinin farklı kemiklere nasıl uyduğunu, tokmak tekniğini, kenar bakımını ve siparişten önce yanıtlanması gereken beş soruyu açıklar."
+  },
+  {
+   "slug": "surgical-rasps-guide",
+   "date": "2026-10-29",
+   "title": "Surgical Rasps Explained: Smoothing Bone to Its Final Contour",
+   "titleFr": "Râpes chirurgicales : lisser l'os jusqu'à son contour final",
+   "titleAr": "شرح المبارد الجراحية: تنعيم العظم حتى شكله النهائي",
+   "titleTr": "Cerrahi Raspalar Rehberi: Kemiği Son Şekline Getirmek",
+   "summary": "An osteotome cuts bone; a rasp finishes it. This guide explains the main rasp families, how coarse and fine tooth patterns shape and finish bone, one-direction technique and clearing clogged teeth, rasp care, and the five questions to answer before you order.",
+   "summaryFr": "L'ostéotome coupe l'os ; la râpe le finit. Ce guide présente les principales familles de râpes, comment les dentures grossières et fines façonnent et finissent l'os, la technique en un seul sens et le nettoyage des dents encrassées, l'entretien des râpes et les cinq questions à se poser avant de commander.",
+   "summaryAr": "المشرط العظمي يقصّ العظم، أما المبرد فيُنهيه. يشرح هذا الدليل العائلات الرئيسية للمبارد، وكيف تشكّل أنماط الأسنان الخشنة والناعمة العظم وتُنهيه، وتقنية الحركة في اتجاه واحد وتنظيف الأسنان المسدودة، والعناية بالمبارد، والأسئلة الخمسة التي يجب الإجابة عنها قبل الطلب.",
+   "summaryTr": "Bir osteotom kemiği keser; bir raspa onu bitirir. Bu rehber, ana raspa ailelerini, kaba ve ince diş desenlerinin kemiği nasıl şekillendirip bitirdiğini, tek yönlü tekniği ve tıkanmış dişlerin temizlenmesini, raspa bakımını ve siparişten önce yanıtlanması gereken beş soruyu açıklar."
+  },
+  {
+   "slug": "surgical-retractors-guide",
+   "date": "2026-11-05",
+   "title": "Surgical Retractors Explained: Holding the Surgical Field Open, Safely",
+   "titleFr": "Les écarteurs chirurgicaux expliqués : maintenir le champ opératoire ouvert, en toute sécurité",
+   "titleAr": "المباعدات الجراحية شرح مبسط: إبقاء الحقل الجراحي مفتوحًا بأمان",
+   "titleTr": "Cerrahi Retraktörler Açıklandı: Cerrahi Alanı Güvenle Açık Tutmak",
+   "summary": "Every operation needs a clear view, and the retractor is what provides it. This guide explains handheld and self-retaining retractors, how blade shape and size suit different tissues, the five questions to answer before ordering, and the inspection habits that keep retractors safe and reliable.",
+   "summaryFr": "Chaque opération exige une vision claire, et c'est l'écarteur qui la procure. Ce guide explique les écarteurs manuels et auto-statiques, comment la forme et la taille des lames s'adaptent aux différents tissus, les cinq questions à se poser avant de commander, et les habitudes d'inspection qui garantissent leur sécurité et leur fiabilité.",
+   "summaryAr": "كل عملية جراحية تحتاج إلى رؤية واضحة، والمباعد هو ما يوفرها. يشرح هذا الدليل المباعدات اليدوية وذاتية التثبيت، وكيف تناسب أشكال الشفرات وأحجامها الأنسجة المختلفة، والأسئلة الخمسة التي يجب الإجابة عنها قبل الطلب، وعادات الفحص التي تحافظ على سلامة المباعدات وموثوقيتها.",
+   "summaryTr": "Her operasyon net bir görüş gerektirir ve retraktör bunu sağlar. Bu rehber, elde tutulan ve kendinden tutucu retraktörleri, bıçak şekli ve boyutunun farklı dokulara nasıl uyduğunu, siparişten önce yanıtlanması gereken beş soruyu ve retraktörleri güvenli ve güvenilir tutan muayene alışkanlıklarını açıklar."
+  },
+  {
+   "slug": "surgical-speculums-guide",
+   "date": "2026-10-31",
+   "title": "Surgical Speculums Explained: Holding the Field Open, Gently and Safely",
+   "titleFr": "Spéculums chirurgicaux : maintenir le champ ouvert, en douceur et en sécurité",
+   "titleAr": "المناظير الجراحية: إبقاء المجال الجراحي مفتوحًا بلطف وأمان",
+   "titleTr": "Cerrahi Spekulumlar Rehberi: Sahayı Nazikçe ve Güvenle Açık Tutmak",
+   "summary": "Every operation needs a view, and a speculum is what holds a body cavity open gently and steadily. This guide explains the main speculum families — nasal, ear, vaginal, rectal and eyelid — how blade shape, size and opening mechanism suit different cavities, and the five questions to answer before you order.",
+   "summaryFr": "Chaque opération exige une bonne visibilité, et c'est le spéculum qui maintient une cavité corporelle ouverte en douceur et avec stabilité. Ce guide présente les principales familles de spéculums — nasaux, auriculaires, vaginaux, rectaux et palpébraux — comment la forme, la taille des valves et le mécanisme d'ouverture s'adaptent aux différentes cavités, et les cinq questions à se poser avant de commander.",
+   "summaryAr": "كل عملية تحتاج إلى رؤية واضحة، والمنظار الجراحي هو ما يُبقي تجويف الجسم مفتوحًا بلطف وثبات. يشرح هذا الدليل العائلات الرئيسية للمناظير — الأنفية والأذنية والمهبلية والمستقيمية والجفنية — وكيف تناسب أشكال الشفرات وأحجامها وآليات فتحها مختلف التجاويف، والأسئلة الخمسة التي يجب الإجابة عنها قبل الطلب.",
+   "summaryTr": "Her operasyon bir görüş gerektirir ve bir spekulum vücut boşluğunu nazikçe ve istikrarlı bir şekilde açık tutar. Bu rehber, ana spekulum ailelerini — burun, kulak, vajinal, rektal ve göz kapağı — kanat şekli, boyutu ve açma mekanizmasının farklı boşluklara nasıl uyduğunu ve siparişten önce yanıtlanması gereken beş soruyu açıklar."
+  },
+  {
+   "slug": "surgical-suction-instruments-guide",
+   "date": "2026-10-30",
+   "title": "Surgical Suction Instruments Explained: Yankauer, Frazier, Poole and How to Choose",
+   "titleFr": "Instruments d'aspiration chirurgicale : Yankauer, Frazier, Poole et comment choisir",
+   "titleAr": "شرح أدوات الشفط الجراحية: يانكاور وفريزر وبول وكيفية الاختيار",
+   "titleTr": "Cerrahi Aspirasyon Aletleri Rehberi: Yankauer, Frazier, Poole ve Nasıl Seçilir",
+   "summary": "A clear field is what makes every other surgical step possible — and the suction tip decides whether that field stays clear. This guide explains the Yankauer, Frazier and Poole patterns, how bore size, tip shape and finger-valve control balance clearance against tissue safety, and the six questions to answer before you order.",
+   "summaryFr": "Un champ opératoire dégagé est ce qui rend chaque autre geste chirurgical possible — et c'est l'embout d'aspiration qui décide si ce champ reste dégagé. Ce guide présente les modèles Yankauer, Frazier et Poole, comment le calibre, la forme de l'embout et la valve de contrôle au doigt équilibrent débit et sécurité tissulaire, et les six questions à se poser avant de commander.",
+   "summaryAr": "المجال الجراحي الواضح هو ما يجعل كل خطوة جراحية أخرى ممكنة — وطرف الشفط هو ما يحدد بقاء هذا المجال واضحا. يشرح هذا الدليل أنماط يانكاور وفريزر وبول، وكيف يوازن حجم التجويف وشكل الطرف وصمام التحكم بالإصبع بين سرعة الإخلاء وسلامة الأنسجة، والأسئلة الستة التي يجب الإجابة عنها قبل الطلب.",
+   "summaryTr": "Berrak bir alan, diğer her cerrahi adımı mümkün kılar — ve aspirasyon ucu o alanın berrak kalıp kalmayacağını belirler. Bu rehber, Yankauer, Frazier ve Poole desenlerini, çap, uç şekli ve parmak vanası kontrolünün temizleme ile doku güvenliği arasında nasıl denge kurduğunu ve siparişten önce yanıtlanması gereken altı soruyu açıklar."
+  },
+  {
+   "slug": "understanding-suture-materials-reference",
+   "date": "2026-10-22",
+   "title": "Understanding Suture Materials: A Surgeon's Quick Reference",
+   "titleFr": "Comprendre les matériaux de suture : guide de référence rapide pour le chirurgien",
+   "titleAr": "فهم مواد الخيوط الجراحية: مرجع سريع للجراح",
+   "titleTr": "Sütür Malzemelerini Anlamak: Cerrahlar İçin Hızlı Referans",
+   "summary": "Absorbable or non-absorbable? Monofilament or braided? This quick reference breaks down suture material families — how they behave, where each excels, and a practical four-question framework for choosing the right suture for every tissue and every patient.",
+   "summaryFr": "Résorbable ou non résorbable ? Monofilament ou tressé ? Ce guide de référence présente les familles de fils de suture — leur comportement, leurs indications et un cadre pratique en quatre questions pour choisir le bon fil pour chaque tissu et chaque patient.",
+   "summaryAr": "خيوط قابلة للامتصاص أم لا؟ أحادية أم مضفرة؟ يشرح هذا المرجع السريع عائلات مواد الخيوط الجراحية — كيف تتصرف، وأين يتفوق كل منها، وإطاراً عملياً من أربعة أسئلة لاختيار الخيط المناسب لكل نسيج وكل مريض.",
+   "summaryTr": "Emilebilir mi emilemez mi? Monofilament mi örgülü mü? Bu hızlı referans, sütür malzemesi ailelerini — nasıl davrandıklarını, her birinin nerede öne çıktığını ve her doku ile her hasta için doğru sütürü seçmeye yönelik dört soruluk pratik bir çerçeveyi — açıklar."
   }
  ]
 }

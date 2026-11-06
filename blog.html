@@ -10,14 +10,14 @@
 </head>
 <body>
 <script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc009"></script>
+<script src="app.js?v=doc010"></script>
 
 <main>
 <section class="blog-hero">
   <div class="wrap">
-    <span class="eyebrow rv">Insights</span>
-    <h1 class="rv">From the field.</h1>
-    <p class="rv">Practical notes on instruments and sourcing.</p>
+    <span class="eyebrow rv" data-i18n="blog.eyebrow">Insights</span>
+    <h1 class="rv" data-i18n="blog.title">From the field.</h1>
+    <p class="rv" data-i18n="blog.sub">Practical notes on instruments and sourcing.</p>
   </div>
 </section>
 
@@ -38,30 +38,39 @@ document.addEventListener("DOMContentLoaded", function(){
   loadArticles();
 });
 
+function langSuffix(){
+  var l = (window.SG && SG.getLang) ? SG.getLang() : 'en';
+  return l === 'fr' ? 'Fr' : l === 'ar' ? 'Ar' : l === 'tr' ? 'Tr' : '';
+}
+function locField(a, base){
+  var s = langSuffix();
+  return (s && a[base + s]) || a[base] || '';
+}
 function loadArticles(){
   fetch('articles/index.json')
     .then(r => r.json())
     .then(data => {
       var grid = document.getElementById('blogGrid');
       if(!data.articles || !data.articles.length){
-        grid.innerHTML = '<p class="blog-empty">Articles coming soon.</p>';
+        grid.innerHTML = '<p class="blog-empty">' + SG.t('blog.empty') + '</p>';
         return;
       }
       var html = '';
       data.articles.forEach(function(a){
         html += '<article class="blog-card">' +
           '<p class="blog-date">' + a.date + '</p>' +
-          '<h3><a href="article.html?slug=' + a.slug + '">' + a.title + '</a></h3>' +
-          '<p class="blog-summary">' + a.summary + '</p>' +
-          '<a class="blog-read" href="article.html?slug=' + a.slug + '">Read →</a>' +
+          '<h3><a href="article.html?slug=' + a.slug + '">' + locField(a, 'title') + '</a></h3>' +
+          '<p class="blog-summary">' + locField(a, 'summary') + '</p>' +
+          '<a class="blog-read" href="article.html?slug=' + a.slug + '">' + SG.t('blog.read') + '</a>' +
           '</article>';
       });
       grid.innerHTML = html;
     })
     .catch(function(){
-      document.getElementById('blogGrid').innerHTML = '<p class="blog-empty">Articles coming soon.</p>';
+      document.getElementById('blogGrid').innerHTML = '<p class="blog-empty">' + SG.t('blog.empty') + '</p>';
     });
 }
+document.addEventListener('surgronic:lang', function(){ SG.applyI18n(); loadArticles(); });
 </script>
 
 <script>
