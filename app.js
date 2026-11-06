@@ -216,6 +216,7 @@ en: {
   "cat.searchPh": "Search by name, SKU, or manufacturer reference…",
   "cat.search": "Search",
   "cat.allMfr": "All manufacturers",
+  "cat.allSpec": "All specialties",
   "cat.allFam": "All families",
   "cat.sortName": "Sort: Name",
   "cat.sortSku": "Sort: Reference",
@@ -619,6 +620,7 @@ fr: {
   "cat.searchPh": "Rechercher par nom, SKU ou référence fabricant…",
   "cat.search": "Rechercher",
   "cat.allMfr": "Tous les fabricants",
+  "cat.allSpec": "Toutes les spécialités",
   "cat.allFam": "Toutes les familles",
   "cat.sortName": "Tri : Nom",
   "cat.sortSku": "Tri : Référence",
@@ -1022,6 +1024,7 @@ ar: {
   "cat.searchPh": "ابحث بالاسم أو SKU أو مرجع الشركة المصنعة…",
   "cat.search": "بحث",
   "cat.allMfr": "كل الشركات المصنعة",
+  "cat.allSpec": "كل التخصصات",
   "cat.allFam": "كل العائلات",
   "cat.sortName": "ترتيب: الاسم",
   "cat.sortSku": "ترتيب: المرجع",
@@ -1426,6 +1429,7 @@ tr: {
   "cat.searchPh": "Ad, SKU veya üretici referansına göre arayın…",
   "cat.search": "Ara",
   "cat.allMfr": "Tüm üreticiler",
+  "cat.allSpec": "Tüm branşlar",
   "cat.allFam": "Tüm aileler",
   "cat.sortName": "Sırala: İsim",
   "cat.sortSku": "Sırala: Referans",
@@ -1734,6 +1738,36 @@ tr: [
   ["Diş & İmplant Cerrahisi","Diş ve implantoloji aletleri","🦷"]
 ]
 };
+
+/* ---------- Specialty -> product mapping (derived from catalogue data) ----------
+   A product belongs to a specialty when its category, SKU prefix or name matches.
+   Non-exclusive: one instrument can serve several specialties.
+   Counts measured against the live catalogue 2026-11-06; the API exposes only the
+   first 5,000 snapshot rows, so counts are lower bounds. */
+var SPECIALTY_MAP = {
+  "General Surgery & Laparoscopy": {cat:["General Surgery","Retractors","Retractors & Hooks","Clamps and Forceps","Forceps","Forceps (Tweezers)","Forceps & Tissue Forceps","Self-Retaining Retractors","Scissors","Scissors & Shears","Needle Holders","Needleholders","Dissectors","Elevators","Elevators & Dissectors","Suction and Cannulas","Suction Instruments","Suction & Aspiration","Curettes","Spoons and Curettes","Hooks","Probes","Knives","Knives & Scalpel Handles","Dilators","Spatulas","Suture and Ligature Instruments","Surgical Needles","Suturing"], kw:[/laparoscop/i,/retractor/i,/forceps/i,/\bclamp\b/i,/scissors/i,/needle holder/i,/dissect/i,/suction/i,/curette/i,/\bhook\b/i,/probe/i,/\bknife\b/i,/dilator/i,/spatula/i,/suture/i,/ligature/i,/scalpel/i,/elevator/i]},
+  "Orthopedics & Trauma": {pre:["SUR-ART"], cat:["Osteotomes","Bone Cutters","Bone Levers","Mallets","Rongeurs","Femoral Reamers","Tibial Reamers","Bone Holding Forceps","Saws","Drills"], kw:[/\bbone\b/i,/femoral/i,/tibial/i,/meniscus/i,/\bacl\b/i,/\bpcl\b/i,/shoulder/i,/\bknee\b/i,/arthroscop/i,/reamer/i,/osteotom/i,/mallet/i,/rongeur/i]},
+  "Oral & Maxillofacial": {cat:["Mouth Gags"], kw:[/maxillofacial/i,/mandib/i,/\boral\b/i,/\bmouth\b/i,/\bjaw\b/i,/dental/i]},
+  "Plastic, Reconstructive & Aesthetic": {catPre:["Plastic"], cat:["Rhinoplasty","Cleft Palate","Mammoplasty","Blepharoplasty","Facelift"], kw:[/rhinoplast/i,/nasal/i,/facelift/i,/blepharoplast/i,/mammoplast/i,/cleft/i,/breast/i,/liposuction/i,/plastic/i]},
+  "Cardiovascular & Thoracic": {kw:[/cardio/i,/vascular/i,/thoracic/i,/\brib\b/i,/sternum/i,/aorta/i,/valve/i,/anastomos/i]},
+  "Neurosurgery & Spine": {kw:[/neuro/i,/cranial/i,/\bspine\b/i,/spinal/i,/laminect/i,/vertebr/i,/\bdura\b/i]},
+  "Ophthalmology": {kw:[/ophthalm/i,/ocular/i,/\beye\b/i,/corneal/i,/retina/i]},
+  "ENT": {cat:["Nasal Speculums","Specula"], kw:[/nasal/i,/tonsil/i,/\bear\b/i,/aural/i,/throat/i,/laryn/i,/pharyng/i,/speculum/i,/specula/i]},
+  "OB/GYN & Urology": {cat:["Specula"], kw:[/vaginal/i,/uterine/i,/obstetric/i,/gynecol/i,/cervical/i,/urolog/i,/urethral/i,/bladder/i,/prostate/i,/speculum/i,/specula/i]},
+  "Energy & Powered Systems": {cat:["Electrosurgery","HF Instruments","Saws","Drills","Hand Saws"], kw:[/electrosurg/i,/electrode/i,/cautery/i,/diathermy/i,/\bdrill\b/i,/\bsaw\b/i,/ultrasonic/i,/powered/i]},
+  "Dental & Implant Surgery": {cat:["Mouth Gags"], kw:[/dental/i,/tooth/i,/teeth/i,/implant/i,/periodont/i,/endodont/i]},
+  "Sutures & Wound Closure": {cat:["Sutures & Wound Closure","Suturing"], kw:[/suture/i,/ligature/i,/needle/i]}
+};
+function inSpecialty(p, spec){
+  var rule = SPECIALTY_MAP[spec];
+  if(!rule || !p) return false;
+  var cat = p.category || "", nm = p.name || "";
+  if(rule.pre && rule.pre.some(function(x){ return p.sku && p.sku.indexOf(x) === 0; })) return true;
+  if(rule.catPre && rule.catPre.some(function(x){ return cat.indexOf(x) === 0; })) return true;
+  if(rule.cat && rule.cat.indexOf(cat) !== -1) return true;
+  if(rule.kw && rule.kw.some(function(re){ return re.test(nm) || re.test(cat); })) return true;
+  return false;
+}
 
 /* ---------- Language state ---------- */
 var LANG_KEY = "surgronic_lang_v2";
@@ -2177,6 +2211,6 @@ window.SG = {
   waProductUrl:waProductUrl, waBasketUrl:waBasketUrl,
   t:t, setLang:setLang, getLang:getLang, applyI18n:applyI18n,
   productName:productName, productDesc:productDesc,
-  SPECIALTIES:SPECIALTIES
+  SPECIALTIES:SPECIALTIES, SPECIALTY_MAP:SPECIALTY_MAP, inSpecialty:inSpecialty
 };
 })();

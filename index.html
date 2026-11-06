@@ -16,7 +16,7 @@
 </head>
 <body>
 <script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc006"></script>
+<script src="app.js?v=doc007"></script>
 <main>
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -392,7 +392,8 @@
     var specs = (SG.SPECIALTIES && (SG.SPECIALTIES[SG.getLang()] || SG.SPECIALTIES.en)) || [];
     grid.innerHTML = specs.map(function(s, i){
       var icon = s[2] || "";
-      return '<a class="spec-card rv in" href="catalogue.html?search=' + encodeURIComponent(s[0].split(" ")[0]) + '">' +
+      var enName = (SG.SPECIALTIES.en && SG.SPECIALTIES.en[i]) ? SG.SPECIALTIES.en[i][0] : s[0];
+      return '<a class="spec-card rv in" href="catalogue.html?cat=' + encodeURIComponent(enName) + '">' +
         '<span class="spec-ico" aria-hidden="true">' + icon + '</span><h3>' + SG.esc(s[0]) + '</h3><span>' + SG.esc(s[1]) + '</span></a>';
     }).join("");
   }

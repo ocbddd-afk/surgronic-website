@@ -13,7 +13,7 @@
 </head>
 <body>
 <script src="assets/currency.js?v=ccy002"></script>
-<script src="app.js?v=doc006"></script>
+<script src="app.js?v=doc007"></script>
 
 <div class="catalog-hero">
   <div class="container">
@@ -37,6 +37,9 @@
         <option>FADEN MEDIKAL</option>
         <option>ERFECEN</option>
         <option>ADOSN</option>
+      </select>
+      <select id="fSpec" aria-label="Specialty">
+        <option value="" data-i18n="cat.allSpec">All specialties</option>
       </select>
       <select id="fFamily" data-i18n-aria="cat.allFam" aria-label="Instrument family">
         <option value="" data-i18n="cat.allFam">All families</option>
@@ -82,13 +85,33 @@
       q: document.getElementById("q").value.trim() || p.get("q") || p.get("search") || "",
       brand: document.getElementById("fBrand").value,
       family: document.getElementById("fFamily").value,
+      spec: document.getElementById("fSpec").value || p.get("cat") || "",
       sort: document.getElementById("fSort").value
     };
   }
+  function populateSpecs(){
+    var sel = document.getElementById("fSpec");
+    var cur = sel.value;
+    while(sel.options.length > 1) sel.remove(1);
+    var specs = (SG.SPECIALTIES && (SG.SPECIALTIES[SG.getLang()] || SG.SPECIALTIES.en)) || [];
+    var enSpecs = (SG.SPECIALTIES && SG.SPECIALTIES.en) || [];
+    specs.forEach(function(s, i){
+      var o = document.createElement("option");
+      o.value = enSpecs[i] ? enSpecs[i][0] : s[0];
+      o.textContent = s[0];
+      sel.appendChild(o);
+    });
+    var o2 = document.createElement("option");
+    o2.value = "Sutures & Wound Closure"; o2.textContent = "Sutures & Wound Closure";
+    sel.appendChild(o2);
+    if(cur) sel.value = cur;
+  }
   (function(){
+    populateSpecs();
     var p = new URLSearchParams(location.search);
     if(p.get("brand")) document.getElementById("fBrand").value = p.get("brand");
     if(p.get("q") || p.get("search")) document.getElementById("q").value = p.get("q") || p.get("search");
+    if(p.get("cat")) document.getElementById("fSpec").value = p.get("cat");
   })();
 
   var BRAND_SKU = {
@@ -130,6 +153,65 @@
           window.scrollTo({top:0,behavior:"smooth"});
         })
         .catch(function(){ grid.innerHTML = '<p>No products found.</p>'; });
+      return;
+    }
+    // Specialty filter: fetch the union (API snapshot + static brand files) and filter client-side
+    if (f.spec && SG.inSpecialty) {
+      var pageCalls = [];
+      for(var off=0; off<9000; off+=1000){
+        pageCalls.push(SG.api("listProducts",{limit:1000, offset:off, storefront:true}).catch(function(){ return {products:[]}; }));
+      }
+      var staticCalls = ["do-san","faden-medikal","erfecen","smith---nephew","adosn"].map(function(b){
+        return fetch('data/brand-'+b+'.json').then(function(r){ return r.json(); }).catch(function(){ return {products:[]}; });
+      });
+      Promise.all(pageCalls.concat(staticCalls)).then(function(results){
+        var all = [];
+        results.forEach(function(r){
+          var list = (r && (r.products || (r.data && r.data.products))) || [];
+          all = all.concat(list);
+        });
+        var seen = {};
+        all = all.filter(function(p){ if(!p || !p.sku || seen[p.sku]) return false; seen[p.sku]=1; return true; });
+        var list = all.filter(function(p){ return SG.inSpecialty(p, f.spec); });
+        if(f.brand && BRAND_SKU[f.brand]){
+          var pres = BRAND_SKU[f.brand];
+          list = list.filter(function(p){ return p.sku && pres.some(function(pre){ return p.sku.indexOf(pre)===0; }); });
+        }
+        if(f.q){
+          var q = f.q.toLowerCase();
+          list = list.filter(function(p){ return ((p.name||"").toLowerCase().indexOf(q)!==-1) || ((p.sku||"").toLowerCase().indexOf(q)!==-1); });
+        }
+        if(f.family){
+          var fam = f.family.toLowerCase();
+          list = list.filter(function(p){ return (p.name||"").toLowerCase().indexOf(fam)!==-1; });
+        }
+        list.sort(function(a,b){
+          if(f.sort==="sku") return (a.sku||"").localeCompare(b.sku||"");
+          if(f.sort==="brand") return ((a.brand||"")+(a.sku||"")).localeCompare((b.brand||"")+(b.sku||""));
+          return SG.productName(a).localeCompare(SG.productName(b));
+        });
+        total = list.length;
+        var pages = Math.max(1, Math.ceil(total/PER));
+        if(page>pages) page=pages;
+        var start=(page-1)*PER;
+        var view=list.slice(start, start+PER);
+        metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>8,658</b> "+SG.t("cat.catalogued");
+        metaPage.textContent = SG.t("cat.page")+" "+page+" "+SG.t("cat.of")+" "+pages;
+        if(!view.length){
+          grid.innerHTML = '<div class="error-box" style="grid-column:1/-1;text-align:center;padding:48px 32px">'+
+            '<h3 style="font-size:20px;margin-bottom:10px">'+SG.t("cat.empty.t")+'</h3>'+
+            '<p style="color:var(--muted);margin-bottom:20px">'+SG.t("cat.empty.d")+'</p>'+
+            '<a class="btn btn-primary" href="quote.html">'+SG.t("cat.empty.b")+'</a></div>';
+        } else {
+          grid.innerHTML = view.map(SG.cardHTML).join("");
+          SG.bindAddButtons(grid);
+        }
+        renderPager(pages);
+        window.scrollTo({top:0,behavior:"smooth"});
+      }).catch(function(){
+        grid.innerHTML = '<div class="error-box" style="grid-column:1/-1">'+SG.t("cat.unavailable")+'</div>';
+        metaCount.textContent = SG.t("cat.unavailableShort");
+      });
       return;
     }
     // Brand filter via SKU prefix (API manufacturer param is ignored)
@@ -185,12 +267,13 @@
     clearTimeout(deb); deb=setTimeout(function(){page=1;load();},450);
   });
   document.getElementById("searchBtn").addEventListener("click",function(){page=1;load();});
-  ["fBrand","fFamily","fSort"].forEach(function(id){
+  ["fBrand","fFamily","fSort","fSpec"].forEach(function(id){
     document.getElementById(id).addEventListener("change",function(){page=1;load();});
   });
   load();
   document.addEventListener("surgronic:lang", function(){
     SG.applyI18n();
+    populateSpecs();
     load();
   });
 })();
