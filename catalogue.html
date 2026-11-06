@@ -13,7 +13,7 @@
 </head>
 <body>
 <script src="assets/currency.js?v=ccy003"></script>
-<script src="app.js?v=doc018"></script>
+<script src="app.js?v=doc019"></script>
 
 <div class="catalog-hero">
   <div class="container">
@@ -234,11 +234,48 @@
     var brandPrefixes = f.brand && BRAND_SKU[f.brand] ? BRAND_SKU[f.brand] : null;
     var fetchLimit = brandPrefixes ? 2000 : PER;
     var fetchOffset = brandPrefixes ? 0 : (page-1)*PER;
-    SG.api("listProducts",{
-      limit: fetchLimit, offset: fetchOffset,
-      search: search || undefined,
-      sort: f.sort, storefront:true
-    }).then(function(d){
+    /* Smart search: the API matches by exact substring, so a manufacturer
+       reference typed with hyphens/spaces ("BF-032R") or with a single
+       mistyped character ("ET05R") returns nothing. Fallback chain, only
+       when the search as-typed returns zero results:
+       (1) retry with the query normalised to alphanumeric only ("BF-032R"
+           -> "BF032R"); (2) for code-like queries (alphanumeric, 4-12 chars)
+           retry with a "%" wildcard inserted at each position, which catches
+           a single missing, extra or substituted character ("ET05R" ->
+           "ET0%5R" matches "ET005R"). The first variant with results wins
+           and is labelled as a close match — never presented as exact. */
+    function normCode(q){ return (q||"").replace(/[^A-Za-z0-9]/g, ""); }
+    function isCodeLike(q){ var n = normCode(q); return n.length >= 4 && n.length <= 12 && /^[A-Za-z0-9]+$/.test(n); }
+    function apiSearch(q){
+      return SG.api("listProducts",{limit: fetchLimit, offset: fetchOffset, search: q || undefined, sort: f.sort, storefront:true});
+    }
+    function smartSearch(q){
+      return apiSearch(q).then(function(d){
+        if((d.products||[]).length || !q) return {d: d, fuzzy: null};
+        var nq = normCode(q);
+        if(nq && nq !== q){
+          return apiSearch(nq).then(function(d2){
+            if((d2.products||[]).length) return {d: d2, fuzzy: null};
+            return fuzzySearch(nq);
+          });
+        }
+        return fuzzySearch(nq || q);
+      });
+      function fuzzySearch(cq){
+        if(!isCodeLike(cq)) return {d: {products:[], total:0}, fuzzy: null};
+        var variants = [];
+        for(var i=0;i<=cq.length;i++) variants.push(cq.slice(0,i) + "%" + cq.slice(i));
+        return Promise.all(variants.map(function(v){ return apiSearch(v).catch(function(){ return {products:[]}; }); }))
+          .then(function(results){
+            for(var j=0;j<results.length;j++){
+              if((results[j].products||[]).length) return {d: results[j], fuzzy: cq};
+            }
+            return {d: {products:[], total:0}, fuzzy: null};
+          });
+      }
+    }
+    smartSearch(search).then(function(res){
+      var d = res.d;
       var list = d.products||[];
       if(brandPrefixes){
         list = list.filter(function(p){
@@ -251,7 +288,8 @@
       } else {
         total = d.total||0;
       }
-      metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>9,975</b> "+SG.t("cat.catalogued");
+      metaCount.innerHTML = "<b>"+total.toLocaleString()+"</b> "+SG.t("cat.of")+" <b>9,975</b> "+SG.t("cat.catalogued") +
+        (res.fuzzy ? ' &nbsp;·&nbsp; <span style="color:var(--blue-500);font-weight:600">'+SG.t("cat.fuzzy")+' &ldquo;'+SG.esc(res.fuzzy)+'&rdquo;</span>' : '');
       var pages = Math.max(1, Math.ceil(total/PER));
       metaPage.textContent = SG.t("cat.page")+" "+page+" "+SG.t("cat.of")+" "+pages;
       if(!list.length){
