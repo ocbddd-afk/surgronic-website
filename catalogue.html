@@ -106,7 +106,7 @@
     grid.innerHTML = '<div class="loading">'+SG.t("cat.loading")+'</div>';
     metaCount.textContent = SG.t("cat.loading");
     // Brand filter: try static data first for new brands (API doesn't return them)
-    var STATIC_BRANDS = {"DO\u011eSAN": "do-san", "FADEN MEDIKAL": "faden-medikal", "ERFECEN": "erfecen"};
+    var STATIC_BRANDS = {"DO\u011eSAN": "do-san", "FADEN MEDIKAL": "faden-medikal", "ERFECEN": "erfecen", "ADOSN": "adosn"};
     var staticFile = f.brand && STATIC_BRANDS[f.brand] ? STATIC_BRANDS[f.brand] : null;
     if (staticFile) {
       // Load from static JSON
